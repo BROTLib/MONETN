@@ -3,14 +3,14 @@
   <POU Name="AzimuthElevationControl" Id="{8e08648a-b748-4448-9dcc-aa13dfcf6a06}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM AzimuthElevationControl
 VAR_INPUT
+	// enable the axis and its position control loop
+	Enable:		BOOL;
+	// reset the axis
+	Reset: 		BOOL;
 	// decrease azimuth
 	left:		BOOL;
 	// increase azimuth
 	right: 		BOOL;
-	// reset the axis
-	Reset: 		BOOL;
-	// enable the axis and its position control loop
-	Enable:		BOOL;
 	// Move azimuth to given position
 	MoveAxis:	BOOL;
 	// Home the axis
@@ -21,6 +21,10 @@ VAR_INPUT
 	position: 	LREAL;
 	// set the Velocity of the axis
 	velocity:	LREAL;
+	// stop the Axis
+	StopAxis:	BOOL;
+	// diagnostic reset
+	bSoEReset:	BOOL;
 END_VAR
 VAR_OUTPUT
 	// error state of the axis
@@ -39,8 +43,9 @@ END_VAR
 VAR
 	AzimuthAxis:		FB_Axis2;
 	AzimuthCalibration: MC_SetPosition;
-	fbSoEReset:			FB_SoEReset;
+	//fbSoEReset:			FB_SoEReset;
 	AzimuthAxisEvent: 	FB_EventLog;
+	AzimuthDiagnosticEvent: 	FB_EventLog;
 	// delay until commutator angle is measured
 	readydelay:			TON;
 	HomeDelay:			FB_TONTP;
@@ -50,15 +55,16 @@ VAR
 	CalibrationEvent:	FB_Eventlog;
 	ReadParameter:		MC_ReadParameter;
 	getlastposition:	BOOL := TRUE;
-	bSoEReset:			BOOL;
 	azimuth_rest_timer:	TON;
 	azimuth_at_rest:	BOOL;
+	fbSoEReset: 		FB_SoEReset;
+	DiagnosticError:	BOOL;
 END_VAR
 VAR CONSTANT
 	// reference position for homing
 	// homing_position:		LREAL := 439.0; // was 442 - -21.21 = 463.21; 463 + 24 = 439
 	// current position of the calibration cam encoder zero index. Apply an offset here if necessary
-	calibration_position:	LREAL := 207.0092; // 208.2342; 
+	calibration_position:	LREAL :=  208.6273; //208.6073; // 208.7122869;//207.0092; // 208.2342; 
 END_VAR
 VAR PERSISTENT
 	last_position:	LREAL := -1.0;
@@ -86,10 +92,6 @@ IF HomeAxis THEN
 	position := calibration_position;
 END_IF
 
-(*
-// move to calibration_position after homing
-HomeDelay(IN := Calibrated, PT1 := T#5S, PT2 := T#100MS);
-*)
 IF HomeDelay.Q THEN
 	position := calibration_position;
 	MoveAxis := TRUE;
@@ -112,7 +114,8 @@ END_IF
 // enable the azimuth if not moved by the power chain. Sorry for the hack
 azimuth_rest_timer(IN := HydraulicsControl.brake_open AND 
 				(ABS(GVL_Telescope.AzimuthAxisRef.NcToPlc.ActVelo) < 0.01), PT := T#2S);
-IF azimuth_rest_timer.Q THEN
+// if azimuth at rest or calibrated, allow enabling the azimuth
+IF azimuth_rest_timer.Q or calibrated THEN
 	azimuth_at_rest := TRUE;
 ELSIF HydraulicsControl.brake_closed THEN
 	azimuth_at_rest := FALSE;
@@ -128,6 +131,7 @@ AzimuthAxis(
 	Reset := 			reset,
 	MoveAxis :=			MoveAxis,
 	HomeAxis := 		HomeAxis,
+	StopAxis :=			StopAxis,
 	Tracking :=			Tracking,
 	Position := 		position, 
 	Velocity :=			velocity,
@@ -140,8 +144,6 @@ AzimuthAxis(
 	Error => 			error,
 	ErrorID => 			ErrorID,
 	AxisRef :=			GVL_Telescope.AzimuthAxisRef);
-
-bSoEReset := GVL_Telescope.Azimuth_diagnostic = 16#0000F10B OR GVL_Telescope.Azimuth_diagnostic = 16#0000F601;
 
 IF bSoEReset THEN
 	last_position := -1.0;
@@ -156,7 +158,7 @@ IF bSoEReset THEN
 		Reset := TRUE;
 	END_IF
 END_IF 
-	
+
 IF AzimuthAxis.MoveDone THEN
 	MoveAxis := FALSE;
 END_IF
@@ -167,6 +169,15 @@ END_IF
 	
 IF AzimuthAxis.ResetDone THEN
 	reset := FALSE;
+END_IF
+
+IF AzimuthAxis.StopDone THEN
+	StopAxis := FALSE;
+END_IF
+DiagnosticError := FALSE;
+IF GVL_Telescope.Azimuth_diagnostic < 16#D012 AND GVL_Telescope.Azimuth_diagnostic > 16#D014 THEN
+	DiagnosticError :=TRUE;
+	ErrorID := GVL_Telescope.Azimuth_diagnostic;
 END_IF
 
 ReadParameter(	Axis := GVL_Telescope.AzimuthAxisRef, Enable := AzimuthAxis.InMotion, 
@@ -185,6 +196,12 @@ AzimuthAxisEvent(
 	Level := 		ADSLOG_MSGTYPE_ERROR,
 	FormatString :=	'Azimuth Axis Error: %s',
 	OnMessage := 	NCError_TO_STRING(ErrorID));
+	
+AzimuthDiagnosticEvent(	
+	Trigger := 		DiagnosticError,
+	Level := 		ADSLOG_MSGTYPE_ERROR,
+	FormatString :=	'Azimuth Axis Diagnostic Error: %s',
+	OnMessage := 	NCError_TO_STRING(GVL_Telescope.Azimuth_diagnostic));
 	
 TorqueWarning(	
 	Trigger := 		TorqueError.Q, 
@@ -216,9 +233,7 @@ CalibrationEvent(
       <LineId Id="244" Count="1" />
       <LineId Id="683" Count="0" />
       <LineId Id="246" Count="4" />
-      <LineId Id="624" Count="0" />
-      <LineId Id="400" Count="0" />
-      <LineId Id="393" Count="6" />
+      <LineId Id="395" Count="4" />
       <LineId Id="625" Count="0" />
       <LineId Id="287" Count="4" />
       <LineId Id="701" Count="0" />
@@ -228,6 +243,7 @@ CalibrationEvent(
       <LineId Id="885" Count="0" />
       <LineId Id="887" Count="0" />
       <LineId Id="892" Count="0" />
+      <LineId Id="1164" Count="0" />
       <LineId Id="895" Count="1" />
       <LineId Id="898" Count="1" />
       <LineId Id="897" Count="0" />
@@ -240,6 +256,7 @@ CalibrationEvent(
       <LineId Id="126" Count="0" />
       <LineId Id="252" Count="0" />
       <LineId Id="337" Count="0" />
+      <LineId Id="1099" Count="0" />
       <LineId Id="41" Count="0" />
       <LineId Id="962" Count="0" />
       <LineId Id="104" Count="3" />
@@ -248,8 +265,8 @@ CalibrationEvent(
       <LineId Id="40" Count="0" />
       <LineId Id="85" Count="0" />
       <LineId Id="35" Count="0" />
-      <LineId Id="175" Count="0" />
-      <LineId Id="686" Count="2" />
+      <LineId Id="1247" Count="0" />
+      <LineId Id="688" Count="0" />
       <LineId Id="825" Count="0" />
       <LineId Id="689" Count="4" />
       <LineId Id="767" Count="0" />
@@ -259,6 +276,11 @@ CalibrationEvent(
       <LineId Id="696" Count="1" />
       <LineId Id="176" Count="0" />
       <LineId Id="158" Count="10" />
+      <LineId Id="1170" Count="3" />
+      <LineId Id="1175" Count="0" />
+      <LineId Id="1165" Count="0" />
+      <LineId Id="1179" Count="0" />
+      <LineId Id="1167" Count="1" />
       <LineId Id="564" Count="0" />
       <LineId Id="566" Count="1" />
       <LineId Id="569" Count="0" />
@@ -273,6 +295,7 @@ CalibrationEvent(
       <LineId Id="109" Count="0" />
       <LineId Id="80" Count="2" />
       <LineId Id="456" Count="0" />
+      <LineId Id="1027" Count="5" />
       <LineId Id="451" Count="4" />
       <LineId Id="505" Count="1" />
       <LineId Id="508" Count="2" />

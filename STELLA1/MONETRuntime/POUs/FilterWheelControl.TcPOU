@@ -40,12 +40,14 @@ VAR
 	FilterReadyEvent:	FB_Eventlog;
 	// last known filter position
 	last_filter_position:	USINT;
+	HomingMode:			MC_HomingMode := MC_HomingMode.MC_ForceCalibration;
+	MQTTTimer : 		TON := (PT:=T#5S);
 END_VAR
 VAR CONSTANT
 	// total number of filters in the filter wheel
 	filters:			USINT := 24;
 	// current position of the calibration cam. Apply an offset here if necessary
-	calibration_position:	LREAL := 0.0;
+	calibration_position:	LREAL := 1.8;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(* This program controls the filter wheel. 
@@ -59,7 +61,7 @@ filter_position := filter_position MOD filters;
 // calculate the actual filter position
 actual_filter := LREAL_TO_USINT((360.0 - act_position) * filters / 360.0) MOD filters;
 
-Ready := (filter_position = actual_filter) AND FilterWheelAxis.Standstill;
+Ready := (filter_position = actual_filter) AND (FilterWheelAxis.Standstill OR NOT Enable);
 IF Pendantcontrol.telescope_mode = E_TelescopeMode.automatic THEN
 	IF FilterWheelAxis.Calibrated THEN
 		// if we are on automatic mode then position the filterwheel
@@ -75,10 +77,15 @@ IF Pendantcontrol.telescope_mode = E_TelescopeMode.automatic THEN
 			Enable := FALSE;
 		END_IF
 	ELSE
-		position := calibration_position;
 		IF FilterWheelAxis.Ready THEN
 			HomeAxis := TRUE;
 		END_IF
+	END_IF
+END_IF
+IF HomeAxis THEN
+	IF HomingMode = MC_HomingMode.MC_DefaultHoming THEN
+		position := calibration_position;
+		filter_position := 0;	
 	END_IF
 END_IF
 
@@ -89,9 +96,9 @@ FilterWheelAxis(
 	Reset := 			Reset,
 	MoveAxis :=			MoveAxis,
 	HomeAxis :=			HomeAxis,
-	HomingMode :=		MC_ForceCalibration,
+	HomingMode :=		HomingMode,
 	Position := 		position, 
-	Velocity :=			60.0,
+	Velocity :=			30.0, //60.0,
 	Enable_Positive :=  TRUE,
 	Enable_Negative := 	TRUE,
 	Jog_Forward :=		left,
@@ -116,9 +123,12 @@ IF FilterWheelAxis.ResetDone THEN
 	reset := FALSE;
 END_IF
 
-IF actual_filter <> last_filter_position THEN
+MQTTTimer(IN:=TRUE);
+IF actual_filter <> last_filter_position OR MQTTTimer.Q THEN
 	MAIN.MQTTClient.Publish('telescope', 'dome', 'FilterPosition', WORD_TO_STRING(actual_filter));
+	MAIN.MQTTClient.Publish('telescope', 'dome', 'FilterWheelReady', BOOL_TO_STRING(Ready));
 	last_filter_position := actual_filter;
+	MQTTTimer(IN:=FALSE);
 END_IF
 
 FilterWheelEvent(	
@@ -163,11 +173,17 @@ FilterReadyEvent(
       <LineId Id="604" Count="0" />
       <LineId Id="595" Count="0" />
       <LineId Id="91" Count="0" />
-      <LineId Id="179" Count="1" />
+      <LineId Id="179" Count="0" />
       <LineId Id="443" Count="1" />
       <LineId Id="379" Count="0" />
       <LineId Id="376" Count="0" />
       <LineId Id="606" Count="0" />
+      <LineId Id="760" Count="0" />
+      <LineId Id="756" Count="0" />
+      <LineId Id="758" Count="0" />
+      <LineId Id="761" Count="0" />
+      <LineId Id="757" Count="0" />
+      <LineId Id="759" Count="0" />
       <LineId Id="377" Count="0" />
       <LineId Id="181" Count="0" />
       <LineId Id="45" Count="0" />
@@ -191,8 +207,11 @@ FilterReadyEvent(
       <LineId Id="135" Count="0" />
       <LineId Id="129" Count="0" />
       <LineId Id="137" Count="2" />
-      <LineId Id="488" Count="2" />
+      <LineId Id="654" Count="1" />
+      <LineId Id="489" Count="1" />
       <LineId Id="494" Count="0" />
+      <LineId Id="704" Count="0" />
+      <LineId Id="657" Count="0" />
       <LineId Id="491" Count="0" />
       <LineId Id="136" Count="0" />
       <LineId Id="123" Count="4" />

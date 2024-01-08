@@ -61,14 +61,14 @@ VAR_OUTPUT
 	Homing:		BOOL;
 	// axis is Accelerating or Decelerating
 	InRamp:		BOOL;
+	// axis is tracking on position
+	isTracking:	BOOL;
 	//	error condition
 	Error: 		BOOL;
 	// number of error
 	ErrorID: 	UDINT;
 	// actual position of the axis
 	ActualPosition: LREAL;
-	// absolute position of the axis
-	AbsolutePosition:	LREAL;
 	// axis is calibrated;
 	Calibrated:	BOOL := FALSE;
 	
@@ -78,7 +78,7 @@ VAR
 	Axis_Reset:		MC_Reset;
 	Axis_Move:		MC_MoveAbsolute;
 	Axis_Modulo:	MC_MoveModulo;
-	Axis_Position:	MC_ReadActualPosition;
+	//Axis_Position:	MC_ReadActualPosition;
 	Axis_Stop:		MC_Stop;
 	Axis_Status:	MC_ReadStatus;
 	Axis_Home:		MC_Home;
@@ -86,16 +86,13 @@ VAR
 	Axis_SetpointEnable:	MC_ExtSetPointGenEnable;
 	Axis_SetpointDisable:	MC_ExtSetPointGenDisable;
 	StopAllowed:	BOOL;
-	//wasEnabled:		BOOL;
-	// Direction fot Axis_SetpointFeed
-	Direction:		DINT;
-	Acceleration:	LREAL := 0.1;
-	EndTracking:	F_TRIG;
+	// Direction for Axis_SetpointFeed
+	Direction:			DINT;
+	// difference between set position and measured position
 	PositionDifference:	LREAL;
 	TrackPosition:		LREAL;
 	TrackVelocity:		LREAL;
 	TrackAcceleration:	LREAL;
-	TrackTimeScale:		LREAL:=0.1;
 END_VAR
 
 VAR_IN_OUT
@@ -122,23 +119,20 @@ Axis_Reset(
 	Done => 	ResetDone);
 
 (* Tracking section ********************************************** *)
-(*
-IF Tracking THEN
-	IF ABS(AbsolutePosition - Position) > 0.01 THEN
-		Tracking := FALSE;
-		Velocity := 1;
-		MoveAxis := TRUE;
-	ELSE
-		MoveAxis := FALSE;
-	END_IF
-END_IF
-*)
 
-PositionDifference := LIMIT(-0.1, Position - ActualPosition, 0.1);
-TrackPosition := AbsolutePosition + PositionDifference;
-TrackVelocity := LIMIT(-10.0, PositionDifference / TrackTimeScale, 10.0);
-TrackAcceleration := LIMIT(-10.0, (TrackVelocity - AxisRef.NcToPlc.ActVelo) / TrackTimeScale, 10.0);
-IF TrackVelocity = 0 OR TrackAcceleration = 0 THEN
+IF Tracking THEN
+	PositionDifference := LIMIT(-0.002, Position - ActualPosition, 0.002);
+	TrackPosition := ActualPosition + PositionDifference;
+	TrackVelocity := 0.0; // LIMIT(-1.0, 2.0 * Velocity, 1.0);
+	TrackAcceleration := 0.0;
+ELSE
+	TrackPosition := ActualPosition;
+	TrackVelocity := 0.0;
+	TrackAcceleration := 0.0;
+END_IF
+
+
+IF NOT Tracking OR ABS(PositionDifference) < 1E-5 THEN // TrackVelocity = 0 AND TrackAcceleration = 0 THEN
 	Direction := 0;
 ELSIF PositionDifference < 0.0 THEN
 	Direction := -1;
@@ -146,6 +140,7 @@ ELSE
 	Direction := 1;
 END_IF
 
+isTracking := Tracking AND ABS(Position - ActualPosition) < 5.0E-3;
 IF Tracking AND Ready AND Calibrated AND NOT StopAxis THEN
 	Axis_SetpointEnable.Execute := TRUE;
 ELSIF NOT Axis_SetpointEnable.Busy AND Axis_SetpointEnable.Done THEN
@@ -163,8 +158,6 @@ MC_ExtSetPointGenFeed(
 	Direction :=	Direction, 
 	Axis :=			AxisRef);
 
-// stop tracking on falling edge of tracking signal
-//EndTracking(CLK := Tracking);
 Axis_SetpointDisable(Axis := AxisRef,
 	Execute := NOT Tracking);
 	
@@ -201,11 +194,11 @@ Axis_Home(
 	HomingMode :=		HomingMode,
 	bCalibrationCam := 	bCalibrationCam,
 	Done => 			HomeDone);	
-	
+(*	
 IF (MoveDone OR HomeDone OR JogDone) AND NOT Axis_Status.StandStill THEN
 	StopAxis := TRUE;
 END_IF
-
+*)
 IF MoveDone AND (NOT Axis_Modulo.Busy OR NOT Axis_Move.Busy) THEN
 	MoveAxis := FALSE;
 END_IF
@@ -234,16 +227,16 @@ Axis_Stop(
 	Axis := 	AxisRef,
 	Execute := 	StopAxis AND StopAllowed,
 	Done => 	StopDone);
-
+(*
 Axis_Position(
 	Axis := 	AxisRef,
 	Enable := 	Calibrated,
 	Position => AbsolutePosition);
-
+*)
 IF isModuloAxis THEN
 	ActualPosition := AxisRef.NcToPlc.ModuloActPos; // required e.g. for Filterwheel
 ELSE
-	ActualPosition := AbsolutePosition; //AxisRef.NcToPlc.ActPos;
+	ActualPosition := AxisRef.NcToPlc.ActPos;
 END_IF
 
 IF Axis_Power.Error THEN
@@ -278,15 +271,12 @@ IF Axis_Stop.Error THEN
 	ErrorID := Axis_Stop.ErrorID;
 END_IF
 
-Busy := 	// Axis_Power.Busy OR // always true if enabled 
-			Axis_SetpointEnable.Busy OR
+Busy := 	Axis_SetpointEnable.Busy OR
 			Axis_Reset.Busy OR 
 			Axis_Modulo.Busy OR
 			Axis_Move.Busy OR 
 			Axis_Home.Busy OR
-			Axis_Jog.Busy
-			// OR Axis_Position.Busy // always true if enabled
-			;
+			Axis_Jog.Busy;
 
 Error := 	Axis_Power.Error OR 
 			Axis_SetpointEnable.Error OR
@@ -322,7 +312,8 @@ InRamp :=	Axis_Status.Accelerating OR
 			Axis_Status.Decelerating;
 Stopping := Axis_Status.Stopping;
 StandStill := Axis_Status.StandStill;
-Homing :=	Axis_Status.Homing;]]></ST>
+Homing :=	Axis_Status.Homing;
+// InPosition := AxisRef.NcToPlc.TargetPos;]]></ST>
     </Implementation>
     <LineIds Name="FB_Axis2">
       <LineId Id="292" Count="0" />
@@ -337,19 +328,23 @@ Homing :=	Axis_Status.Homing;]]></ST>
       <LineId Id="39" Count="1" />
       <LineId Id="2023" Count="0" />
       <LineId Id="1620" Count="0" />
-      <LineId Id="2028" Count="9" />
+      <LineId Id="2028" Count="1" />
+      <LineId Id="2600" Count="0" />
+      <LineId Id="2372" Count="0" />
+      <LineId Id="2591" Count="0" />
+      <LineId Id="2589" Count="0" />
+      <LineId Id="2265" Count="1" />
+      <LineId Id="2376" Count="1" />
+      <LineId Id="2037" Count="0" />
       <LineId Id="2024" Count="0" />
       <LineId Id="1812" Count="0" />
-      <LineId Id="1415" Count="0" />
-      <LineId Id="2140" Count="0" />
-      <LineId Id="2144" Count="0" />
-      <LineId Id="2147" Count="0" />
-      <LineId Id="1301" Count="0" />
+      <LineId Id="2590" Count="0" />
       <LineId Id="2143" Count="0" />
       <LineId Id="2142" Count="0" />
       <LineId Id="1417" Count="0" />
       <LineId Id="1419" Count="1" />
       <LineId Id="1418" Count="0" />
+      <LineId Id="2256" Count="0" />
       <LineId Id="2148" Count="2" />
       <LineId Id="2152" Count="1" />
       <LineId Id="2151" Count="0" />
@@ -361,8 +356,6 @@ Homing :=	Axis_Status.Homing;]]></ST>
       <LineId Id="1297" Count="3" />
       <LineId Id="1296" Count="0" />
       <LineId Id="1413" Count="0" />
-      <LineId Id="1411" Count="0" />
-      <LineId Id="1294" Count="0" />
       <LineId Id="1288" Count="0" />
       <LineId Id="1291" Count="0" />
       <LineId Id="2026" Count="1" />
@@ -428,12 +421,9 @@ Homing :=	Axis_Status.Homing;]]></ST>
       <LineId Id="783" Count="3" />
       <LineId Id="779" Count="3" />
       <LineId Id="903" Count="0" />
-      <LineId Id="905" Count="0" />
-      <LineId Id="1517" Count="0" />
-      <LineId Id="906" Count="2" />
+      <LineId Id="905" Count="3" />
       <LineId Id="911" Count="0" />
-      <LineId Id="909" Count="1" />
-      <LineId Id="1715" Count="0" />
+      <LineId Id="909" Count="0" />
       <LineId Id="791" Count="0" />
       <LineId Id="608" Count="0" />
       <LineId Id="1518" Count="0" />
@@ -456,6 +446,7 @@ Homing :=	Axis_Status.Homing;]]></ST>
       <LineId Id="195" Count="1" />
       <LineId Id="187" Count="0" />
       <LineId Id="385" Count="1" />
+      <LineId Id="2482" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
