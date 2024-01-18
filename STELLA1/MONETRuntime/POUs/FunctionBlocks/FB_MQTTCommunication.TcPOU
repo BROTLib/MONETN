@@ -99,9 +99,6 @@ IF fbMessageQueue.nQueuedMessages > 0 THEN
 					ElevationControl.bSoEReset := STRING_TO_BOOL(value);
 					AzimuthElevationControl.bSoEReset := STRING_TO_BOOL(value);
 					DerotatorControl.bSoEReset := STRING_TO_BOOL(value);
-				ELSIF parameter = 'nasmyth' THEN
-					NasmythControl.left := STRING_TO_USINT(value) = 1;
-					NasmythControl.right := STRING_TO_USINT(value) = 2;
 				ELSIF parameter = 'rightascension' THEN
 					TelescopeControl.track := FALSE;
 					TelescopeControl.rightascension := STRING_TO_LREAL(value);
@@ -114,8 +111,6 @@ IF fbMessageQueue.nQueuedMessages > 0 THEN
 					TelescopeControl.azimuth := STRING_TO_LREAL(value);
 				ELSIF parameter = 'focus' THEN
 					FocusControl.position := STRING_TO_LREAL(value);
-				ELSIF parameter = 'filter' THEN
-					FilterWheelControl.filter_position := STRING_TO_USINT(value);
 				ELSIF parameter = 'derotator' THEN
 					TelescopeControl.track := FALSE;
 					TelescopeControl.derotator_offset := STRING_TO_LREAL(value);
@@ -224,14 +219,12 @@ published := fbMqttClient.Publish(
     <LineIds Name="FB_MQTTCommunication">
       <LineId Id="308" Count="66" />
       <LineId Id="511" Count="3" />
-      <LineId Id="375" Count="1" />
-      <LineId Id="457" Count="0" />
       <LineId Id="377" Count="0" />
       <LineId Id="483" Count="0" />
       <LineId Id="378" Count="1" />
       <LineId Id="484" Count="0" />
       <LineId Id="380" Count="4" />
-      <LineId Id="453" Count="3" />
+      <LineId Id="453" Count="1" />
       <LineId Id="394" Count="0" />
       <LineId Id="485" Count="0" />
       <LineId Id="395" Count="0" />

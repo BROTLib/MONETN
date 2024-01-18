@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <GVL Name="GVL_Telescope" Id="{a7572ab9-17bf-4e0d-b71f-e76e531b6203}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
@@ -17,10 +17,6 @@ VAR_GLOBAL
 	focus_limit_near	AT%I*: BOOL;
 	// DIN30 3.5
 	focus_limit_far		AT%I*: BOOL;
-	// DIN31 3.6
-	nasmyth_limit_left	AT%I*: BOOL;
-	// DIN32 3.7
-	nasmyth_limit_right	AT%I*: BOOL;
 	
 	// DIN33 4.0
 	cover1_open		AT%I*: BOOL;
@@ -37,8 +33,6 @@ VAR_GLOBAL
 
 	//DOUT14 1.5
 	focus_unlock		AT%Q*: BOOL;
-	//DOUT15 4.6
-	nasmyth_lock	AT%Q*: BOOL;
 	//Horn 4.7
 	horn			AT%Q*: BOOL;
 	
@@ -70,8 +64,8 @@ VAR_GLOBAL
  	// Motor1 Channel 1
 	FocusAxisRef:		AXIS_REF;
 	
-	nasmyth_left	AT%Q*: BOOL;
-	nasmyth_right	AT%Q*: BOOL;
+	//nasmyth_left	AT%Q*: BOOL;
+	//nasmyth_right	AT%Q*: BOOL;
 	open_cover1		AT%Q*: BOOL;
 	close_cover1	AT%Q*: BOOL;
 	open_cover2		AT%Q*: BOOL;

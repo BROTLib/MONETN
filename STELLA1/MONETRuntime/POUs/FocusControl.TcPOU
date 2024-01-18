@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="FocusControl" Id="{d08d0458-4211-4cc5-9e25-2b5c152fb2d4}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM FocusControl
 VAR_INPUT
@@ -73,7 +73,7 @@ FocusDelay(IN := GVL_Telescope.focus_unlock, PT := T#500MS, Q => FocusUnlocked);
 // wait for brake until we are at rest
 BrakeDelay(IN := NOT FocusAxis.Busy AND FocusAxis.StandStill, PT := T#4000MS);
 
-// if we are on automatic mode then position the filterwheel
+// if we are on automatic mode then position the focus
 IF Pendantcontrol.telescope_mode = E_TelescopeMode.automatic AND NOT FocusUnlock THEN
 	IF FocusAxis.Calibrated THEN
 		IF ABS(position - actual_position) > tolerance THEN

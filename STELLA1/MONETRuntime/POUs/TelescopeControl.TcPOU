@@ -42,8 +42,6 @@ see https://gitlab.aip.de/bmk10k/telescope_firmware/snippets/5
 	time_offset: 		LREAL := 0.0;
 	// offset for the de-rotator
 	derotator_offset:	LREAL := 0.0;
-	// Nasmyth port 1 or 2
-	Nasmyth_port: 		USINT;
 END_VAR
 VAR
 	// actual command from the TCS
@@ -175,9 +173,6 @@ IF ElevationControl.error THEN
 ELSIF AzimuthElevationControl.error THEN
 	errorid := AzimuthElevationControl.ErrorID;
 	AzimuthElevationControl.Reset := reset;
-ELSIF FilterWheelControl.Error THEN
-	errorid := FilterWheelControl.ErrorID;
-	FilterWheelControl.Reset := reset;
 ELSIF Focuscontrol.Error THEN
 	errorid := Focuscontrol.ErrorID;
 	FocusControl.reset := reset;
@@ -188,7 +183,6 @@ END_IF
 
 error := ElevationControl.error OR 
 		 AzimuthElevationControl.error OR
-		 FilterWheelControl.Error OR
 		 Focuscontrol.Error OR
 		 DerotatorControl.Error;
 
@@ -260,31 +254,6 @@ power_timeout(IN := TCS_command = E_TCSCommand.no_command AND NOT isparked, PT :
 IF power_timeout.Q AND NOT isparked THEN
 	park := TRUE;
 END_IF
-
-IF Nasmyth_port = 1 THEN
-	NasmythControl.right := FALSE;
-	IF NasmythControl.Nasmyth_left THEN
-		NasmythControl.left := FALSE;
-		NasmythControl.enable := FALSE;
-	ELSE
-		NasmythControl.left := TRUE;
-		NasmythControl.enable := TRUE;
-	END_IF
-ELSIF Nasmyth_port = 2 THEN
-	NasmythControl.left := FALSE;
-    IF NasMythControl.Nasmyth_right THEN
-		NasmythControl.right := FALSE;
-		NasmythControl.enable := FALSE;
-	ELSE
-		NasmythControl.right := TRUE;
-		NasmythControl.enable := TRUE;
-	END_IF
-ELSE
-	NasmythControl.right := FALSE;
-	NasmythControl.left := FALSE;
-	NasmythControl.enable := FALSE;	
-END_IF
-	
 		
 // set TCS_command according to state variables ordered by precedence
 IF power THEN
@@ -367,7 +336,6 @@ stopped :=  (NOT ElevationControl.enable OR ElevationControl.ElevationAxis.Stand
 			
 homed := ElevationControl.Calibrated AND
 			AzimuthElevationControl.calibrated AND
-			FilterWheelControl.Calibrated AND
 			FocusControl.Calibrated AND
 			DerotatorControl.Calibrated;
 			
@@ -382,7 +350,6 @@ busy := ElevationControl.ElevationAxis.Busy OR
 		AzimuthElevationControl.AzimuthAxis.Busy OR
 		DerotatorControl.DerotatorAxis.Busy OR
 		FocusControl.FocusAxis.Busy OR
-		FilterWheelControl.FilterWheelAxis.Busy;
 	
 IF NOT error THEN
 	reset := FALSE;
@@ -673,8 +640,6 @@ CASE Stage OF
 		goto := 	FALSE;
 		slew := 	FALSE;
 		Focuscontrol.position := 53.6;
-		// disable filterwheel
-		FilterWheelControl.Enable := FALSE;
 		IF Error THEN // emergency park
 			HydraulicsControl.close_brake();
 			ElevationControl.enable := FALSE;
@@ -774,7 +739,6 @@ IF MAIN.ready AND CoverControl.isopen THEN
 	ElevationControl.enable := TRUE;
 	AzimuthElevationControl.enable := TRUE;
 	DerotatorControl.enable := TRUE;
-	FilterWheelControl.Enable := TRUE;
 END_IF
 
 IF ElevationControl.Ready AND NOT ElevationControl.Calibrated THEN
@@ -790,11 +754,6 @@ IF ElevationControl.Ready THEN
 	DerotatorControl.HomeAxis := DerotatorControl.Ready AND NOT DerotatorControl.Calibrated;
 END_IF
 
-// home filterwheel after Derotator Axis to avoid additional torque
-IF DerotatorControl.Calibrated THEN
-	FilterWheelControl.HomeAxis := FilterWheelControl.Ready AND NOT FilterWheelControl.Calibrated;
-END_IF
-
 // start calibration of focus after elevation has been calibrated
 // this avoids imbalance by the M2 mirror on the elvation during its calibration
 IF ElevationControl.Calibrated AND NOT FocusControl.Calibrated THEN
@@ -806,13 +765,10 @@ IF CoverControl.isopen AND
 	ElevationControl.Calibrated AND
 	AzimuthElevationControl.calibrated AND
 	DerotatorControl.Calibrated AND
-	FilterWheelControl.Calibrated AND
 	FocusControl.Calibrated THEN
 	power := FALSE;
 	poweron := TRUE;
 	isparked := FALSE;
-	// rest filterwheel until reactivation on filter change
-	FilterWheelControl.Enable := FALSE;
 	// slew the telescope to the home position
 	gohome := TRUE;
 ELSE
@@ -1004,16 +960,14 @@ END_IF
       <LineId Id="4301" Count="0" />
       <LineId Id="7319" Count="0" />
       <LineId Id="4253" Count="0" />
-      <LineId Id="4302" Count="0" />
-      <LineId Id="7320" Count="0" />
-      <LineId Id="4312" Count="0" />
       <LineId Id="4315" Count="0" />
       <LineId Id="7322" Count="0" />
       <LineId Id="4316" Count="1" />
       <LineId Id="7323" Count="0" />
       <LineId Id="4318" Count="0" />
       <LineId Id="4252" Count="0" />
-      <LineId Id="6575" Count="4" />
+      <LineId Id="6575" Count="2" />
+      <LineId Id="6579" Count="0" />
       <LineId Id="6581" Count="0" />
       <LineId Id="6601" Count="0" />
       <LineId Id="6600" Count="0" />
@@ -1058,26 +1012,6 @@ END_IF
       <LineId Id="9132" Count="0" />
       <LineId Id="6608" Count="1" />
       <LineId Id="6611" Count="1" />
-      <LineId Id="6606" Count="1" />
-      <LineId Id="7305" Count="0" />
-      <LineId Id="7291" Count="1" />
-      <LineId Id="7296" Count="0" />
-      <LineId Id="7294" Count="0" />
-      <LineId Id="7304" Count="0" />
-      <LineId Id="7298" Count="0" />
-      <LineId Id="7293" Count="0" />
-      <LineId Id="7285" Count="0" />
-      <LineId Id="7306" Count="0" />
-      <LineId Id="7299" Count="0" />
-      <LineId Id="7307" Count="1" />
-      <LineId Id="7302" Count="0" />
-      <LineId Id="7287" Count="0" />
-      <LineId Id="7286" Count="0" />
-      <LineId Id="7289" Count="0" />
-      <LineId Id="7309" Count="0" />
-      <LineId Id="7311" Count="2" />
-      <LineId Id="7284" Count="0" />
-      <LineId Id="3591" Count="0" />
       <LineId Id="3784" Count="0" />
       <LineId Id="1499" Count="0" />
       <LineId Id="8133" Count="1" />
@@ -1130,7 +1064,8 @@ END_IF
       <LineId Id="4255" Count="0" />
       <LineId Id="7621" Count="1" />
       <LineId Id="7630" Count="0" />
-      <LineId Id="7279" Count="3" />
+      <LineId Id="7279" Count="1" />
+      <LineId Id="7282" Count="0" />
       <LineId Id="4257" Count="0" />
       <LineId Id="7629" Count="0" />
       <LineId Id="7948" Count="0" />
@@ -1141,7 +1076,7 @@ END_IF
       <LineId Id="8727" Count="0" />
       <LineId Id="8729" Count="1" />
       <LineId Id="7472" Count="0" />
-      <LineId Id="8941" Count="1" />
+      <LineId Id="8941" Count="0" />
       <LineId Id="8728" Count="0" />
       <LineId Id="7473" Count="2" />
       <LineId Id="7933" Count="0" />
@@ -1288,8 +1223,6 @@ END_IF
       <LineId Id="122" Count="0" />
       <LineId Id="119" Count="2" />
       <LineId Id="123" Count="0" />
-      <LineId Id="125" Count="0" />
-      <LineId Id="127" Count="0" />
       <LineId Id="225" Count="0" />
       <LineId Id="231" Count="0" />
       <LineId Id="229" Count="1" />
@@ -1344,23 +1277,21 @@ END_IF
       <LineId Id="124" Count="0" />
       <LineId Id="126" Count="1" />
       <LineId Id="129" Count="0" />
-      <LineId Id="186" Count="1" />
+      <LineId Id="186" Count="0" />
       <LineId Id="130" Count="8" />
       <LineId Id="140" Count="2" />
-      <LineId Id="144" Count="4" />
-      <LineId Id="150" Count="3" />
+      <LineId Id="144" Count="2" />
+      <LineId Id="153" Count="0" />
       <LineId Id="188" Count="0" />
       <LineId Id="155" Count="0" />
       <LineId Id="195" Count="0" />
       <LineId Id="156" Count="1" />
       <LineId Id="167" Count="0" />
       <LineId Id="5" Count="0" />
-      <LineId Id="168" Count="3" />
+      <LineId Id="168" Count="2" />
       <LineId Id="196" Count="0" />
       <LineId Id="175" Count="1" />
       <LineId Id="206" Count="0" />
-      <LineId Id="212" Count="0" />
-      <LineId Id="211" Count="0" />
       <LineId Id="190" Count="0" />
       <LineId Id="189" Count="0" />
       <LineId Id="173" Count="1" />

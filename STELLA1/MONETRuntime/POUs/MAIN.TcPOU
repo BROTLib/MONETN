@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="MAIN" Id="{0fe844df-7078-44d3-bc48-268e6c994874}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -30,9 +30,9 @@ VAR
 	// main cabinet temperature in degrees
 	cabinet_temperature:	REAL;
 	// measures time between soft start command and power available
-	ups_output_voltage:		REAL;
-	ups_output_current:		REAL;
-	ups_output_power:		REAL;
+	//ups_output_voltage:		REAL;
+	//ups_output_current:		REAL;
+	//ups_output_power:		REAL;
 	PhaseLog:				FB_EventLog;
 	TemperatureEvent,
 	TemperatureCriticalEvent:	FB_EventLog;
@@ -45,6 +45,7 @@ VAR
 	cabinet_temperature_warning:	SR;
 	cabinet_temperature_critical:	SR;
 	MQTTClient:		FB_MQTTCommunication;
+	(*
 	ups: 				PS_Q4_DcUpsEC_Cyclic_2;
 	xActivate:			BOOL := TRUE;
 	arrInputPD	AT%I*:	ARRAY[0..30] OF WORD;
@@ -53,8 +54,9 @@ VAR
 	UPS_Warning,
 	UPS_BatMode,
 	UPS_ReplaceBattery,
-	MainsWarning,
-	MainsError:	FB_EventLog;
+	*)
+	//MainsWarning,
+	//MainsError:	FB_EventLog;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -101,6 +103,7 @@ END_IF
 ready :=  GVL_main.trafo_bypassed;
 
 // QUINT UPS control section
+(*
 ups(
 	xActivate:= xActivate, 
 	arrInputPD:= arrInputPD, 
@@ -120,24 +123,21 @@ ups(
 ups_output_voltage := ups_output_voltage / 1000.0;
 ups_output_current := ups_output_current / 1000.0;
 ups_output_power := ups_output_voltage * ups_output_current;
+*)
 		
 TelescopeControl();	//
 CoverControl();	//
 PendantControl();	//
-NasmythControl();	//
 HydraulicsControl();	//
 ElevationControl();	//
 AzimuthElevationControl();	//
 DerotatorControl();	//
-FilterWheelControl();	//
 FocusControl();
 MQTTClient();
 Transformer();
 
 error := GVL_Telescope.azimut_limit_switch
-			OR FilterWheelControl.Error
 			OR Focuscontrol.Error
-			OR NasmythControl.error
 			OR CoverControl.Error;
 // set control lights					
 GVL_Main.lamp_on_manual := PendantControl.manual;
@@ -198,6 +198,7 @@ IF MQTTTimer.Q THEN // publish new payload every second
 	MQTTClient.Publish('electronics', 'base', 'PhaseOK', BOOL_TO_STRING(Transformer.phase_available));
 	MQTTClient.Publish('electronics', 'base', 'MainReady', BOOL_TO_STRING(ready));
 	MQTTClient.Publish('electronics', 'base', 'MasterError', BOOL_TO_STRING(error));
+	(*
 	MQTTClient.Publish('electronics', 'base', 'UPSOutputVoltage', LREAL_TO_FMTSTR(ups_output_voltage, 3, TRUE));
 	MQTTClient.Publish('electronics', 'base', 'UPSOutputCurrent', LREAL_TO_FMTSTR(ups_output_current, 3, TRUE));
 	MQTTClient.Publish('electronics', 'base', 'UPSOutputPower', LREAL_TO_FMTSTR(ups_output_power, 3, TRUE));
@@ -206,6 +207,7 @@ IF MQTTTimer.Q THEN // publish new payload every second
 	MQTTClient.Publish('electronics', 'base', 'UpsWarning', BOOL_TO_STRING(ups.xWarning));
 	MQTTClient.Publish('electronics', 'base', 'UpsBatteryMode', BOOL_TO_STRING(ups.xBatModeActive));
 	MQTTClient.Publish('electronics', 'base', 'UPSReplaceBattery', BOOL_TO_STRING(ups.xReplaceBattery));
+    *)
 END_IF
 
 PhaseLog(	
@@ -232,6 +234,7 @@ UPS_Error(
 	Level := 		ADSLOG_MSGTYPE_ERROR,
 	OnMessage := 	'UPS has an error!');
 *)
+(*
 UPS_Alarm(	
 	Trigger := 		ups.xAlarm, 
 	Level := 		ADSLOG_MSGTYPE_ERROR,
@@ -252,6 +255,7 @@ UPS_ReplaceBattery(
 	Trigger := 		ups.xReplaceBattery, 
 	Level := 		ADSLOG_MSGTYPE_WARN,
 	OnMessage := 	'Replace UPS battery!');
+*)
 (* 	NeutralCurrentGuardWarning		AT%I*:	BOOL;
 	NeutralCurrentGuarError			AT%I*:	BOOL;
 	ActivePowerGuardWarning			AT%I*:	BOOL;
@@ -271,20 +275,24 @@ UPS_ReplaceBattery(
       <LineId Id="888" Count="1" />
       <LineId Id="1023" Count="0" />
       <LineId Id="994" Count="0" />
+      <LineId Id="1196" Count="0" />
       <LineId Id="1008" Count="13" />
       <LineId Id="1002" Count="0" />
       <LineId Id="1022" Count="0" />
       <LineId Id="1001" Count="0" />
       <LineId Id="1069" Count="1" />
       <LineId Id="1068" Count="0" />
+      <LineId Id="1197" Count="0" />
       <LineId Id="1000" Count="0" />
       <LineId Id="999" Count="0" />
       <LineId Id="998" Count="0" />
-      <LineId Id="702" Count="6" />
+      <LineId Id="703" Count="3" />
+      <LineId Id="708" Count="0" />
       <LineId Id="943" Count="0" />
       <LineId Id="711" Count="1" />
-      <LineId Id="718" Count="1" />
-      <LineId Id="722" Count="2" />
+      <LineId Id="718" Count="0" />
+      <LineId Id="722" Count="0" />
+      <LineId Id="724" Count="0" />
       <LineId Id="728" Count="1" />
       <LineId Id="832" Count="0" />
       <LineId Id="829" Count="1" />
@@ -321,11 +329,13 @@ UPS_ReplaceBattery(
       <LineId Id="861" Count="0" />
       <LineId Id="732" Count="1" />
       <LineId Id="744" Count="7" />
+      <LineId Id="1198" Count="0" />
       <LineId Id="891" Count="0" />
       <LineId Id="756" Count="1" />
       <LineId Id="892" Count="0" />
       <LineId Id="1028" Count="2" />
       <LineId Id="1043" Count="0" />
+      <LineId Id="1199" Count="0" />
       <LineId Id="760" Count="0" />
       <LineId Id="1031" Count="0" />
       <LineId Id="761" Count="6" />
@@ -335,11 +345,13 @@ UPS_ReplaceBattery(
       <LineId Id="1033" Count="0" />
       <LineId Id="1035" Count="3" />
       <LineId Id="1060" Count="0" />
+      <LineId Id="1194" Count="0" />
       <LineId Id="1062" Count="3" />
       <LineId Id="1044" Count="0" />
       <LineId Id="1061" Count="0" />
       <LineId Id="1045" Count="8" />
       <LineId Id="1055" Count="4" />
+      <LineId Id="1195" Count="0" />
       <LineId Id="1131" Count="7" />
       <LineId Id="1126" Count="0" />
       <LineId Id="1054" Count="0" />

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="PendantControl" Id="{4c9494b1-b987-44f6-88ae-faae341979f2}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PendantControl
 VAR
@@ -27,13 +27,10 @@ VAR
 	lamp_down:		BOOL;
 	lamp_error:		BOOL;
 	horn:			BOOL;
-	// counter for filter position
-	Filter_position:	USINT;
 	FocusEnable: 		FB_ButtonEnable;
 	DerotatorEnable:	FB_ButtonEnable;
 	ElevationEnable: 	FB_ButtonEnable;
 	AzimuthEnable: 		FB_ButtonEnable;
-	FilterWheelEnable:	FB_ButtonEnable;
 	TelescopeControlEnable: 	FB_ButtonEnable;
 	HydraulicsEnable: 	FB_ButtonEnable;
 	TrackingEnable:			FB_ButtonEnable;
@@ -151,18 +148,6 @@ CASE Selection OF
 		END_IF
 		
 	4:	// Nasmyth / mirror M3 control
-		lamp_left := NOT GVL_Telescope.nasmyth_limit_left;
-		lamp_right := NOT GVL_Telescope.nasmyth_limit_right;
-		IF manual THEN
-			GVL_Telescope.nasmyth_lock := enable;
-			//NasmythEnable(SET := enable, Q := NasmythControl.enable);
-			GVL_Telescope.nasmyth_left := left AND NOT GVL_Telescope.nasmyth_limit_left;
-			GVL_Telescope.nasmyth_right := right AND NOT GVL_Telescope.nasmyth_limit_right;
-			//NasmythControl.left := left;
-			//NasmythControl.right := right;
-			NasmythControl.reset := reset;
-			lamp_error := Nasmythcontrol.error;
-		END_IF
 		
 	5:	// Focus Control
 		lamp_up := FocusControl.Ready AND NOT GVL_Telescope.focus_limit_far;
@@ -215,28 +200,7 @@ CASE Selection OF
 		
 	9: 	// Dome control
 		
-		
-		
 	10:	// FilterWheel control
-		lamp_left := manual AND FilterWheelControl.enable;
-		lamp_right := manual AND FilterWheelControl.enable;
-		lamp_up :=	NOT  manual AND FilterWheelControl.enable AND FilterWheelControl.Calibrated;
-		lamp_down := NOT manual AND FilterWheelControl.enable AND FilterWheelControl.Calibrated;
-		FilterWheelControl.reset := reset;
-		FilterWheelControl.left := left;
-		FilterWheelControl.right := right;
-		
-		IF manual THEN
-			FilterWheelEnable(SET := enable, Q := FilterWheelControl.enable);
-			IF up_trigger.Q THEN
-				Filter_position := (Filter_position + 1) MOD 24;
-				FilterWheelControl.filter_position := Filter_position;
-			ELSIF down_trigger.Q THEN
-				Filter_position := (Filter_position - 1) MOD 24;
-				FilterWheelControl.filter_position := Filter_position;
-			END_IF
-			lamp_error := FilterWheelControl.Error;
-		END_IF
 		
 	11: lamp_up := ElevationControl.elevation_torque > 0.0;
 		lamp_down := ElevationControl.elevation_torque < 0.0;
@@ -339,21 +303,10 @@ GVL_pendant_control.lamp_error := lamp_error;]]></ST>
       <LineId Id="3248" Count="3" />
       <LineId Id="3595" Count="7" />
       <LineId Id="3594" Count="0" />
-      <LineId Id="3252" Count="125" />
-      <LineId Id="3379" Count="0" />
-      <LineId Id="3381" Count="0" />
-      <LineId Id="3535" Count="0" />
-      <LineId Id="3386" Count="0" />
-      <LineId Id="3390" Count="0" />
-      <LineId Id="3543" Count="2" />
-      <LineId Id="3391" Count="0" />
-      <LineId Id="3532" Count="0" />
-      <LineId Id="3536" Count="1" />
-      <LineId Id="3541" Count="0" />
-      <LineId Id="3539" Count="1" />
-      <LineId Id="3542" Count="0" />
-      <LineId Id="3538" Count="0" />
-      <LineId Id="3392" Count="3" />
+      <LineId Id="3252" Count="58" />
+      <LineId Id="3323" Count="50" />
+      <LineId Id="3376" Count="1" />
+      <LineId Id="3394" Count="1" />
       <LineId Id="3646" Count="0" />
       <LineId Id="3396" Count="70" />
       <LineId Id="3468" Count="2" />

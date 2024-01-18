@@ -36,10 +36,6 @@
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GVLs\GVL_FilterWheel.TcGVL">
-      <SubType>Code</SubType>
-      <LinkAlways>true</LinkAlways>
-    </Compile>
     <Compile Include="GVLs\GVL_Hydraulics.TcGVL">
       <SubType>Code</SubType>
     </Compile>
@@ -69,9 +65,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\ElevationControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FilterWheelControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\FocusControl.TcPOU">
@@ -215,9 +208,6 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\NasmythControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\PendantControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -343,9 +333,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <LibraryReference Include="PS_DcUpsEC,2.0,Phoenix Contact GmbH &amp; Co.KG">
-      <Namespace>PS_DcUpsEC</Namespace>
-    </LibraryReference>
     <LibraryReference Include="VisuSymbols,3.5.10.0,System">
       <Namespace>VisuSymbols</Namespace>
     </LibraryReference>
