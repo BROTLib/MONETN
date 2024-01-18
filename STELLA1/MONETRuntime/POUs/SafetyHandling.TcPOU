@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="SafetyHandling" Id="{6d4a788c-2168-4769-93de-c67314036861}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM SafetyHandling
 VAR
@@ -40,7 +40,7 @@ GVL_Safety.Run := remote_run;
 // power on delay for Safety RESTART after RUN=1
 
 // wait n seconds after Start ...
-start_delay(IN := Transformer.power_ok);
+start_delay(IN := TRUE);
 // ... and send ErrAck for n milliseconds
 ErrAck_Pulse(IN := (GVL_Safety.State = 2) AND start_delay.Q);
 

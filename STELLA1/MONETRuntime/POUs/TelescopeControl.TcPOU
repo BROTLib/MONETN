@@ -349,7 +349,7 @@ ready := homed AND
 busy := ElevationControl.ElevationAxis.Busy OR
 		AzimuthElevationControl.AzimuthAxis.Busy OR
 		DerotatorControl.DerotatorAxis.Busy OR
-		FocusControl.FocusAxis.Busy OR
+		FocusControl.FocusAxis.Busy;
 	
 IF NOT error THEN
 	reset := FALSE;
@@ -715,14 +715,6 @@ END_VAR]]></Declaration>
         <ST><![CDATA[IF NOT Main.brake_clearing THEN
 	powerfailure := TRUE;
 	TCSpowerEvent.OnMessage := 'failure: brake clearing not set';
-	power := FALSE;
-ELSIF NOT Transformer.power_OK THEN
-	powerfailure := TRUE;
-	TCSpowerEvent.OnMessage := 'failure: main power failure';
-	power := FALSE;
-ELSIF NOT Transformer.phase_available THEN
-	powerfailure := TRUE;
-	TCSpowerEvent.OnMessage := 'failure: hydraulics power failure';
 	power := FALSE;
 ELSIF error THEN
 	powerfailure := TRUE;
@@ -1267,7 +1259,7 @@ END_IF
       <LineId Id="169" Count="0" />
     </LineIds>
     <LineIds Name="TelescopeControl.poweron">
-      <LineId Id="99" Count="11" />
+      <LineId Id="99" Count="3" />
       <LineId Id="197" Count="0" />
       <LineId Id="199" Count="2" />
       <LineId Id="111" Count="2" />
