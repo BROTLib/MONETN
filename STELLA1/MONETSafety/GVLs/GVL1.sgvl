@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<GlobalVariables Crc="1858157643" Id="2f0b9a8f-9da2-43f0-895c-fa50d9fbd3dc" FileFormatVersion="1.0">
+<GlobalVariables Crc="1057188599" Id="2f0b9a8f-9da2-43f0-895c-fa50d9fbd3dc" FileFormatVersion="1.0">
   <Variable Id="b6188a22-31c8-4c1e-996e-d8d8ca9efc9f">
     <Name>EStop1</Name>
     <SourceUsages>
@@ -12,6 +12,9 @@
     <TargetUsages>
       <FbPortUsage Id="cbd28396-9e9e-4dfe-baad-52a862173635">
         <ModelElementId>eded13b4-1aba-493b-b1f7-d457aae9b089</ModelElementId>
+      </FbPortUsage>
+      <FbPortUsage Id="befccba8-7bb8-4ce9-8e93-0871c252a55b">
+        <ModelElementId>f8cb3af7-ef4b-4070-afa3-517306befe8b</ModelElementId>
       </FbPortUsage>
     </TargetUsages>
   </Variable>
@@ -28,6 +31,9 @@
       <FbPortUsage Id="08e4ae38-bc63-4ce7-8b33-4e5e10b73533">
         <ModelElementId>6f75c50e-5cd5-4b08-bc66-4c7442c1a64b</ModelElementId>
       </FbPortUsage>
+      <FbPortUsage Id="67ad3e21-2eb1-4043-adbb-440a8561a0c9">
+        <ModelElementId>98c085d0-ce1f-49ee-9140-e2aa618f5cd8</ModelElementId>
+      </FbPortUsage>
     </TargetUsages>
   </Variable>
   <Variable Id="361accd6-7d10-4915-8e91-a4a603dc6ed4">
@@ -38,10 +44,15 @@
       </FbPortUsage>
     </SourceUsages>
     <TargetUsages>
-      <AliasDeviceIoUsage Id="b3240c9e-eaff-473e-b279-7d218f168c08">
-        <SdsId>11</SdsId>
+      <AliasDeviceIoUsage Id="b058f41f-f769-48c0-bc75-0750ac4fee9c">
+        <SdsId>12</SdsId>
         <ChannelId>1</ChannelId>
-        <FunctionId>1879113985</FunctionId>
+        <FunctionId>1715470337</FunctionId>
+      </AliasDeviceIoUsage>
+      <AliasDeviceIoUsage Id="a0db3186-ee27-4cd0-a3b5-cc92c95309f1">
+        <SdsId>12</SdsId>
+        <ChannelId>2</ChannelId>
+        <FunctionId>1716519169</FunctionId>
       </AliasDeviceIoUsage>
     </TargetUsages>
   </Variable>
@@ -53,10 +64,10 @@
       </FbPortUsage>
     </SourceUsages>
     <TargetUsages>
-      <AliasDeviceIoUsage Id="70216713-12cc-4df9-a73b-fffeb9596078">
+      <AliasDeviceIoUsage Id="e343a626-fbd1-4a80-a022-bded13b9ad2f">
         <SdsId>11</SdsId>
-        <ChannelId>3</ChannelId>
-        <FunctionId>1879114497</FunctionId>
+        <ChannelId>1</ChannelId>
+        <FunctionId>1879113985</FunctionId>
       </AliasDeviceIoUsage>
     </TargetUsages>
   </Variable>
@@ -72,6 +83,9 @@
     <TargetUsages>
       <FbPortUsage Id="db14e899-a0eb-4637-a424-601aa4d07670">
         <ModelElementId>a0662c9c-a810-4447-9602-154ad06cae1c</ModelElementId>
+      </FbPortUsage>
+      <FbPortUsage Id="db25de75-b698-4d93-bac5-787fb0ab14a2">
+        <ModelElementId>4a4a66b6-94de-4a5f-94ca-7c77965d767d</ModelElementId>
       </FbPortUsage>
     </TargetUsages>
   </Variable>
@@ -105,36 +119,6 @@
       </AliasDeviceIoUsage>
     </TargetUsages>
   </Variable>
-  <Variable Id="621fd0e6-9e72-4ec1-a206-d8cd2419e5cd">
-    <Name>MotorFeedback</Name>
-    <SourceUsages>
-      <AliasDeviceIoUsage Id="86cfadb4-7048-4c62-bb1b-dab99b32a2ba">
-        <SdsId>10</SdsId>
-        <ChannelId>3</ChannelId>
-        <FunctionId>1610679041</FunctionId>
-      </AliasDeviceIoUsage>
-    </SourceUsages>
-    <TargetUsages>
-      <FbPortUsage Id="dc088b9f-5b8e-4c90-8226-51702a5e65eb">
-        <ModelElementId>2d9ce9a2-a7b9-4ba6-93c5-f7e1e08db8c5</ModelElementId>
-      </FbPortUsage>
-    </TargetUsages>
-  </Variable>
-  <Variable Id="20582569-b753-442a-9552-fc47276252b1">
-    <Name>HydraulicsFeedback</Name>
-    <SourceUsages>
-      <AliasDeviceIoUsage Id="c34e4d90-c493-45ba-923c-0902a5a41550">
-        <SdsId>10</SdsId>
-        <ChannelId>4</ChannelId>
-        <FunctionId>1610679297</FunctionId>
-      </AliasDeviceIoUsage>
-    </SourceUsages>
-    <TargetUsages>
-      <FbPortUsage Id="51828361-0cbe-4a29-a7c8-cb1ddef00382">
-        <ModelElementId>d60c0b06-5d06-4513-b43f-b57a724d29e2</ModelElementId>
-      </FbPortUsage>
-    </TargetUsages>
-  </Variable>
   <Variable Id="22d4058e-e71f-4d75-bf29-5a5097eafb6f">
     <Name>MoterEnable2</Name>
     <SourceUsages>
@@ -143,10 +127,15 @@
       </FbPortUsage>
     </SourceUsages>
     <TargetUsages>
-      <AliasDeviceIoUsage Id="cadee474-0192-40ef-95ba-b7708f197c79">
-        <SdsId>11</SdsId>
-        <ChannelId>2</ChannelId>
-        <FunctionId>1879114241</FunctionId>
+      <AliasDeviceIoUsage Id="c205fc20-5082-4675-8d7c-830cc11abfdf">
+        <SdsId>12</SdsId>
+        <ChannelId>17</ChannelId>
+        <FunctionId>1849688065</FunctionId>
+      </AliasDeviceIoUsage>
+      <AliasDeviceIoUsage Id="dad7ec0a-debc-40d0-bcfa-26b0f977212e">
+        <SdsId>12</SdsId>
+        <ChannelId>18</ChannelId>
+        <FunctionId>1850736897</FunctionId>
       </AliasDeviceIoUsage>
     </TargetUsages>
   </Variable>
