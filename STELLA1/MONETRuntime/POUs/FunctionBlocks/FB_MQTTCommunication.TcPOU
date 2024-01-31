@@ -13,7 +13,7 @@ VAR
     bConnect:			BOOL := FALSE;
     (* received message *)
 	bSubscribed: 		BOOL;
-	sTopicSub: 			STRING(255) := 'STELLA1/Telescope/SET';
+	sTopicSub: 			STRING(255) := 'MONETN/Telescope/SET';
 	{attribute 'TcEncoding':='UTF-8'}
 	sTopicRcv: 			STRING(255);
 	{attribute 'TcEncoding':='UTF-8'}
@@ -47,7 +47,7 @@ GetHostName(sHostName => HostName);
 // set the parameters once
 IF bSetParameter THEN
     bSetParameter               := FALSE;
-    fbMqttClient.sHostName      := 'sky.stella.iac.es';
+    fbMqttClient.sHostName      := '169.254.146.201';
     fbMqttClient.nHostPort      := 1883;
     fbMqttClient.sClientId      := HostName; 
     fbMqttClient.sTopicPrefix   := ''; 
@@ -170,7 +170,7 @@ fbFormat( sFormat := '%s,location=%s,host=%s %s=%s',
 retain_message := value = 'TRUE' OR value = 'FALSE';
 
 Publish := fbMqttClient.Publish(	
-				sTopic:= 'STELLA1/Telemetry', 
+				sTopic:= 'MONETN/Telemetry', 
 				pPayload:= ADR(sPayloadPub), 
 				nPayloadSize:= LEN2(ADR(sPayloadPub)),
 				eQoS:= TcIotMqttQos.AtMostOnceDelivery,
@@ -207,7 +207,7 @@ fbFormat( sFormat := 'log,host=%s,level=%s message="%s"',
 			nErrID => nErrID );
 
 published := fbMqttClient.Publish(	
-				sTopic:= 'STELLA1/Log', 
+				sTopic:= 'MONETN/Log', 
 				pPayload:= ADR(sPayloadPub), 
 				nPayloadSize:= LEN2(ADR(sPayloadPub)),
 				eQoS:= TcIotMqttQos.AtMostOnceDelivery,
