@@ -112,6 +112,7 @@ MQTTClient();
 error := GVL_Telescope.azimut_limit_switch
 			OR Focuscontrol.Error
 			OR CoverControl.Error;
+//error := FALSE; // Todo: remove
 // set control lights					
 GVL_Main.lamp_on_manual := PendantControl.manual;
 
@@ -198,6 +199,7 @@ TemperatureCriticalEvent(
       <LineId Id="718" Count="0" />
       <LineId Id="722" Count="0" />
       <LineId Id="724" Count="0" />
+      <LineId Id="1238" Count="0" />
       <LineId Id="728" Count="1" />
       <LineId Id="832" Count="0" />
       <LineId Id="829" Count="1" />

@@ -2879,8 +2879,8 @@ External Setpoint Generation:
 					<Name>Elevation</Name>
 					<AxisPara>
 						<General UnitName="°"/>
-						<Dynamic AccelerationMaximum="10" DecelerationMaximum="10" Acceleration="3" Deceleration="3" Jerk="2"/>
-						<Velo RefSearch="0.5" RefSync="0.5" SlowManual="1" FastManual="3" Fast="1026" Maximum="10"/>
+						<Dynamic AccelerationMaximum="10" DecelerationMaximum="10" Acceleration="31650.0798339844" Deceleration="31650.0798339844" Jerk="94950.2395019531"/>
+						<Velo RefSearch="211.000532226563" RefSync="211.000532226563" SlowManual="1055.00266113281" FastManual="6330.01596679687" Fast="21100.0532226563" Maximum="21100.0532226563"/>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="8">
@@ -2947,7 +2947,7 @@ External Setpoint Generation:
 					</Encoder>
 					<Drive Name="Drive" DrvType="9">
 						<DrvPara MaxCount="#xffffffff" DriveControlDWord="#x00030100">
-							<Analog VeloReferenz="1128.6" VeloScale="1.02400649589962" TorqueSetpointScale="10" ScaleFactorActTorque="0.1"/>
+							<Analog VeloReferenz="23210.0585449219" VeloScale="1.02400649589962" TorqueSetpointScale="10" ScaleFactorActTorque="0.1"/>
 							<TimeComp TaskDelayCycles="1"/>
 						</DrvPara>
 						<Vars VarGrpType="1">
@@ -3168,44 +3168,25 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETRuntime" PrjFilePath="MONETRuntime\MONETRuntime.plcproj" TmcFilePath="MONETRuntime\MONETRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{1138FBCD-6B46-59C8-64B4-9A2FBE0FF1A2}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{090CD540-BDBE-2FDE-E8F7-B476C24CC8CC}">
 					<Name>MONETRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
-							<Name>GVL_Main.key_switch_remote</Name>
-							<Comment><![CDATA[DIN1 0.0
-phase_available		AT%I*: BOOL;
-not implemented on RoboTel
-key_switch			AT%I*: BOOL;
-DIN3 0.2]]></Comment>
+							<Name>GVL_Safety.Error</Name>
+							<Comment><![CDATA[ Safety Error Condition]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Main.start_switch</Name>
-							<Comment><![CDATA[DIN4 0.3]]></Comment>
+							<Name>GVL_Safety.Stop</Name>
+							<Comment><![CDATA[ Stop signal coming from Safety]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Main.stop_switch</Name>
-							<Comment><![CDATA[DIN5 0.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Main.reset_switch</Name>
-							<Comment><![CDATA[DIN8 0.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Main.main_cabinet_temperature</Name>
-							<Comment><![CDATA[BT1]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Main.brake_clearing</Name>
-							<Comment><![CDATA[DIN15 1.6]]></Comment>
-							<Type>BOOL</Type>
+							<Name>GVL_Safety.State</Name>
+							<Comment><![CDATA[ state variable]]></Comment>
+							<Type>USINT</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Hydraulics.oil_low</Name>
@@ -3248,14 +3229,14 @@ DIN3 0.2]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Hydraulics.oilpan_maximum</Name>
-							<Comment><![CDATA[DIN39 4.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Hydraulics.oil_level</Name>
 							<Comment><![CDATA[BT2]]></Comment>
 							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Hydraulics.oilpan_maximum</Name>
+							<Comment><![CDATA[DIN39 4.6]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Hydraulics.oil_reserve</Name>
@@ -3263,19 +3244,38 @@ DIN3 0.2]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Safety.Error</Name>
-							<Comment><![CDATA[ Safety Error Condition]]></Comment>
+							<Name>GVL_Main.key_switch_remote</Name>
+							<Comment><![CDATA[DIN1 0.0
+phase_available		AT%I*: BOOL;
+not implemented on RoboTel
+key_switch			AT%I*: BOOL;
+DIN3 0.2]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Safety.Stop</Name>
-							<Comment><![CDATA[ Stop signal coming from Safety]]></Comment>
+							<Name>GVL_Main.start_switch</Name>
+							<Comment><![CDATA[DIN4 0.3]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Safety.State</Name>
-							<Comment><![CDATA[ state variable]]></Comment>
-							<Type>USINT</Type>
+							<Name>GVL_Main.stop_switch</Name>
+							<Comment><![CDATA[DIN5 0.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Main.reset_switch</Name>
+							<Comment><![CDATA[DIN8 0.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Main.main_cabinet_temperature</Name>
+							<Comment><![CDATA[BT1]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Main.brake_clearing</Name>
+							<Comment><![CDATA[DIN15 1.6]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_pendant_control.BCD1</Name>
@@ -3452,18 +3452,18 @@ DIN3 0.2]]></Comment>
 					<Vars VarGrpType="2" AreaNo="1">
 						<Name>PlcTask Outputs</Name>
 						<Var>
-							<Name>GVL_Main.lamp_power</Name>
-							<Comment><![CDATA[DOUT1 0.0]]></Comment>
+							<Name>GVL_Safety.Run</Name>
+							<Comment><![CDATA[ Run/Stop Safety]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Main.lamp_on_manual</Name>
-							<Comment><![CDATA[DOUT2 0.1]]></Comment>
+							<Name>GVL_Safety.Restart</Name>
+							<Comment><![CDATA[ Restart Safety]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Main.lamp_error</Name>
-							<Comment><![CDATA[DOUT3 0.2]]></Comment>
+							<Name>GVL_Safety.ErrAck</Name>
+							<Comment><![CDATA[ Error Acknowledgement ]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3477,18 +3477,18 @@ DIN3 0.2]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Safety.Run</Name>
-							<Comment><![CDATA[ Run/Stop Safety]]></Comment>
+							<Name>GVL_Main.lamp_power</Name>
+							<Comment><![CDATA[DOUT1 0.0]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Safety.Restart</Name>
-							<Comment><![CDATA[ Restart Safety]]></Comment>
+							<Name>GVL_Main.lamp_on_manual</Name>
+							<Comment><![CDATA[DOUT2 0.1]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Safety.ErrAck</Name>
-							<Comment><![CDATA[ Error Acknowledgement ]]></Comment>
+							<Name>GVL_Main.lamp_error</Name>
+							<Comment><![CDATA[DOUT3 0.2]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -5705,7 +5705,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
-								<Entry Name="Input" Index="#x6040" Sub="#x01">
+								<Entry Name="GVL_Main.key_brake_clearing" Index="#x6040" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[Key Enable Brake]]></Comment>
 								</Entry>
@@ -6950,10 +6950,26 @@ Bit1: Value smaller than Limit2]]></Comment>
 					<Name>Image</Name>
 				</Image>
 				<Box Id="1" BoxType="9099" BoxFlags="#x00000020">
-					<Name>Drive 1 (AX5125-0000-0214)</Name>
+					<Name>Azimuth (AX5125-0000-0214)</Name>
 					<ImageId>1009</ImageId>
 					<Xml>
 						<AX5XXXDriveTool>
+							<AxisSettings>
+								<AxisSetting Channel="0">
+									<Property>
+										<Name>Feedback1Connector0</Name>
+										<Value>0</Value>
+									</Property>
+									<Property>
+										<Name>Feedback1Connector1</Name>
+										<Value>0</Value>
+									</Property>
+									<Property>
+										<Name>Feedback1Connector2</Name>
+										<Value>0</Value>
+									</Property>
+								</AxisSetting>
+							</AxisSettings>
 							<InitCmds>
 								<InitCmd DriveNo="0" IDN="30" MotorDataLevel="0" DisableMode="0">
 									<RetainData>3e0042004669726d776172653a2076322e313420284275696c64203030303629202f20426f6f746c6f616465723a2076322e303220284275696c6420303030322900</RetainData>
@@ -7107,6 +7123,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 						<MBoxUserCmdData>020005000a0000000e000000000000000000000000000000000000000000000003402000000000000b004f7065726174696f6e206d6f646500</MBoxUserCmdData>
 						<MBoxUserCmdData>004005000a0000001e0000000000000000000000000000000000000000000000034030810000000001005265706f727420646961676e6f737469637320696e666f726d6174696f6e00</MBoxUserCmdData>
 						<MBoxUserCmdData>020005000a0000001800000000000000000000000000000000000000000000000340d087000000000200436f6e6669677572656420736166657479206f7074696f6e00</MBoxUserCmdData>
+						<MBoxUserCmdData>020005000a0000001300000000000000000000000000000000000000000000000340d88000000000c4224d6178204443206c696e6b20766f6c7461676500</MBoxUserCmdData>
 						<Pdo Name="AT" Index="#x0010" Flags="#x0001" SyncMan="3">
 							<Entry Name="Drive status word" Index="#x0087" Flags="#x00000800">
 								<Type>UINT</Type>
@@ -7366,19 +7383,44 @@ Bit1: Value smaller than Limit2]]></Comment>
 					</Box>
 				</Box>
 				<Box Id="3" BoxType="9099" BoxFlags="#x00000020">
-					<Name>Drive 3 (AX5125-0000-0214)</Name>
+					<Name>Elevation (AX5125-0000-0214)</Name>
 					<ImageId>1009</ImageId>
 					<Xml>
 						<AX5XXXDriveTool>
+							<AxisSettings>
+								<AxisSetting Channel="0">
+									<Property>
+										<Name>NcFeedConstant</Name>
+										<Value>360.000000</Value>
+									</Property>
+									<Property>
+										<Name>Feedback1Connector0</Name>
+										<Value>14</Value>
+									</Property>
+									<Property>
+										<Name>Feedback1Connector1</Name>
+										<Value>14</Value>
+									</Property>
+									<Property>
+										<Name>Feedback1Connector2</Name>
+										<Value>14</Value>
+									</Property>
+								</AxisSetting>
+							</AxisSettings>
+							<DialogSettings>
+								<DialogSetting Name="Power management" Channel="0">
+									<Property>
+										<Name>PowerSupplyType</Name>
+										<Value>0</Value>
+									</Property>
+								</DialogSetting>
+							</DialogSettings>
 							<InitCmds>
 								<InitCmd DriveNo="0" IDN="30" MotorDataLevel="0" DisableMode="0">
 									<RetainData>3e0042004669726d776172653a2076322e313420284275696c64203030303629202f20426f6f746c6f616465723a2076322e303220284275696c6420303030322900</RetainData>
 								</InitCmd>
 								<InitCmd DriveNo="0" IDN="432" MotorDataLevel="0" DisableMode="0">
 									<RetainData>1200160053657269616c233a20303030353330353931</RetainData>
-								</InitCmd>
-								<InitCmd DriveNo="0" IDN="33088" MotorDataLevel="0" DisableMode="0">
-									<RetainData>24002400d6000600ca0002002c9d5b002c9d5b00c8000500660000001b534c002260000000000000</RetainData>
 								</InitCmd>
 								<InitCmd DriveNo="0" IDN="33093" MotorDataLevel="0" DisableMode="0">
 									<RetainData>16001a004a756e2020322032303232202c2031363a32303a3538</RetainData>
@@ -7493,6 +7535,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 								<Element option="0" SortOder="0" SubIdx="0">
 									<Index>33271</Index>
 									<SubItem>CmdMovNegative</SubItem>
+									<Width>72</Width>
 								</Element>
 								<Element option="0" SortOder="0" SubIdx="0">
 									<Index>32983</Index>
@@ -7517,12 +7560,17 @@ Bit1: Value smaller than Limit2]]></Comment>
 						<DcMode>446353796e633235300000000000000053796e63206379636c652074696d653a20323530c2b57300000000000000000090d003000000000000000000ffff30070000000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<DcMode>446353796e633132350000000000000053796e63206379636c652074696d653a20313235c2b57300000000000000000048e801000000000000000000ffff30070000000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<DcMode>446353796e6336322e3500000000000053796e63206379636c652074696d653a2036322e35c2b573000000000000000024f400000000000000000000ffff30070000000000000000000000000000000000000000000000000000000000000000</DcMode>
-						<MBoxUserCmdData>00400500100000000d000000000000000000000000000000000000000000000003400a8000000000fe7ff903000000004665617475726520666c61677300</MBoxUserCmdData>
+						<MBoxUserCmdData>00400500100000000d000000000000000000000000000000000000000000000003400a8000000000fffff903000000004665617475726520666c61677300</MBoxUserCmdData>
 						<MBoxUserCmdData>020005000a0000001500000000000000000000000000000000000000000000000340010000000000d007546e637963202d204e43206379636c652074696d6500</MBoxUserCmdData>
 						<MBoxUserCmdData>020005000a0000001700000000000000000000000000000000000000000000000340020000000000d0075473637963202d20436f6d6d206379636c652074696d6500</MBoxUserCmdData>
 						<MBoxUserCmdData>020005000a0000000e000000000000000000000000000000000000000000000003402000000000000b004f7065726174696f6e206d6f646500</MBoxUserCmdData>
 						<MBoxUserCmdData>004005000a0000001e0000000000000000000000000000000000000000000000034030810000000001005265706f727420646961676e6f737469637320696e666f726d6174696f6e00</MBoxUserCmdData>
 						<MBoxUserCmdData>020005000a0000001800000000000000000000000000000000000000000000000340d087000000000200436f6e6669677572656420736166657479206f7074696f6e00</MBoxUserCmdData>
+						<MBoxUserCmdData>020005000a0000001300000000000000000000000000000000000000000000000340d88000000000c4224d6178204443206c696e6b20766f6c7461676500</MBoxUserCmdData>
+						<MBoxUserCmdData>020005000a0000001500000000000000000000000000000000000000000000000340c98000000000a00f4e6f6d696e616c206d61696e7320766f6c7461676500</MBoxUserCmdData>
+						<MBoxUserCmdData>020005000a0000002600000000000000000000000000000000000000000000000340ca800000000064004d61696e7320766f6c7461676520706f73697469766520746f6c6572616e63652072616e676500</MBoxUserCmdData>
+						<MBoxUserCmdData>020005000a0000002600000000000000000000000000000000000000000000000340cb800000000064004d61696e7320766f6c74616765206e6567617469766520746f6c6572616e63652072616e676500</MBoxUserCmdData>
+						<MBoxUserCmdData>020005000a0000001d00000000000000000000000000000000000000000000000340cc80000000000908506f776572206d616e6167656d656e7420636f6e74726f6c20776f726400</MBoxUserCmdData>
 						<Pdo Name="AT" Index="#x0010" Flags="#x0001" SyncMan="3">
 							<Entry Name="Drive status word" Index="#x0087" Flags="#x00000800">
 								<Type>UINT</Type>
@@ -7782,7 +7830,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 					</Box>
 				</Box>
 				<Box Id="5" BoxType="9099" BoxFlags="#x00000020">
-					<Name>Drive 5 (AX5206-0000-0214)</Name>
+					<Name>Derotator (AX5206-0000-0214)</Name>
 					<ImageId>1010</ImageId>
 					<Xml>
 						<AX5XXXDriveTool>
@@ -8117,6 +8165,9 @@ Bit1: Value smaller than Limit2]]></Comment>
 								<InitCmd DriveNo="0" IDN="32860" MotorDataLevel="1" DisableMode="0"/>
 								<InitCmd DriveNo="0" IDN="32861" MotorDataLevel="1" DisableMode="0"/>
 								<InitCmd DriveNo="0" IDN="32918" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="33088" MotorDataLevel="0" DisableMode="0">
+									<RetainData>24002400d6000600ca0002002c9d5b002c9d5b00c8000900660000001b534c002260000000000000</RetainData>
+								</InitCmd>
 								<InitCmd DriveNo="0" IDN="33093" MotorDataLevel="0" DisableMode="0">
 									<RetainData>16001a004a756e2020322032303232202c2031363a32353a3539</RetainData>
 								</InitCmd>
@@ -8776,9 +8827,6 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<EtherCAT DcSyncMode="2"/>
 			</Device>
 		</Io>
-		<SymbolWatch>
-			<Variable>TINC^NC-Task 1 SAF^Axes^Elevation^Outputs^ToPlc^HomingState</Variable>
-		</SymbolWatch>
 	</Project>
 	<Mappings>
 		<MappingInfo Identifier="{00000000-2001-0850-0020-500841000403}" Id="#x02030030"/>
@@ -8790,32 +8838,28 @@ Bit1: Value smaller than Limit2]]></Comment>
 		<MappingInfo Identifier="{03040060-0040-0304-6000-040340000403}" Id="#x02030070" Watchdog="14000000040000000400000004000000"/>
 		<OwnerA Name="TIID^Device 1 (EtherCAT)">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Safety IN (EL1904)">
+				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionInputs^TwinSafeGroup1.Safety IN (EL1904) - Module 1 (FSOES)_3 TxPDO" VarB="Module 1 (FSOES)^RxPDO^FSOE"/>
 				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionOutputs^TwinSafeGroup1.Safety IN (EL1904) - Module 1 (FSOES)_3 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Safety Logic (EL6910)">
-				<Link VarA="Term 21 (EK1200)^Safety IN (EL1904)^Module 1 (FSOES)^RxPDO^FSOE" VarB="ConnectionInputs^TwinSafeGroup1.Safety IN (EL1904) - Module 1 (FSOES)_3 TxPDO"/>
-				<Link VarA="Term 21 (EK1200)^Safety OUT (EL2904)^Module 1 (FSOES)^TxPDO^FSOE" VarB="ConnectionOutputs^TwinSafeGroup1.Safety OUT (EL2904) - Module 1 (FSOES)_14 RxPDO"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Safety OUT (EL2904)">
 				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionInputs^TwinSafeGroup1.Safety OUT (EL2904) - Module 1 (FSOES)_14 TxPDO" VarB="Module 1 (FSOES)^RxPDO^FSOE"/>
+				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionOutputs^TwinSafeGroup1.Safety OUT (EL2904) - Module 1 (FSOES)_14 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
 			</OwnerB>
-			<OwnerB Name="TIID^Device 5 (EtherCAT)^Drive 1 (AX5125-0000-0214)^Term 2 (AX5805)">
-				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionInputs^TwinSafeGroup1.Term 2 (AX5805) - Module 1 (Safety Process Data, 1 axis)_5 TxPDO" VarB="Module 1 (Safety Process Data, 1 axis)^Outputs (Controlword)^FSOE"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 5 (EtherCAT)^Drive 5 (AX5206-0000-0214)^Term 6 (AX5805)">
-				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionInputs^TwinSafeGroup1.Term 6 (AX5805) - Module 1 (Safety Process Data, 2 axis)_7 TxPDO" VarB="Module 1 (Safety Process Data, 2 axis)^Outputs (Controlword)^FSOE"/>
-				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionOutputs^TwinSafeGroup1.Term 6 (AX5805) - Module 1 (Safety Process Data, 2 axis)_7 RxPDO" VarB="Module 1 (Safety Process Data, 2 axis)^Inputs (Statusword)^FSOE"/>
+			<OwnerB Name="TIID^Device 5 (EtherCAT)^Elevation (AX5125-0000-0214)^Term 4 (AX5805)">
+				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionOutputs^TwinSafeGroup1.Term 4 (AX5805) - Module 1 (Safety Process Data, 1 axis)_6 RxPDO" VarB="Module 1 (Safety Process Data, 1 axis)^Inputs (Statusword)^FSOE"/>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TIID^Device 5 (EtherCAT)">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Safety Logic (EL6910)">
-				<Link VarA="Drive 1 (AX5125-0000-0214)^Term 2 (AX5805)^Module 1 (Safety Process Data, 1 axis)^Inputs (Statusword)^FSOE" VarB="ConnectionOutputs^TwinSafeGroup1.Term 2 (AX5805) - Module 1 (Safety Process Data, 1 axis)_5 RxPDO"/>
-				<Link VarA="Drive 3 (AX5125-0000-0214)^Term 4 (AX5805)^Module 1 (Safety Process Data, 1 axis)^Inputs (Statusword)^FSOE" VarB="ConnectionOutputs^TwinSafeGroup1.Term 4 (AX5805) - Module 1 (Safety Process Data, 1 axis)_6 RxPDO"/>
-				<Link VarA="Drive 3 (AX5125-0000-0214)^Term 4 (AX5805)^Module 1 (Safety Process Data, 1 axis)^Outputs (Controlword)^FSOE" VarB="ConnectionInputs^TwinSafeGroup1.Term 4 (AX5805) - Module 1 (Safety Process Data, 1 axis)_6 TxPDO"/>
+				<Link VarA="Azimuth (AX5125-0000-0214)^Term 2 (AX5805)^Module 1 (Safety Process Data, 1 axis)^Inputs (Statusword)^FSOE" VarB="ConnectionOutputs^TwinSafeGroup1.Term 2 (AX5805) - Module 1 (Safety Process Data, 1 axis)_5 RxPDO"/>
+				<Link VarA="Azimuth (AX5125-0000-0214)^Term 2 (AX5805)^Module 1 (Safety Process Data, 1 axis)^Outputs (Controlword)^FSOE" VarB="ConnectionInputs^TwinSafeGroup1.Term 2 (AX5805) - Module 1 (Safety Process Data, 1 axis)_5 TxPDO"/>
+				<Link VarA="Derotator (AX5206-0000-0214)^Term 6 (AX5805)^Module 1 (Safety Process Data, 2 axis)^Inputs (Statusword)^FSOE" VarB="ConnectionOutputs^TwinSafeGroup1.Term 6 (AX5805) - Module 1 (Safety Process Data, 2 axis)_7 RxPDO"/>
+				<Link VarA="Derotator (AX5206-0000-0214)^Term 6 (AX5805)^Module 1 (Safety Process Data, 2 axis)^Outputs (Controlword)^FSOE" VarB="ConnectionInputs^TwinSafeGroup1.Term 6 (AX5805) - Module 1 (Safety Process Data, 2 axis)_7 TxPDO"/>
+				<Link VarA="Elevation (AX5125-0000-0214)^Term 4 (AX5805)^Module 1 (Safety Process Data, 1 axis)^Outputs (Controlword)^FSOE" VarB="ConnectionInputs^TwinSafeGroup1.Term 4 (AX5805) - Module 1 (Safety Process Data, 1 axis)_6 TxPDO"/>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Azimuth">
-			<OwnerB Name="TIID^Device 5 (EtherCAT)^Drive 1 (AX5125-0000-0214)">
+			<OwnerB Name="TIID^Device 5 (EtherCAT)^Azimuth (AX5125-0000-0214)">
 				<Link VarA="Drive^Inputs^In^nDataIn1" VarB="AT^Following distance"/>
 				<Link VarA="Drive^Inputs^In^nDcOutputTime" VarB="InfoData^DcOutputShift"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="AT^Drive status word" Size="8" OffsB="8"/>
@@ -8831,7 +8875,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Derotator">
-			<OwnerB Name="TIID^Device 5 (EtherCAT)^Drive 5 (AX5206-0000-0214)">
+			<OwnerB Name="TIID^Device 5 (EtherCAT)^Derotator (AX5206-0000-0214)">
 				<Link VarA="Drive^Inputs^In^nDataIn1" VarB="AT 1^Following distance"/>
 				<Link VarA="Drive^Inputs^In^nDcOutputTime" VarB="InfoData^DcOutputShift"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="AT 1^Drive status word" Size="8" OffsB="8"/>
@@ -8847,7 +8891,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Elevation">
-			<OwnerB Name="TIID^Device 5 (EtherCAT)^Drive 3 (AX5125-0000-0214)">
+			<OwnerB Name="TIID^Device 5 (EtherCAT)^Elevation (AX5125-0000-0214)">
 				<Link VarA="Drive^Inputs^In^nDataIn1" VarB="AT^Following distance"/>
 				<Link VarA="Drive^Inputs^In^nDcOutputTime" VarB="InfoData^DcOutputShift"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="AT^Drive status word" Size="8" OffsB="8"/>
@@ -8873,6 +8917,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="PlcTask Outputs^GVL_Telescope.brake_azimuth_eve" VarB="Channel 2^GVL_Telescope.brake_azimuth_eve"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Front Panel IN (EL1008)">
+				<Link VarA="PlcTask Inputs^GVL_Main.brake_clearing" VarB="Channel 5^GVL_Main.key_brake_clearing"/>
 				<Link VarA="PlcTask Inputs^GVL_Main.key_switch_remote" VarB="Channel 4^GVL_Main.key_switch_remote"/>
 				<Link VarA="PlcTask Inputs^GVL_Main.reset_switch" VarB="Channel 3^GVL_Main.reset_switch"/>
 				<Link VarA="PlcTask Inputs^GVL_Main.start_switch" VarB="Channel 1^GVL_Main.start_switch"/>
@@ -8960,10 +9005,6 @@ Bit1: Value smaller than Limit2]]></Comment>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Azimuth">
 				<Link VarA="PlcTask Inputs^GVL_Telescope.AzimuthAxisRef.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^GVL_Telescope.AzimuthAxisRef.PlcToNc" VarB="Inputs^FromPlc"/>
-			</OwnerB>
-			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Elevation">
-				<Link VarA="PlcTask Inputs^GVL_Telescope.ElevationAxisRef.NcToPlc" VarB="Outputs^ToPlc"/>
-				<Link VarA="PlcTask Outputs^GVL_Telescope.ElevationAxisRef.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Fokus">
 				<Link VarA="PlcTask Inputs^GVL_Telescope.FocusAxisRef.NcToPlc" VarB="Outputs^ToPlc"/>

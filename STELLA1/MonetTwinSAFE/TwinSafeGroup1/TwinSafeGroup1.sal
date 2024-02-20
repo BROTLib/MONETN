@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<safetyApplication Crc="424409424" xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.5.0.0" Id="e28ef4db-cd27-4b62-95a3-3166e68474e8" name="" mapState="true" mapDiag="true" groupOrderId="0" passificationAllowed="false" temporaryDeactivationAllowed="false" permamentDeactivationAllowed="false" xmlid="0" analogFBOutputReplacementValues="Zero" verifyAnalogFBInputsIfStart="false" userFbId="00000000-0000-0000-0000-000000000000" xmlns="http://schemas.microsoft.com/dsltools/SafetyApplicationLanguage">
+<safetyApplication Crc="547574633" xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.5.0.0" Id="e28ef4db-cd27-4b62-95a3-3166e68474e8" name="" mapState="true" mapDiag="true" groupOrderId="0" passificationAllowed="false" temporaryDeactivationAllowed="false" permamentDeactivationAllowed="false" xmlid="0" analogFBOutputReplacementValues="Zero" verifyAnalogFBInputsIfStart="false" userFbId="00000000-0000-0000-0000-000000000000" xmlns="http://schemas.microsoft.com/dsltools/SafetyApplicationLanguage">
   <networks>
     <safetyApplicationHasNetworks Id="0d1c3e7f-a15c-439d-b6d1-bb8871a06cd5">
       <Network Id="5d47b03b-b468-41db-beac-6c9aaeb2753b" name="Network1" networkName="Network1" intId="1" networkOrderId="0">
@@ -661,20 +661,20 @@
                     </functionBlockPort>
                   </fbPortUsage>
                 </variableUsagesHasUsages>
-                <variableUsagesHasUsages Id="2132e973-5a10-46d4-a90a-b13b3c66b910">
-                  <fbPortUsage Id="9b799f0d-f2fb-44e8-92a4-ce24e7eb1ba7">
-                    <functionBlockPort>
-                      <fbPortUsageReferencesFunctionBlockPort Id="4b8a390d-bdad-4ed2-a9fb-48b0f0848587">
-                        <inPortMoniker name="//Network1/FBAnd1/AndIn3" />
-                      </fbPortUsageReferencesFunctionBlockPort>
-                    </functionBlockPort>
-                  </fbPortUsage>
-                </variableUsagesHasUsages>
                 <variableUsagesHasUsages Id="30dbc55f-6285-46ea-8ee6-7fd25fc7d1ef">
                   <fbPortUsage Id="f0382beb-d358-44e5-ac82-88294dd9fdb1">
                     <functionBlockPort>
                       <fbPortUsageReferencesFunctionBlockPort Id="399c3096-e532-4094-9ae0-2590c6c54ccf">
                         <inPortMoniker name="//Network1/FBAnd1/AndIn2" />
+                      </fbPortUsageReferencesFunctionBlockPort>
+                    </functionBlockPort>
+                  </fbPortUsage>
+                </variableUsagesHasUsages>
+                <variableUsagesHasUsages Id="6b5da7fb-79c3-4de9-b553-dd5e714903e7">
+                  <fbPortUsage Id="57ddfb98-1198-4a66-a58c-ca985a693fe6">
+                    <functionBlockPort>
+                      <fbPortUsageReferencesFunctionBlockPort Id="b34ece53-c624-428e-8975-dda555851067">
+                        <inPortMoniker name="//Network1/FBAnd1/AndIn3" />
                       </fbPortUsageReferencesFunctionBlockPort>
                     </functionBlockPort>
                   </fbPortUsage>
