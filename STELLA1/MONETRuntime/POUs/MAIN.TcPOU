@@ -128,7 +128,7 @@ ELSE
 	error_lamp.blink := e_blink.off; 
 END_IF
 
-power_lamp.blink := e_blink.off; 
+power_lamp.blink := e_blink.on; 
 error_lamp(Q => GVL_Main.lamp_error);
 //GVL_Main.lamp_error := error_lamp.Q;
 power_lamp(Q => GVL_Main.lamp_power);
