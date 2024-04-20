@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<safetyApplication Crc="547574633" xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.5.0.0" Id="e28ef4db-cd27-4b62-95a3-3166e68474e8" name="" mapState="true" mapDiag="true" groupOrderId="0" passificationAllowed="false" temporaryDeactivationAllowed="false" permamentDeactivationAllowed="false" xmlid="0" analogFBOutputReplacementValues="Zero" verifyAnalogFBInputsIfStart="false" userFbId="00000000-0000-0000-0000-000000000000" xmlns="http://schemas.microsoft.com/dsltools/SafetyApplicationLanguage">
+<safetyApplication Crc="2090914419" xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.5.0.0" Id="e28ef4db-cd27-4b62-95a3-3166e68474e8" name="" mapState="true" mapDiag="true" groupOrderId="0" passificationAllowed="false" temporaryDeactivationAllowed="false" permamentDeactivationAllowed="false" xmlid="0" analogFBOutputReplacementValues="Zero" verifyAnalogFBInputsIfStart="false" userFbId="00000000-0000-0000-0000-000000000000" xmlns="http://schemas.microsoft.com/dsltools/SafetyApplicationLanguage">
   <networks>
     <safetyApplicationHasNetworks Id="0d1c3e7f-a15c-439d-b6d1-bb8871a06cd5">
       <Network Id="5d47b03b-b468-41db-beac-6c9aaeb2753b" name="Network1" networkName="Network1" intId="1" networkOrderId="0">
@@ -81,7 +81,7 @@
                   <inPort Id="85b4dad2-9768-49f4-a375-0aa0e5926e21" name="AndIn3" portName="AndIn3" portNum="4" objectIndex="10" varId="4" filter="2" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0" />
                 </functioBlockHasInPorts>
                 <functioBlockHasInPorts Id="85ef4d29-f114-49c7-bb1d-f9e676964a53">
-                  <inPort Id="c17360dd-231b-4bac-a4fe-bd1dbcf23435" name="AndIn4" portName="AndIn4" portNum="5" objectIndex="11" varId="5" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                  <inPort Id="c17360dd-231b-4bac-a4fe-bd1dbcf23435" name="AndIn4" portName="AndIn4" portNum="5" objectIndex="11" varId="5" filter="2" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0" />
                 </functioBlockHasInPorts>
                 <functioBlockHasInPorts Id="f5b56f17-ab7b-4e4f-89c2-704d188d0c3e">
                   <inPort Id="9deeba6e-33d7-4804-8ef2-8d4c31a67286" name="AndIn5" portName="AndIn5" portNum="6" objectIndex="12" varId="6" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
@@ -597,6 +597,15 @@
                     </functionBlockPort>
                   </fbPortUsage>
                 </variableUsagesHasUsages>
+                <variableUsagesHasUsages Id="e5c2a332-5a49-474c-a1e9-6d6c35da85b1">
+                  <fbPortUsage Id="4c68ed1b-5ca4-4df3-ac01-9089b925da34">
+                    <functionBlockPort>
+                      <fbPortUsageReferencesFunctionBlockPort Id="bdb08b1c-8c84-4f99-a216-5bda680a2370">
+                        <inPortMoniker name="//Network1/FBAnd1/AndIn3" />
+                      </fbPortUsageReferencesFunctionBlockPort>
+                    </functionBlockPort>
+                  </fbPortUsage>
+                </variableUsagesHasUsages>
               </usages>
             </variableUsages>
           </variableHasTargetUsages>
@@ -625,6 +634,15 @@
                     <functionBlockPort>
                       <fbPortUsageReferencesFunctionBlockPort Id="85c2df25-822e-4bd6-a7b2-67cd2f1d0d9e">
                         <inPortMoniker name="//Network2/FBDecouple1/DecIn3" />
+                      </fbPortUsageReferencesFunctionBlockPort>
+                    </functionBlockPort>
+                  </fbPortUsage>
+                </variableUsagesHasUsages>
+                <variableUsagesHasUsages Id="1b9a60bc-c844-4740-934b-0f4e9a7f749c">
+                  <fbPortUsage Id="775ff1ac-1c2c-4d00-8658-aea4ddab296c">
+                    <functionBlockPort>
+                      <fbPortUsageReferencesFunctionBlockPort Id="e26c005c-7c7d-41bb-ac70-0a0e0092e94d">
+                        <inPortMoniker name="//Network1/FBAnd1/AndIn4" />
                       </fbPortUsageReferencesFunctionBlockPort>
                     </functionBlockPort>
                   </fbPortUsage>
@@ -666,15 +684,6 @@
                     <functionBlockPort>
                       <fbPortUsageReferencesFunctionBlockPort Id="399c3096-e532-4094-9ae0-2590c6c54ccf">
                         <inPortMoniker name="//Network1/FBAnd1/AndIn2" />
-                      </fbPortUsageReferencesFunctionBlockPort>
-                    </functionBlockPort>
-                  </fbPortUsage>
-                </variableUsagesHasUsages>
-                <variableUsagesHasUsages Id="6b5da7fb-79c3-4de9-b553-dd5e714903e7">
-                  <fbPortUsage Id="57ddfb98-1198-4a66-a58c-ca985a693fe6">
-                    <functionBlockPort>
-                      <fbPortUsageReferencesFunctionBlockPort Id="b34ece53-c624-428e-8975-dda555851067">
-                        <inPortMoniker name="//Network1/FBAnd1/AndIn3" />
                       </fbPortUsageReferencesFunctionBlockPort>
                     </functionBlockPort>
                   </fbPortUsage>
