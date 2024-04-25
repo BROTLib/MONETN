@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<safetyApplication Crc="2090914419" xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.5.0.0" Id="e28ef4db-cd27-4b62-95a3-3166e68474e8" name="" mapState="true" mapDiag="true" groupOrderId="0" passificationAllowed="false" temporaryDeactivationAllowed="false" permamentDeactivationAllowed="false" xmlid="0" analogFBOutputReplacementValues="Zero" verifyAnalogFBInputsIfStart="false" userFbId="00000000-0000-0000-0000-000000000000" xmlns="http://schemas.microsoft.com/dsltools/SafetyApplicationLanguage">
+<safetyApplication Crc="4267861025" xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.5.0.0" Id="e28ef4db-cd27-4b62-95a3-3166e68474e8" name="" mapState="true" mapDiag="true" groupOrderId="0" passificationAllowed="false" temporaryDeactivationAllowed="false" permamentDeactivationAllowed="false" xmlid="0" analogFBOutputReplacementValues="Zero" verifyAnalogFBInputsIfStart="false" userFbId="00000000-0000-0000-0000-000000000000" xmlns="http://schemas.microsoft.com/dsltools/SafetyApplicationLanguage">
   <networks>
     <safetyApplicationHasNetworks Id="0d1c3e7f-a15c-439d-b6d1-bb8871a06cd5">
       <Network Id="5d47b03b-b468-41db-beac-6c9aaeb2753b" name="Network1" networkName="Network1" intId="1" networkOrderId="0">
@@ -166,7 +166,7 @@
       <Network Id="92126cb9-c27b-446c-8acf-900ccc32926a" name="Network2" networkName="Network2" intId="2" networkOrderId="1">
         <functionBlocks>
           <networkHasFunctionBlocks Id="bc8e0849-f93a-4092-a800-17674e7a7c60">
-            <fBDecouple Id="f134a08a-b26e-4092-98ed-dfd7deef9879" name="FBDecouple1" instanceName="FBDecouple1" orderOfExecution="2" mapState="false" mapDiag="false" functionName="safeDecouple">
+            <fBDecouple Id="f134a08a-b26e-4092-98ed-dfd7deef9879" name="FBDecouple1" instanceName="FBDecouple1" orderOfExecution="3" mapState="false" mapDiag="false" functionName="safeDecouple">
               <inPorts>
                 <functioBlockHasInPorts Id="2e68421c-5b72-488e-a5aa-900b235944db">
                   <inPort Id="d4304f58-f649-461c-b716-b37f224f1252" name="DecIn1" portName="DecIn1" portNum="3" objectIndex="8" varId="5" filter="2" portDataType="1" maxDeviation="0" resetTime="0" />
@@ -222,7 +222,7 @@
             </fBDecouple>
           </networkHasFunctionBlocks>
           <networkHasFunctionBlocks Id="56cf6788-7ca7-43fa-98e6-1084545a0851">
-            <fBAnd Id="65a2ee5c-cc06-4479-bfc0-3c9e8dda71a8" name="FBAnd1" instanceName="FBAnd1" orderOfExecution="3" mapState="false" mapDiag="false" functionName="safeAnd">
+            <fBAnd Id="65a2ee5c-cc06-4479-bfc0-3c9e8dda71a8" name="FBAnd1" instanceName="FBAnd1" orderOfExecution="2" mapState="false" mapDiag="false" functionName="safeAnd">
               <inPorts>
                 <functioBlockHasInPorts Id="2c188ef6-7ae6-4580-b5fc-bce10312ce21">
                   <inPort Id="69feec5e-670a-487b-9a87-6afcddb1ab0e" name="AndIn1" portName="AndIn1" portNum="2" objectIndex="8" varId="2" filter="3" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0" />
