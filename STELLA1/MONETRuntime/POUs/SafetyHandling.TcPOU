@@ -3,14 +3,11 @@
   <POU Name="SafetyHandling" Id="{6d4a788c-2168-4769-93de-c67314036861}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM SafetyHandling
 VAR
+	state           : INT := 0;            
 	// power on delay
 	start_delay 	: TON := (PT := T#2S);
-	// pulse for error acknowledgement
-	ErrAck_Pulse	: TP := (PT := T#500MS);
-	// pulse for safety restart
-	restart_pulse 	: TP := (PT := T#500MS);
-	// trigger for falling edge of error acknowledgement
-	ErrAck_Trigger	: F_TRIG;
+	state_delay 	: TON := (PT := T#1S);
+
 	// Errack logging
 	ErrAckLog		: FB_EventLog;
 	// restart logging
@@ -28,8 +25,6 @@ END_VAR
 VAR_INPUT
 	// issue a remote restart
 	remote_restart:		BOOL;
-	// issue a remote Error Acknowledgment
-	remote_ErrAck:		BOOL;
 	// issue a remute run/stop
 	remote_run:			BOOL := TRUE;
 END_VAR
@@ -37,8 +32,68 @@ END_VAR
     <Implementation>
       <ST><![CDATA[// Safety aus running on start
 GVL_Safety.Run := remote_run;
-// power on delay for Safety RESTART after RUN=1
 
+// power on delay for Safety RESTART after RUN=1
+start_delay(IN := TRUE);
+
+CASE state OF
+	0:
+	    IF start_delay.Q  THEN
+			GVL_Safety.ErrAck := TRUE;
+			state := 1;
+		END_IF
+	1:
+		state_delay(IN := TRUE);	
+		IF state_delay.Q THEN
+			GVL_Safety.ErrAck := FALSE;
+			GVL_Safety.Restart := TRUE;
+			state := 2;
+			state_delay(IN := FALSE);
+		END_IF
+	2:
+		state_delay(IN := TRUE);	
+		IF state_delay.Q THEN
+			GVL_Safety.Restart := FALSE;
+			GVL_Safety.ErrAck := TRUE;
+			state := 3;
+			state_delay(IN := FALSE);
+		END_IF
+	3:
+		state_delay(IN := TRUE);	
+		IF state_delay.Q THEN	
+			GVL_Safety.ErrAck := FALSE;
+			state := 4;
+			state_delay(IN := FALSE);
+		END_IF	
+END_CASE
+
+// remote restart
+IF remote_restart THEN
+	state := 0;
+	remote_restart := FALSE;
+END_IF
+
+// manual Err_Ack 
+GVL_Safety.ErrAck := (GVL_Main.key_switch_remote AND GVL_Main.reset_switch);
+
+// manual Restart
+GVL_Safety.Restart := (GVL_Main.key_switch_remote AND GVL_Main.start_switch);
+
+ErrAckLog(	Trigger := GVL_Safety.ErrAck,
+			OnMessage := 'Safety error was acknowledged.');
+			
+RestartLog(	Trigger := GVL_Safety.Restart,
+			Level := ADSLOG_MSGTYPE_WARN,
+			OnMessage := 'Safety was restarted.');
+
+SafetyLog(	Trigger := Error,
+			Level := ADSLOG_MSGTYPE_ERROR,
+			OnMessage := 'Safety Error! Emergency stop enganged!',
+			OffMessage := 'Safety is OK.',
+			OffLevel := ADSLOG_MSGTYPE_HINT);
+			
+
+(*
 // wait n seconds after Start ...
 start_delay(IN := TRUE);
 // ... and send ErrAck for n milliseconds
@@ -74,10 +129,55 @@ SafetyLog(	Trigger := Error,
 			OnMessage := 'Safety Error! Emergency stop enganged!',
 			OffMessage := 'Safety is OK.',
 			OffLevel := ADSLOG_MSGTYPE_HINT);
-]]></ST>
+*)]]></ST>
     </Implementation>
     <LineIds Name="SafetyHandling">
-      <LineId Id="159" Count="2" />
+      <LineId Id="159" Count="1" />
+      <LineId Id="363" Count="0" />
+      <LineId Id="161" Count="0" />
+      <LineId Id="364" Count="0" />
+      <LineId Id="344" Count="0" />
+      <LineId Id="343" Count="0" />
+      <LineId Id="346" Count="0" />
+      <LineId Id="365" Count="0" />
+      <LineId Id="348" Count="1" />
+      <LineId Id="366" Count="0" />
+      <LineId Id="350" Count="0" />
+      <LineId Id="389" Count="0" />
+      <LineId Id="385" Count="0" />
+      <LineId Id="352" Count="1" />
+      <LineId Id="351" Count="0" />
+      <LineId Id="397" Count="0" />
+      <LineId Id="386" Count="0" />
+      <LineId Id="355" Count="0" />
+      <LineId Id="390" Count="1" />
+      <LineId Id="358" Count="0" />
+      <LineId Id="356" Count="0" />
+      <LineId Id="354" Count="0" />
+      <LineId Id="398" Count="0" />
+      <LineId Id="392" Count="0" />
+      <LineId Id="360" Count="0" />
+      <LineId Id="394" Count="0" />
+      <LineId Id="393" Count="0" />
+      <LineId Id="361" Count="0" />
+      <LineId Id="359" Count="0" />
+      <LineId Id="399" Count="0" />
+      <LineId Id="396" Count="0" />
+      <LineId Id="347" Count="0" />
+      <LineId Id="402" Count="0" />
+      <LineId Id="401" Count="0" />
+      <LineId Id="403" Count="1" />
+      <LineId Id="406" Count="0" />
+      <LineId Id="405" Count="0" />
+      <LineId Id="414" Count="1" />
+      <LineId Id="418" Count="0" />
+      <LineId Id="423" Count="1" />
+      <LineId Id="413" Count="0" />
+      <LineId Id="367" Count="0" />
+      <LineId Id="369" Count="10" />
+      <LineId Id="368" Count="0" />
+      <LineId Id="380" Count="0" />
+      <LineId Id="342" Count="0" />
       <LineId Id="165" Count="4" />
       <LineId Id="207" Count="0" />
       <LineId Id="171" Count="2" />
