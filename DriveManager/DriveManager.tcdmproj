@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Name>Drive Manager 2</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{37b781ad-e6d0-4e13-9252-b20bf65248c8}</ProjectGuid>
+    <TcPath>
+    </TcPath>
+    <AssemblyName>DriveManager</AssemblyName>
+    <RootNamespace>DriveManager</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Azimuth %28AX5125-0000-0214%29.tcdmdrv">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Derotator %28AX5206-0000-0214%29.tcdmdrv">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Elevation %28AX5125-0000-0214%29.tcdmdrv">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+</Project>

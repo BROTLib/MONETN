@@ -148,7 +148,7 @@ END_IF
 
 sound_horn(Q => GVL_Telescope.horn );
 
-SafetyHandling();
+//SafetyHandling();
 
 MQTTTimer(IN:=TRUE);
 IF MQTTTimer.Q THEN // publish new payload every second

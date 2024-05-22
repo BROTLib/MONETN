@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<SafetyDeviceDesc Crc="3892073420" FileFormatVersion="1.5">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SafetyDeviceDesc Crc="1627279318" FileFormatVersion="1.9">
   <AliasDeviceType>
     <Type>1</Type>
     <SubType>1</SubType>

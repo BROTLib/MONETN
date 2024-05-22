@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<SafetyDeviceDesc Crc="630918384" FileFormatVersion="1.9">
+<SafetyDeviceDesc Crc="143220137" FileFormatVersion="1.9">
   <AliasDeviceType>
     <Type>4</Type>
     <SubType>290</SubType>
     <VendorId>2</VendorId>
   </AliasDeviceType>
-  <SDSID>14</SDSID>
+  <SDSID>8</SDSID>
   <SafetyAliasDevice>
     <ObjectId>50921483</ObjectId>
     <LinkingMode>Automatic</LinkingMode>
-    <ConnectionId>14</ConnectionId>
+    <ConnectionId>8</ConnectionId>
     <ConnectionMode>master</ConnectionMode>
     <ConnectionType>FSoE</ConnectionType>
     <MapDiag>false</MapDiag>

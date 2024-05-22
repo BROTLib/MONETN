@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<SafetyDeviceDesc Crc="2968630476" FileFormatVersion="1.9">
+<SafetyDeviceDesc Crc="395990830" FileFormatVersion="1.9">
   <AliasDeviceType>
     <Type>4</Type>
     <SubType>190</SubType>
     <VendorId>2</VendorId>
   </AliasDeviceType>
-  <SDSID>3</SDSID>
+  <SDSID>7</SDSID>
   <SafetyAliasDevice>
     <ObjectId>50921482</ObjectId>
     <LinkingMode>Automatic</LinkingMode>
-    <ConnectionId>3</ConnectionId>
+    <ConnectionId>7</ConnectionId>
     <ConnectionMode>master</ConnectionMode>
     <ConnectionType>FSoE</ConnectionType>
-    <MapDiag>true</MapDiag>
-    <MapInputs>true</MapInputs>
-    <MapOutputs>true</MapOutputs>
-    <MapState>true</MapState>
+    <MapDiag>false</MapDiag>
+    <MapInputs>false</MapInputs>
+    <MapOutputs>false</MapOutputs>
+    <MapState>false</MapState>
     <ModuleFaultIsComErr>false</ModuleFaultIsComErr>
     <SafeAddress>2</SafeAddress>
     <Watchdog>100</Watchdog>
