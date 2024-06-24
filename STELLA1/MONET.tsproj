@@ -1875,34 +1875,6 @@ External Setpoint Generation:
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{2438F91B-E188-4ED7-8594-54354F9ED6A4}" Namespace="Safety" TcBaseType="true">FSOE_6</Name>
-			<BitSize>48</BitSize>
-			<SubItem>
-				<Name>FSoE CMD</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
-				<BitSize>8</BitSize>
-				<BitOffs>0</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>FSoE Data</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000032}">BITARR8</Type>
-				<BitSize>8</BitSize>
-				<BitOffs>8</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>FSoE CRC_0</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
-				<BitSize>16</BitSize>
-				<BitOffs>16</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>FSoE ConnID</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
-				<BitSize>16</BitSize>
-				<BitOffs>32</BitOffs>
-			</SubItem>
-		</DataType>
-		<DataType>
 			<Name GUID="{B05FDAB7-3241-ACD3-D16C-0FDAF8825BC9}" AutoDeleteType="true">FSOE_7</Name>
 			<BitSize>56</BitSize>
 			<SubItem>
@@ -1928,6 +1900,34 @@ External Setpoint Generation:
 				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
 				<BitSize>16</BitSize>
 				<BitOffs>40</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{2438F91B-E188-4ED7-8594-54354F9ED6A4}" Namespace="Safety" TcBaseType="true">FSOE_6</Name>
+			<BitSize>48</BitSize>
+			<SubItem>
+				<Name>FSoE CMD</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>FSoE Data</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000032}">BITARR8</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>FSoE CRC_0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>FSoE ConnID</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>32</BitOffs>
 			</SubItem>
 		</DataType>
 		<DataType>
@@ -1978,6 +1978,326 @@ External Setpoint Generation:
 				<LBound>0</LBound>
 				<Elements>5</Elements>
 			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{0DE0A6FC-5623-3232-5938-18BD97C1D1FF}" AutoDeleteType="true">INFODATA_3892733135</Name>
+			<BitSize>48</BitSize>
+			<SubItem>
+				<Name>State</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Diag</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 1 STO</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 1 SSM(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>17</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 1 SSM(2)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>18</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 1 SOS(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>19</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 1 SSR(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>20</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 1 SDI_p</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>21</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 1 SDI_n</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>22</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 1 Error</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>23</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 1 STO</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 1 SS1(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>33</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 1 SS2(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>34</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 1 SOS(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>35</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 1 SSR(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>36</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 1 SDI_p</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>37</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 1 SDI_n</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>38</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 1 Error_Ack</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>39</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{3E3046B6-6534-9EEA-8363-FB50E634C35C}" AutoDeleteType="true">INFODATA_3473041101</Name>
+			<BitSize>80</BitSize>
+			<SubItem>
+				<Name>State</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Diag</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 1 STO</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 1 SSM(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>17</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 1 SSM(2)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>18</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 1 SOS(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>19</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 1 SSR(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>20</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 1 SDI_p</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>21</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 1 SDI_n</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>22</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 1 Error</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>23</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 2 STO</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 2 SSM(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>33</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 2 SSM(2)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>34</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 2 SOS(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>35</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 2 SSR(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>36</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 2 SDI_p</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>37</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 2 SDI_n</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>38</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data Axis 2 Error</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>39</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 1 STO</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>48</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 1 SS1(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>49</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 1 SS2(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>50</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 1 SOS(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>51</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 1 SSR(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>52</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 1 SDI_p</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>53</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 1 SDI_n</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>54</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 1 Error_Ack</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>55</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 2 STO</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 2 SS1(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>65</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 2 SS2(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>66</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 2 SOS(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>67</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 2 SSR(1)</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>68</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 2 SDI_p</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>69</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 2 SDI_n</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>70</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data Axis 2 Error_Ack</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>71</BitOffs>
+			</SubItem>
 		</DataType>
 		<DataType>
 			<Name GUID="{18071995-0000-0000-0000-002000000010}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..1] OF BYTE</Name>
@@ -2707,23 +3027,11 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETRuntime" PrjFilePath="MONETRuntime\MONETRuntime.plcproj" TmcFilePath="MONETRuntime\MONETRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{3DAE35F8-1EB2-A6BF-89A0-F38AFD56ED9E}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{20FF3BBA-BB46-3DF6-15C8-2AF33579B957}">
 					<Name>MONETRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
-						<Var>
-							<Name>GVL_Safety.Error</Name>
-							<Comment><![CDATA[ Safety Error Condition]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Safety.State</Name>
-							<Comment><![CDATA[ Stop signal coming from Safety
- Stop		AT%I*:	BOOL;
- state variable]]></Comment>
-							<Type>USINT</Type>
-						</Var>
 						<Var>
 							<Name>GVL_Hydraulics.oil_low</Name>
 							<Comment><![CDATA[ 2.1]]></Comment>
@@ -2869,6 +3177,18 @@ DIN3 0.2]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>GVL_Safety.Error</Name>
+							<Comment><![CDATA[ Safety Error Condition]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Safety.State</Name>
+							<Comment><![CDATA[ Stop signal coming from Safety
+ Stop		AT%I*:	BOOL;
+ state variable]]></Comment>
+							<Type>USINT</Type>
+						</Var>
+						<Var>
 							<Name>GVL_Telescope.temperature_mirror2</Name>
 							<Comment><![CDATA[ BT9 mirror]]></Comment>
 							<Type>INT</Type>
@@ -2929,14 +3249,14 @@ DIN3 0.2]]></Comment>
 							<Type>WORD</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.Derotator_torque</Name>
-							<Comment><![CDATA[ derotator torque feedback]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Telescope.Derotator_diagnostic</Name>
 							<Comment><![CDATA[ diagnostic number]]></Comment>
 							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.Derotator_torque</Name>
+							<Comment><![CDATA[ derotator torque feedback]]></Comment>
+							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.Elevation_inputs</Name>
@@ -2944,14 +3264,14 @@ DIN3 0.2]]></Comment>
 							<Type>WORD</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.Elevation_torque</Name>
-							<Comment><![CDATA[ torque feedback]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Telescope.Elevation_diagnostic</Name>
 							<Comment><![CDATA[ diagnostic number]]></Comment>
 							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.Elevation_torque</Name>
+							<Comment><![CDATA[ torque feedback]]></Comment>
+							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.Azimuth_inputs</Name>
@@ -2959,14 +3279,14 @@ DIN3 0.2]]></Comment>
 							<Type>WORD</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.Azimuth_torque</Name>
-							<Comment><![CDATA[ torque feedback]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Telescope.Azimuth_diagnostic</Name>
 							<Comment><![CDATA[ diagnostic number]]></Comment>
 							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.Azimuth_torque</Name>
+							<Comment><![CDATA[ torque feedback]]></Comment>
+							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.AzimuthAxisRef.NcToPlc</Name>
@@ -2987,21 +3307,6 @@ DIN3 0.2]]></Comment>
 					</Vars>
 					<Vars VarGrpType="2" AreaNo="1">
 						<Name>PlcTask Outputs</Name>
-						<Var>
-							<Name>GVL_Safety.Run</Name>
-							<Comment><![CDATA[ Run/Stop Safety]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Safety.Restart</Name>
-							<Comment><![CDATA[ Restart Safety]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Safety.ErrAck</Name>
-							<Comment><![CDATA[ Error Acknowledgement ]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
 						<Var>
 							<Name>GVL_Hydraulics.oil_pump_enable</Name>
 							<Comment><![CDATA[DOUT4 0.3]]></Comment>
@@ -3054,6 +3359,21 @@ DOUT9 1.0]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>GVL_Safety.Run</Name>
+							<Comment><![CDATA[ Run/Stop Safety]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Safety.Restart</Name>
+							<Comment><![CDATA[ Restart Safety]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Safety.ErrAck</Name>
+							<Comment><![CDATA[ Error Acknowledgement ]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>GVL_Telescope.brake_azimuth_eve</Name>
 							<Comment><![CDATA[DOUT6 0.5]]></Comment>
 							<Type>BOOL</Type>
@@ -3083,10 +3403,6 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.close_cover2</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Telescope.AzimuthAxisRef.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
@@ -3101,6 +3417,10 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 						<Var>
 							<Name>GVL_Telescope.FocusAxisRef.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.close_cover2</Name>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.open_cover3</Name>
@@ -3129,7 +3449,7 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 			</Project>
 		</Plc>
 		<Safety>
-			<Project GUID="{0F3883E8-36C1-494D-8014-A8C4D7F11FA1}" Name="MonetTwinSAFE" PrjFilePath="MonetTwinSAFE\MonetTwinSAFE.splcProj" TmcFilePath="MonetTwinSAFE\MonetTwinSAFE.tmc" GeneralArchiveSettings="#x000f" TargetArchiveSettings="#x0007" FileArchiveSettings="#x000e">
+			<Project GUID="{0F3883E8-36C1-494D-8014-A8C4D7F11FA1}" Name="MonetTwinSAFE" PrjFilePath="MonetTwinSAFE\MonetTwinSAFE.splcproj" TmcFilePath="MonetTwinSAFE\MonetTwinSAFE.tmc" GeneralArchiveSettings="#x000f" TargetArchiveSettings="#x0007" FileArchiveSettings="#x000e">
 				<Instance Id="#x01010010" KeepUnrestoredLinks="2">
 					<Name>MonetTwinSAFE Instance</Name>
 					<TmcDesc GUID="{72A6D5B8-E98C-4604-8B90-09D1F8AB38A9}">
@@ -3332,7 +3652,7 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<SyncMan>001000012600010001000000000100010001001026010000</SyncMan>
 							<SyncMan>001100012200010002000000000100010001001122010000</SyncMan>
 							<SyncMan>001228002400010003000000000000000200001224010000</SyncMan>
-							<SyncMan>001d2e002000010004000000000000000200001d20010000</SyncMan>
+							<SyncMan>001d44002000010004000000000000000200001d20010000</SyncMan>
 							<SyncMan>002e00002400000003000000000000000000002e24000000</SyncMan>
 							<SyncMan>002f00002000000004000000000000000000002f20000000</SyncMan>
 							<Fmmu>0000000000000000001200020100000001000000060000000200000000000000</Fmmu>
@@ -3345,47 +3665,47 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<SuTask>#x05000010</SuTask>
 							<MBoxUserCmdData>004003000a00000000000000030010000000000000000000000000000000000020f3100502000000010000</MBoxUserCmdData>
 							<Pdo Name="ConnectionInputs" Index="#x1a00" Flags="#x2011" SyncMan="3">
-								<Entry Name="Message_7 TxPDO" Index="#x7000" Sub="#x01">
-									<Type GUID="{2438F91B-E188-4ED7-8594-54354F9ED6A4}" Namespace="Safety">FSOE_6</Type>
-								</Entry>
-								<Entry Name="Message_8 TxPDO" Index="#x7000" Sub="#x02">
-									<Type GUID="{2438F91B-E188-4ED7-8594-54354F9ED6A4}" Namespace="Safety">FSOE_6</Type>
-								</Entry>
-								<Entry Name="Message_9 TxPDO" Index="#x7000" Sub="#x03">
+								<Entry Name="Message_5 TxPDO" Index="#x7000" Sub="#x01">
 									<Type GUID="{B05FDAB7-3241-ACD3-D16C-0FDAF8825BC9}">FSOE_7</Type>
 								</Entry>
-								<Entry Name="Message_10 TxPDO" Index="#x7000" Sub="#x04">
+								<Entry Name="Message_6 TxPDO" Index="#x7000" Sub="#x02">
 									<Type GUID="{B05FDAB7-3241-ACD3-D16C-0FDAF8825BC9}">FSOE_7</Type>
 								</Entry>
-								<Entry Name="Message_11 TxPDO" Index="#x7000" Sub="#x05">
+								<Entry Name="Message_7 TxPDO" Index="#x7000" Sub="#x03">
+									<Type GUID="{2438F91B-E188-4ED7-8594-54354F9ED6A4}" Namespace="Safety">FSOE_6</Type>
+								</Entry>
+								<Entry Name="Message_8 TxPDO" Index="#x7000" Sub="#x04">
+									<Type GUID="{2438F91B-E188-4ED7-8594-54354F9ED6A4}" Namespace="Safety">FSOE_6</Type>
+								</Entry>
+								<Entry Name="Message_17 TxPDO" Index="#x7000" Sub="#x05">
 									<Type GUID="{0994ABA9-6F32-EEB9-4362-7774F7A1F4F4}">FSOE_11</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="ConnectionOutputs" Index="#x1600" InOut="1" Flags="#x2011" SyncMan="2">
-								<Entry Name="Message_7 RxPDO" Index="#x6000" Sub="#x01">
-									<Type GUID="{2438F91B-E188-4ED7-8594-54354F9ED6A4}" Namespace="Safety">FSOE_6</Type>
-								</Entry>
-								<Entry Name="Message_8 RxPDO" Index="#x6000" Sub="#x02">
-									<Type GUID="{2438F91B-E188-4ED7-8594-54354F9ED6A4}" Namespace="Safety">FSOE_6</Type>
-								</Entry>
-								<Entry Name="Message_9 RxPDO" Index="#x6000" Sub="#x03">
+								<Entry Name="Message_5 RxPDO" Index="#x6000" Sub="#x01">
 									<Type GUID="{B05FDAB7-3241-ACD3-D16C-0FDAF8825BC9}">FSOE_7</Type>
 								</Entry>
-								<Entry Name="Message_10 RxPDO" Index="#x6000" Sub="#x04">
+								<Entry Name="Message_6 RxPDO" Index="#x6000" Sub="#x02">
 									<Type GUID="{B05FDAB7-3241-ACD3-D16C-0FDAF8825BC9}">FSOE_7</Type>
 								</Entry>
-								<Entry Name="Message_11 RxPDO" Index="#x6000" Sub="#x05">
+								<Entry Name="Message_7 RxPDO" Index="#x6000" Sub="#x03">
+									<Type GUID="{2438F91B-E188-4ED7-8594-54354F9ED6A4}" Namespace="Safety">FSOE_6</Type>
+								</Entry>
+								<Entry Name="Message_8 RxPDO" Index="#x6000" Sub="#x04">
+									<Type GUID="{2438F91B-E188-4ED7-8594-54354F9ED6A4}" Namespace="Safety">FSOE_6</Type>
+								</Entry>
+								<Entry Name="Message_17 RxPDO" Index="#x6000" Sub="#x05">
 									<Type GUID="{0994ABA9-6F32-EEB9-4362-7774F7A1F4F4}">FSOE_11</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="StandardInputs" Index="#x1bf0" Flags="#x2011" SyncMan="3">
-								<Entry Name="Standard Out Var 4" Index="#x7000" Sub="#x01">
+								<Entry Name="Standard Out Var 18" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Standard Out Var 5" Index="#x7000" Sub="#x02">
+								<Entry Name="Standard Out Var 19" Index="#x7000" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Standard Out Var 6" Index="#x7000" Sub="#x03">
+								<Entry Name="Standard Out Var 20" Index="#x7000" Sub="#x03">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry>
@@ -3404,6 +3724,17 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 								</Entry>
 								<Entry>
 									<Type GUID="{18071995-0000-0000-0000-002000000005}">ARRAY [0..4] OF BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Connection Info Data" Index="#x1bf9" Flags="#x2011" SyncMan="3">
+								<Entry Name="Message_5 Info Data" Index="#x7000" Sub="#x01">
+									<Type GUID="{0DE0A6FC-5623-3232-5938-18BD97C1D1FF}">INFODATA_3892733135</Type>
+								</Entry>
+								<Entry Name="Message_6 Info Data" Index="#x7000" Sub="#x02">
+									<Type GUID="{0DE0A6FC-5623-3232-5938-18BD97C1D1FF}">INFODATA_3892733135</Type>
+								</Entry>
+								<Entry Name="Message_17 Info Data" Index="#x7000" Sub="#x03">
+									<Type GUID="{3E3046B6-6534-9EEA-8363-FB50E634C35C}">INFODATA_3473041101</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Device Info Data" Index="#x1bfe" Flags="#x2011" SyncMan="3">
@@ -6769,7 +7100,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<MBoxUserCmdData>020003000900000017000000000040000000000000000000000000000000000030012f000100000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
 							<MBoxUserCmdData>020003000900000017000000000040000000000000000000000000000000000030022f000100000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
 							<MBoxUserCmdData>020003000900000017000000000040000000000000000000000000000000000030032f000100000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
-							<MBoxUserCmdData>0200030009000000170000000000400000000000000000000000000000000000304266000100000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
+							<MBoxUserCmdData>0200030009000000170000000000400000000000000000000000000000000000304266000100000001646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
 							<MBoxUserCmdData>020003001a0000001700000000004000000000000000000000000000000000003051660012000000080000000000000000000000000000000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
 							<MBoxUserCmdData>020003002a000000170000000000400000000000000000000000000000000000305366002200000008000000000000000000000000000000000000000000000000000000000000000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
 							<MBoxUserCmdData>020003001a0000001700000000004000000000000000000000000000000000003054660012000000080000000000000000000000000000000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
@@ -8435,7 +8766,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<MBoxUserCmdData>020003000900000017000000000040000000000000000000000000000000000030012f000100000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
 							<MBoxUserCmdData>020003000900000017000000000040000000000000000000000000000000000030022f000100000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
 							<MBoxUserCmdData>020003000900000017000000000040000000000000000000000000000000000030032f000100000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
-							<MBoxUserCmdData>0200030009000000170000000000400000000000000000000000000000000000304266000100000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
+							<MBoxUserCmdData>0200030009000000170000000000400000000000000000000000000000000000304266000100000001646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
 							<MBoxUserCmdData>020003001a0000001700000000004000000000000000000000000000000000003051660012000000080000000000000000000000000000000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
 							<MBoxUserCmdData>020003002a000000170000000000400000000000000000000000000000000000305366002200000008000000000000000000000000000000000000000000000000000000000000000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
 							<MBoxUserCmdData>020003001a0000001700000000004000000000000000000000000000000000003054660012000000080000000000000000000000000000000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
@@ -10793,10 +11124,6 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<EtherCAT DcSyncMode="2"/>
 			</Device>
 		</Io>
-		<SymbolWatch>
-			<Variable>TIID^Device 5 (EtherCAT)^Derotator (AX5206-0000-0214)^Term 6 (AX5805)^Module 1 (Safety Process Data, 2 axis)^Inputs (Statusword)^FSOE</Variable>
-			<Variable>TIID^Device 5 (EtherCAT)^Elevation (AX5125-0000-0214)^Term 4 (AX5805)^Module 1 (Safety Process Data, 1 axis)^Inputs (Statusword)^FSOE</Variable>
-		</SymbolWatch>
 	</Project>
 	<Mappings>
 		<MappingInfo Identifier="{00000000-2001-0850-0020-500841000403}" Id="#x02030070"/>
@@ -10817,20 +11144,18 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="Term 21 (EK1200)^Safety OUT (EL2904)^Module 1 (FSOES)^TxPDO^FSOE" VarB="ConnectionOutputs^Message_8 RxPDO"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Azimuth (AX5125-0000-0214)^Term 2 (AX5805)">
-				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionInputs^Message_9 TxPDO" VarB="Module 1 (Safety Process Data, 1 axis)^Outputs (Controlword)^FSOE"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 5 (EtherCAT)^Derotator (AX5206-0000-0214)^Term 6 (AX5805)">
-				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionOutputs^Message_11 RxPDO" VarB="Module 1 (Safety Process Data, 2 axis)^Inputs (Statusword)^FSOE"/>
+				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionInputs^Message_5 TxPDO" VarB="Module 1 (Safety Process Data, 1 axis)^Outputs (Controlword)^FSOE"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Elevation (AX5125-0000-0214)^Term 4 (AX5805)">
-				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionInputs^Message_10 TxPDO" VarB="Module 1 (Safety Process Data, 1 axis)^Outputs (Controlword)^FSOE"/>
-				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionOutputs^Message_10 RxPDO" VarB="Module 1 (Safety Process Data, 1 axis)^Inputs (Statusword)^FSOE"/>
+				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionInputs^Message_6 TxPDO" VarB="Module 1 (Safety Process Data, 1 axis)^Outputs (Controlword)^FSOE"/>
+				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionOutputs^Message_6 RxPDO" VarB="Module 1 (Safety Process Data, 1 axis)^Inputs (Statusword)^FSOE"/>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TIID^Device 5 (EtherCAT)">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Safety Logic (EL6910)">
-				<Link VarA="Azimuth (AX5125-0000-0214)^Term 2 (AX5805)^Module 1 (Safety Process Data, 1 axis)^Inputs (Statusword)^FSOE" VarB="ConnectionOutputs^Message_9 RxPDO"/>
-				<Link VarA="Derotator (AX5206-0000-0214)^Term 6 (AX5805)^Module 1 (Safety Process Data, 2 axis)^Outputs (Controlword)^FSOE" VarB="ConnectionInputs^Message_11 TxPDO"/>
+				<Link VarA="Azimuth (AX5125-0000-0214)^Term 2 (AX5805)^Module 1 (Safety Process Data, 1 axis)^Inputs (Statusword)^FSOE" VarB="ConnectionOutputs^Message_5 RxPDO"/>
+				<Link VarA="Derotator (AX5206-0000-0214)^Term 6 (AX5805)^Module 1 (Safety Process Data, 2 axis)^Inputs (Statusword)^FSOE" VarB="ConnectionOutputs^Message_17 RxPDO"/>
+				<Link VarA="Derotator (AX5206-0000-0214)^Term 6 (AX5805)^Module 1 (Safety Process Data, 2 axis)^Outputs (Controlword)^FSOE" VarB="ConnectionInputs^Message_17 TxPDO"/>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Azimuth">
