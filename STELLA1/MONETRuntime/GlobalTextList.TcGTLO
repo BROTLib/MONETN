@@ -1,13 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <GlobalTextList Name="GlobalTextList" Id="{7a3e1494-aefa-440b-90f5-cfa7323d21aa}">
     <XmlArchive>
       <Data>
         <o xml:space="preserve" t="GlobalTextListObject">
           <l n="TextList" t="ArrayList" cet="TextListRow">
             <o>
+              <v n="TextID">"785"</v>
+              <v n="TextDefault">"Azimuth:"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"272"</v>
               <v n="TextDefault">"busy"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"815"</v>
+              <v n="TextDefault">"Derotator:"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"409"</v>
+              <v n="TextDefault">"Elevation:"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -53,6 +68,11 @@
             <o>
               <v n="TextID">"717"</v>
               <v n="TextDefault">"sliding"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"488"</v>
+              <v n="TextDefault">"STO:"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

@@ -42,6 +42,8 @@ VAR_GLOBAL
 	Derotator_diagnostic	AT%I*: UDINT;
 	// derotator torque feedback
 	Derotator_torque		AT%I*: INT;
+	// STO
+	Derotator_sto			AT%I*: BOOL;
 	
 	// digital inputs for limit switches
 	Elevation_inputs		AT%I*: WORD;
@@ -49,6 +51,8 @@ VAR_GLOBAL
 	Elevation_diagnostic	AT%I*: UDINT;
 	// torque feedback
 	Elevation_torque		AT%I*: INT;
+	// STO
+	Elevation_sto			AT%I*: BOOL;
 	
 	// digital inputs for limit switches
 	Azimuth_inputs			AT%I*: WORD;
@@ -56,6 +60,8 @@ VAR_GLOBAL
 	Azimuth_diagnostic		AT%I*: UDINT;
 	// torque feedback
 	Azimuth_torque			AT%I*: INT;
+	// STO
+	Azimuth_sto				AT%I*: BOOL;	
 	
 	// Zyklisches Interface zwischen NC und Achse
 	AzimuthAxisRef: 	AXIS_REF;
