@@ -2885,8 +2885,8 @@ External Setpoint Generation:
 					<Name>Derotator</Name>
 					<AxisPara>
 						<General UnitName="°"/>
-						<Dynamic Acceleration="31650.0798339844" Deceleration="31650.0798339844" Jerk="94950.2395019531"/>
-						<Velo RefSearch="211.000532226563" RefSync="211.000532226563" SlowManual="1055.00266113281" FastManual="6330.01596679687" Fast="21100.0532226563" Maximum="21100.0532226563"/>
+						<Dynamic Acceleration="31650.1" Deceleration="31650.1" Jerk="94950.2"/>
+						<Velo RefSearch="211.000532226563" RefSync="211.000532226563" SlowManual="1055.00266113281" FastManual="6330.01596679687" Fast="21100.0532226563" Maximum="21100.1"/>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="8">
@@ -3027,7 +3027,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETRuntime" PrjFilePath="MONETRuntime\MONETRuntime.plcproj" TmcFilePath="MONETRuntime\MONETRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{BD64BB88-F433-EE93-AC9E-D756B1AD1909}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{C2C22DDD-B3D2-54E9-19BA-DCE172F377E9}">
 					<Name>MONETRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
