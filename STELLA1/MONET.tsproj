@@ -1980,6 +1980,15 @@ External Setpoint Generation:
 			</ArrayInfo>
 		</DataType>
 		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000002}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..1] OF BIT</Name>
+			<BitSize>2</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>2</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
 			<Name GUID="{0DE0A6FC-5623-3232-5938-18BD97C1D1FF}" AutoDeleteType="true">INFODATA_3892733135</Name>
 			<BitSize>48</BitSize>
 			<SubItem>
@@ -2342,15 +2351,6 @@ External Setpoint Generation:
 			<ArrayInfo>
 				<LBound>0</LBound>
 				<Elements>1</Elements>
-			</ArrayInfo>
-		</DataType>
-		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-002000000002}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..1] OF BIT</Name>
-			<BitSize>2</BitSize>
-			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
-			<ArrayInfo>
-				<LBound>0</LBound>
-				<Elements>2</Elements>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
@@ -2885,12 +2885,12 @@ External Setpoint Generation:
 					<Name>Derotator</Name>
 					<AxisPara>
 						<General UnitName="°"/>
-						<Dynamic Acceleration="31650.1" Deceleration="31650.1" Jerk="94950.2"/>
-						<Velo RefSearch="211.000532226563" RefSync="211.000532226563" SlowManual="1055.00266113281" FastManual="6330.01596679687" Fast="21100.0532226563" Maximum="21100.1"/>
+						<Dynamic Acceleration="15000" Deceleration="15000" Jerk="947115.18"/>
+						<Velo RefSearch="2104.7004" RefSync="2104.7004" SlowManual="10523.502" FastManual="63141.012" Fast="210470.04" Maximum="210470.04"/>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="8">
-						<EncPara ScaleFactorNumerator="360" ScaleFactorDenominator="1048576" MaxCount="#xffffffff"/>
+						<EncPara ScaleFactorNumerator="3600" ScaleFactorDenominator="1048576" MaxCount="#xffffffff"/>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
 							<Var>
@@ -2949,7 +2949,7 @@ External Setpoint Generation:
 					</Encoder>
 					<Drive Name="Drive" DrvType="9">
 						<DrvPara MaxCount="#xffffffff" DriveControlDWord="#x00030100">
-							<Analog VeloReferenz="23210.0585449219" VeloScale="1.02400649589962" TorqueSetpointScale="10" ScaleFactorActTorque="0.1"/>
+							<Analog VeloReferenz="231517.044" VeloScale="1.02400649589962" TorqueSetpointScale="10" ScaleFactorActTorque="0.1"/>
 							<TimeComp TaskDelayCycles="1"/>
 						</DrvPara>
 						<Vars VarGrpType="1">
@@ -3027,7 +3027,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETRuntime" PrjFilePath="MONETRuntime\MONETRuntime.plcproj" TmcFilePath="MONETRuntime\MONETRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{C2C22DDD-B3D2-54E9-19BA-DCE172F377E9}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{714D3117-8015-B2CE-C4F9-8CE95704784D}">
 					<Name>MONETRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -3445,6 +3445,18 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<Name>GVL_Telescope.close_cover3</Name>
 							<Type>BOOL</Type>
 						</Var>
+						<Var>
+							<Name>GVL_Safety.Reset_STO_Derotator</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Safety.Reset_STO_Azimuth</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Safety.Reset_STO_Elevation</Name>
+							<Type>BOOL</Type>
+						</Var>
 					</Vars>
 					<Contexts>
 						<Context>
@@ -3737,8 +3749,17 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 								<Entry Name="Standard In Var 3" Index="#x6000" Sub="#x03">
 									<Type>BIT</Type>
 								</Entry>
+								<Entry Name="Standard In Var 22" Index="#x6000" Sub="#x04">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Standard In Var 25" Index="#x6000" Sub="#x05">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Standard In Var 26" Index="#x6000" Sub="#x06">
+									<Type>BIT</Type>
+								</Entry>
 								<Entry>
-									<Type GUID="{18071995-0000-0000-0000-002000000005}">ARRAY [0..4] OF BIT</Type>
+									<Type GUID="{18071995-0000-0000-0000-002000000002}">ARRAY [0..1] OF BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Connection Info Data" Index="#x1bf9" Flags="#x2011" SyncMan="3">
@@ -8541,7 +8562,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 								</Element>
 								<Element option="0" SortOder="0" SubIdx="0">
 									<Index>95</Index>
-									<Width>100</Width>
+									<Width>310</Width>
 								</Element>
 								<Element option="1" SortOder="0" SubIdx="0">
 									<Index>32821</Index>
@@ -11363,6 +11384,9 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="PlcTask Inputs^GVL_Telescope.Derotator_sto" VarB="StandardInputs^Standard Out Var 20"/>
 				<Link VarA="PlcTask Inputs^GVL_Telescope.Elevation_sto" VarB="StandardInputs^Standard Out Var 19"/>
 				<Link VarA="PlcTask Outputs^GVL_Safety.ErrAck" VarB="StandardOutputs^Standard In Var 1"/>
+				<Link VarA="PlcTask Outputs^GVL_Safety.Reset_STO_Azimuth" VarB="StandardOutputs^Standard In Var 25"/>
+				<Link VarA="PlcTask Outputs^GVL_Safety.Reset_STO_Derotator" VarB="StandardOutputs^Standard In Var 22"/>
+				<Link VarA="PlcTask Outputs^GVL_Safety.Reset_STO_Elevation" VarB="StandardOutputs^Standard In Var 26"/>
 				<Link VarA="PlcTask Outputs^GVL_Safety.Restart" VarB="StandardOutputs^Standard In Var 3"/>
 				<Link VarA="PlcTask Outputs^GVL_Safety.Run" VarB="StandardOutputs^Standard In Var 2"/>
 			</OwnerB>

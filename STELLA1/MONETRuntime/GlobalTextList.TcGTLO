@@ -71,6 +71,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"540"</v>
+              <v n="TextDefault">"STO Reset:"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"488"</v>
               <v n="TextDefault">"STO:"</v>
               <l n="LanguageTexts" t="ArrayList" />

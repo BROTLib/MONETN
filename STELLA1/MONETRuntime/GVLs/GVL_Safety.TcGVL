@@ -15,6 +15,10 @@ VAR_GLOBAL
 	// Stop		AT%I*:	BOOL;
 	// state variable
 	State		AT%I*:	USINT;
+	
+	Reset_STO_Azimuth		AT%Q*: BOOL;
+	Reset_STO_Elevation		AT%Q*: BOOL;
+	Reset_STO_Derotator		AT%Q*: BOOL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
