@@ -8,6 +8,11 @@ VAR
 	start_delay 	: TON := (PT := T#2S);
 	state_delay 	: TON := (PT := T#1S);
 
+	// Safety group
+	fbInfoGroup1			:FB_InfoGroup;
+	stInfoGroup1	AT%I*	:ST_InfoDataGroup;
+	sStateGroup1			:STRING;
+	
 	// Errack logging
 	ErrAckLog		: FB_EventLog;
 	// restart logging
@@ -30,8 +35,15 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// Safety aus running on start
+      <ST><![CDATA[// Safety is running on start
 GVL_Safety.Run := remote_run;
+
+fbInfoGroup1(
+	stInfoData	:= stInfoGroup1,
+	sState		=> sStateGroup1);
+
+
+(*
 
 // power on delay for Safety RESTART after RUN=1
 start_delay(IN := TRUE);
@@ -91,7 +103,7 @@ SafetyLog(	Trigger := Error,
 			OnMessage := 'Safety Error! Emergency stop enganged!',
 			OffMessage := 'Safety is OK.',
 			OffLevel := ADSLOG_MSGTYPE_HINT);
-			
+*)
 
 (*
 // wait n seconds after Start ...
@@ -133,6 +145,10 @@ SafetyLog(	Trigger := Error,
     </Implementation>
     <LineIds Name="SafetyHandling">
       <LineId Id="159" Count="1" />
+      <LineId Id="457" Count="0" />
+      <LineId Id="456" Count="0" />
+      <LineId Id="463" Count="1" />
+      <LineId Id="453" Count="2" />
       <LineId Id="363" Count="0" />
       <LineId Id="161" Count="0" />
       <LineId Id="364" Count="0" />

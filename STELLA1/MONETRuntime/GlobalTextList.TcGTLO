@@ -26,6 +26,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"868"</v>
+              <v n="TextDefault">"ErrAck"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"879"</v>
               <v n="TextDefault">"Error"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -61,6 +66,16 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"789"</v>
+              <v n="TextDefault">"Restart"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"672"</v>
+              <v n="TextDefault">"Safety State: %s"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"777"</v>
               <v n="TextDefault">"slew"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -68,6 +83,11 @@
             <o>
               <v n="TextID">"717"</v>
               <v n="TextDefault">"sliding"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"328"</v>
+              <v n="TextDefault">"STO ErrAck:"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
