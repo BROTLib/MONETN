@@ -13,6 +13,12 @@ VAR
 	stInfoGroup1	AT%I*	:ST_InfoDataGroup;
 	sStateGroup1			:STRING;
 	
+	// Estop
+	fbInfoEStop1			:FB_InfoEStop;
+	stInfoEStop1 	AT%I*	:ST_InfoDataFB;
+	sStateEStop1			:STRING;
+	sDiagEStop1				:STRING;	
+	
 	// Errack logging
 	ErrAckLog		: FB_EventLog;
 	// restart logging
@@ -42,6 +48,10 @@ fbInfoGroup1(
 	stInfoData	:= stInfoGroup1,
 	sState		=> sStateGroup1);
 
+fbInfoEStop1(
+	stInfoData	:= stInfoEStop1, 
+	sState		=> sStateEStop1, 
+	sDiag		=> sDiagEStop1);
 
 (*
 
@@ -148,6 +158,8 @@ SafetyLog(	Trigger := Error,
       <LineId Id="457" Count="0" />
       <LineId Id="456" Count="0" />
       <LineId Id="463" Count="1" />
+      <LineId Id="503" Count="2" />
+      <LineId Id="507" Count="0" />
       <LineId Id="453" Count="2" />
       <LineId Id="363" Count="0" />
       <LineId Id="161" Count="0" />

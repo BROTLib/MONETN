@@ -1866,6 +1866,28 @@ External Setpoint Generation:
 			</Relations>
 		</DataType>
 		<DataType>
+			<Name GUID="{130631FD-0089-1993-3BE8-1D48D8A7B4F7}" AutoDeleteType="true">ST_InfoDataFB</Name>
+			<BitSize>24</BitSize>
+			<SubItem>
+				<Name>usiMapState</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>uiMapDiag</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>usiDummy</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
 			<Name GUID="{77911627-FD1F-8567-343D-56376C84CE7F}" AutoDeleteType="true">ST_InfoDataGroup</Name>
 			<BitSize>16</BitSize>
 			<SubItem>
@@ -2003,6 +2025,22 @@ External Setpoint Generation:
 				<LBound>0</LBound>
 				<Elements>2</Elements>
 			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{2B008623-51EE-EF6A-ACDE-0017707F5BB8}" AutoDeleteType="true">INFODATA_FB_3</Name>
+			<BitSize>24</BitSize>
+			<SubItem>
+				<Name>State</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Diag</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
 		</DataType>
 		<DataType>
 			<Name GUID="{0DE0A6FC-5623-3232-5938-18BD97C1D1FF}" AutoDeleteType="true">INFODATA_3892733135</Name>
@@ -3059,7 +3097,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETRuntime" PrjFilePath="MONETRuntime\MONETRuntime.plcproj" TmcFilePath="MONETRuntime\MONETRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{5F1142C9-38B3-D1FC-1DC1-5A09A4D7F86C}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{6E710D56-8597-DF63-B52F-5E824F40873B}">
 					<Name>MONETRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -3350,6 +3388,10 @@ DIN3 0.2]]></Comment>
 							<Name>GVL_Telescope.Azimuth_sto</Name>
 							<Comment><![CDATA[ STO]]></Comment>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>SafetyHandling.stInfoEStop1</Name>
+							<Type GUID="{130631FD-0089-1993-3BE8-1D48D8A7B4F7}">ST_InfoDataFB</Type>
 						</Var>
 						<Var>
 							<Name>SafetyHandling.stInfoGroup1</Name>
@@ -3715,7 +3757,7 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<SyncMan>001000012600010001000000000100010001001026010000</SyncMan>
 							<SyncMan>001100012200010002000000000100010001001122010000</SyncMan>
 							<SyncMan>001228002400010003000000000000000200001224010000</SyncMan>
-							<SyncMan>001d46002000010004000000000000000200001d20010000</SyncMan>
+							<SyncMan>001d49002000010004000000000000000200001d20010000</SyncMan>
 							<SyncMan>002e00002400000003000000000000000000002e24000000</SyncMan>
 							<SyncMan>002f00002000000004000000000000000000002f20000000</SyncMan>
 							<Fmmu>0000000000000000001200020100000001000000060000000200000000000000</Fmmu>
@@ -3796,6 +3838,11 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 								</Entry>
 								<Entry>
 									<Type GUID="{18071995-0000-0000-0000-002000000002}">ARRAY [0..1] OF BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Function Block Info Data" Index="#x1bf8" Flags="#x2011" SyncMan="3">
+								<Entry Name="TwinSafeGroup1.Network1.FBEstop1 Info Data" Index="#x7000" Sub="#x01">
+									<Type GUID="{2B008623-51EE-EF6A-ACDE-0017707F5BB8}">INFODATA_FB_3</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Connection Info Data" Index="#x1bf9" Flags="#x2011" SyncMan="3">
@@ -11229,15 +11276,15 @@ Bit1: Value smaller than Limit2]]></Comment>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Azimuth (AX5125-0000-0214)^Term 2 (AX5805)">
 				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionInputs^Message_5 TxPDO" VarB="Module 1 (Safety Process Data, 1 axis)^Outputs (Controlword)^FSOE"/>
+				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionOutputs^Message_5 RxPDO" VarB="Module 1 (Safety Process Data, 1 axis)^Inputs (Statusword)^FSOE"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Derotator (AX5206-0000-0214)^Term 6 (AX5805)">
 				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionInputs^Message_17 TxPDO" VarB="Module 1 (Safety Process Data, 2 axis)^Outputs (Controlword)^FSOE"/>
+				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionOutputs^Message_17 RxPDO" VarB="Module 1 (Safety Process Data, 2 axis)^Inputs (Statusword)^FSOE"/>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TIID^Device 5 (EtherCAT)">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Safety Logic (EL6910)">
-				<Link VarA="Azimuth (AX5125-0000-0214)^Term 2 (AX5805)^Module 1 (Safety Process Data, 1 axis)^Inputs (Statusword)^FSOE" VarB="ConnectionOutputs^Message_5 RxPDO"/>
-				<Link VarA="Derotator (AX5206-0000-0214)^Term 6 (AX5805)^Module 1 (Safety Process Data, 2 axis)^Inputs (Statusword)^FSOE" VarB="ConnectionOutputs^Message_17 RxPDO"/>
 				<Link VarA="Elevation (AX5125-0000-0214)^Term 4 (AX5805)^Module 1 (Safety Process Data, 1 axis)^Inputs (Statusword)^FSOE" VarB="ConnectionOutputs^Message_6 RxPDO"/>
 				<Link VarA="Elevation (AX5125-0000-0214)^Term 4 (AX5805)^Module 1 (Safety Process Data, 1 axis)^Outputs (Controlword)^FSOE" VarB="ConnectionInputs^Message_6 TxPDO"/>
 			</OwnerB>
@@ -11427,6 +11474,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="PlcTask Inputs^GVL_Telescope.Azimuth_sto" VarB="StandardInputs^Standard Out Var 18"/>
 				<Link VarA="PlcTask Inputs^GVL_Telescope.Derotator_sto" VarB="StandardInputs^Standard Out Var 20"/>
 				<Link VarA="PlcTask Inputs^GVL_Telescope.Elevation_sto" VarB="StandardInputs^Standard Out Var 19"/>
+				<Link VarA="PlcTask Inputs^SafetyHandling.stInfoEStop1" VarB="Function Block Info Data^TwinSafeGroup1.Network1.FBEstop1 Info Data"/>
 				<Link VarA="PlcTask Inputs^SafetyHandling.stInfoGroup1" VarB="TwinSAFE Group Info Data^TwinSafeGroup1 Info Data"/>
 				<Link VarA="PlcTask Outputs^GVL_Safety.ErrAck" VarB="StandardOutputs^Standard In Var 1"/>
 				<Link VarA="PlcTask Outputs^GVL_Safety.Reset_STO_Azimuth" VarB="StandardOutputs^Standard In Var 25"/>
