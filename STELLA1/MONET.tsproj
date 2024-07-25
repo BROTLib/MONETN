@@ -1866,6 +1866,28 @@ External Setpoint Generation:
 			</Relations>
 		</DataType>
 		<DataType>
+			<Name GUID="{8FA08E84-D262-2CD9-C517-EA4842D47482}" AutoDeleteType="true">ST_InfoDataConnection</Name>
+			<BitSize>24</BitSize>
+			<SubItem>
+				<Name>usiMapState</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>usiMapDiag</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bySignal</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
 			<Name GUID="{130631FD-0089-1993-3BE8-1D48D8A7B4F7}" AutoDeleteType="true">ST_InfoDataFB</Name>
 			<BitSize>24</BitSize>
 			<SubItem>
@@ -2152,6 +2174,86 @@ External Setpoint Generation:
 				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
 				<BitSize>1</BitSize>
 				<BitOffs>39</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{2D18A473-33C5-DC53-F2C0-288B149B532F}" AutoDeleteType="true">INFODATA_2542655572</Name>
+			<BitSize>24</BitSize>
+			<SubItem>
+				<Name>State</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Diag</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data InputChannel1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data InputChannel2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>17</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data InputChannel3</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>18</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Input Safe Data InputChannel4</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>19</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{CBF8AE7B-680B-65B5-733B-13321DDFA478}" AutoDeleteType="true">INFODATA_162409835</Name>
+			<BitSize>24</BitSize>
+			<SubItem>
+				<Name>State</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Diag</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data OutputChannel1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data OutputChannel2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>17</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data OutputChannel3</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>18</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Output Safe Data OutputChannel4</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>19</BitOffs>
 			</SubItem>
 		</DataType>
 		<DataType>
@@ -3097,7 +3199,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETRuntime" PrjFilePath="MONETRuntime\MONETRuntime.plcproj" TmcFilePath="MONETRuntime\MONETRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{6E710D56-8597-DF63-B52F-5E824F40873B}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{6AE7DA7B-3E48-8E60-9F47-1C53F6F7D479}">
 					<Name>MONETRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -3106,6 +3208,10 @@ External Setpoint Generation:
 							<Name>GVL_Hydraulics.oil_low</Name>
 							<Comment><![CDATA[ 2.1]]></Comment>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>SafetyHandling.stInfoSafetyIn</Name>
+							<Type GUID="{8FA08E84-D262-2CD9-C517-EA4842D47482}">ST_InfoDataConnection</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Hydraulics.oil_high</Name>
@@ -3392,6 +3498,10 @@ DIN3 0.2]]></Comment>
 						<Var>
 							<Name>SafetyHandling.stInfoEStop1</Name>
 							<Type GUID="{130631FD-0089-1993-3BE8-1D48D8A7B4F7}">ST_InfoDataFB</Type>
+						</Var>
+						<Var>
+							<Name>SafetyHandling.stInfoSafetyOut</Name>
+							<Type GUID="{8FA08E84-D262-2CD9-C517-EA4842D47482}">ST_InfoDataConnection</Type>
 						</Var>
 						<Var>
 							<Name>SafetyHandling.stInfoGroup1</Name>
@@ -3757,7 +3867,7 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<SyncMan>001000012600010001000000000100010001001026010000</SyncMan>
 							<SyncMan>001100012200010002000000000100010001001122010000</SyncMan>
 							<SyncMan>001228002400010003000000000000000200001224010000</SyncMan>
-							<SyncMan>001d49002000010004000000000000000200001d20010000</SyncMan>
+							<SyncMan>001d4f002000010004000000000000000200001d20010000</SyncMan>
 							<SyncMan>002e00002400000003000000000000000000002e24000000</SyncMan>
 							<SyncMan>002f00002000000004000000000000000000002f20000000</SyncMan>
 							<Fmmu>0000000000000000001200020100000001000000060000000200000000000000</Fmmu>
@@ -3852,7 +3962,13 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 								<Entry Name="Message_6 Info Data" Index="#x7000" Sub="#x02">
 									<Type GUID="{0DE0A6FC-5623-3232-5938-18BD97C1D1FF}">INFODATA_3892733135</Type>
 								</Entry>
-								<Entry Name="Message_17 Info Data" Index="#x7000" Sub="#x03">
+								<Entry Name="Message_7 Info Data" Index="#x7000" Sub="#x03">
+									<Type GUID="{2D18A473-33C5-DC53-F2C0-288B149B532F}">INFODATA_2542655572</Type>
+								</Entry>
+								<Entry Name="Message_8 Info Data" Index="#x7000" Sub="#x04">
+									<Type GUID="{CBF8AE7B-680B-65B5-733B-13321DDFA478}">INFODATA_162409835</Type>
+								</Entry>
+								<Entry Name="Message_17 Info Data" Index="#x7000" Sub="#x05">
 									<Type GUID="{3E3046B6-6534-9EEA-8363-FB50E634C35C}">INFODATA_3473041101</Type>
 								</Entry>
 							</Pdo>
@@ -11269,10 +11385,8 @@ Bit1: Value smaller than Limit2]]></Comment>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Safety Logic (EL6910)">
 				<Link VarA="Term 21 (EK1200)^Safety IN (EL1904)^Module 1 (FSOES)^RxPDO^FSOE" VarB="ConnectionInputs^Message_7 TxPDO"/>
 				<Link VarA="Term 21 (EK1200)^Safety IN (EL1904)^Module 1 (FSOES)^TxPDO^FSOE" VarB="ConnectionOutputs^Message_7 RxPDO"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Safety OUT (EL2904)">
-				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionInputs^Message_8 TxPDO" VarB="Module 1 (FSOES)^RxPDO^FSOE"/>
-				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionOutputs^Message_8 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
+				<Link VarA="Term 21 (EK1200)^Safety OUT (EL2904)^Module 1 (FSOES)^RxPDO^FSOE" VarB="ConnectionInputs^Message_8 TxPDO"/>
+				<Link VarA="Term 21 (EK1200)^Safety OUT (EL2904)^Module 1 (FSOES)^TxPDO^FSOE" VarB="ConnectionOutputs^Message_8 RxPDO"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Azimuth (AX5125-0000-0214)^Term 2 (AX5805)">
 				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionInputs^Message_5 TxPDO" VarB="Module 1 (Safety Process Data, 1 axis)^Outputs (Controlword)^FSOE"/>
@@ -11476,6 +11590,8 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="PlcTask Inputs^GVL_Telescope.Elevation_sto" VarB="StandardInputs^Standard Out Var 19"/>
 				<Link VarA="PlcTask Inputs^SafetyHandling.stInfoEStop1" VarB="Function Block Info Data^TwinSafeGroup1.Network1.FBEstop1 Info Data"/>
 				<Link VarA="PlcTask Inputs^SafetyHandling.stInfoGroup1" VarB="TwinSAFE Group Info Data^TwinSafeGroup1 Info Data"/>
+				<Link VarA="PlcTask Inputs^SafetyHandling.stInfoSafetyIn" VarB="Connection Info Data^Message_8 Info Data"/>
+				<Link VarA="PlcTask Inputs^SafetyHandling.stInfoSafetyOut" VarB="Connection Info Data^Message_7 Info Data"/>
 				<Link VarA="PlcTask Outputs^GVL_Safety.ErrAck" VarB="StandardOutputs^Standard In Var 1"/>
 				<Link VarA="PlcTask Outputs^GVL_Safety.Reset_STO_Azimuth" VarB="StandardOutputs^Standard In Var 25"/>
 				<Link VarA="PlcTask Outputs^GVL_Safety.Reset_STO_Derotator" VarB="StandardOutputs^Standard In Var 22"/>

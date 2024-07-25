@@ -21,6 +21,21 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"524"</v>
+              <v n="TextDefault">"Diag: %s"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"101"</v>
+              <v n="TextDefault">"EL1904"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"761"</v>
+              <v n="TextDefault">"EL2904"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"409"</v>
               <v n="TextDefault">"Elevation:"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -98,6 +113,11 @@
             <o>
               <v n="TextID">"717"</v>
               <v n="TextDefault">"sliding"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"809"</v>
+              <v n="TextDefault">"State: %s"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

@@ -19,6 +19,26 @@ VAR
 	sStateEStop1			:STRING;
 	sDiagEStop1				:STRING;	
 	
+	// Info EL1904
+	fbInfoSafetyIn			:FB_InfoConnection;
+	stInfoSafetyIn 	AT%I*	:ST_InfoDataConnection;
+	sStateSafetyIn			:STRING;
+	sDiagSafetyIn			:STRING;
+	bSafetyInCh1			:BOOL;
+	bSafetyInCh2			:BOOL;
+	bSafetyInCh3			:BOOL;
+	bSafetyInCh4			:BOOL;
+	
+	// Info EL2904
+	fbInfoSafetyOut			:FB_InfoConnection;
+	stInfoSafetyOut AT%I*	:ST_InfoDataConnection;
+	sStateSafetyOut			:STRING;
+	sDiagSafetyOut			:STRING;
+	bSafetyOutCh1			:BOOL;
+	bSafetyOutCh2			:BOOL;
+	bSafetyOutCh3			:BOOL;
+	bSafetyOutCh4			:BOOL;
+	
 	// Errack logging
 	ErrAckLog		: FB_EventLog;
 	// restart logging
@@ -53,6 +73,26 @@ fbInfoEStop1(
 	sState		=> sStateEStop1, 
 	sDiag		=> sDiagEStop1);
 
+//Info SafetyIn EL1904
+fbInfoSafetyIn(
+	stInfoData		:=stInfoSafetyIn, 
+	sState			=>sStateSafetyIn, 
+	sDiag			=>sDiagSafetyIn, 
+	bChannel1		=>bSafetyInCh1, 
+	bChannel2		=>bSafetyInCh2, 
+	bChannel3		=>bSafetyInCh3, 
+	bChannel4		=>bSafetyInCh4);	
+	
+//Info SafetyOut EL2904
+fbInfoSafetyOut(
+	stInfoData		:=stInfoSafetyOut, 
+	sState			=>sStateSafetyOut, 
+	sDiag			=>sDiagSafetyOut, 
+	bChannel1		=>bSafetyOutCh1, 
+	bChannel2		=>bSafetyOutCh2, 
+	bChannel3		=>bSafetyOutCh3, 
+	bChannel4		=>bSafetyOutCh4);
+	
 (*
 
 // power on delay for Safety RESTART after RUN=1
@@ -160,7 +200,16 @@ SafetyLog(	Trigger := Error,
       <LineId Id="463" Count="1" />
       <LineId Id="503" Count="2" />
       <LineId Id="507" Count="0" />
-      <LineId Id="453" Count="2" />
+      <LineId Id="453" Count="0" />
+      <LineId Id="556" Count="0" />
+      <LineId Id="558" Count="2" />
+      <LineId Id="562" Count="4" />
+      <LineId Id="454" Count="0" />
+      <LineId Id="557" Count="0" />
+      <LineId Id="578" Count="7" />
+      <LineId Id="577" Count="0" />
+      <LineId Id="586" Count="0" />
+      <LineId Id="455" Count="0" />
       <LineId Id="363" Count="0" />
       <LineId Id="161" Count="0" />
       <LineId Id="364" Count="0" />
