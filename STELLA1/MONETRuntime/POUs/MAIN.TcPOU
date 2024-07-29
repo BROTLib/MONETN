@@ -107,6 +107,7 @@ ElevationControl();	//
 AzimuthElevationControl();	//
 DerotatorControl();	//
 FocusControl();
+//RoofControl();
 MQTTClient();
 
 error := GVL_Telescope.azimut_limit_switch
@@ -194,6 +195,7 @@ TemperatureCriticalEvent(
       <LineId Id="998" Count="0" />
       <LineId Id="703" Count="3" />
       <LineId Id="708" Count="0" />
+      <LineId Id="1279" Count="0" />
       <LineId Id="943" Count="0" />
       <LineId Id="712" Count="0" />
       <LineId Id="718" Count="0" />

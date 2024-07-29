@@ -3057,12 +3057,12 @@ External Setpoint Generation:
 					<Name>Derotator</Name>
 					<AxisPara>
 						<General UnitName="°"/>
-						<Dynamic Acceleration="15000" Deceleration="15000" Jerk="947115.18"/>
-						<Velo RefSearch="2104.7004" RefSync="2104.7004" SlowManual="10523.502" FastManual="63141.012" Fast="210470.04" Maximum="210470.04"/>
+						<Dynamic Acceleration="17.5834" Deceleration="17.5834" Jerk="52.7501"/>
+						<Velo RefSearch="0.117222517903646" RefSync="0.117222517903646" SlowManual="0.586112589518229" FastManual="3.51667553710938" Fast="11.7222517903646" Maximum="11.7223"/>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="8">
-						<EncPara ScaleFactorNumerator="3600" ScaleFactorDenominator="1048576" MaxCount="#xffffffff"/>
+						<EncPara ScaleFactorNumerator="0.2" ScaleFactorDenominator="1048576" MaxCount="#xffffffff"/>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
 							<Var>
@@ -3121,7 +3121,7 @@ External Setpoint Generation:
 					</Encoder>
 					<Drive Name="Drive" DrvType="9">
 						<DrvPara MaxCount="#xffffffff" DriveControlDWord="#x00030100">
-							<Analog VeloReferenz="231517.044" VeloScale="1.02400649589962" TorqueSetpointScale="10" ScaleFactorActTorque="0.1"/>
+							<Analog VeloReferenz="12.894476969401" VeloScale="1.02400649589962" TorqueSetpointScale="10" ScaleFactorActTorque="0.1"/>
 							<TimeComp TaskDelayCycles="1"/>
 						</DrvPara>
 						<Vars VarGrpType="1">
@@ -3199,7 +3199,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETRuntime" PrjFilePath="MONETRuntime\MONETRuntime.plcproj" TmcFilePath="MONETRuntime\MONETRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{4A0D97BC-C91A-2DE7-2701-F6B27484E8EA}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{F3EEBC38-B119-5F1A-B42F-FC7FB647070E}">
 					<Name>MONETRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -10379,7 +10379,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 								<AxisSetting Channel="0">
 									<Property>
 										<Name>NcFeedConstant</Name>
-										<Value>360.000000</Value>
+										<Value>0.200000</Value>
 									</Property>
 									<Property>
 										<Name>MotorDataSchema</Name>

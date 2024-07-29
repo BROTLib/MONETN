@@ -54,6 +54,10 @@
     <Compile Include="GVLs\GVL_pendant_control.TcGVL">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GVLs\GVL_Roof.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="GVLs\GVL_Safety.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
@@ -227,6 +231,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PendantControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\RoofControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\SafetyHandling.TcPOU">
