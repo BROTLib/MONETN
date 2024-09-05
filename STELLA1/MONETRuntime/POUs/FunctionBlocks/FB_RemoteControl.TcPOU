@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_RemoteControl" Id="{5d94cf8a-3c25-4f83-bbf0-3199328f8e5b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_RemoteControl
+VAR_INPUT
+	MQTTClient:		FB_MQTTCommunication;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	measurement:   STRING(255);
+	parameter:     STRING(255);
+	value:         STRING(255);
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[MQTTClient(sMeasurement => measurement, sParameter => parameter, sValue => value);
+
+IF NOT PendantControl.manual AND measurement = 'command' THEN
+	IF parameter = 'power' THEN
+		TelescopeControl.power := STRING_TO_BOOL(value);
+	ELSIF parameter = 'park' THEN
+		TelescopeControl.park := STRING_TO_BOOL(value);
+	ELSIF parameter = 'gohome' THEN
+		TelescopeControl.gohome := STRING_TO_BOOL(value);
+	ELSIF parameter = 'track' THEN
+		TelescopeControl.track := STRING_TO_BOOL(value);
+	ELSIF parameter = 'goto' THEN
+		TelescopeControl.goto := STRING_TO_BOOL(value);
+	ELSIF parameter = 'slew' THEN
+		TelescopeControl.slew := STRING_TO_BOOL(value);
+	ELSIF parameter = 'stop' THEN
+		TelescopeControl.stop := STRING_TO_BOOL(value);
+	ELSIF parameter = 'reset' THEN
+		TelescopeControl.reset := STRING_TO_BOOL(value);
+	ELSIF parameter = 'masterreset' THEN
+		ElevationControl.bSoEReset := STRING_TO_BOOL(value);
+		AzimuthElevationControl.bSoEReset := STRING_TO_BOOL(value);
+		DerotatorControl.bSoEReset := STRING_TO_BOOL(value);
+	ELSIF parameter = 'rightascension' THEN
+		TelescopeControl.track := FALSE;
+		TelescopeControl.rightascension := STRING_TO_LREAL(value);
+	ELSIF parameter = 'declination' THEN
+		TelescopeControl.track := FALSE;
+		TelescopeControl.declination := STRING_TO_LREAL(value);
+	ELSIF parameter = 'elevation' THEN
+		TelescopeControl.elevation := STRING_TO_LREAL(value);
+	ELSIF parameter = 'azimuth' THEN
+		TelescopeControl.azimuth := STRING_TO_LREAL(value);
+	ELSIF parameter = 'focus' THEN
+		FocusControl.position := STRING_TO_LREAL(value);
+	ELSIF parameter = 'derotator' THEN
+		TelescopeControl.track := FALSE;
+		TelescopeControl.derotator_offset := STRING_TO_LREAL(value);
+	ELSIF parameter = 'elevationoffset' THEN
+		TelescopeControl.elevation_offset := STRING_TO_LREAL(value);
+	ELSIF parameter = 'azimuthoffset' THEN
+		TelescopeControl.azimuth_offset := STRING_TO_LREAL(value);
+	ELSIF parameter = 'derotatoroffset' THEN
+		TelescopeControl.derotator_offset := STRING_TO_LREAL(value);ELSE
+		//ADSLOGSTR( ADSLOG_MSGTYPE_WARN OR ADSLOG_MSGTYPE_LOG, 'MQTT not understood %s', sPayloadRcv);
+	END_IF
+END_IF // measurement]]></ST>
+    </Implementation>
+    <LineIds Name="FB_RemoteControl">
+      <LineId Id="57" Count="1" />
+      <LineId Id="11" Count="43" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

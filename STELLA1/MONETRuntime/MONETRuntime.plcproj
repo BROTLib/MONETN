@@ -83,15 +83,6 @@
     <Compile Include="POUs\FocusControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FunctionBlocks\CO_ABERRATION.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FunctionBlocks\CO_REFRACT.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FunctionBlocks\FB_ALTAZ2HADEC.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\FunctionBlocks\FB_AstroClock.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -107,25 +98,7 @@
     <Compile Include="POUs\FunctionBlocks\FB_Cover.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FunctionBlocks\FB_CO_NUTATE.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FunctionBlocks\FB_EQ2HOR.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FunctionBlocks\FB_EQ2HOR2.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\FunctionBlocks\FB_EventLog.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FunctionBlocks\FB_HADEC2ALTAZ.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FunctionBlocks\FB_HOR2EQ.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FunctionBlocks\FB_HOR2EQ2.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\FunctionBlocks\FB_Horn.TcPOU">
@@ -149,22 +122,7 @@
     <Compile Include="POUs\FunctionBlocks\FB_MQTTCommunication.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FunctionBlocks\FB_NUTATE.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FunctionBlocks\FB_PRECESS.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FunctionBlocks\FB_PRECESS2.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FunctionBlocks\FB_PRECESS3.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\FunctionBlocks\FB_RFTRIG.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FunctionBlocks\FB_SUNPOS.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\FunctionBlocks\FB_TimeAverage.TcPOU">
@@ -179,16 +137,7 @@
     <Compile Include="POUs\FunctionBlocks\TelescopeAxisClass.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Functions\ATAN2.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Functions\CO_REFRACT_FORWARD.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\Functions\CT2LST.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Functions\DateTime2JD.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Functions\F_Azimuthvelocity.TcPOU">
@@ -215,13 +164,7 @@
     <Compile Include="POUs\Functions\PointingModelElevation.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Functions\POLY.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\Functions\Refraction.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Functions\TEN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\HydraulicsControl.TcPOU">
@@ -270,6 +213,10 @@
     <Folder Include="POUs" />
   </ItemGroup>
   <ItemGroup>
+    <PlaceholderReference Include="AstroBROT">
+      <DefaultResolution>AstroBROT, * (BROT)</DefaultResolution>
+      <Namespace>AstroBROT</Namespace>
+    </PlaceholderReference>
     <PlaceholderReference Include="System_VisuElemMeter">
       <DefaultResolution>VisuElemMeter, 3.5.13.0 (System)</DefaultResolution>
       <Namespace>VisuElemMeter</Namespace>

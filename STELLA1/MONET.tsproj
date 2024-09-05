@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.55">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.40">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{18071995-0000-0000-0000-000000000035}" TcBaseType="true" HideType="true">UINTARR2</Name>
@@ -1866,8 +1866,8 @@ External Setpoint Generation:
 			</Relations>
 		</DataType>
 		<DataType>
-			<Name GUID="{8FA08E84-D262-2CD9-C517-EA4842D47482}" AutoDeleteType="true">ST_InfoDataConnection</Name>
-			<BitSize>24</BitSize>
+			<Name GUID="{77911627-FD1F-8567-343D-56376C84CE7F}" AutoDeleteType="true">ST_InfoDataGroup</Name>
+			<BitSize>16</BitSize>
 			<SubItem>
 				<Name>usiMapState</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
@@ -1879,12 +1879,6 @@ External Setpoint Generation:
 				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
 				<BitSize>8</BitSize>
 				<BitOffs>8</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bySignal</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
-				<BitSize>8</BitSize>
-				<BitOffs>16</BitOffs>
 			</SubItem>
 		</DataType>
 		<DataType>
@@ -1910,8 +1904,8 @@ External Setpoint Generation:
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{77911627-FD1F-8567-343D-56376C84CE7F}" AutoDeleteType="true">ST_InfoDataGroup</Name>
-			<BitSize>16</BitSize>
+			<Name GUID="{8FA08E84-D262-2CD9-C517-EA4842D47482}" AutoDeleteType="true">ST_InfoDataConnection</Name>
+			<BitSize>24</BitSize>
 			<SubItem>
 				<Name>usiMapState</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
@@ -1923,6 +1917,12 @@ External Setpoint Generation:
 				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
 				<BitSize>8</BitSize>
 				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bySignal</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>16</BitOffs>
 			</SubItem>
 		</DataType>
 		<DataType>
@@ -3199,19 +3199,31 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETRuntime" PrjFilePath="MONETRuntime\MONETRuntime.plcproj" TmcFilePath="MONETRuntime\MONETRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{F3EEBC38-B119-5F1A-B42F-FC7FB647070E}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{85F28CC4-7EB0-C854-9984-F9FF4EF07F00}">
 					<Name>MONETRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
-							<Name>GVL_Hydraulics.oil_low</Name>
-							<Comment><![CDATA[ 2.1]]></Comment>
-							<Type>BOOL</Type>
+							<Name>SafetyHandling.stInfoGroup1</Name>
+							<Type GUID="{77911627-FD1F-8567-343D-56376C84CE7F}">ST_InfoDataGroup</Type>
+						</Var>
+						<Var>
+							<Name>SafetyHandling.stInfoEStop1</Name>
+							<Type GUID="{130631FD-0089-1993-3BE8-1D48D8A7B4F7}">ST_InfoDataFB</Type>
 						</Var>
 						<Var>
 							<Name>SafetyHandling.stInfoSafetyIn</Name>
 							<Type GUID="{8FA08E84-D262-2CD9-C517-EA4842D47482}">ST_InfoDataConnection</Type>
+						</Var>
+						<Var>
+							<Name>SafetyHandling.stInfoSafetyOut</Name>
+							<Type GUID="{8FA08E84-D262-2CD9-C517-EA4842D47482}">ST_InfoDataConnection</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Hydraulics.oil_low</Name>
+							<Comment><![CDATA[ 2.1]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Hydraulics.oil_high</Name>
@@ -3249,14 +3261,14 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Hydraulics.oilpan_maximum</Name>
-							<Comment><![CDATA[DIN39 4.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Hydraulics.oil_level</Name>
 							<Comment><![CDATA[BT2]]></Comment>
 							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Hydraulics.oilpan_maximum</Name>
+							<Comment><![CDATA[DIN39 4.6]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Hydraulics.oil_reserve</Name>
@@ -3288,14 +3300,14 @@ DIN3 0.2]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Main.brake_clearing</Name>
-							<Comment><![CDATA[DIN15 1.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Main.main_cabinet_temperature</Name>
 							<Comment><![CDATA[BT1]]></Comment>
 							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Main.brake_clearing</Name>
+							<Comment><![CDATA[DIN15 1.6]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_pendant_control.BCD1</Name>
@@ -3420,14 +3432,14 @@ DIN3 0.2]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>GVL_Telescope.Derotator_sto</Name>
+							<Comment><![CDATA[ STO]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>GVL_Telescope.Derotator_inputs</Name>
 							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
 							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.Derotator_diagnostic</Name>
-							<Comment><![CDATA[ diagnostic number]]></Comment>
-							<Type>UDINT</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.Derotator_torque</Name>
@@ -3435,9 +3447,19 @@ DIN3 0.2]]></Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>
+							<Name>GVL_Telescope.Derotator_diagnostic</Name>
+							<Comment><![CDATA[ diagnostic number]]></Comment>
+							<Type>UDINT</Type>
+						</Var>
+						<Var>
 							<Name>GVL_Telescope.Elevation_inputs</Name>
 							<Comment><![CDATA[ digital inputs for limit switches]]></Comment>
 							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.Elevation_torque</Name>
+							<Comment><![CDATA[ torque feedback]]></Comment>
+							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.Elevation_diagnostic</Name>
@@ -3445,9 +3467,14 @@ DIN3 0.2]]></Comment>
 							<Type>UDINT</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.Elevation_torque</Name>
-							<Comment><![CDATA[ torque feedback]]></Comment>
-							<Type>INT</Type>
+							<Name>GVL_Telescope.Elevation_sto</Name>
+							<Comment><![CDATA[ STO]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.Azimuth_sto</Name>
+							<Comment><![CDATA[ STO]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.Azimuth_inputs</Name>
@@ -3479,33 +3506,6 @@ DIN3 0.2]]></Comment>
 						<Var>
 							<Name>GVL_Telescope.FocusAxisRef.NcToPlc</Name>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.Derotator_sto</Name>
-							<Comment><![CDATA[ STO]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.Elevation_sto</Name>
-							<Comment><![CDATA[ STO]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.Azimuth_sto</Name>
-							<Comment><![CDATA[ STO]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>SafetyHandling.stInfoEStop1</Name>
-							<Type GUID="{130631FD-0089-1993-3BE8-1D48D8A7B4F7}">ST_InfoDataFB</Type>
-						</Var>
-						<Var>
-							<Name>SafetyHandling.stInfoSafetyOut</Name>
-							<Type GUID="{8FA08E84-D262-2CD9-C517-EA4842D47482}">ST_InfoDataConnection</Type>
-						</Var>
-						<Var>
-							<Name>SafetyHandling.stInfoGroup1</Name>
-							<Type GUID="{77911627-FD1F-8567-343D-56376C84CE7F}">ST_InfoDataGroup</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -3577,6 +3577,18 @@ DOUT9 1.0]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>GVL_Safety.Reset_STO_Azimuth</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Safety.Reset_STO_Elevation</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Safety.Reset_STO_Derotator</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>GVL_Telescope.brake_azimuth_eve</Name>
 							<Comment><![CDATA[DOUT6 0.5]]></Comment>
 							<Type>BOOL</Type>
@@ -3602,10 +3614,6 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.open_cover2</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Telescope.AzimuthAxisRef.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
@@ -3622,6 +3630,10 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
+							<Name>GVL_Telescope.open_cover2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>GVL_Telescope.close_cover2</Name>
 							<Type>BOOL</Type>
 						</Var>
@@ -3633,22 +3645,10 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<Name>GVL_Telescope.close_cover3</Name>
 							<Type>BOOL</Type>
 						</Var>
-						<Var>
-							<Name>GVL_Safety.Reset_STO_Derotator</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Safety.Reset_STO_Azimuth</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Safety.Reset_STO_Elevation</Name>
-							<Type>BOOL</Type>
-						</Var>
 					</Vars>
 					<Contexts>
 						<Context>
-							<Id>0</Id>
+							<Id NeedCalleeCall="true">0</Id>
 							<Name>PlcTask</Name>
 							<ManualConfig>
 								<OTCID>#x02010030</OTCID>
