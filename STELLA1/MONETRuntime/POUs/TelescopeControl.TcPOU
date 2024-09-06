@@ -65,7 +65,7 @@ VAR
 	// precise astronomical	time
 	fbTime: FB_AstroClock;
 	
-	eq2hor2:	FB_EQ2HOR2;
+	eq2hor:		FB_EQ2HOR;
 	hor2eq:		FB_HOR2EQ;
 	
 	// triggers power-failure event
@@ -203,7 +203,7 @@ IF ElevationControl.error THEN
 	HydraulicsControl.close_brake();
 END_IF
 
-eq2hor2(alpha := rightascension,
+eq2hor(alpha := rightascension,
 	delta := declination,
 	lon := longitude,
 	lat := latitude,
