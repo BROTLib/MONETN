@@ -203,8 +203,9 @@ IF ElevationControl.error THEN
 	HydraulicsControl.close_brake();
 END_IF
 
-eq2hor(alpha := rightascension,
-	delta := declination,
+eq2hor(
+	ra := rightascension,
+	dec := declination,
 	lon := longitude,
 	lat := latitude,
 	JD := jd + time_offset,
@@ -975,6 +976,7 @@ END_IF
       <LineId Id="4248" Count="0" />
       <LineId Id="8275" Count="0" />
       <LineId Id="1282" Count="0" />
+      <LineId Id="9454" Count="0" />
       <LineId Id="1795" Count="3" />
       <LineId Id="2008" Count="2" />
       <LineId Id="7963" Count="0" />
