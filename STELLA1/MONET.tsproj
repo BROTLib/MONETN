@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.55">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.35">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{18071995-0000-0000-0000-000000000035}" TcBaseType="true" HideType="true">UINTARR2</Name>
@@ -1866,8 +1866,8 @@ External Setpoint Generation:
 			</Relations>
 		</DataType>
 		<DataType>
-			<Name GUID="{8FA08E84-D262-2CD9-C517-EA4842D47482}" AutoDeleteType="true">ST_InfoDataConnection</Name>
-			<BitSize>24</BitSize>
+			<Name GUID="{77911627-FD1F-8567-343D-56376C84CE7F}" AutoDeleteType="true">ST_InfoDataGroup</Name>
+			<BitSize>16</BitSize>
 			<SubItem>
 				<Name>usiMapState</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
@@ -1879,12 +1879,6 @@ External Setpoint Generation:
 				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
 				<BitSize>8</BitSize>
 				<BitOffs>8</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>bySignal</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
-				<BitSize>8</BitSize>
-				<BitOffs>16</BitOffs>
 			</SubItem>
 		</DataType>
 		<DataType>
@@ -1910,8 +1904,8 @@ External Setpoint Generation:
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{77911627-FD1F-8567-343D-56376C84CE7F}" AutoDeleteType="true">ST_InfoDataGroup</Name>
-			<BitSize>16</BitSize>
+			<Name GUID="{8FA08E84-D262-2CD9-C517-EA4842D47482}" AutoDeleteType="true">ST_InfoDataConnection</Name>
+			<BitSize>24</BitSize>
 			<SubItem>
 				<Name>usiMapState</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
@@ -1923,6 +1917,12 @@ External Setpoint Generation:
 				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
 				<BitSize>8</BitSize>
 				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bySignal</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>16</BitOffs>
 			</SubItem>
 		</DataType>
 		<DataType>
@@ -2565,7 +2565,7 @@ External Setpoint Generation:
 		<ImageData Id="1008">424dd6020000000000003600000028000000100000000e0000000100180000000000a002000000000000000000000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ffff00ffff0000ff0000ff0000ff0000808080ff00ff000000000000000000000000000000000000000000ff00ffff00ffff00ffff0000c0c0c0c0c0c0c0c0c0808080ff00ff0000000000000000000000000000000000000000000000ff0000ffff00ffc0c0c0ff0000c0c0c0c0c0c0808080ff00ff000000000000000000000000000000000000000000ff00ffff00ffff00ffc0c0c0c0c0c0ff0000c0c0c0808080ff00ffff00ffff00ffff00ff000000ff00ffff00ff000000ff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0ff0000808080ff00ff000000000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ffff0000c0c0c0c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0ff0000ff0000c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ff</ImageData>
 		<ImageData Id="1009">424dd6020000000000003600000028000000100000000e0000000100180000000000a002000000000000000000000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c08080800000ff000000000000000000000000000000000000000000ff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c08080800000ff0000000000000000000000000000000000000000000000ff0000ffff00ffc0c0c0c0c0c0c0c0c0c0c0c08080800000ff000000000000000000000000000000000000000000ff00ffff00ffff00ffff0000ff0000ff0000ff00008080800000ffff00ffff00ffff00ff000000ff00ffff00ff000000ff00ffff00ffff00ffff0000c0c0c0c0c0c0c0c0c0808080000000000000000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0ff0000c0c0c0c0c0c0808080000000ff00ffff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ffff00ffc0c0c0c0c0c0ff0000c0c0c0808080000000000000000000000000000000000000000000000000ff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0ff00008080800000000000000000000000000000000000000000000000000000ff0000ffff00ffff0000c0c0c0c0c0c0ff0000808080000000000000000000000000000000000000000000000000ff00ffff00ffff00ffc0c0c0ff0000ff0000c0c0c0808080000000ff00ffff00ffff00ff000000ff00ffff00ff000000ff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080000000000000000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080000000ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{9406D69C-EBA9-4591-A513-578A75D14426}" TargetNetId="5.131.251.159.1.1" Target64Bit="true" RelativeTargetNetId="true" RelativeIpAddresses="true" ShowHideConfigurations="#x346">
+	<Project ProjectGUID="{9406D69C-EBA9-4591-A513-578A75D14426}" TargetNetId="5.131.251.159.1.1" RelativeTargetNetId="true" RelativeIpAddresses="true" ShowHideConfigurations="#x346">
 		<System>
 			<Settings MaxCpus="4" NonWinCpus="1">
 				<Cpu CpuId="2"/>
@@ -3199,19 +3199,31 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETRuntime" PrjFilePath="MONETRuntime\MONETRuntime.plcproj" TmcFilePath="MONETRuntime\MONETRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{F3EEBC38-B119-5F1A-B42F-FC7FB647070E}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETRuntime\MONETRuntime.tmc" TmcHash="{530E9CF9-9DBA-612F-EBA9-BBC71D24BEC2}">
 					<Name>MONETRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
-							<Name>GVL_Hydraulics.oil_low</Name>
-							<Comment><![CDATA[ 2.1]]></Comment>
-							<Type>BOOL</Type>
+							<Name>SafetyHandling.stInfoGroup1</Name>
+							<Type GUID="{77911627-FD1F-8567-343D-56376C84CE7F}">ST_InfoDataGroup</Type>
+						</Var>
+						<Var>
+							<Name>SafetyHandling.stInfoEStop1</Name>
+							<Type GUID="{130631FD-0089-1993-3BE8-1D48D8A7B4F7}">ST_InfoDataFB</Type>
 						</Var>
 						<Var>
 							<Name>SafetyHandling.stInfoSafetyIn</Name>
 							<Type GUID="{8FA08E84-D262-2CD9-C517-EA4842D47482}">ST_InfoDataConnection</Type>
+						</Var>
+						<Var>
+							<Name>SafetyHandling.stInfoSafetyOut</Name>
+							<Type GUID="{8FA08E84-D262-2CD9-C517-EA4842D47482}">ST_InfoDataConnection</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Hydraulics.oil_low</Name>
+							<Comment><![CDATA[ 2.1]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Hydraulics.oil_high</Name>
@@ -3425,14 +3437,24 @@ DIN3 0.2]]></Comment>
 							<Type>WORD</Type>
 						</Var>
 						<Var>
+							<Name>GVL_Telescope.Derotator_torque</Name>
+							<Comment><![CDATA[ derotator torque feedback]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
 							<Name>GVL_Telescope.Derotator_diagnostic</Name>
 							<Comment><![CDATA[ diagnostic number]]></Comment>
 							<Type>UDINT</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.Derotator_torque</Name>
-							<Comment><![CDATA[ derotator torque feedback]]></Comment>
-							<Type>INT</Type>
+							<Name>GVL_Telescope.Derotator_sto</Name>
+							<Comment><![CDATA[ STO]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.Elevation_sto</Name>
+							<Comment><![CDATA[ STO]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.Elevation_inputs</Name>
@@ -3465,6 +3487,11 @@ DIN3 0.2]]></Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>
+							<Name>GVL_Telescope.Azimuth_sto</Name>
+							<Comment><![CDATA[ STO]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>GVL_Telescope.AzimuthAxisRef.NcToPlc</Name>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
@@ -3479,33 +3506,6 @@ DIN3 0.2]]></Comment>
 						<Var>
 							<Name>GVL_Telescope.FocusAxisRef.NcToPlc</Name>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.Derotator_sto</Name>
-							<Comment><![CDATA[ STO]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.Elevation_sto</Name>
-							<Comment><![CDATA[ STO]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.Azimuth_sto</Name>
-							<Comment><![CDATA[ STO]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>SafetyHandling.stInfoEStop1</Name>
-							<Type GUID="{130631FD-0089-1993-3BE8-1D48D8A7B4F7}">ST_InfoDataFB</Type>
-						</Var>
-						<Var>
-							<Name>SafetyHandling.stInfoSafetyOut</Name>
-							<Type GUID="{8FA08E84-D262-2CD9-C517-EA4842D47482}">ST_InfoDataConnection</Type>
-						</Var>
-						<Var>
-							<Name>SafetyHandling.stInfoGroup1</Name>
-							<Type GUID="{77911627-FD1F-8567-343D-56376C84CE7F}">ST_InfoDataGroup</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -3577,6 +3577,18 @@ DOUT9 1.0]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>GVL_Safety.Reset_STO_Azimuth</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Safety.Reset_STO_Elevation</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Safety.Reset_STO_Derotator</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>GVL_Telescope.brake_azimuth_eve</Name>
 							<Comment><![CDATA[DOUT6 0.5]]></Comment>
 							<Type>BOOL</Type>
@@ -3598,14 +3610,6 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.close_cover1</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.open_cover2</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Telescope.AzimuthAxisRef.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
@@ -3622,6 +3626,14 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
+							<Name>GVL_Telescope.close_cover1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.open_cover2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>GVL_Telescope.close_cover2</Name>
 							<Type>BOOL</Type>
 						</Var>
@@ -3633,22 +3645,10 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<Name>GVL_Telescope.close_cover3</Name>
 							<Type>BOOL</Type>
 						</Var>
-						<Var>
-							<Name>GVL_Safety.Reset_STO_Derotator</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Safety.Reset_STO_Azimuth</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Safety.Reset_STO_Elevation</Name>
-							<Type>BOOL</Type>
-						</Var>
 					</Vars>
 					<Contexts>
 						<Context>
-							<Id>0</Id>
+							<Id NeedCalleeCall="true">0</Id>
 							<Name>PlcTask</Name>
 							<ManualConfig>
 								<OTCID>#x02010030</OTCID>
@@ -3664,7 +3664,7 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 			</Project>
 		</Plc>
 		<Safety>
-			<Project GUID="{0F3883E8-36C1-494D-8014-A8C4D7F11FA1}" Name="MonetTwinSAFE" PrjFilePath="MonetTwinSAFE\MonetTwinSAFE.splcproj" TmcFilePath="MonetTwinSAFE\MonetTwinSAFE.tmc" GeneralArchiveSettings="#x000f" TargetArchiveSettings="#x0007" FileArchiveSettings="#x000e">
+			<Project Name="MonetTwinSAFE" GeneralArchiveSettings="#x000f" TargetArchiveSettings="#x0007" FileArchiveSettings="#x000e">
 				<Instance Id="#x01010010" KeepUnrestoredLinks="2">
 					<Name>MonetTwinSAFE Instance</Name>
 					<TmcDesc GUID="{72A6D5B8-E98C-4604-8B90-09D1F8AB38A9}">
