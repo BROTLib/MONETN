@@ -47,7 +47,7 @@ GetHostName(sHostName => HostName);
 // set the parameters once
 IF bSetParameter THEN
     bSetParameter               := FALSE;
-    fbMqttClient.sHostName      := '169.254.146.201';
+    fbMqttClient.sHostName      := '169.254.146.10';
     fbMqttClient.nHostPort      := 1883;
     fbMqttClient.sClientId      := HostName; 
     fbMqttClient.sTopicPrefix   := ''; 
