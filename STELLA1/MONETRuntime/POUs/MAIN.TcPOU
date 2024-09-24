@@ -108,7 +108,13 @@ AzimuthElevationControl();	//
 DerotatorControl();	//
 FocusControl();
 //RoofControl();
-MQTTClient();
+MQTTClient(	
+	sHostName	:= '169.254.146.10',
+    nHostPort   := 1883,
+    nKeepAlive  := 60,
+	sTopicSub   := 'MONETN/Telescope/SET'
+);
+
 
 error := GVL_Telescope.azimut_limit_switch
 			OR Focuscontrol.Error
@@ -196,6 +202,7 @@ TemperatureCriticalEvent(
       <LineId Id="703" Count="3" />
       <LineId Id="708" Count="0" />
       <LineId Id="1279" Count="0" />
+      <LineId Id="1320" Count="5" />
       <LineId Id="943" Count="0" />
       <LineId Id="718" Count="0" />
       <LineId Id="722" Count="0" />
