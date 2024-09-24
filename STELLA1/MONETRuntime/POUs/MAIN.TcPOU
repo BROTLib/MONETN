@@ -39,7 +39,7 @@ VAR
 	bExecute:			BOOL := TRUE;
 	cabinet_temperature_warning:	SR;
 	cabinet_temperature_critical:	SR;
-	MQTTClient:		FB_MQTTCommunication;
+	MQTTClient:		FB_Comm_MQTT_Influx;
 END_VAR
 ]]></Declaration>
     <Implementation>
