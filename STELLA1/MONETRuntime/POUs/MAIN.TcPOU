@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
   <POU Name="MAIN" Id="{0fe844df-7078-44d3-bc48-268e6c994874}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -98,7 +98,7 @@ ups_output_voltage := ups_output_voltage / 1000.0;
 ups_output_current := ups_output_current / 1000.0;
 ups_output_power := ups_output_voltage * ups_output_current;
 *)
-		
+
 TelescopeControl();	//
 CoverControl();	//
 PendantControl();	//
@@ -109,6 +109,7 @@ DerotatorControl();	//
 FocusControl();
 //RoofControl();
 MQTTClient();
+Transformer();
 
 error := GVL_Telescope.azimut_limit_switch
 			OR Focuscontrol.Error
@@ -129,7 +130,7 @@ ELSE
 	error_lamp.blink := e_blink.off; 
 END_IF
 
-power_lamp.blink := e_blink.on; 
+power_lamp.blink := e_blink.on;
 error_lamp(Q => GVL_Main.lamp_error);
 //GVL_Main.lamp_error := error_lamp.Q;
 power_lamp(Q => GVL_Main.lamp_power);

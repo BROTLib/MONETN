@@ -68,7 +68,7 @@ VAR
 END_VAR
 VAR CONSTANT
 	// current position of the calibration cam. Apply an offset here if necessary
-	calibration_position:	LREAL := 44.139; //44.061; //43.806122; //42.1281; //43.000
+	calibration_position:	LREAL := 44.144; //44.139; //44.061; //43.806122; //42.1281; //43.000
 END_VAR
 VAR PERSISTENT
 	last_position:	LREAL := -1.0;
@@ -159,7 +159,7 @@ END_IF
 DiagnosticError := FALSE;
 IF GVL_Telescope.Elevation_diagnostic < 16#D012 AND GVL_Telescope.Elevation_diagnostic > 16#D014 THEN
 	DiagnosticError :=TRUE;
-	ErrorID := GVL_Telescope.Derotator_diagnostic;
+	ErrorID := GVL_Telescope.Elevation_diagnostic;
 END_IF
 
 ElevationCalibration(Axis := GVL_Telescope.ElevationAxisRef,
