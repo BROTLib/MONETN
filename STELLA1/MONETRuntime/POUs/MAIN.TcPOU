@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
   <POU Name="MAIN" Id="{0fe844df-7078-44d3-bc48-268e6c994874}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -109,7 +109,6 @@ DerotatorControl();	//
 FocusControl();
 //RoofControl();
 MQTTClient();
-Transformer();
 
 error := GVL_Telescope.azimut_limit_switch
 			OR Focuscontrol.Error
@@ -198,7 +197,6 @@ TemperatureCriticalEvent(
       <LineId Id="708" Count="0" />
       <LineId Id="1279" Count="0" />
       <LineId Id="943" Count="0" />
-      <LineId Id="712" Count="0" />
       <LineId Id="718" Count="0" />
       <LineId Id="722" Count="0" />
       <LineId Id="724" Count="0" />
@@ -240,6 +238,7 @@ TemperatureCriticalEvent(
       <LineId Id="1126" Count="0" />
       <LineId Id="1054" Count="0" />
       <LineId Id="1034" Count="0" />
+      <LineId Id="2" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
