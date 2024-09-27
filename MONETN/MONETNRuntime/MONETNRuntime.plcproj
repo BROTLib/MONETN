@@ -192,6 +192,10 @@
     </PlaceholderReference>
     <PlaceholderReference Include="BROTLib">
       <DefaultResolution>BROTLib, * (BROT)</DefaultResolution>
+      <Namespace>BROTLib</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="MONET Roof">
+      <DefaultResolution>MONET Roof, * (Georg-August-Universitaet Goettingen)</DefaultResolution>
     </PlaceholderReference>
     <PlaceholderReference Include="System_VisuElemMeter">
       <DefaultResolution>VisuElemMeter, 3.5.13.0 (System)</DefaultResolution>

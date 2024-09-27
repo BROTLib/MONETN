@@ -37,9 +37,10 @@ VAR
 //	LightSwitch:		FB_ButtonEnable;
 //	Lightbutton: 		BOOL;
 	bExecute:			BOOL := TRUE;
-	cabinet_temperature_warning:	SR;
-	cabinet_temperature_critical:	SR;
-	MQTTClient:		FB_Comm_MQTT_Influx;
+	cabinet_temperature_warning		: SR;
+	cabinet_temperature_critical	: SR;
+	MQTTClient						: FB_Comm_MQTT_Influx;
+	RoofControl						: FB_RoofControl;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -107,7 +108,20 @@ ElevationControl();	//
 AzimuthElevationControl();	//
 DerotatorControl();	//
 FocusControl();
-//RoofControl();
+
+// Roof
+RoofControl(
+	min_speed			:= 1000,
+	max_speed 			:= 30000, 
+	acceleration 		:= 500,
+	min_position 		:= 0,
+	max_position 		:= 50,
+	max_position_diff	:= 5,
+	limit_slowdown		:= 20,
+	comm				:= MQTTClient
+);
+
+// MQTT
 MQTTClient(	
 	sHostName	:= '169.254.146.10',
     nHostPort   := 1883,
@@ -201,6 +215,10 @@ TemperatureCriticalEvent(
       <LineId Id="998" Count="0" />
       <LineId Id="703" Count="3" />
       <LineId Id="708" Count="0" />
+      <LineId Id="1367" Count="1" />
+      <LineId Id="1370" Count="8" />
+      <LineId Id="1369" Count="0" />
+      <LineId Id="1366" Count="0" />
       <LineId Id="1279" Count="0" />
       <LineId Id="1320" Count="5" />
       <LineId Id="943" Count="0" />
