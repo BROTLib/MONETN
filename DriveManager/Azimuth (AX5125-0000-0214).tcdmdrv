@@ -16,15 +16,15 @@
         <AxisSetting Channel="0">
           <Property>
             <Name>Feedback1Connector0</Name>
-            <Value>0</Value>
+            <Value>41</Value>
           </Property>
           <Property>
             <Name>Feedback1Connector1</Name>
-            <Value>3</Value>
+            <Value>41</Value>
           </Property>
           <Property>
             <Name>Feedback1Connector2</Name>
-            <Value>3</Value>
+            <Value>41</Value>
           </Property>
           <Property>
             <Name>NcFeedConstant</Name>
@@ -363,7 +363,7 @@
       <SortId>0</SortId>
       <DriveModuleType>31</DriveModuleType>
       <TcLink>
-        <TcPrjPath>..\STELLA1\MONET.tsproj</TcPrjPath>
+        <TcPrjPath>..\MONETN\MONETN.tsproj</TcPrjPath>
         <IoItemPathName>TIID^Device 5 (EtherCAT)^Azimuth (AX5125-0000-0214)</IoItemPathName>
         <ItemId>1</ItemId>
         <ObjectId>#x03020001</ObjectId>
@@ -375,8 +375,6 @@
       <HardwareVersion>c:0180  p:0103  d:0102  f:0101  o:0101  s:----</HardwareVersion>
       <SerialNr>Serial#: 000530596</SerialNr>
       <ProductRevision>AX5125-0000-0214</ProductRevision>
-      <HasDualUseInfo>true</HasDualUseInfo>
-      <OperatingFrequencyLimitation>true</OperatingFrequencyLimitation>
       <WatchLog UpdateIntervalInMs="500">
         <WatchLogItem>
           <WatchLogParaSoE Index="33092" />
@@ -462,7 +460,7 @@
         </Device>
         <Channel ChnId="0">
           <TcLink>
-            <TcPrjPath>..\STELLA1\MONET.tsproj</TcPrjPath>
+            <TcPrjPath>..\MONETN\MONETN.tsproj</TcPrjPath>
             <IoItemPathName>TIID^Device 5 (EtherCAT)^Azimuth (AX5125-0000-0214)</IoItemPathName>
             <NcItemPathName AxisType="1">TINC^NC-Task 1 SAF^Axes^Azimuth</NcItemPathName>
           </TcLink>
@@ -493,14 +491,14 @@
           <Block Id="0">
             <Motor IsManualInput="true" IsManualMFiInput="false">
               <DatabaseType>
-                <SchemaVersion />
-                <DataVersion />
+                <SchemaVersion></SchemaVersion>
+                <DataVersion></DataVersion>
                 <OrderCode>TMA0360-070-3VC</OrderCode>
-                <GroupType />
+                <GroupType></GroupType>
                 <ElectricMotorType>TMA0360-070-3VC</ElectricMotorType>
-                <MotorfeedbackType />
-                <MotorbrakeType />
-                <AssemblyType />
+                <MotorfeedbackType></MotorfeedbackType>
+                <MotorbrakeType></MotorbrakeType>
+                <AssemblyType></AssemblyType>
                 <VendorName>ETEL</VendorName>
                 <IsAc>true</IsAc>
                 <ConstructType>0</ConstructType>
@@ -902,32 +900,32 @@
                   <Data type="int8" unitSiNumerator="second">2</Data>
                 </Parameter>
                 <Parameter>
-                  <Comment LcId="1033" />
+                  <Comment LcId="1033"></Comment>
                   <Name>PowerManagement_DelayTimeAfterPowerUp</Name>
                   <Data type="real64" unitSiNumerator="second">0.8</Data>
                 </Parameter>
                 <Parameter>
-                  <Comment LcId="1033" />
+                  <Comment LcId="1033"></Comment>
                   <Name>RelativePositonData_ResolutionPerRotation</Name>
                   <Data type="int32">36000</Data>
                 </Parameter>
                 <Parameter>
-                  <Comment LcId="1033" />
+                  <Comment LcId="1033"></Comment>
                   <Name>AbsolutePositionData_ResolutionSinglePos</Name>
                   <Data type="int16">0</Data>
                 </Parameter>
                 <Parameter>
-                  <Comment LcId="1033" />
+                  <Comment LcId="1033"></Comment>
                   <Name>AbsolutePositionData_ResolutionMultiPos</Name>
                   <Data type="int16">0</Data>
                 </Parameter>
                 <Parameter>
-                  <Comment LcId="1033" />
+                  <Comment LcId="1033"></Comment>
                   <Name>AbsolutePositionData_NumberOfClockCyclesForSinglePos</Name>
                   <Data type="int16">0</Data>
                 </Parameter>
                 <Parameter>
-                  <Comment LcId="1033" />
+                  <Comment LcId="1033"></Comment>
                   <Name>AbsolutePositionData_NumberOfClockCyclesForMultiPos</Name>
                   <Data type="int16">0</Data>
                 </Parameter>
@@ -1325,10 +1323,6 @@
             <WatchLogItem>
               <WatchLogParaSoE Index="51" />
               <Alias>Motor ratation angle</Alias>
-            </WatchLogItem>
-            <WatchLogItem>
-              <WatchLogParaSoE Index="34770" SubItemPath="Bit0" />
-              <Alias>Safety option state / Drive in a safe state</Alias>
             </WatchLogItem>
           </WatchLog>
         </Channel>
@@ -1765,7 +1759,7 @@
               <IDN>104</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>5802</Data>
+              <Data>0600</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -1776,7 +1770,7 @@
               <IDN>33019</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>080008000000080001000000</Data>
+              <Data>080008000000090001000000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -1842,7 +1836,7 @@
               <IDN>32918</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>e000e00000000000556e6b6e23315670702d3336303030532d35560000000000000000000000000000000000000000000200200303000000000000000100030000000000a08c000000000000e8030000e8030000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</Data>
+              <Data>e000e00000000000556e6b6e23315670702d3336303030532d35560000000000000000000000000000000000000000000200200329000000000000000100290000000000a08c000000000000e8030000e8030000000000000000000000000000000000000000000000000000000029000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -1853,7 +1847,7 @@
               <IDN>33282</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>0c000c0001000000f401e803bc020000</Data>
+              <Data>0c000c0001000000c800e803bc020000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -1886,7 +1880,7 @@
               <IDN>32839</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>080008004865020000000000</Data>
+              <Data>0800080048650200005a6202</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2139,7 +2133,7 @@
               <IDN>33279</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>9600</Data>
+              <Data>c800</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2150,7 +2144,7 @@
               <IDN>100</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>781f0100</Data>
+              <Data>40787d01</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2161,7 +2155,7 @@
               <IDN>101</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>5000</Data>
+              <Data>f401</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2173,6 +2167,28 @@
               <Elements>64</Elements>
               <Attribute>0</Attribute>
               <Data>0900</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[Current command value filter 0]]></Comment>
+              <Timeout>0</Timeout>
+              <OpCode>3</OpCode>
+              <DriveNo>0</DriveNo>
+              <IDN>33281</IDN>
+              <Elements>64</Elements>
+              <Attribute>0</Attribute>
+              <Data>40004000010000000100000019000000000000000a0000000000000000000000000000001e0000000310a0000000000000000000fdef5f3f000000000000000000000000</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[Velocity filter 1: Gain at infinite frequency]]></Comment>
+              <Timeout>0</Timeout>
+              <OpCode>3</OpCode>
+              <DriveNo>0</DriveNo>
+              <IDN>33280</IDN>
+              <Elements>64</Elements>
+              <Attribute>0</Attribute>
+              <Data>804a5d05</Data>
             </InitCmd>
           </InitCmds>
         </SoE>
@@ -2898,7 +2914,7 @@
       </TwinCAT>
     </Slave>
     <AmsAddress>
-      <AmsNetId>5.131.251.159.6.1</AmsNetId>
+      <AmsNetId>192.168.56.1.6.1</AmsNetId>
       <AmsPort>1001</AmsPort>
     </AmsAddress>
     <SoeChannels>1</SoeChannels>
