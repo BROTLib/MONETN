@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<SafetyDeviceDesc Crc="1657430365" FileFormatVersion="1.9">
+<SafetyDeviceDesc Crc="1278505843" FileFormatVersion="1.9">
   <AliasDeviceType>
     <Type>4</Type>
     <SubType>66327</SubType>
@@ -96,7 +96,7 @@
       <Param Index="12033" SubIndex="0">00</Param>
       <Param Index="12034" SubIndex="0">00</Param>
       <Param Index="12035" SubIndex="0">00</Param>
-      <Param Index="26178" SubIndex="0">01</Param>
+      <Param Index="26178" SubIndex="0">00</Param>
       <Param Index="26193" SubIndex="1">0000</Param>
       <Param Index="26193" SubIndex="2">0000</Param>
       <Param Index="26193" SubIndex="3">0000</Param>
@@ -344,7 +344,7 @@
       <Param Index="26348" SubIndex="6">00000000</Param>
       <Param Index="26348" SubIndex="7">00000000</Param>
       <Param Index="26348" SubIndex="8">00000000</Param>
-      <Param Index="59649" SubIndex="9">E46FEBD8</Param>
+      <Param Index="59649" SubIndex="9">626FDAD0</Param>
       <Param Index="61520" SubIndex="1">17030100</Param>
       <Messages>
         <IO>
