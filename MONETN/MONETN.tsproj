@@ -3200,7 +3200,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{1A27A43C-8522-72E2-A7C4-CF46520B9CFC}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{FA79F557-E754-0D4C-B237-4319363638AB}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -5605,7 +5605,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 								<Entry Name="Status__TxPDO Toggle" Index="#x6020" Sub="#x10">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Value" Index="#x6020" Sub="#x11" Flags="#x00020000">
+								<Entry Name="Value" Index="#x6020" Sub="#x11" Flags="#x00060000">
 									<Type>INT</Type>
 								</Entry>
 							</Pdo>
@@ -11950,6 +11950,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="PlcTask Outputs^GVL_Telescope.open_cover3" VarB="Channel 1^GVL_Telescope.open_cover3"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Temperature IN (EL3164)">
+				<Link VarA="PlcTask Inputs^GVL_Hydraulics.oil_level" VarB="OilLevel^Value"/>
 				<Link VarA="PlcTask Inputs^GVL_Telescope.temperature_mirror1" VarB="TempM1^Value"/>
 				<Link VarA="PlcTask Inputs^GVL_Telescope.temperature_mirror2" VarB="TempM2^Value"/>
 			</OwnerB>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
   <POU Name="HydraulicsControl" Id="{6bf4055d-2300-4039-bb16-5b9f94622e06}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM HydraulicsControl
 VAR_INPUT
@@ -58,8 +58,6 @@ VAR
 	main_pump_watchdog:	TON;
 	// watch the hydraulics and suction pumps
 	hydraulics_watchdog: TON;
-	// the suction pump is activated for at least 55s when maximum is reached
-	suction_pump_timer: TOF;
 	// represents the state of the main pump
 	oil_pump_state:		RS;
 	// represents the state of the brake
@@ -70,23 +68,27 @@ VAR
 	brake_opened_delay:	TON;
 	// error state (set dominant)
 	error_state:	SR;
+	// trigger for suction pump
+	suction_trigger:	SR;
 	// timer to shut off hydraulics after break was closed
-	hydraulics_off_timer:	TOF  := (PT := T#30S);
+	hydraulics_off_timer:	TON  := (PT := T#300S);
 	off_trigger:	F_TRIG;
+	oil_level, last_oil_level:		REAL;
 	HydraulicsLog,
 	PumpLog,
 	ReserveLog,
 	oil_low_log,
 	FilterLog,
+	oil_max_log,
 	OverTemperatureLog,
 	UnderTemperatureLog,
 	SuctionLog,
+	HydraulicsFailureLog,
 	BrakeClearingWarning,
 	BrakeHydraulicsWarning,
 	BrakeWarning: FB_EventLog;
 	
 	// measures the operating cycle of the suction pump
-	suction_timer : FB_Timer;
 	StatusWord, LastStatus:	UDINT;
 END_VAR]]></Declaration>
     <Implementation>
@@ -106,15 +108,21 @@ oil_pressure_OK := GVL_Hydraulics.oil_pressure_OK;
 oil_filter_dirty := NOT GVL_Hydraulics.oilfilter_dirty;
 oil_cold := NOT GVL_Hydraulics.oil_undertemperature;
 oil_hot := GVL_Hydraulics.oil_overtemperature;
+oil_level := F_YREAL(GVL_Hydraulics.oil_level, 0, 16383, 0.0, 5.0);
 pump_running := GVL_Hydraulics.pump_running;
 suction_running := GVL_Hydraulics.suction_running;
 
 error_state(SET1 := pressure_failure OR	suction_failure OR hydraulics_failure OR oil_low OR main_pump_failure,
 			RESET := reset,
 			Q1 => error);
+// clear reset, if no error present
+
+IF NOT error THEN
+	reset := FALSE;
+END_IF
 
 oil_pump_state(SET := enable,
-				RESET1 := NOT enable OR error OR pump_manual_stop);
+				RESET1 := NOT enable OR error OR pump_manual_stop OR GVL_Hydraulics.oilpan_maximum);
 
 GVL_Hydraulics.oil_pump_enable := oil_pump_state.Q1;
 
@@ -150,25 +158,20 @@ IF brake_closed THEN
 	iclose_brake := FALSE;
 END_IF
 // turn off the hydraulics if the brake is closed and the pump is still running
-hydraulics_off_timer(IN := brake_open AND pump_running );
+hydraulics_off_timer(IN := brake_closed AND enable );
 off_trigger(CLK := hydraulics_off_timer.Q);
 
-IF off_trigger.Q THEN
+IF hydraulics_off_timer.Q THEN
 	enable := FALSE;
 END_IF
 
 (* This is the end of the brake control section *)
 
-// measure suction pump cycle
-suction_timer(	bStart := suction_running AND NOT suction_pump_timer.Q, 
-				bStop := GVL_Hydraulics.oilpan_maximum);  
-
-suction_pump_timer(IN := GVL_Hydraulics.oilpan_maximum,
-					PT := T#90S,
-					Q => GVL_Hydraulics.oil_suction_enable);
-GVL_Hydraulics.oil_suction_enable := suction_pump_timer.Q OR suction_manual;					
+suction_trigger(SET1 := GVL_Hydraulics.oilpan_maximum OR oil_level>3.0,
+				RESET := oil_level<1.2);
+GVL_Hydraulics.oil_suction_enable := suction_trigger.Q1 OR suction_manual;					
 suction_watchdog(IN := GVL_Hydraulics.oil_suction_enable AND NOT suction_running,
-					PT := T#10S,
+					PT := T#15S,
 					Q => suction_failure);
 					
 pressure_watchdog(IN := GVL_Hydraulics.oil_pump_enable AND 
@@ -194,11 +197,21 @@ StatusWord.7 := brake_open;
 StatusWord.8 := GVL_Main.brake_clearing;
 StatusWord.9 := pump_running;
 StatusWord.10 := suction_running;
+StatusWord.11 := GVL_Hydraulics.oilpan_maximum;
+StatusWord.12 := GVL_Hydraulics.oil_pump_enable;
+StatusWord.13 := GVL_Hydraulics.oil_suction_enable;
+IF ABS(last_oil_level - oil_level) > 0.02 THEN
+	StatusWord.15 := TRUE;
+	last_oil_level := oil_level;
+ELSE
+	StatusWord.15 := FALSE;
+END_IF
 
 IF StatusWord<>LastStatus THEN // publish new payload every second
 	LastStatus := StatusWord;
 	MAIN.MQTTClient.Publish('hydraulics', 'base', 'OilLow',			BOOL_TO_STRING(oil_low));
 	MAIN.MQTTClient.Publish('hydraulics', 'base', 'OilHigh',		BOOL_TO_STRING(oil_high));
+	MAIN.MQTTClient.Publish('hydraulics', 'base', 'OilMaximum',		BOOL_TO_STRING(GVL_Hydraulics.oilpan_maximum));
 	MAIN.MQTTClient.Publish('hydraulics', 'base', 'OilReserve',		BOOL_TO_STRING(oil_warning));
 	MAIN.MQTTClient.Publish('hydraulics', 'base', 'OilPressureOK', 	BOOL_TO_STRING(oil_pressure_OK));
 	MAIN.MQTTClient.Publish('hydraulics', 'base', 'OilFilterDirty',	BOOL_TO_STRING(oil_filter_dirty));
@@ -208,6 +221,8 @@ IF StatusWord<>LastStatus THEN // publish new payload every second
 	MAIN.MQTTClient.Publish('hydraulics', 'base', 'BrakeClearing',	BOOL_TO_STRING(GVL_Main.brake_clearing));
 	MAIN.MQTTClient.Publish('hydraulics', 'base', 'PumpRunning',	BOOL_TO_STRING(pump_running));
 	MAIN.MQTTClient.Publish('hydraulics', 'base', 'SuctionRunning',	BOOL_TO_STRING(suction_running));
+	MAIN.MQTTClient.Publish('hydraulics', 'base', 'OilLevel',		REAL_TO_STRING(oil_level));
+	MAIN.MQTTClient.Publish('hydraulics', 'base', 'StatusWord',		UDINT_TO_STRING(StatusWord));
 END_IF
 
 
@@ -240,6 +255,13 @@ oil_low_log(Trigger := oil_low,
 				OffMessage := 'OK',
 				OffLevel := ADSLOG_MSGTYPE_HINT);
 
+oil_max_log(Trigger := GVL_Hydraulics.oilpan_maximum,
+				Level := ADSLOG_MSGTYPE_ERROR,
+				FormatString := 'oil level: %s',
+				OnMessage := 'MAXIMUM',
+				OffMessage := 'OK',
+				OffLevel := ADSLOG_MSGTYPE_HINT);	
+				
 FilterLog(Trigger := oil_filter_dirty,
 				Level := ADSLOG_MSGTYPE_WARN,
 				FormatString := 'Hydraulics Filter is %s',
@@ -249,18 +271,26 @@ OverTemperatureLog(Trigger := oil_hot,
 				Level := ADSLOG_MSGTYPE_WARN,
 				FormatString := 'Hydraulics Temperature is %s',
 				OnMessage := 'high.');
+				
 UnderTemperatureLog(Trigger := oil_cold,
 				Level := ADSLOG_MSGTYPE_WARN,
 				FormatString := 'Hydraulics Temperature is %s',
 				OnMessage := 'low.');
 
-SuctionLog(Trigger := suction_failure OR hydraulics_failure,
+SuctionLog(Trigger := suction_failure,
 				Level := ADSLOG_MSGTYPE_ERROR,
 				FormatString := 'suction pump: %s',
 				OnMessage := 'FAILURE',
 				OffMessage := 'OK',
 				OffLevel := ADSLOG_MSGTYPE_HINT);
 
+HydraulicsFailureLog(Trigger := hydraulics_failure,
+				Level := ADSLOG_MSGTYPE_ERROR,
+				FormatString := 'suction pump while running main pump: %s',
+				OnMessage := 'FAILURE',
+				OffMessage := 'OK',
+				OffLevel := ADSLOG_MSGTYPE_HINT);
+				
 BrakeClearingWarning(Trigger := NOT Main.brake_clearing AND iopen_brake,
 				Level := ADSLOG_MSGTYPE_WARN,
 				FormatString := '%s',
@@ -305,8 +335,7 @@ RETURN(brake_open);]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="HydraulicsControl">
-      <LineId Id="3564" Count="73" />
-      <LineId Id="3639" Count="110" />
+      <LineId Id="3750" Count="212" />
       <LineId Id="708" Count="0" />
     </LineIds>
     <LineIds Name="HydraulicsControl.close_brake">
