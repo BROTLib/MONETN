@@ -199,7 +199,7 @@
       </DialogSettings>
       <InitCmds>
         <InitCmd DriveNo="0" IDN="30" MotorDataLevel="0" DisableMode="0">
-          <RetainData>3e0042004669726d776172653a2076322e313420284275696c64203030303629202f20426f6f746c6f616465723a2076322e303220284275696c6420303030322900</RetainData>
+          <RetainData>3e003e004669726d776172653a2076322e313420284275696c64203030303629202f20426f6f746c6f616465723a2076322e303220284275696c6420303030322900</RetainData>
         </InitCmd>
         <InitCmd DriveNo="0" IDN="91" MotorDataLevel="1" DisableMode="0" />
         <InitCmd DriveNo="0" IDN="100" MotorDataLevel="1" DisableMode="0" />
@@ -213,7 +213,7 @@
         <InitCmd DriveNo="0" IDN="201" MotorDataLevel="1" DisableMode="0" />
         <InitCmd DriveNo="0" IDN="204" MotorDataLevel="1" DisableMode="0" />
         <InitCmd DriveNo="0" IDN="432" MotorDataLevel="0" DisableMode="0">
-          <RetainData>1200160053657269616c233a20303030353330353936</RetainData>
+          <RetainData>1200120053657269616c233a20303030353330353936</RetainData>
         </InitCmd>
         <InitCmd DriveNo="0" IDN="32770" MotorDataLevel="1" DisableMode="0" />
         <InitCmd DriveNo="0" IDN="32818" MotorDataLevel="1" DisableMode="0" />
@@ -238,7 +238,7 @@
           <RetainData>24002400d6000600ca0002002c9d5b002c9d5b00c8000500660000001b534c002260000000000000</RetainData>
         </InitCmd>
         <InitCmd DriveNo="0" IDN="33093" MotorDataLevel="0" DisableMode="0">
-          <RetainData>16001a004a756e2020322032303232202c2031363a32303a3538</RetainData>
+          <RetainData>160016004a756e2020322032303232202c2031363a32303a3538</RetainData>
         </InitCmd>
         <InitCmd DriveNo="0" IDN="33219" MotorDataLevel="1" DisableMode="0" />
         <InitCmd DriveNo="0" IDN="33279" MotorDataLevel="1" DisableMode="0" />
@@ -408,6 +408,7 @@
       <Infeed>
         <PowerSupplyMains>
           <Name>InfeedTypePowerSupplyMains</Name>
+          <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
           <Parameter>
             <PropertyName>PowerSupplyType</PropertyName>
             <Value>4</Value>
@@ -445,6 +446,7 @@
       <Inverter>
         <Device>
           <Name>DMInverterTypeDevice</Name>
+          <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
           <Parameter>
             <PropertyName>MaxAllowedMainVoltage</PropertyName>
             <Value>0</Value>
@@ -467,6 +469,7 @@
           <SelectedModifyOptPDOsMode>0</SelectedModifyOptPDOsMode>
           <Modulo>
             <Name>ControllerModuloType</Name>
+            <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
             <Parameter>
               <PropertyName>Modulo_IsOn</PropertyName>
               <Value>0</Value>
@@ -638,7 +641,7 @@
                 </Parameter>
                 <Parameter>
                   <Name>TempSensorType</Name>
-                  <Data type="int16">5</Data>
+                  <Data type="int16">4</Data>
                 </Parameter>
                 <Parameter>
                   <Name>TempSensorCon</Name>
@@ -647,28 +650,28 @@
                 <Parameter>
                   <Name>TempSensorRT</Name>
                   <DataTable type="real641" unitSiNumerator="45">
-                    <item>-50</item>
-                    <item>0</item>
-                    <item>20</item>
-                    <item>40</item>
-                    <item>70</item>
-                    <item>100</item>
-                    <item>110</item>
-                    <item>120</item>
-                    <item>150</item>
-                    <item>175</item>
+                    <item>-29.5</item>
+                    <item>2.3</item>
+                    <item>31.4</item>
+                    <item>58</item>
+                    <item>82.3</item>
+                    <item>105</item>
+                    <item>125</item>
+                    <item>144</item>
+                    <item>161</item>
+                    <item>178</item>
                   </DataTable>
                   <DataTable type="real641" unitSiNumerator="40">
-                    <item>803</item>
-                    <item>1000</item>
-                    <item>1078</item>
-                    <item>1155</item>
-                    <item>1271</item>
-                    <item>1385</item>
-                    <item>1423</item>
-                    <item>1460</item>
-                    <item>1573</item>
-                    <item>1666</item>
+                    <item>384</item>
+                    <item>512</item>
+                    <item>640</item>
+                    <item>768</item>
+                    <item>896</item>
+                    <item>1024</item>
+                    <item>1152</item>
+                    <item>1280</item>
+                    <item>1408</item>
+                    <item>1540</item>
                   </DataTable>
                 </Parameter>
               </DatabaseParameters>
@@ -864,7 +867,7 @@
                     <IDN>32829</IDN>
                     <Elements>64</Elements>
                     <Attribute>0</Attribute>
-                    <Data>0900</Data>
+                    <Data>0300</Data>
                   </InitCmd>
                 </SoE>
               </Calc>
@@ -1007,6 +1010,7 @@
             <Load MoveStyle="Rotary">
               <IsMotorRotary>true</IsMotorRotary>
               <Name>InverterChannelTypeBlockLoad</Name>
+              <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
               <Parameter>
                 <PropertyName>FeedConstantUnit</PropertyName>
                 <Value>°</Value>
@@ -1037,7 +1041,7 @@
               </Parameter>
               <Parameter>
                 <PropertyName>LoadInertiaMass</PropertyName>
-                <Value>0</Value>
+                <Value>40</Value>
               </Parameter>
               <Parameter>
                 <PropertyName>MaxApplicationTorqueForce</PropertyName>
@@ -1051,29 +1055,31 @@
             <Controller>
               <Filter Id="0">
                 <Name>ControllerFilter</Name>
+                <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
                 <Parameter>
                   <PropertyName>Filter_Type</PropertyName>
-                  <Value>0</Value>
+                  <Value>1</Value>
                 </Parameter>
                 <Parameter>
                   <PropertyName>Filter_LowPassFrequency</PropertyName>
-                  <Value>500</Value>
+                  <Value>25</Value>
                 </Parameter>
                 <Parameter>
                   <PropertyName>Filter_LowPassDamping</PropertyName>
-                  <Value>0.5</Value>
+                  <Value>0</Value>
                 </Parameter>
                 <Parameter>
                   <PropertyName>Filter_HighPassFrequency</PropertyName>
-                  <Value>1000</Value>
+                  <Value>10</Value>
                 </Parameter>
                 <Parameter>
                   <PropertyName>Filter_HighPassDamping</PropertyName>
-                  <Value>0.5</Value>
+                  <Value>0</Value>
                 </Parameter>
               </Filter>
               <Filter Id="1">
                 <Name>ControllerFilter</Name>
+                <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
                 <Parameter>
                   <PropertyName>Filter_Type</PropertyName>
                   <Value>0</Value>
@@ -1097,6 +1103,7 @@
               </Filter>
               <Filter Id="2">
                 <Name>ControllerFilter</Name>
+                <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
                 <Parameter>
                   <PropertyName>Filter_Type</PropertyName>
                   <Value>0</Value>
@@ -1120,6 +1127,7 @@
               </Filter>
               <Filter Id="3">
                 <Name>ControllerFilter</Name>
+                <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
                 <Parameter>
                   <PropertyName>Filter_Type</PropertyName>
                   <Value>0</Value>
@@ -1143,6 +1151,7 @@
               </Filter>
               <Filter Id="4">
                 <Name>ControllerFilter</Name>
+                <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
                 <Parameter>
                   <PropertyName>Filter_Type</PropertyName>
                   <Value>0</Value>
@@ -1166,6 +1175,7 @@
               </Filter>
               <Filter Id="5">
                 <Name>ControllerFilter</Name>
+                <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
                 <Parameter>
                   <PropertyName>Filter_Type</PropertyName>
                   <Value>0</Value>
@@ -1189,6 +1199,7 @@
               </Filter>
               <Filter Id="6">
                 <Name>ControllerFilter</Name>
+                <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
                 <Parameter>
                   <PropertyName>Filter_Type</PropertyName>
                   <Value>0</Value>
@@ -1212,6 +1223,7 @@
               </Filter>
               <Filter Id="7">
                 <Name>ControllerFilter</Name>
+                <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
                 <Parameter>
                   <PropertyName>Filter_Type</PropertyName>
                   <Value>0</Value>
@@ -1792,7 +1804,7 @@
               <IDN>32933</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>3c003c000000000064000000f401b80b0000000000000000f4016400f401f40104000500e1009600b80b84030000000000000000000000000000000000000000</Data>
+              <Data>3c003c000100000064000000f401b80b0000000000000000f4016400f401f40104000500e1009600b80b84030000000000000000000000000000000000000000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2001,7 +2013,7 @@
               <IDN>32844</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>280028000cfe0000c8009001bc02e8034c04b004dc05d6062303e80336048304f70469058f05b40525068206</Data>
+              <Data>28002800d9fe17003a01440237031a04e204a0054a06f4068001000280020003800300048004000580050406</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2166,7 +2178,7 @@
               <IDN>32829</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>0900</Data>
+              <Data>0300</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2848,6 +2860,7 @@
           <Name>DcSync250</Name>
           <Desc>Sync cycle time: 250µs</Desc>
           <AssignActivate>#x730</AssignActivate>
+          <ActivateAdditional>#x0</ActivateAdditional>
           <CycleTimeSync0 Factor="0">250000</CycleTimeSync0>
           <ShiftTimeSync0>0</ShiftTimeSync0>
           <CycleTimeSync1 Factor="-1">0</CycleTimeSync1>
@@ -2857,6 +2870,7 @@
           <Name>DcSync125</Name>
           <Desc>Sync cycle time: 125µs</Desc>
           <AssignActivate>#x730</AssignActivate>
+          <ActivateAdditional>#x0</ActivateAdditional>
           <CycleTimeSync0 Factor="0">125000</CycleTimeSync0>
           <ShiftTimeSync0>0</ShiftTimeSync0>
           <CycleTimeSync1 Factor="-1">0</CycleTimeSync1>
@@ -2864,8 +2878,9 @@
         </OpMode>
         <OpMode>
           <Name>DcSync62.5</Name>
-          <Desc>Sync cycle time: 62.5µs</Desc>
+          <Desc>Sync cycle time: 62.5µ</Desc>
           <AssignActivate>#x730</AssignActivate>
+          <ActivateAdditional>#x0</ActivateAdditional>
           <CycleTimeSync0 Factor="0">62500</CycleTimeSync0>
           <ShiftTimeSync0>0</ShiftTimeSync0>
           <CycleTimeSync1 Factor="-1">0</CycleTimeSync1>
@@ -2908,13 +2923,13 @@
           <ObjectId>false</ObjectId>
         </InfoData>
       </Settings>
-      <EsiFile>C:\TwinCAT\3.1\Config\Io\EtherCAT\Beckhoff AX5xxx.xml</EsiFile>
+      <EsiFile>C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\Config\Io\EtherCAT\Beckhoff AX5xxx.xml</EsiFile>
       <TwinCAT>
         <ExtensionSupportFlags>1</ExtensionSupportFlags>
       </TwinCAT>
     </Slave>
     <AmsAddress>
-      <AmsNetId>192.168.56.1.6.1</AmsNetId>
+      <AmsNetId>0.0.0.0.6.1</AmsNetId>
       <AmsPort>1001</AmsPort>
     </AmsAddress>
     <SoeChannels>1</SoeChannels>
