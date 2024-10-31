@@ -411,6 +411,7 @@
       <Infeed>
         <PowerSupplyMains>
           <Name>InfeedTypePowerSupplyMains</Name>
+          <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
           <Parameter>
             <PropertyName>PowerSupplyType</PropertyName>
             <Value>4</Value>
@@ -448,6 +449,7 @@
       <Inverter>
         <Device>
           <Name>DMInverterTypeDevice</Name>
+          <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
           <Parameter>
             <PropertyName>MaxAllowedMainVoltage</PropertyName>
             <Value>0</Value>
@@ -470,6 +472,7 @@
           <SelectedModifyOptPDOsMode>0</SelectedModifyOptPDOsMode>
           <Modulo>
             <Name>ControllerModuloType</Name>
+            <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
             <Parameter>
               <PropertyName>Modulo_IsOn</PropertyName>
               <Value>0</Value>
@@ -1010,6 +1013,7 @@
             <Load MoveStyle="Rotary">
               <IsMotorRotary>true</IsMotorRotary>
               <Name>InverterChannelTypeBlockLoad</Name>
+              <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
               <Parameter>
                 <PropertyName>FeedConstantUnit</PropertyName>
                 <Value>°</Value>
@@ -1040,7 +1044,7 @@
               </Parameter>
               <Parameter>
                 <PropertyName>LoadInertiaMass</PropertyName>
-                <Value>0</Value>
+                <Value>5</Value>
               </Parameter>
               <Parameter>
                 <PropertyName>MaxApplicationTorqueForce</PropertyName>
@@ -1054,29 +1058,31 @@
             <Controller>
               <Filter Id="0">
                 <Name>ControllerFilter</Name>
+                <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
                 <Parameter>
                   <PropertyName>Filter_Type</PropertyName>
-                  <Value>0</Value>
+                  <Value>1</Value>
                 </Parameter>
                 <Parameter>
                   <PropertyName>Filter_LowPassFrequency</PropertyName>
-                  <Value>500</Value>
+                  <Value>100</Value>
                 </Parameter>
                 <Parameter>
                   <PropertyName>Filter_LowPassDamping</PropertyName>
-                  <Value>0.5</Value>
+                  <Value>0</Value>
                 </Parameter>
                 <Parameter>
                   <PropertyName>Filter_HighPassFrequency</PropertyName>
-                  <Value>1000</Value>
+                  <Value>10</Value>
                 </Parameter>
                 <Parameter>
                   <PropertyName>Filter_HighPassDamping</PropertyName>
-                  <Value>0.5</Value>
+                  <Value>0</Value>
                 </Parameter>
               </Filter>
               <Filter Id="1">
                 <Name>ControllerFilter</Name>
+                <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
                 <Parameter>
                   <PropertyName>Filter_Type</PropertyName>
                   <Value>0</Value>
@@ -1100,6 +1106,7 @@
               </Filter>
               <Filter Id="2">
                 <Name>ControllerFilter</Name>
+                <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
                 <Parameter>
                   <PropertyName>Filter_Type</PropertyName>
                   <Value>0</Value>
@@ -1123,6 +1130,7 @@
               </Filter>
               <Filter Id="3">
                 <Name>ControllerFilter</Name>
+                <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
                 <Parameter>
                   <PropertyName>Filter_Type</PropertyName>
                   <Value>0</Value>
@@ -1146,6 +1154,7 @@
               </Filter>
               <Filter Id="4">
                 <Name>ControllerFilter</Name>
+                <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
                 <Parameter>
                   <PropertyName>Filter_Type</PropertyName>
                   <Value>0</Value>
@@ -1169,6 +1178,7 @@
               </Filter>
               <Filter Id="5">
                 <Name>ControllerFilter</Name>
+                <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
                 <Parameter>
                   <PropertyName>Filter_Type</PropertyName>
                   <Value>0</Value>
@@ -1192,6 +1202,7 @@
               </Filter>
               <Filter Id="6">
                 <Name>ControllerFilter</Name>
+                <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
                 <Parameter>
                   <PropertyName>Filter_Type</PropertyName>
                   <Value>0</Value>
@@ -1215,6 +1226,7 @@
               </Filter>
               <Filter Id="7">
                 <Name>ControllerFilter</Name>
+                <ProjectGUID>00000000-0000-0000-0000-000000000000</ProjectGUID>
                 <Parameter>
                   <PropertyName>Filter_Type</PropertyName>
                   <Value>0</Value>
@@ -2822,6 +2834,7 @@
           <Name>DcSync250</Name>
           <Desc>Sync cycle time: 250µs</Desc>
           <AssignActivate>#x730</AssignActivate>
+          <ActivateAdditional>#x0</ActivateAdditional>
           <CycleTimeSync0 Factor="0">250000</CycleTimeSync0>
           <ShiftTimeSync0>0</ShiftTimeSync0>
           <CycleTimeSync1 Factor="-1">0</CycleTimeSync1>
@@ -2831,6 +2844,7 @@
           <Name>DcSync125</Name>
           <Desc>Sync cycle time: 125µs</Desc>
           <AssignActivate>#x730</AssignActivate>
+          <ActivateAdditional>#x0</ActivateAdditional>
           <CycleTimeSync0 Factor="0">125000</CycleTimeSync0>
           <ShiftTimeSync0>0</ShiftTimeSync0>
           <CycleTimeSync1 Factor="-1">0</CycleTimeSync1>
@@ -2838,8 +2852,9 @@
         </OpMode>
         <OpMode>
           <Name>DcSync62.5</Name>
-          <Desc>Sync cycle time: 62.5µs</Desc>
+          <Desc>Sync cycle time: 62.5µ</Desc>
           <AssignActivate>#x730</AssignActivate>
+          <ActivateAdditional>#x0</ActivateAdditional>
           <CycleTimeSync0 Factor="0">62500</CycleTimeSync0>
           <ShiftTimeSync0>0</ShiftTimeSync0>
           <CycleTimeSync1 Factor="-1">0</CycleTimeSync1>
@@ -2882,13 +2897,13 @@
           <ObjectId>false</ObjectId>
         </InfoData>
       </Settings>
-      <EsiFile>C:\TwinCAT\3.1\Config\Io\EtherCAT\Beckhoff AX5xxx.xml</EsiFile>
+      <EsiFile>C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\Config\Io\EtherCAT\Beckhoff AX5xxx.xml</EsiFile>
       <TwinCAT>
         <ExtensionSupportFlags>1</ExtensionSupportFlags>
       </TwinCAT>
     </Slave>
     <AmsAddress>
-      <AmsNetId>192.168.56.1.6.1</AmsNetId>
+      <AmsNetId>0.0.0.0.6.1</AmsNetId>
       <AmsPort>1003</AmsPort>
     </AmsAddress>
     <SoeChannels>1</SoeChannels>
