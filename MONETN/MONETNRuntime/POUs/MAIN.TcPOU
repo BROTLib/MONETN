@@ -115,7 +115,7 @@ RoofControl(
 	max_speed 			:= 30000, 
 	acceleration 		:= 150,
 	min_position 		:= 0,
-	max_position 		:= 200,
+	max_position 		:= 202,
 	max_position_diff	:= 2,
 	limit_slowdown		:= 5,
 	comm				:= MQTTClient
