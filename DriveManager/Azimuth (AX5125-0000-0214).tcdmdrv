@@ -494,14 +494,14 @@
           <Block Id="0">
             <Motor IsManualInput="true" IsManualMFiInput="false">
               <DatabaseType>
-                <SchemaVersion></SchemaVersion>
-                <DataVersion></DataVersion>
-                <OrderCode>TMA0360-070-3VC</OrderCode>
-                <GroupType></GroupType>
-                <ElectricMotorType>TMA0360-070-3VC</ElectricMotorType>
-                <MotorfeedbackType></MotorfeedbackType>
-                <MotorbrakeType></MotorbrakeType>
-                <AssemblyType></AssemblyType>
+                <SchemaVersion />
+                <DataVersion />
+                <OrderCode>TMA 0530-070-3VD</OrderCode>
+                <GroupType />
+                <ElectricMotorType>TMA 0530-070-3VD</ElectricMotorType>
+                <MotorfeedbackType />
+                <MotorbrakeType />
+                <AssemblyType />
                 <VendorName>ETEL</VendorName>
                 <IsAc>true</IsAc>
                 <ConstructType>0</ConstructType>
@@ -516,37 +516,37 @@
                 <Parameter>
                   <Comment LcId="1033">Order code</Comment>
                   <Name>OrderCode</Name>
-                  <Data type="visibleString">TMA0360-070-3VC</Data>
+                  <Data type="visibleString">TMA 0530-070-3VD</Data>
                 </Parameter>
                 <Parameter>
                   <Comment LcId="1033">Standstill torque</Comment>
                   <Name>M0</Name>
-                  <Data type="real64" unitSiNumerator="86">162</Data>
+                  <Data type="real64" unitSiNumerator="86">396.924</Data>
                 </Parameter>
                 <Parameter>
                   <Comment LcId="1033">Standstill current</Comment>
                   <Name>I0rms</Name>
-                  <Data type="real64" unitSiNumerator="4">12</Data>
+                  <Data type="real64" unitSiNumerator="4">13.64</Data>
                 </Parameter>
                 <Parameter>
                   <Comment LcId="1033">Rated current</Comment>
                   <Name>Inrms</Name>
-                  <Data type="real64" unitSiNumerator="4">16.96</Data>
+                  <Data type="real64" unitSiNumerator="4">14.08</Data>
                 </Parameter>
                 <Parameter>
                   <Comment LcId="1033">Peak torque</Comment>
                   <Name>Mpeak</Name>
-                  <Data type="real64" unitSiNumerator="86">686</Data>
+                  <Data type="real64" unitSiNumerator="86">1633</Data>
                 </Parameter>
                 <Parameter>
                   <Comment LcId="1033">Peak current</Comment>
                   <Name>Iprms</Name>
-                  <Data type="real64" unitSiNumerator="4">50.81</Data>
+                  <Data type="real64" unitSiNumerator="4">74.8</Data>
                 </Parameter>
                 <Parameter>
                   <Comment LcId="1033">Max. mechanical speed</Comment>
                   <Name>Nmax</Name>
-                  <Data type="real64" unitSiNumerator="225">180</Data>
+                  <Data type="real64" unitSiNumerator="225">140</Data>
                 </Parameter>
                 <Parameter>
                   <Comment LcId="1033">Max. rated mains voltage</Comment>
@@ -561,27 +561,37 @@
                 <Parameter>
                   <Comment LcId="1033">Voltage constant</Comment>
                   <Name>kErms</Name>
-                  <Data type="real64" unitSiNumerator="38" unitSiDenominator="225">1.1519</Data>
+                  <Data type="real64" unitSiNumerator="38" unitSiDenominator="225">2.4714</Data>
                 </Parameter>
                 <Parameter>
                   <Comment LcId="1033">Pole pairs</Comment>
                   <Name>PolePairs</Name>
-                  <Data type="real64">33</Data>
+                  <Data type="real64">44</Data>
                 </Parameter>
                 <Parameter>
                   <Comment LcId="1033">Winding resistance R Ph-Ph 20°C</Comment>
                   <Name>R</Name>
-                  <Data type="real64" unitSiNumerator="40">0.9</Data>
+                  <Data type="real64" unitSiNumerator="40">1.1</Data>
                 </Parameter>
                 <Parameter>
-                  <Comment LcId="1033">Winding inductance L Ph-Ph 20°C</Comment>
+                  <Comment LcId="1033">Winding inductance Lq Ph-Ph 20°C</Comment>
                   <Name>Lq</Name>
-                  <Data type="real64" unitSiNumerator="44">0.0048</Data>
+                  <Data type="real64" unitSiNumerator="44">0.0091</Data>
                 </Parameter>
                 <Parameter>
                   <Comment LcId="1033">Motor inertia with brake and encoder</Comment>
                   <Name>J</Name>
-                  <Data type="real64" unitSiNumerator="224">0.157</Data>
+                  <Data type="real64" unitSiNumerator="224">6.6E-05</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">Motor warning temperature</Comment>
+                  <Name>TMotorWarn</Name>
+                  <Data type="real64" unitSiNumerator="45">80</Data>
+                </Parameter>
+                <Parameter>
+                  <Comment LcId="1033">Motor shut down temperature</Comment>
+                  <Name>TMotorLimit</Name>
+                  <Data type="real64" unitSiNumerator="45">130</Data>
                 </Parameter>
                 <Parameter>
                   <Comment LcId="1033">Motor thermal time constant</Comment>
@@ -589,59 +599,54 @@
                   <Data type="real64" unitSiNumerator="71">10</Data>
                 </Parameter>
                 <Parameter>
-                  <Comment LcId="1033">Time constant i²t</Comment>
-                  <Name>Ti2t</Name>
-                  <Data type="real64" unitSiNumerator="3">20</Data>
-                </Parameter>
-                <Parameter>
                   <Comment LcId="1033">Electric motor type</Comment>
                   <Name>ElecType</Name>
-                  <Data type="visibleString">TMA0360-070-3VC</Data>
+                  <Data type="visibleString">TMA 0530-070-3VD</Data>
                 </Parameter>
                 <Parameter>
                   <Name>ConstrType</Name>
                   <Data type="real64">0</Data>
                 </Parameter>
                 <Parameter>
-                  <Comment LcId="1033">Winding inductance L Ph-Ph 20°C</Comment>
+                  <Comment LcId="1033">Winding inductance Lq Ph-Ph 20°C</Comment>
                   <Name>Ld</Name>
-                  <Data type="real64" unitSiNumerator="44">0.0048</Data>
+                  <Data type="real64" unitSiNumerator="44">0.0091</Data>
                 </Parameter>
                 <Parameter>
                   <Comment LcId="1033">Motor torque constant</Comment>
                   <Name>kT</Name>
-                  <Data type="real64" unitSiNumerator="86" unitSiDenominator="4">13.5</Data>
+                  <Data type="real64" unitSiNumerator="86" unitSiDenominator="4">29.1</Data>
                 </Parameter>
                 <Parameter>
                   <Name>Mi</Name>
                   <DataTable type="real641" unitSiNumerator="4">
-                    <item>12</item>
-                    <item>16.31</item>
-                    <item>20.62</item>
-                    <item>24.94</item>
-                    <item>29.25</item>
-                    <item>33.56</item>
-                    <item>37.87</item>
-                    <item>42.19</item>
-                    <item>46.5</item>
-                    <item>50.81</item>
+                    <item>13.64</item>
+                    <item>20.44</item>
+                    <item>27.23</item>
+                    <item>34.03</item>
+                    <item>40.82</item>
+                    <item>47.62</item>
+                    <item>54.41</item>
+                    <item>61.21</item>
+                    <item>68</item>
+                    <item>74.8</item>
                   </DataTable>
                   <DataTable type="real641" unitSiNumerator="86">
-                    <item>162</item>
-                    <item>220.22</item>
-                    <item>278.44</item>
-                    <item>336.67</item>
-                    <item>394.89</item>
-                    <item>453.11</item>
-                    <item>511.33</item>
-                    <item>569.56</item>
-                    <item>627.78</item>
-                    <item>686</item>
+                    <item>396.92</item>
+                    <item>534.27</item>
+                    <item>671.61</item>
+                    <item>808.95</item>
+                    <item>946.29</item>
+                    <item>1083.63</item>
+                    <item>1220.97</item>
+                    <item>1358.32</item>
+                    <item>1495.66</item>
+                    <item>1633</item>
                   </DataTable>
                 </Parameter>
                 <Parameter>
                   <Name>TempSensorType</Name>
-                  <Data type="int16">4</Data>
+                  <Data type="int16">1</Data>
                 </Parameter>
                 <Parameter>
                   <Name>TempSensorCon</Name>
@@ -697,7 +702,7 @@
                     <IDN>32821</IDN>
                     <Elements>64</Elements>
                     <Attribute>0</Attribute>
-                    <Data>10001E00544D41303336302D3037302D33564300</Data>
+                    <Data>10001E00544D4120303533302D3037302D335644</Data>
                   </InitCmd>
                   <InitCmd>
                     <Transition>PS</Transition>
@@ -708,7 +713,7 @@
                     <IDN>32838</IDN>
                     <Elements>64</Elements>
                     <Attribute>0</Attribute>
-                    <Data>483F0000</Data>
+                    <Data>0C9B0000</Data>
                   </InitCmd>
                   <InitCmd>
                     <Transition>PS</Transition>
@@ -719,7 +724,7 @@
                     <IDN>113</IDN>
                     <Elements>64</Elements>
                     <Attribute>0</Attribute>
-                    <Data>B4000000</Data>
+                    <Data>8C000000</Data>
                   </InitCmd>
                   <InitCmd>
                     <Transition>PS</Transition>
@@ -730,7 +735,7 @@
                     <IDN>91</IDN>
                     <Elements>64</Elements>
                     <Attribute>0</Attribute>
-                    <Data>C4B12E00</Data>
+                    <Data>60512400</Data>
                   </InitCmd>
                   <InitCmd>
                     <Transition>PS</Transition>
@@ -754,7 +759,7 @@
                     <IDN>32830</IDN>
                     <Elements>64</Elements>
                     <Attribute>0</Attribute>
-                    <Data>1000100058025000640001000D00190000000000</Data>
+                    <Data>1000100058025000640001001400000000000000</Data>
                     <SubItemPath>eReaction</SubItemPath>
                     <SubItemPath>nPartialFractionFactor_percent</SubItemPath>
                   </InitCmd>
@@ -778,7 +783,7 @@
                     <IDN>32861</IDN>
                     <Elements>64</Elements>
                     <Attribute>0</Attribute>
-                    <Data>E02E0000</Data>
+                    <Data>48350000</Data>
                   </InitCmd>
                   <InitCmd>
                     <Transition>PS</Transition>
@@ -789,7 +794,7 @@
                     <IDN>32860</IDN>
                     <Elements>64</Elements>
                     <Attribute>0</Attribute>
-                    <Data>C05D0000</Data>
+                    <Data>906A0000</Data>
                   </InitCmd>
                   <InitCmd>
                     <Transition>PS</Transition>
@@ -812,7 +817,7 @@
                     <IDN>106</IDN>
                     <Elements>64</Elements>
                     <Attribute>0</Attribute>
-                    <Data>9000</Data>
+                    <Data>1101</Data>
                   </InitCmd>
                   <InitCmd>
                     <Transition>PS</Transition>
@@ -845,7 +850,7 @@
                     <IDN>100</IDN>
                     <Elements>64</Elements>
                     <Attribute>0</Attribute>
-                    <Data>781F0100</Data>
+                    <Data>1F000000</Data>
                   </InitCmd>
                   <InitCmd>
                     <Transition>PS</Transition>
@@ -867,7 +872,7 @@
                     <IDN>32829</IDN>
                     <Elements>64</Elements>
                     <Attribute>0</Attribute>
-                    <Data>0300</Data>
+                    <Data>0800</Data>
                   </InitCmd>
                 </SoE>
               </Calc>
@@ -1041,15 +1046,15 @@
               </Parameter>
               <Parameter>
                 <PropertyName>LoadInertiaMass</PropertyName>
-                <Value>40</Value>
+                <Value>0</Value>
               </Parameter>
               <Parameter>
                 <PropertyName>MaxApplicationTorqueForce</PropertyName>
-                <Value>324</Value>
+                <Value>793.848</Value>
               </Parameter>
               <Parameter>
                 <PropertyName>MaxApplicationSpeed</PropertyName>
-                <Value>17.90708</Value>
+                <Value>13.92773</Value>
               </Parameter>
             </Load>
             <Controller>
@@ -1366,11 +1371,11 @@
       </Info>
       <ProcessData>
         <Send>
-          <BitStart>696</BitStart>
+          <BitStart>704</BitStart>
           <BitLength>64</BitLength>
         </Send>
         <Recv>
-          <BitStart>696</BitStart>
+          <BitStart>704</BitStart>
           <BitLength>176</BitLength>
         </Recv>
         <Sm2>
@@ -1413,7 +1418,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2147483561</IndexOffset>
+              <IndexOffset>-2147483560</IndexOffset>
               <Length>2</Length>
             </AdsInfo>
           </Entry>
@@ -1428,7 +1433,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2147483559</IndexOffset>
+              <IndexOffset>-2147483558</IndexOffset>
               <Length>4</Length>
             </AdsInfo>
           </Entry>
@@ -1443,7 +1448,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2147483555</IndexOffset>
+              <IndexOffset>-2147483554</IndexOffset>
               <Length>4</Length>
             </AdsInfo>
           </Entry>
@@ -1458,7 +1463,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2147483551</IndexOffset>
+              <IndexOffset>-2147483550</IndexOffset>
               <Length>4</Length>
             </AdsInfo>
           </Entry>
@@ -1473,7 +1478,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2147483547</IndexOffset>
+              <IndexOffset>-2147483546</IndexOffset>
               <Length>2</Length>
             </AdsInfo>
           </Entry>
@@ -1488,7 +1493,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2147483545</IndexOffset>
+              <IndexOffset>-2147483544</IndexOffset>
               <Length>4</Length>
             </AdsInfo>
           </Entry>
@@ -1503,7 +1508,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2147483541</IndexOffset>
+              <IndexOffset>-2147483540</IndexOffset>
               <Length>2</Length>
             </AdsInfo>
           </Entry>
@@ -1522,7 +1527,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2130706345</IndexOffset>
+              <IndexOffset>-2130706344</IndexOffset>
               <Length>2</Length>
             </AdsInfo>
           </Entry>
@@ -1537,7 +1542,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2130706343</IndexOffset>
+              <IndexOffset>-2130706342</IndexOffset>
               <Length>4</Length>
             </AdsInfo>
           </Entry>
@@ -1552,7 +1557,7 @@
                 <AmsPort>11</AmsPort>
               </AmsAddress>
               <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2130706339</IndexOffset>
+              <IndexOffset>-2130706338</IndexOffset>
               <Length>2</Length>
             </AdsInfo>
           </Entry>
@@ -1863,6 +1868,28 @@
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
+              <Comment><![CDATA[Current command value filter 0]]></Comment>
+              <Timeout>0</Timeout>
+              <OpCode>3</OpCode>
+              <DriveNo>0</DriveNo>
+              <IDN>33281</IDN>
+              <Elements>64</Elements>
+              <Attribute>0</Attribute>
+              <Data>40004000010000000100000019000000000000000a0000000000000000000000000000001e0000000310a0000000000000000000fdef5f3f000000000000000000000000</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[Velocity filter 1: Gain at infinite frequency]]></Comment>
+              <Timeout>0</Timeout>
+              <OpCode>3</OpCode>
+              <DriveNo>0</DriveNo>
+              <IDN>33280</IDN>
+              <Elements>64</Elements>
+              <Attribute>0</Attribute>
+              <Data>804a5d05</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
               <Comment><![CDATA[Configured motor type]]></Comment>
               <Timeout>0</Timeout>
               <OpCode>3</OpCode>
@@ -1870,7 +1897,7 @@
               <IDN>32821</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>10001e00544d41303336302d3037302d33564300</Data>
+              <Data>10001e00544d4120303533302d3037302d335644</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -1881,7 +1908,7 @@
               <IDN>32819</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>2100</Data>
+              <Data>2c00</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -1892,7 +1919,7 @@
               <IDN>32839</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>0800080048650200005a6202</Data>
+              <Data>080008004200000000000000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -1903,7 +1930,7 @@
               <IDN>111</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>e02e0000</Data>
+              <Data>48350000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -1914,7 +1941,7 @@
               <IDN>196</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>40420000</Data>
+              <Data>00370000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -1925,7 +1952,7 @@
               <IDN>109</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>7ac60000</Data>
+              <Data>30240100</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -1958,7 +1985,29 @@
               <IDN>32834</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>080008005a000000e0010000</Data>
+              <Data>080008006e0000008e030000</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[Motor warning temperature]]></Comment>
+              <Timeout>0</Timeout>
+              <OpCode>3</OpCode>
+              <DriveNo>0</DriveNo>
+              <IDN>201</IDN>
+              <Elements>64</Elements>
+              <Attribute>0</Attribute>
+              <Data>2003</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[Motor shut down temperature]]></Comment>
+              <Timeout>0</Timeout>
+              <OpCode>3</OpCode>
+              <DriveNo>0</DriveNo>
+              <IDN>204</IDN>
+              <Elements>64</Elements>
+              <Attribute>0</Attribute>
+              <Data>1405</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -1969,7 +2018,7 @@
               <IDN>32823</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>ff2c</Data>
+              <Data>8a60</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -1980,7 +2029,7 @@
               <IDN>32830</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>1000100058025000640001000d00190000000000</Data>
+              <Data>1000100058025000640001001400000000000000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -1991,7 +2040,7 @@
               <IDN>32841</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>f80b0100</Data>
+              <Data>e47d0200</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2002,7 +2051,7 @@
               <IDN>32842</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>50005000e02e0000b63f00008c5000006c6100004272000018830000ee930000cea40000a4b500007ac60000483f000006560000c46c000083830000419a0000ffb00000bdc700007cde00003af50000f80b0100</Data>
+              <Data>5000500048350000d84f00005e6a0000ee840000749f000004ba00008ad400001aef0000a0090100302401000c9b0000b3d0000059060100ff3b0100a57101004ba70100f1dc0100981202003e480200e47d0200</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2035,7 +2084,7 @@
               <IDN>32838</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>483f0000</Data>
+              <Data>0c9b0000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2046,7 +2095,7 @@
               <IDN>113</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>b4000000</Data>
+              <Data>8c000000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2057,7 +2106,7 @@
               <IDN>91</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>c4b12e00</Data>
+              <Data>60512400</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2090,7 +2139,7 @@
               <IDN>32861</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>e02e0000</Data>
+              <Data>48350000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2101,7 +2150,7 @@
               <IDN>32860</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>c05d0000</Data>
+              <Data>906a0000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2123,7 +2172,7 @@
               <IDN>106</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>9000</Data>
+              <Data>1101</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2145,7 +2194,7 @@
               <IDN>33279</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>c800</Data>
+              <Data>9600</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2156,7 +2205,7 @@
               <IDN>100</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>40787d01</Data>
+              <Data>1f000000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2167,7 +2216,7 @@
               <IDN>101</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>f401</Data>
+              <Data>5000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2178,29 +2227,7 @@
               <IDN>32829</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>0300</Data>
-            </InitCmd>
-            <InitCmd>
-              <Transition>PS</Transition>
-              <Comment><![CDATA[Current command value filter 0]]></Comment>
-              <Timeout>0</Timeout>
-              <OpCode>3</OpCode>
-              <DriveNo>0</DriveNo>
-              <IDN>33281</IDN>
-              <Elements>64</Elements>
-              <Attribute>0</Attribute>
-              <Data>40004000010000000100000019000000000000000a0000000000000000000000000000001e0000000310a0000000000000000000fdef5f3f000000000000000000000000</Data>
-            </InitCmd>
-            <InitCmd>
-              <Transition>PS</Transition>
-              <Comment><![CDATA[Velocity filter 1: Gain at infinite frequency]]></Comment>
-              <Timeout>0</Timeout>
-              <OpCode>3</OpCode>
-              <DriveNo>0</DriveNo>
-              <IDN>33280</IDN>
-              <Elements>64</Elements>
-              <Attribute>0</Attribute>
-              <Data>804a5d05</Data>
+              <Data>0800</Data>
             </InitCmd>
           </InitCmds>
         </SoE>
