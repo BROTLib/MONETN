@@ -253,7 +253,7 @@
         </Element>
         <Element option="0" SortOder="0" SubIdx="0">
           <Index>95</Index>
-          <Width>248</Width>
+          <Width>330</Width>
         </Element>
         <Element option="1" SortOder="0" SubIdx="0">
           <Index>32821</Index>
@@ -494,14 +494,14 @@
           <Block Id="0">
             <Motor IsManualInput="true" IsManualMFiInput="false">
               <DatabaseType>
-                <SchemaVersion />
-                <DataVersion />
+                <SchemaVersion></SchemaVersion>
+                <DataVersion></DataVersion>
                 <OrderCode>TMA 0530-070-3VD</OrderCode>
-                <GroupType />
+                <GroupType></GroupType>
                 <ElectricMotorType>TMA 0530-070-3VD</ElectricMotorType>
-                <MotorfeedbackType />
-                <MotorbrakeType />
-                <AssemblyType />
+                <MotorfeedbackType></MotorfeedbackType>
+                <MotorbrakeType></MotorbrakeType>
+                <AssemblyType></AssemblyType>
                 <VendorName>ETEL</VendorName>
                 <IsAc>true</IsAc>
                 <ConstructType>0</ConstructType>
@@ -646,7 +646,7 @@
                 </Parameter>
                 <Parameter>
                   <Name>TempSensorType</Name>
-                  <Data type="int16">1</Data>
+                  <Data type="int16">4</Data>
                 </Parameter>
                 <Parameter>
                   <Name>TempSensorCon</Name>
@@ -872,7 +872,7 @@
                     <IDN>32829</IDN>
                     <Elements>64</Elements>
                     <Attribute>0</Attribute>
-                    <Data>0800</Data>
+                    <Data>0300</Data>
                   </InitCmd>
                 </SoE>
               </Calc>
@@ -1046,7 +1046,7 @@
               </Parameter>
               <Parameter>
                 <PropertyName>LoadInertiaMass</PropertyName>
-                <Value>0</Value>
+                <Value>40</Value>
               </Parameter>
               <Parameter>
                 <PropertyName>MaxApplicationTorqueForce</PropertyName>
@@ -1371,12 +1371,12 @@
       </Info>
       <ProcessData>
         <Send>
-          <BitStart>704</BitStart>
+          <BitStart>576</BitStart>
           <BitLength>64</BitLength>
         </Send>
         <Recv>
-          <BitStart>704</BitStart>
-          <BitLength>176</BitLength>
+          <BitStart>576</BitStart>
+          <BitLength>224</BitLength>
         </Recv>
         <Sm2>
           <Type>Outputs</Type>
@@ -1415,10 +1415,10 @@
             <DataType>UINT</DataType>
             <AdsInfo>
               <AmsAddress>
-                <AmsPort>11</AmsPort>
+                <AmsPort>27910</AmsPort>
               </AmsAddress>
-              <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2147483560</IndexOffset>
+              <IndexGroup>61488</IndexGroup>
+              <IndexOffset>72</IndexOffset>
               <Length>2</Length>
             </AdsInfo>
           </Entry>
@@ -1430,10 +1430,10 @@
             <DataType>DINT</DataType>
             <AdsInfo>
               <AmsAddress>
-                <AmsPort>11</AmsPort>
+                <AmsPort>27910</AmsPort>
               </AmsAddress>
-              <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2147483558</IndexOffset>
+              <IndexGroup>61488</IndexGroup>
+              <IndexOffset>74</IndexOffset>
               <Length>4</Length>
             </AdsInfo>
           </Entry>
@@ -1445,10 +1445,10 @@
             <DataType>DINT</DataType>
             <AdsInfo>
               <AmsAddress>
-                <AmsPort>11</AmsPort>
+                <AmsPort>27910</AmsPort>
               </AmsAddress>
-              <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2147483554</IndexOffset>
+              <IndexGroup>61488</IndexGroup>
+              <IndexOffset>78</IndexOffset>
               <Length>4</Length>
             </AdsInfo>
           </Entry>
@@ -1460,10 +1460,10 @@
             <DataType>DINT</DataType>
             <AdsInfo>
               <AmsAddress>
-                <AmsPort>11</AmsPort>
+                <AmsPort>27910</AmsPort>
               </AmsAddress>
-              <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2147483550</IndexOffset>
+              <IndexGroup>61488</IndexGroup>
+              <IndexOffset>82</IndexOffset>
               <Length>4</Length>
             </AdsInfo>
           </Entry>
@@ -1475,10 +1475,10 @@
             <DataType>INT</DataType>
             <AdsInfo>
               <AmsAddress>
-                <AmsPort>11</AmsPort>
+                <AmsPort>27910</AmsPort>
               </AmsAddress>
-              <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2147483546</IndexOffset>
+              <IndexGroup>61488</IndexGroup>
+              <IndexOffset>86</IndexOffset>
               <Length>2</Length>
             </AdsInfo>
           </Entry>
@@ -1490,10 +1490,10 @@
             <DataType>DINT</DataType>
             <AdsInfo>
               <AmsAddress>
-                <AmsPort>11</AmsPort>
+                <AmsPort>27910</AmsPort>
               </AmsAddress>
-              <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2147483544</IndexOffset>
+              <IndexGroup>61488</IndexGroup>
+              <IndexOffset>88</IndexOffset>
               <Length>4</Length>
             </AdsInfo>
           </Entry>
@@ -1505,11 +1505,41 @@
             <DataType>INT</DataType>
             <AdsInfo>
               <AmsAddress>
-                <AmsPort>11</AmsPort>
+                <AmsPort>27910</AmsPort>
               </AmsAddress>
-              <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2147483540</IndexOffset>
+              <IndexGroup>61488</IndexGroup>
+              <IndexOffset>92</IndexOffset>
               <Length>2</Length>
+            </AdsInfo>
+          </Entry>
+          <Entry>
+            <Index>#x54</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name>Torque/force feedback value</Name>
+            <DataType>INT</DataType>
+            <AdsInfo>
+              <AmsAddress>
+                <AmsPort>27910</AmsPort>
+              </AmsAddress>
+              <IndexGroup>61488</IndexGroup>
+              <IndexOffset>94</IndexOffset>
+              <Length>2</Length>
+            </AdsInfo>
+          </Entry>
+          <Entry>
+            <Index>#x28</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name>Velocity feedback 1 value</Name>
+            <DataType>DINT</DataType>
+            <AdsInfo>
+              <AmsAddress>
+                <AmsPort>27910</AmsPort>
+              </AmsAddress>
+              <IndexGroup>61488</IndexGroup>
+              <IndexOffset>96</IndexOffset>
+              <Length>4</Length>
             </AdsInfo>
           </Entry>
         </TxPdo>
@@ -1524,10 +1554,10 @@
             <DataType>UINT</DataType>
             <AdsInfo>
               <AmsAddress>
-                <AmsPort>11</AmsPort>
+                <AmsPort>27910</AmsPort>
               </AmsAddress>
-              <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2130706344</IndexOffset>
+              <IndexGroup>61472</IndexGroup>
+              <IndexOffset>72</IndexOffset>
               <Length>2</Length>
             </AdsInfo>
           </Entry>
@@ -1539,10 +1569,10 @@
             <DataType>DINT</DataType>
             <AdsInfo>
               <AmsAddress>
-                <AmsPort>11</AmsPort>
+                <AmsPort>27910</AmsPort>
               </AmsAddress>
-              <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2130706342</IndexOffset>
+              <IndexGroup>61472</IndexGroup>
+              <IndexOffset>74</IndexOffset>
               <Length>4</Length>
             </AdsInfo>
           </Entry>
@@ -1554,10 +1584,10 @@
             <DataType>INT</DataType>
             <AdsInfo>
               <AmsAddress>
-                <AmsPort>11</AmsPort>
+                <AmsPort>27910</AmsPort>
               </AmsAddress>
-              <IndexGroup>50593888</IndexGroup>
-              <IndexOffset>-2130706338</IndexOffset>
+              <IndexGroup>61472</IndexGroup>
+              <IndexOffset>78</IndexOffset>
               <Length>2</Length>
             </AdsInfo>
           </Entry>
@@ -1611,7 +1641,7 @@
               <IDN>16</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>0c000c003300bd008200990183009a01</Data>
+              <Data>100010003300bd008200990183009a0154002800</Data>
             </InitCmd>
             <InitCmd Fixed="true">
               <Transition>PS</Transition>
@@ -1919,7 +1949,7 @@
               <IDN>32839</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>080008004200000000000000</Data>
+              <Data>0800080042000000005a6202</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2194,7 +2224,7 @@
               <IDN>33279</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>9600</Data>
+              <Data>c800</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2205,7 +2235,7 @@
               <IDN>100</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>1f000000</Data>
+              <Data>408af701</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2216,7 +2246,7 @@
               <IDN>101</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>5000</Data>
+              <Data>5802</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2227,7 +2257,7 @@
               <IDN>32829</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>0800</Data>
+              <Data>0300</Data>
             </InitCmd>
           </InitCmds>
         </SoE>
@@ -2590,7 +2620,7 @@
           <Cmd>5</Cmd>
           <Adp>1001</Adp>
           <Ado>2072</Ado>
-          <Data>0011160022000100</Data>
+          <Data>00111c0022000100</Data>
           <Cnt>1</Cnt>
           <Retries>3</Retries>
         </InitCmd>
@@ -2610,7 +2640,7 @@
           <Cmd>5</Cmd>
           <Adp>1001</Adp>
           <Ado>1552</Ado>
-          <Data>00000001160000070011000101000000</Data>
+          <Data>000000011c0000070011000101000000</Data>
           <Cnt>1</Cnt>
           <Retries>3</Retries>
         </InitCmd>
