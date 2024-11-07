@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
   <POU Name="ElevationControl" Id="{c0371b19-3d1d-4f20-bd19-ce60539d69cd}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM ElevationControl
 VAR_INPUT
@@ -25,6 +25,8 @@ VAR_INPUT
 	StopAxis:	BOOL;
 	// reset diagnostic errors
 	bSoEReset:	 	BOOL;
+	
+	CoverControl	: FB_CoverControl;
 END_VAR
 VAR_OUTPUT
 	// axis is ready to operate

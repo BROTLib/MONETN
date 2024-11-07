@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
   <POU Name="PendantControl" Id="{4c9494b1-b987-44f6-88ae-faae341979f2}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PendantControl
+VAR_INPUT
+	CoverControl	: FB_CoverControl;
+END_VAR
 VAR
 	// program selection of the pendant control
 	Selection:	UINT;
@@ -79,7 +82,6 @@ down_trigger(CLK := down);
 //R_Enable(CLK := enable);
 // the error lamp is the same as the error lamp of the main panel
 lamp_error := GVL_Main.lamp_error;
-CoverControl.active_cover := 0;
 
 
 // determine the operation of the telescope based on the switch set
@@ -300,7 +302,7 @@ GVL_pendant_control.lamp_error := lamp_error;]]></ST>
       <LineId Id="3548" Count="0" />
       <LineId Id="3247" Count="0" />
       <LineId Id="3549" Count="0" />
-      <LineId Id="3248" Count="3" />
+      <LineId Id="3248" Count="2" />
       <LineId Id="3595" Count="7" />
       <LineId Id="3594" Count="0" />
       <LineId Id="3252" Count="58" />

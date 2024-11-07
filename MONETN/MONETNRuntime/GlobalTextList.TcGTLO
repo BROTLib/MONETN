@@ -76,6 +76,21 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"12"</v>
+              <v n="TextDefault">"Cover 1"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"678"</v>
+              <v n="TextDefault">"Cover 2"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"857"</v>
+              <v n="TextDefault">"Cover 3"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"815"</v>
               <v n="TextDefault">"Derotator:"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -128,6 +143,11 @@
             <o>
               <v n="TextID">"225"</v>
               <v n="TextDefault">"Estop: %s"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"479"</v>
+              <v n="TextDefault">"Global"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -378,6 +398,11 @@
             <o>
               <v n="TextID">"364"</v>
               <v n="TextDefault">"tracking"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"480"</v>
+              <v n="TextDefault">"Warning"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
