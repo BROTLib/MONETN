@@ -11,6 +11,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"500"</v>
+              <v n="TextDefault">"%.0f%"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"194"</v>
               <v n="TextDefault">"%.2f"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -41,6 +46,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"911"</v>
+              <v n="TextDefault">"Brake clearing"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"798"</v>
               <v n="TextDefault">"Brake closed"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -48,6 +58,11 @@
             <o>
               <v n="TextID">"396"</v>
               <v n="TextDefault">"Brake open"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"958"</v>
+              <v n="TextDefault">"Brakes"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -73,6 +88,11 @@
             <o>
               <v n="TextID">"361"</v>
               <v n="TextDefault">"Closing"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"392"</v>
+              <v n="TextDefault">"Cold"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -161,8 +181,28 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"331"</v>
+              <v n="TextDefault">"High"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"81"</v>
+              <v n="TextDefault">"Hot"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"163"</v>
+              <v n="TextDefault">"Level"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"846"</v>
               <v n="TextDefault">"Level:"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"58"</v>
+              <v n="TextDefault">"Low"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -211,6 +251,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"874"</v>
+              <v n="TextDefault">"Oil Status"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"498"</v>
               <v n="TextDefault">"Oil warning"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -246,6 +291,16 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"890"</v>
+              <v n="TextDefault">"Overrides"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"384"</v>
+              <v n="TextDefault">"Pan max"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"273"</v>
               <v n="TextDefault">"park"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -258,6 +313,16 @@
             <o>
               <v n="TextID">"919"</v>
               <v n="TextDefault">"Power"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"641"</v>
+              <v n="TextDefault">"Pressure"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"196"</v>
+              <v n="TextDefault">"Pump"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -336,6 +401,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"202"</v>
+              <v n="TextDefault">"Start Sucction"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"520"</v>
               <v n="TextDefault">"State"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -366,6 +436,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"189"</v>
+              <v n="TextDefault">"Stop pump"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"155"</v>
               <v n="TextDefault">"stopped"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -373,6 +448,11 @@
             <o>
               <v n="TextID">"790"</v>
               <v n="TextDefault">"Stopped"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"614"</v>
+              <v n="TextDefault">"Sucction"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

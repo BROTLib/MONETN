@@ -44,6 +44,7 @@ see https://gitlab.aip.de/bmk10k/telescope_firmware/snippets/5
 	derotator_offset:	LREAL := 0.0;
 	
 	CoverControl	: FB_CoverControl;
+	HydraulicsControl : FB_HydraulicsControl;
 END_VAR
 VAR
 	// actual command from the TCS

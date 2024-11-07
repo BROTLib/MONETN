@@ -3201,7 +3201,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{281251D9-6B4B-BF89-A54A-10DA978CBA77}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{F24A857C-5461-87BB-A5DF-E78762C2CB30}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -3305,6 +3305,21 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.HydraulicsControl.out_oil_pump_enable</Name>
+							<Comment><![CDATA[DOUT4 0.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.out_oil_suction_enable</Name>
+							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.brake_azimuth_eve</Name>
+							<Comment><![CDATA[ brake set]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>TelescopeControl.CoverControl.open_cover1</Name>
 							<Comment><![CDATA[ open cover1 command]]></Comment>
 							<Type>BOOL</Type>
@@ -3332,6 +3347,21 @@ External Setpoint Generation:
 						<Var>
 							<Name>TelescopeControl.CoverControl.close_cover3</Name>
 							<Comment><![CDATA[ close cover3 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.out_oil_pump_enable</Name>
+							<Comment><![CDATA[DOUT4 0.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.out_oil_suction_enable</Name>
+							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.brake_azimuth_eve</Name>
+							<Comment><![CDATA[ brake set]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3365,6 +3395,21 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>PendantControl.HydraulicsControl.out_oil_pump_enable</Name>
+							<Comment><![CDATA[DOUT4 0.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.out_oil_suction_enable</Name>
+							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.brake_azimuth_eve</Name>
+							<Comment><![CDATA[ brake set]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>ElevationControl.CoverControl.open_cover1</Name>
 							<Comment><![CDATA[ open cover1 command]]></Comment>
 							<Type>BOOL</Type>
@@ -3392,6 +3437,36 @@ External Setpoint Generation:
 						<Var>
 							<Name>ElevationControl.CoverControl.close_cover3</Name>
 							<Comment><![CDATA[ close cover3 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.out_oil_pump_enable</Name>
+							<Comment><![CDATA[DOUT4 0.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.out_oil_suction_enable</Name>
+							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.brake_azimuth_eve</Name>
+							<Comment><![CDATA[ brake set]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.out_oil_pump_enable</Name>
+							<Comment><![CDATA[DOUT4 0.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.out_oil_suction_enable</Name>
+							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.brake_azimuth_eve</Name>
+							<Comment><![CDATA[ brake set]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3496,14 +3571,6 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.open_cover3</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.close_cover3</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Telescope.AzimuthAxisRef.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
@@ -3520,13 +3587,11 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Hydraulics.oil_pump_enable</Name>
-							<Comment><![CDATA[DOUT4 0.3]]></Comment>
+							<Name>GVL_Telescope.open_cover3</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Hydraulics.oil_suction_enable</Name>
-							<Comment><![CDATA[DOUT5 0.4]]></Comment>
+							<Name>GVL_Telescope.close_cover3</Name>
 							<Type>BOOL</Type>
 						</Var>
 					</Vars>
@@ -3667,6 +3732,61 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_low</Name>
+							<Comment><![CDATA[ 2.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_high</Name>
+							<Comment><![CDATA[ ?]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_pressure_OK</Name>
+							<Comment><![CDATA[ 2.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_overtemperature</Name>
+							<Comment><![CDATA[ 2.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_undertemperature</Name>
+							<Comment><![CDATA[ 2.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oilfilter_dirty</Name>
+							<Comment><![CDATA[ 2.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_pump_running</Name>
+							<Comment><![CDATA[ 2.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_suction_running</Name>
+							<Comment><![CDATA[ 2.8]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_level</Name>
+							<Comment><![CDATA[BT2]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oilpan_maximum</Name>
+							<Comment><![CDATA[DIN39 4.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_reserve</Name>
+							<Comment><![CDATA[DIN40 4.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>TelescopeControl.CoverControl.limit_cover1_open</Name>
 							<Comment><![CDATA[ limit switches]]></Comment>
 							<Type>BOOL</Type>
@@ -3694,6 +3814,61 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 						<Var>
 							<Name>TelescopeControl.CoverControl.limit_cover3_closed</Name>
 							<Comment><![CDATA[ DIN38 4.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_low</Name>
+							<Comment><![CDATA[ 2.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_high</Name>
+							<Comment><![CDATA[ ?]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_pressure_OK</Name>
+							<Comment><![CDATA[ 2.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_overtemperature</Name>
+							<Comment><![CDATA[ 2.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_undertemperature</Name>
+							<Comment><![CDATA[ 2.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oilfilter_dirty</Name>
+							<Comment><![CDATA[ 2.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_pump_running</Name>
+							<Comment><![CDATA[ 2.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_suction_running</Name>
+							<Comment><![CDATA[ 2.8]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_level</Name>
+							<Comment><![CDATA[BT2]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oilpan_maximum</Name>
+							<Comment><![CDATA[DIN39 4.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_reserve</Name>
+							<Comment><![CDATA[DIN40 4.7]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3727,6 +3902,61 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_low</Name>
+							<Comment><![CDATA[ 2.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_high</Name>
+							<Comment><![CDATA[ ?]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_pressure_OK</Name>
+							<Comment><![CDATA[ 2.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_overtemperature</Name>
+							<Comment><![CDATA[ 2.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_undertemperature</Name>
+							<Comment><![CDATA[ 2.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oilfilter_dirty</Name>
+							<Comment><![CDATA[ 2.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_pump_running</Name>
+							<Comment><![CDATA[ 2.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_suction_running</Name>
+							<Comment><![CDATA[ 2.8]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_level</Name>
+							<Comment><![CDATA[BT2]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oilpan_maximum</Name>
+							<Comment><![CDATA[DIN39 4.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_reserve</Name>
+							<Comment><![CDATA[DIN40 4.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>ElevationControl.CoverControl.limit_cover1_open</Name>
 							<Comment><![CDATA[ limit switches]]></Comment>
 							<Type>BOOL</Type>
@@ -3754,6 +3984,116 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 						<Var>
 							<Name>ElevationControl.CoverControl.limit_cover3_closed</Name>
 							<Comment><![CDATA[ DIN38 4.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_low</Name>
+							<Comment><![CDATA[ 2.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_high</Name>
+							<Comment><![CDATA[ ?]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_pressure_OK</Name>
+							<Comment><![CDATA[ 2.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_overtemperature</Name>
+							<Comment><![CDATA[ 2.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_undertemperature</Name>
+							<Comment><![CDATA[ 2.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oilfilter_dirty</Name>
+							<Comment><![CDATA[ 2.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_pump_running</Name>
+							<Comment><![CDATA[ 2.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_suction_running</Name>
+							<Comment><![CDATA[ 2.8]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_level</Name>
+							<Comment><![CDATA[BT2]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oilpan_maximum</Name>
+							<Comment><![CDATA[DIN39 4.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_reserve</Name>
+							<Comment><![CDATA[DIN40 4.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_low</Name>
+							<Comment><![CDATA[ 2.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_high</Name>
+							<Comment><![CDATA[ ?]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_pressure_OK</Name>
+							<Comment><![CDATA[ 2.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_overtemperature</Name>
+							<Comment><![CDATA[ 2.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_undertemperature</Name>
+							<Comment><![CDATA[ 2.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oilfilter_dirty</Name>
+							<Comment><![CDATA[ 2.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_pump_running</Name>
+							<Comment><![CDATA[ 2.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_suction_running</Name>
+							<Comment><![CDATA[ 2.8]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_level</Name>
+							<Comment><![CDATA[BT2]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oilpan_maximum</Name>
+							<Comment><![CDATA[DIN39 4.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_reserve</Name>
+							<Comment><![CDATA[DIN40 4.7]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3939,14 +4279,14 @@ DIN3 0.2]]></Comment>
 							<Type>WORD</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.Derotator_torque</Name>
-							<Comment><![CDATA[ derotator torque feedback]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Telescope.Derotator_diagnostic</Name>
 							<Comment><![CDATA[ diagnostic number]]></Comment>
 							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.Derotator_torque</Name>
+							<Comment><![CDATA[ derotator torque feedback]]></Comment>
+							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.Elevation_inputs</Name>
@@ -3954,14 +4294,14 @@ DIN3 0.2]]></Comment>
 							<Type>WORD</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.Elevation_torque</Name>
-							<Comment><![CDATA[ torque feedback]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Telescope.Elevation_diagnostic</Name>
 							<Comment><![CDATA[ diagnostic number]]></Comment>
 							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.Elevation_torque</Name>
+							<Comment><![CDATA[ torque feedback]]></Comment>
+							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.Elevation_sto</Name>
@@ -3979,14 +4319,14 @@ DIN3 0.2]]></Comment>
 							<Type>WORD</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.Azimuth_diagnostic</Name>
-							<Comment><![CDATA[ diagnostic number]]></Comment>
-							<Type>UDINT</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Telescope.Azimuth_torque</Name>
 							<Comment><![CDATA[ torque feedback]]></Comment>
 							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.Azimuth_diagnostic</Name>
+							<Comment><![CDATA[ diagnostic number]]></Comment>
+							<Type>UDINT</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.AzimuthAxisRef.NcToPlc</Name>
@@ -4003,61 +4343,6 @@ DIN3 0.2]]></Comment>
 						<Var>
 							<Name>GVL_Telescope.FocusAxisRef.NcToPlc</Name>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Hydraulics.oil_low</Name>
-							<Comment><![CDATA[ 2.1]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Hydraulics.oil_high</Name>
-							<Comment><![CDATA[ ?]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Hydraulics.oil_pressure_OK</Name>
-							<Comment><![CDATA[ 2.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Hydraulics.oil_overtemperature</Name>
-							<Comment><![CDATA[ 2.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Hydraulics.oil_undertemperature</Name>
-							<Comment><![CDATA[ 2.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Hydraulics.oilfilter_dirty</Name>
-							<Comment><![CDATA[ 2.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Hydraulics.pump_running</Name>
-							<Comment><![CDATA[ 2.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Hydraulics.suction_running</Name>
-							<Comment><![CDATA[ 2.8]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Hydraulics.oil_level</Name>
-							<Comment><![CDATA[BT2]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Hydraulics.oilpan_maximum</Name>
-							<Comment><![CDATA[DIN39 4.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Hydraulics.oil_reserve</Name>
-							<Comment><![CDATA[DIN40 4.7]]></Comment>
-							<Type>BOOL</Type>
 						</Var>
 					</Vars>
 					<Contexts>
@@ -4258,8 +4543,9 @@ DIN3 0.2]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Telescope.brake_azimuth_eve" Index="#x7010" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.brake_azimuth_eve" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
+									<Comment><![CDATA[ brake set]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="0">
@@ -4601,8 +4887,9 @@ DIN3 0.2]]></Comment>
 							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
 							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Hydraulics.oil_pump_enable" Index="#x7000" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.out_oil_pump_enable" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
+									<Comment><![CDATA[DOUT4 0.3]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
@@ -4611,8 +4898,9 @@ DIN3 0.2]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Hydraulics.oil_suction_enable" Index="#x7020" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.out_oil_suction_enable" Index="#x7020" Sub="#x01">
 									<Type>BIT</Type>
+									<Comment><![CDATA[DOUT5 0.4	]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1603" InOut="1" Flags="#x0011" SyncMan="0">
@@ -4649,15 +4937,15 @@ DIN3 0.2]]></Comment>
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Hydraulics.pump_running" Index="#x6000" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.in_pump_running" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Oil pump on]]></Comment>
+									<Comment><![CDATA[ 2.7]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Hydraulics.suction_running" Index="#x6010" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.in_suction_running" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Suction pump on]]></Comment>
+									<Comment><![CDATA[ 2.8]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
@@ -4703,51 +4991,51 @@ DIN3 0.2]]></Comment>
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Hydraulics.oil_low" Index="#x6000" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.in_oil_low" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Oil level too low]]></Comment>
+									<Comment><![CDATA[ 2.1]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Hydraulics.oil_high" Index="#x6010" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.in_oil_high" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Oil level too high]]></Comment>
+									<Comment><![CDATA[ ?]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Hydraulics.pressure_OK" Index="#x6020" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.in_oil_pressure_OK" Index="#x6020" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Oil pressure okay]]></Comment>
+									<Comment><![CDATA[ 2.3]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Hydraulics.oil_overtemperature" Index="#x6030" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.in_oil_overtemperature" Index="#x6030" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Oil temperature reached 50]]></Comment>
+									<Comment><![CDATA[ 2.4]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Hydraulics.oil_undertemperature" Index="#x6040" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.in_oil_undertemperature" Index="#x6040" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Oil temperature 10 reached]]></Comment>
+									<Comment><![CDATA[ 2.5]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Hydraulics.oilfilter_dirty" Index="#x6050" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.in_oilfilter_dirty" Index="#x6050" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Oil filter dirty]]></Comment>
+									<Comment><![CDATA[ 2.6]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 7" Index="#x1a06" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Hydraulics.oilpan_maximum" Index="#x6060" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.in_oilpan_maximum" Index="#x6060" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Max oil level suction through]]></Comment>
+									<Comment><![CDATA[DIN39 4.6]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 8" Index="#x1a07" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Hydraulics.oil_reserve" Index="#x6070" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.in_oil_reserve" Index="#x6070" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Reserve hydraulics telescope]]></Comment>
+									<Comment><![CDATA[DIN40 4.7]]></Comment>
 								</Entry>
 							</Pdo>
 						</EtherCAT>
@@ -5854,8 +6142,9 @@ Bit1: Value smaller than Limit2]]></Comment>
 								<Entry Name="Status__TxPDO Toggle" Index="#x6020" Sub="#x10">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Value" Index="#x6020" Sub="#x11" Flags="#x00060000">
+								<Entry Name="MAIN.HydraulicsControl.in_oil_level" Index="#x6020" Sub="#x11" Flags="#x00060000">
 									<Type>INT</Type>
+									<Comment><![CDATA[BT2]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="AI Compact Channel 3" Index="#x1a05" Flags="#x0010">
@@ -12507,6 +12796,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 		<MappingInfo Identifier="{00000000-0070-0304-3000-040372000403}" Id="#x020300a0"/>
 		<MappingInfo Identifier="{08502001-0010-0304-0020-500810000403}" Id="#x02030040" Watchdog="00000000000000000000000000000000"/>
 		<MappingInfo Identifier="{08502001-0060-0304-0020-500860000403}" Id="#x020300c0" Watchdog="00000000000000000000000000000000"/>
+		<MappingInfo Identifier="{05000010-2001-0850-3000-040300205008}" Id="#x020300b0" Watchdog="14000000040000000400000004000000"/>
 		<MappingInfo Identifier="{03040010-0010-0304-1000-040310000403}" Id="#x02030020" Watchdog="04000000040000000400000004000000"/>
 		<MappingInfo Identifier="{03040010-0050-0304-1000-040350000403}" Id="#x02030060" Watchdog="14000000040000000400000004000000"/>
 		<MappingInfo Identifier="{03040010-0060-0304-1000-040360000403}" Id="#x02030010" Watchdog="04000000040000000400000004000000"/>
@@ -12645,7 +12935,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 		</OwnerA>
 		<OwnerA Name="TIPC^MONETNRuntime^MONETNRuntime Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Brake AzEl (EL2004)">
-				<Link VarA="PlcTask Outputs^GVL_Telescope.brake_azimuth_eve" VarB="Channel 2^GVL_Telescope.brake_azimuth_eve"/>
+				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.brake_azimuth_eve" VarB="Channel 2^MAIN.HydraulicsControl.brake_azimuth_eve"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Front Panel IN (EL1008)">
 				<Link VarA="PlcTask Inputs^GVL_Main.brake_clearing" VarB="Channel 5^GVL_Main.key_brake_clearing"/>
@@ -12660,25 +12950,25 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="PlcTask Outputs^GVL_Main.lamp_power" VarB="Channel 1^GVL_Main.lamp_power"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Hydraulics Focus IN (EL1008)">
-				<Link VarA="PlcTask Inputs^GVL_Hydraulics.pump_running" VarB="Channel 1^GVL_Hydraulics.pump_running"/>
-				<Link VarA="PlcTask Inputs^GVL_Hydraulics.suction_running" VarB="Channel 2^GVL_Hydraulics.suction_running"/>
 				<Link VarA="PlcTask Inputs^GVL_Telescope.focus_limit_far" VarB="Channel 5^GVL_Telescope.focus_limit_far"/>
 				<Link VarA="PlcTask Inputs^GVL_Telescope.focus_limit_near" VarB="Channel 4^GVL_Telescope.focus_limit_near"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_pump_running" VarB="Channel 1^MAIN.HydraulicsControl.in_pump_running"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_suction_running" VarB="Channel 2^MAIN.HydraulicsControl.in_suction_running"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Hydraulics IN2 (EL1008)">
-				<Link VarA="PlcTask Inputs^GVL_Hydraulics.oil_high" VarB="Channel 2^GVL_Hydraulics.oil_high"/>
-				<Link VarA="PlcTask Inputs^GVL_Hydraulics.oil_low" VarB="Channel 1^GVL_Hydraulics.oil_low"/>
-				<Link VarA="PlcTask Inputs^GVL_Hydraulics.oil_overtemperature" VarB="Channel 4^GVL_Hydraulics.oil_overtemperature"/>
-				<Link VarA="PlcTask Inputs^GVL_Hydraulics.oil_pressure_OK" VarB="Channel 3^GVL_Hydraulics.pressure_OK"/>
-				<Link VarA="PlcTask Inputs^GVL_Hydraulics.oil_reserve" VarB="Channel 8^GVL_Hydraulics.oil_reserve"/>
-				<Link VarA="PlcTask Inputs^GVL_Hydraulics.oil_undertemperature" VarB="Channel 5^GVL_Hydraulics.oil_undertemperature"/>
-				<Link VarA="PlcTask Inputs^GVL_Hydraulics.oilfilter_dirty" VarB="Channel 6^GVL_Hydraulics.oilfilter_dirty"/>
-				<Link VarA="PlcTask Inputs^GVL_Hydraulics.oilpan_maximum" VarB="Channel 7^GVL_Hydraulics.oilpan_maximum"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oil_high" VarB="Channel 2^MAIN.HydraulicsControl.in_oil_high"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oil_low" VarB="Channel 1^MAIN.HydraulicsControl.in_oil_low"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oil_overtemperature" VarB="Channel 4^MAIN.HydraulicsControl.in_oil_overtemperature"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oil_pressure_OK" VarB="Channel 3^MAIN.HydraulicsControl.in_oil_pressure_OK"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oil_reserve" VarB="Channel 8^MAIN.HydraulicsControl.in_oil_reserve"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oil_undertemperature" VarB="Channel 5^MAIN.HydraulicsControl.in_oil_undertemperature"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oilfilter_dirty" VarB="Channel 6^MAIN.HydraulicsControl.in_oilfilter_dirty"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oilpan_maximum" VarB="Channel 7^MAIN.HydraulicsControl.in_oilpan_maximum"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Hydraulics OUT (EL2008)">
-				<Link VarA="PlcTask Outputs^GVL_Hydraulics.oil_pump_enable" VarB="Channel 1^GVL_Hydraulics.oil_pump_enable"/>
-				<Link VarA="PlcTask Outputs^GVL_Hydraulics.oil_suction_enable" VarB="Channel 3^GVL_Hydraulics.oil_suction_enable"/>
 				<Link VarA="PlcTask Outputs^GVL_Telescope.focus_unlock" VarB="Channel 7^GVL_Telescope.focus_unlock"/>
+				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.out_oil_pump_enable" VarB="Channel 1^MAIN.HydraulicsControl.out_oil_pump_enable"/>
+				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.out_oil_suction_enable" VarB="Channel 3^MAIN.HydraulicsControl.out_oil_suction_enable"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Cover IN (EL1008)">
 				<Link VarA="PlcTask Inputs^MAIN.CoverControl.limit_cover1_closed" VarB="Channel 2^MAIN.CoverControl.limit_cover1_closed"/>
@@ -12699,9 +12989,9 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="PlcTask Outputs^MAIN.CoverControl.open_cover3" VarB="Channel 1^MAIN.CoverControl.open_cover3"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Temperature IN (EL3164)">
-				<Link VarA="PlcTask Inputs^GVL_Hydraulics.oil_level" VarB="OilLevel^Value"/>
 				<Link VarA="PlcTask Inputs^GVL_Telescope.temperature_mirror1" VarB="TempM1^Value"/>
 				<Link VarA="PlcTask Inputs^GVL_Telescope.temperature_mirror2" VarB="TempM2^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oil_level" VarB="OilLevel^MAIN.HydraulicsControl.in_oil_level"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Pendant Control IN (EL1008)">
 				<Link VarA="PlcTask Inputs^GVL_pendant_control.BCD1" VarB="Channel 1^GVL_pendant_control.BCD0"/>

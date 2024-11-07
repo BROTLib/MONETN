@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
   <POU Name="AzimuthElevationControl" Id="{8e08648a-b748-4448-9dcc-aa13dfcf6a06}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM AzimuthElevationControl
 VAR_INPUT
@@ -25,6 +25,8 @@ VAR_INPUT
 	StopAxis:	BOOL;
 	// diagnostic reset
 	bSoEReset:	BOOL;
+	
+	HydraulicsControl : FB_HydraulicsControl;
 END_VAR
 VAR_OUTPUT
 	// error state of the axis
