@@ -62,9 +62,6 @@
     <Compile Include="POUs\AzimuthElevationControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\CoverControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\DerotatorControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -197,6 +194,10 @@
     <PlaceholderReference Include="BROTLib">
       <DefaultResolution>BROTLib, * (BROT)</DefaultResolution>
       <Namespace>BROTLib</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="HalfBROT">
+      <DefaultResolution>HalfBROT, * (BROT)</DefaultResolution>
+      <Namespace>HalfBROT</Namespace>
     </PlaceholderReference>
     <PlaceholderReference Include="MONET Roof">
       <DefaultResolution>MONET Roof, * (Georg-August-Universitaet Goettingen)</DefaultResolution>
@@ -478,6 +479,32 @@
     <LibraryReference Include="VisuSymbols,3.5.10.0,System">
       <Namespace>VisuSymbols</Namespace>
     </LibraryReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderResolution Include="System_VisuElemMeter">
+      <Resolution>VisuElemMeter, * (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="System_VisuElems">
+      <Resolution>VisuElems, * (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="System_VisuElemsSpecialControls">
+      <Resolution>VisuElemsSpecialControls, * (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="System_VisuElemsWinControls">
+      <Resolution>VisuElemsWinControls, * (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="System_VisuElemTextEditor">
+      <Resolution>VisuElemTextEditor, * (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="System_VisuElemXYChart">
+      <Resolution>VisuElemXYChart, * (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="System_VisuInputs">
+      <Resolution>VisuInputs, * (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="System_VisuNativeControl">
+      <Resolution>VisuNativeControl, * (System)</Resolution>
+    </PlaceholderResolution>
   </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>

@@ -3201,7 +3201,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{7A65777A-BF47-B15F-8525-A51D28C35F08}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{CCEB1BB0-CC39-9E30-21FB-A20A13FA3298}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -3273,6 +3273,126 @@ External Setpoint Generation:
 						<Var>
 							<Name>MAIN.RoofControl.roofs[2].motors[2].speed</Name>
 							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.open_cover1</Name>
+							<Comment><![CDATA[ open cover1 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.close_cover1</Name>
+							<Comment><![CDATA[ close cover1 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.open_cover2</Name>
+							<Comment><![CDATA[ open cover2 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.close_cover2</Name>
+							<Comment><![CDATA[ close cover2 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.open_cover3</Name>
+							<Comment><![CDATA[ open cover3 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.close_cover3</Name>
+							<Comment><![CDATA[ close cover3 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.CoverControl.open_cover1</Name>
+							<Comment><![CDATA[ open cover1 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.CoverControl.close_cover1</Name>
+							<Comment><![CDATA[ close cover1 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.CoverControl.open_cover2</Name>
+							<Comment><![CDATA[ open cover2 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.CoverControl.close_cover2</Name>
+							<Comment><![CDATA[ close cover2 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.CoverControl.open_cover3</Name>
+							<Comment><![CDATA[ open cover3 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.CoverControl.close_cover3</Name>
+							<Comment><![CDATA[ close cover3 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.CoverControl.open_cover1</Name>
+							<Comment><![CDATA[ open cover1 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.CoverControl.close_cover1</Name>
+							<Comment><![CDATA[ close cover1 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.CoverControl.open_cover2</Name>
+							<Comment><![CDATA[ open cover2 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.CoverControl.close_cover2</Name>
+							<Comment><![CDATA[ close cover2 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.CoverControl.open_cover3</Name>
+							<Comment><![CDATA[ open cover3 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.CoverControl.close_cover3</Name>
+							<Comment><![CDATA[ close cover3 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.CoverControl.open_cover1</Name>
+							<Comment><![CDATA[ open cover1 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.CoverControl.close_cover1</Name>
+							<Comment><![CDATA[ close cover1 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.CoverControl.open_cover2</Name>
+							<Comment><![CDATA[ open cover2 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.CoverControl.close_cover2</Name>
+							<Comment><![CDATA[ close cover2 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.CoverControl.open_cover3</Name>
+							<Comment><![CDATA[ open cover3 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.CoverControl.close_cover3</Name>
+							<Comment><![CDATA[ close cover3 command]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Safety.Run</Name>
@@ -3376,6 +3496,14 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>GVL_Telescope.open_cover3</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.close_cover3</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>GVL_Telescope.AzimuthAxisRef.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
@@ -3390,14 +3518,6 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 						<Var>
 							<Name>GVL_Telescope.FocusAxisRef.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.open_cover3</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.close_cover3</Name>
-							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Hydraulics.oil_pump_enable</Name>
@@ -3514,6 +3634,126 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 						<Var>
 							<Name>MAIN.RoofControl.roofs[2].motors[2].counter</Name>
 							<Comment><![CDATA[ hall sensor for counting rotation]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.limit_cover1_open</Name>
+							<Comment><![CDATA[ limit switches]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.limit_cover1_closed</Name>
+							<Comment><![CDATA[ DIN34 4.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.limit_cover2_open</Name>
+							<Comment><![CDATA[ DIN35 4.2]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.limit_cover2_closed</Name>
+							<Comment><![CDATA[ DIN36 4.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.limit_cover3_open</Name>
+							<Comment><![CDATA[ DIN37 4.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.limit_cover3_closed</Name>
+							<Comment><![CDATA[ DIN38 4.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.CoverControl.limit_cover1_open</Name>
+							<Comment><![CDATA[ limit switches]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.CoverControl.limit_cover1_closed</Name>
+							<Comment><![CDATA[ DIN34 4.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.CoverControl.limit_cover2_open</Name>
+							<Comment><![CDATA[ DIN35 4.2]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.CoverControl.limit_cover2_closed</Name>
+							<Comment><![CDATA[ DIN36 4.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.CoverControl.limit_cover3_open</Name>
+							<Comment><![CDATA[ DIN37 4.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.CoverControl.limit_cover3_closed</Name>
+							<Comment><![CDATA[ DIN38 4.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.CoverControl.limit_cover1_open</Name>
+							<Comment><![CDATA[ limit switches]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.CoverControl.limit_cover1_closed</Name>
+							<Comment><![CDATA[ DIN34 4.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.CoverControl.limit_cover2_open</Name>
+							<Comment><![CDATA[ DIN35 4.2]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.CoverControl.limit_cover2_closed</Name>
+							<Comment><![CDATA[ DIN36 4.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.CoverControl.limit_cover3_open</Name>
+							<Comment><![CDATA[ DIN37 4.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.CoverControl.limit_cover3_closed</Name>
+							<Comment><![CDATA[ DIN38 4.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.CoverControl.limit_cover1_open</Name>
+							<Comment><![CDATA[ limit switches]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.CoverControl.limit_cover1_closed</Name>
+							<Comment><![CDATA[ DIN34 4.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.CoverControl.limit_cover2_open</Name>
+							<Comment><![CDATA[ DIN35 4.2]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.CoverControl.limit_cover2_closed</Name>
+							<Comment><![CDATA[ DIN36 4.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.CoverControl.limit_cover3_open</Name>
+							<Comment><![CDATA[ DIN37 4.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.CoverControl.limit_cover3_closed</Name>
+							<Comment><![CDATA[ DIN38 4.5]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3699,14 +3939,14 @@ DIN3 0.2]]></Comment>
 							<Type>WORD</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.Derotator_diagnostic</Name>
-							<Comment><![CDATA[ diagnostic number]]></Comment>
-							<Type>UDINT</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Telescope.Derotator_torque</Name>
 							<Comment><![CDATA[ derotator torque feedback]]></Comment>
 							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.Derotator_diagnostic</Name>
+							<Comment><![CDATA[ diagnostic number]]></Comment>
+							<Type>UDINT</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.Elevation_inputs</Name>
@@ -3714,14 +3954,14 @@ DIN3 0.2]]></Comment>
 							<Type>WORD</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.Elevation_diagnostic</Name>
-							<Comment><![CDATA[ diagnostic number]]></Comment>
-							<Type>UDINT</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Telescope.Elevation_torque</Name>
 							<Comment><![CDATA[ torque feedback]]></Comment>
 							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.Elevation_diagnostic</Name>
+							<Comment><![CDATA[ diagnostic number]]></Comment>
+							<Type>UDINT</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.Elevation_sto</Name>
@@ -3739,14 +3979,14 @@ DIN3 0.2]]></Comment>
 							<Type>WORD</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.Azimuth_torque</Name>
-							<Comment><![CDATA[ torque feedback]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Telescope.Azimuth_diagnostic</Name>
 							<Comment><![CDATA[ diagnostic number]]></Comment>
 							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.Azimuth_torque</Name>
+							<Comment><![CDATA[ torque feedback]]></Comment>
+							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.AzimuthAxisRef.NcToPlc</Name>
@@ -3838,7 +4078,7 @@ DIN3 0.2]]></Comment>
 			</Project>
 		</Plc>
 		<Safety>
-			<Project GUID="{0F3883E8-36C1-494D-8014-A8C4D7F11FA1}" Name="MONETNTwinSAFE" PrjFilePath="MONETNTwinSAFE\MONETNTwinSAFE.splcproj" TmcFilePath="MONETNTwinSAFE\MONETNTwinSAFE.tmc" GeneralArchiveSettings="#x000f" TargetArchiveSettings="#x0007" FileArchiveSettings="#x000e">
+			<Project GUID="{0F3883E8-36C1-494D-8014-A8C4D7F11FA1}" Name="MONETNTwinSAFE" PrjFilePath="C:\Users\monet\Documents\MONETN_dev\MONETN\MONETNTwinSAFE\MONETNTwinSAFE.splcproj" GeneralArchiveSettings="#x000f" TargetArchiveSettings="#x0007" FileArchiveSettings="#x000e">
 				<Instance Id="#x01010010" KeepUnrestoredLinks="2">
 					<Name>MONETNTwinSAFE Instance</Name>
 					<TmcDesc GUID="{72A6D5B8-E98C-4604-8B90-09D1F8AB38A9}">

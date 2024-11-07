@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
   <POU Name="TelescopeControl" Id="{6a4f2e3a-c9ee-4352-b4f6-4f9d94b2c472}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM TelescopeControl
 VAR_INPUT
@@ -42,6 +42,8 @@ see https://gitlab.aip.de/bmk10k/telescope_firmware/snippets/5
 	time_offset: 		LREAL := 0.0;
 	// offset for the de-rotator
 	derotator_offset:	LREAL := 0.0;
+
+	CoverControl	: FB_CoverControl;
 END_VAR
 VAR
 	// actual command from the TCS
@@ -365,7 +367,7 @@ homed := ElevationControl.Calibrated AND
 			DerotatorControl.Calibrated;
 			
 ready := homed AND 
-	CoverControl.isopen AND 
+	MAIN.CoverControl.isopen AND 
 	ElevationControl.enable AND
 	AzimuthElevationControl.enable AND
 	DerotatorControl.enable AND HydraulicsControl.brake_open AND 
@@ -761,7 +763,7 @@ END_IF
 Covercontrol.open := TRUE;
 
 // enable elevation, enable azimuth
-IF MAIN.ready AND CoverControl.isopen THEN
+IF MAIN.ready AND MAIN.CoverControl.isopen THEN
 	ElevationControl.enable := TRUE;
 	AzimuthElevationControl.enable := TRUE;
 	DerotatorControl.enable := TRUE;
@@ -787,7 +789,7 @@ IF ElevationControl.Calibrated AND NOT FocusControl.Calibrated THEN
 	FocusControl.HomeAxis := TRUE;
 END_IF
 
-IF CoverControl.isopen AND 
+IF MAIN.CoverControl.isopen AND 
 	ElevationControl.Calibrated AND
 	AzimuthElevationControl.calibrated AND
 	DerotatorControl.Calibrated AND
@@ -1125,7 +1127,8 @@ END_IF
       <LineId Id="8729" Count="1" />
       <LineId Id="7472" Count="0" />
       <LineId Id="8941" Count="0" />
-      <LineId Id="8941" Count="1" />
+      <LineId Id="9654" Count="0" />
+      <LineId Id="8942" Count="0" />
       <LineId Id="9493" Count="0" />
       <LineId Id="9492" Count="0" />
       <LineId Id="9489" Count="1" />
@@ -1192,8 +1195,7 @@ END_IF
       <LineId Id="1491" Count="4" />
       <LineId Id="6773" Count="2" />
       <LineId Id="3293" Count="0" />
-      <LineId Id="9475" Count="2" />
-      <LineId Id="9474" Count="0" />
+      <LineId Id="9475" Count="1" />
     </LineIds>
     <LineIds Name="TelescopeControl.gototelescope">
       <LineId Id="96" Count="0" />
