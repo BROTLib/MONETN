@@ -108,8 +108,10 @@ CoverControl(
 );
 PendantControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl);	//
 HydraulicsControl(
-	pan_min_percent		:= 30.0,
-	pan_max_percent		:= 56.0,
+	pan_min_level		:= 3000,
+	pan_max_level		:= 10200,
+	pan_min_percent		:= 0.0,
+	pan_max_percent		:= 80.0, //56.0,
 	brake_clearing		:= brake_clearing,
 	comm				:= MQTTClient
 );	//
@@ -216,6 +218,7 @@ TemperatureCriticalEvent(
       <LineId Id="1068" Count="0" />
       <LineId Id="1197" Count="0" />
       <LineId Id="1388" Count="5" />
+      <LineId Id="1412" Count="1" />
       <LineId Id="1409" Count="2" />
       <LineId Id="1408" Count="0" />
       <LineId Id="1407" Count="0" />

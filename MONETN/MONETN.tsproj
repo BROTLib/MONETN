@@ -2608,10 +2608,10 @@ External Setpoint Generation:
 						<Velo RefSearch="0.2" RefSync="0.2" SlowManual="0.1" FastManual="0.5" Maximum="3"/>
 						<OtherSettings AllowMotionCmdToSlave="true" PulseDistancePos="1" PulseDistanceNeg="1"/>
 					</AxisPara>
-					<Encoder Name="Enc" EncType="5">
-						<EncPara ScaleFactorNumerator="0.001" ScaleFactorDenominator="5" ReferenceSystem="1">
+					<Encoder Name="Enc" EncType="4">
+						<EncPara ScaleFactorNumerator="0.001" ScaleFactorDenominator="5" MaxCount="#x0000ffff">
 							<SoftEndMaxControl Range="100"/>
-							<Inc RefSoftSyncMask="#x0000ffff"/>
+							<Inc RefMode="2" RefSoftSyncMask="#x0000ffff"/>
 						</EncPara>
 						<Vars VarGrpType="1">
 							<Name>Eingänge</Name>
@@ -2773,7 +2773,7 @@ External Setpoint Generation:
 					<Encoder Name="Enc" EncType="8">
 						<EncPara ScaleFactorNumerator="360" ScaleFactorDenominator="1048576" MaxCount="#xffffffff">
 							<SoftEndMaxControl Enable="true" Range="450"/>
-							<Inc RefPosition="180" RefMode="2"/>
+							<Inc RefPosition="180" RefMode="1" HomingSensorSource="9"/>
 						</EncPara>
 						<Vars VarGrpType="1">
 							<Name>Eingänge</Name>
@@ -2912,8 +2912,8 @@ External Setpoint Generation:
 					<Name>Elevation</Name>
 					<AxisPara>
 						<General UnitName="°"/>
-						<Dynamic AccelerationMaximum="10" DecelerationMaximum="10" Acceleration="10" Deceleration="10" Jerk="4617"/>
-						<Velo RefSearch="1" RefSync="1" SlowManual="1" FastManual="3" Fast="1026" Maximum="10"/>
+						<Dynamic AccelerationMaximum="10" DecelerationMaximum="10" Acceleration="3" Deceleration="3" Jerk="2"/>
+						<Velo RefSearch="0.5" RefSync="0.5" SlowManual="1" FastManual="3" Fast="1026" Maximum="10"/>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="8">
@@ -3201,7 +3201,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{F24A857C-5461-87BB-A5DF-E78762C2CB30}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{968E7F27-EA76-3DD5-41BB-94F8C0AE4A60}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -9698,6 +9698,9 @@ Bit1: Value smaller than Limit2]]></Comment>
 								<InitCmd DriveNo="0" IDN="32861" MotorDataLevel="1" DisableMode="0"/>
 								<InitCmd DriveNo="0" IDN="32918" MotorDataLevel="1" DisableMode="0"/>
 								<InitCmd DriveNo="0" IDN="32922" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="33088" MotorDataLevel="0" DisableMode="0">
+									<RetainData>24002400d6000600ca0002002c9d5b002c9d5b000000000000000000000000002260000000000000</RetainData>
+								</InitCmd>
 								<InitCmd DriveNo="0" IDN="33093" MotorDataLevel="0" DisableMode="0">
 									<RetainData>160016004a756e2020322032303232202c2031363a32303a3538</RetainData>
 								</InitCmd>
@@ -9828,7 +9831,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 						<SyncMan>001880002600010001000000800080008000001826010000</SyncMan>
 						<SyncMan>001a80002200010002000000800080008000001a22010000</SyncMan>
 						<SyncMan>001008002400010003000000000000000000001024010000</SyncMan>
-						<SyncMan>001116002200010004000000000000000000001122010000</SyncMan>
+						<SyncMan>00111c002200010004000000000000000000001122010000</SyncMan>
 						<SyncMan>002000002400010005000000000000000000002024010000</SyncMan>
 						<SyncMan>002400002000010006000000000000000000002420010000</SyncMan>
 						<Fmmu>0000000000000000001000020100000001000000000000000000000000000000</Fmmu>
@@ -9856,7 +9859,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 						<MBoxUserCmdData>020005000a0000001700000000000000000000000000000000000000000000000340a90000000000210050726f626520636f6e74726f6c20706172616d6574657200</MBoxUserCmdData>
 						<MBoxUserCmdData>020005000a0000001400000000000000000000000000000000000000000000000340fa8000000000000050726f626520312076616c756520736f7572636500</MBoxUserCmdData>
 						<MBoxUserCmdData>02000500140000001b00000000000000000000000000000000000000000000000340b88000000000080008000000000000000000466565646261636b2032207265666572656e6365207369676e616c00</MBoxUserCmdData>
-						<MBoxUserCmdData>02000500480000002800000000000000000000000000000000000000000000000340a580000000003c003c000100000064000000f401b80b0000000000000000f401e803f401e80364000500e1009600b80b84030000000000000000000000000000000000000000436f6d6d75746174696f6e206f66667365742063616c6962726174696f6e20706172616d6574657200</MBoxUserCmdData>
+						<MBoxUserCmdData>02000500480000002800000000000000000000000000000000000000000000000340a580000000003c003c000100000064000000f401b80b0000000000000000f401f401f401f40164000500e1009600b80b84030000000000000000000000000000000000000000436f6d6d75746174696f6e206f66667365742063616c6962726174696f6e20706172616d6574657200</MBoxUserCmdData>
 						<MBoxUserCmdData>02000500140000001b000000000000000000000000000000000000000000000003409a8000000000080008000100000000000000466565646261636b2031207265666572656e6365207369676e616c00</MBoxUserCmdData>
 						<MBoxUserCmdData>02000500ec0000000f00000000000000000000000000000000000000000000000340968000000000e000e00000000000556e6b6e23315670702d3336303030532d35560000000000000000000000000000000000000000000200200303000000000000000100030000000000a08c000000000000e8030000e8030000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000466565646261636b2031207479706500</MBoxUserCmdData>
 						<MBoxUserCmdData>020005001800000011000000000000000000000000000000000000000000000003400282000000000c000c0001000000f401e803bc02000056656c6f63697479206f6273657276657200</MBoxUserCmdData>
@@ -9889,7 +9892,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 						<MBoxUserCmdData>020005000a0000002b000000000000000000000000000000000000000000000003406b0000000000080043757272656e7420636f6e74726f6c206c6f6f7020696e74656772616c20616374696f6e2074696d65203100</MBoxUserCmdData>
 						<MBoxUserCmdData>020005000a0000002900000000000000000000000000000000000000000000000340ff8100000000640056656c6f636974792066696c74657220313a204c6f7720706173732074696d6520636f6e7374616e7400</MBoxUserCmdData>
 						<MBoxUserCmdData>020005000c0000001f0000000000000000000000000000000000000000000000034064000000000000127a0056656c6f63697479206c6f6f702070726f706f7274696f6e616c206761696e00</MBoxUserCmdData>
-						<MBoxUserCmdData>020005000a0000002200000000000000000000000000000000000000000000000340650000000000640056656c6f63697479206c6f6f7020696e74656772616c20616374696f6e2074696d6500</MBoxUserCmdData>
+						<MBoxUserCmdData>020005000a00000022000000000000000000000000000000000000000000000003406500000000002c0156656c6f63697479206c6f6f7020696e74656772616c20616374696f6e2074696d6500</MBoxUserCmdData>
 						<MBoxUserCmdData>020005000a0000001d000000000000000000000000000000000000000000000003403d800000000003004d6f746f722074656d70657261747572652073656e736f72207479706500</MBoxUserCmdData>
 						<Pdo Name="AT" Index="#x0010" Flags="#x0001" SyncMan="3">
 							<Entry Name="Drive status word" BitLen="16" Index="#x0087" Flags="#x00000800">
@@ -9911,6 +9914,15 @@ Bit1: Value smaller than Limit2]]></Comment>
 								<Type>DINT</Type>
 							</Entry>
 							<Entry Name="Probe 1 positive latched" BitLen="16" Index="#x0199">
+								<Type>INT</Type>
+							</Entry>
+							<Entry Name="Actual motor current phase U" BitLen="16" Index="#x81c8">
+								<Type>INT</Type>
+							</Entry>
+							<Entry Name="Actual motor current phase V" BitLen="16" Index="#x81c9">
+								<Type>INT</Type>
+							</Entry>
+							<Entry Name="Actual motor current phase W" BitLen="16" Index="#x81ca">
 								<Type>INT</Type>
 							</Entry>
 						</Pdo>
@@ -13085,6 +13097,10 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="PlcTask Outputs^MAIN.RoofControl.roofs[2].motors[1].direction_open" VarB="Channel 5^MAIN.RoofControl.roofs[2].motors[1].direction_open"/>
 				<Link VarA="PlcTask Outputs^MAIN.RoofControl.roofs[2].motors[2].direction_close" VarB="Channel 4^MAIN.RoofControl.roofs[2].motors[2].direction_close"/>
 				<Link VarA="PlcTask Outputs^MAIN.RoofControl.roofs[2].motors[2].direction_open" VarB="Channel 2^MAIN.RoofControl.roofs[2].motors[2].direction_open"/>
+			</OwnerB>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Azimuth">
+				<Link VarA="PlcTask Inputs^GVL_Telescope.AzimuthAxisRef.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^GVL_Telescope.AzimuthAxisRef.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Fokus">
 				<Link VarA="PlcTask Inputs^GVL_Telescope.FocusAxisRef.NcToPlc" VarB="Outputs^ToPlc"/>
