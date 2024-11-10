@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
   <GVL Name="GVL_Telescope" Id="{a7572ab9-17bf-4e0d-b71f-e76e531b6203}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
@@ -13,26 +13,7 @@ VAR_GLOBAL
 	
 	// DIN28 3.3 (absolute)
 	azimut_limit_switch	AT%I*: BOOL;
-	// DIN29 3.4
-	focus_limit_near	AT%I*: BOOL;
-	// DIN30 3.5
-	focus_limit_far		AT%I*: BOOL;
-	
-	// DIN33 4.0
-	cover1_open		AT%I*: BOOL;
-	// DIN34 4.1
-	cover1_closed	AT%I*: BOOL;
-	// DIN35 4.2
-	cover2_open		AT%I*: BOOL;
-	// DIN36 4.3
-	cover2_closed	AT%I*: BOOL;
-	// DIN37 4.4
-	cover3_open		AT%I*: BOOL;
-	// DIN38 4.5
-	cover3_closed	AT%I*: BOOL;
 
-	//DOUT14 1.5
-	focus_unlock		AT%Q*: BOOL;
 	//Horn 4.7
 	horn			AT%Q*: BOOL;
 	
@@ -67,17 +48,6 @@ VAR_GLOBAL
 	AzimuthAxisRef: 	AXIS_REF;
 	ElevationAxisRef: 	AXIS_REF;
 	DerotatorAxisRef: 	AXIS_REF;
- 	// Motor1 Channel 1
-	FocusAxisRef:		AXIS_REF;
-	
-	//nasmyth_left	AT%Q*: BOOL;
-	//nasmyth_right	AT%Q*: BOOL;
-	open_cover1		AT%Q*: BOOL;
-	close_cover1	AT%Q*: BOOL;
-	open_cover2		AT%Q*: BOOL;
-	close_cover2	AT%Q*: BOOL;
-	open_cover3		AT%Q*: BOOL;
-	close_cover3	AT%Q*: BOOL;
 	
 	
 END_VAR]]></Declaration>

@@ -121,8 +121,7 @@ AzimuthElevationControl(HydraulicsControl := HydraulicsControl);	//
 DerotatorControl();	//
 FocusControl(
 	comm				:= MQTTClient,
-	telescope_mode 		:= PendantControl.telescope_mode,
-	FocusUnlock			=> GVL_Telescope.focus_unlock
+	telescope_mode 		:= PendantControl.telescope_mode
 );
 RoofControl(
 	min_speed			:= 10000,
@@ -228,7 +227,7 @@ TemperatureCriticalEvent(
       <LineId Id="1408" Count="0" />
       <LineId Id="1407" Count="0" />
       <LineId Id="1394" Count="3" />
-      <LineId Id="1415" Count="2" />
+      <LineId Id="1415" Count="1" />
       <LineId Id="1414" Count="0" />
       <LineId Id="1398" Count="8" />
       <LineId Id="1279" Count="0" />

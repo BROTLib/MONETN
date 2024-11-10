@@ -96,14 +96,14 @@ END_IF
 // enable only the selected item and connect lamps and buttons accordingly
 CASE Selection OF
 	1:	// reserved for Cover1 control
-		lamp_up := GVL_Telescope.cover1_open;
-		lamp_down := GVL_Telescope.cover1_closed;
+		lamp_up := CoverControl.cover1_open;
+		lamp_down := CoverControl.cover1_closed;
 		IF manual THEN
 			//CoverEnable(SET := enable, Q := CoverControl.enable);
 			//CoverControl.active_cover := 1;
 			//CoverControl.reset := reset;
-			GVL_Telescope.open_cover1 := up AND GVL_Telescope.cover1_open;
-			GVL_Telescope.close_cover1 := down AND GVL_Telescope.cover1_closed;
+			CoverControl.open_cover1 := up AND CoverControl.cover1_open;
+			CoverControl.close_cover1 := down AND CoverControl.cover1_closed;
 			lamp_error := CoverControl.Cover1_Error;	
 		ELSE
 			IF down THEN 
@@ -115,13 +115,13 @@ CASE Selection OF
 		END_IF
 
 	2: // Cover2 control
-		lamp_up := GVL_Telescope.cover2_open;
-		lamp_down := GVL_Telescope.cover2_closed;
+		lamp_up := CoverControl.cover2_open;
+		lamp_down := CoverControl.cover2_closed;
 		IF manual THEN
 			//CoverEnable(SET := enable, Q := CoverControl.enable);
 			//CoverControl.active_cover := 2;
-			GVL_Telescope.open_cover2 := up AND GVL_Telescope.cover2_open;
-			GVL_Telescope.close_cover2 := down AND GVL_Telescope.cover2_closed;
+			CoverControl.open_cover2 := up AND CoverControl.cover2_open;
+			CoverControl.close_cover2 := down AND CoverControl.cover2_closed;
 			lamp_error := CoverControl.Cover2_Error;
 		ELSE
 			IF down THEN 
@@ -133,13 +133,13 @@ CASE Selection OF
 		END_IF
  	
 	3:  // Cover3 control
-		lamp_up := GVL_Telescope.cover3_open;
-		lamp_down := GVL_Telescope.cover3_closed;
+		lamp_up := CoverControl.cover3_open;
+		lamp_down := CoverControl.cover3_closed;
 		IF manual THEN
 			//CoverEnable(SET := enable, Q := CoverControl.enable);
 			//CoverControl.active_cover := 3;
-			GVL_Telescope.open_cover3 := up AND GVL_Telescope.cover3_open;
-			GVL_Telescope.close_cover3 := down AND GVL_Telescope.cover3_closed;
+			CoverControl.open_cover3 := up AND CoverControl.cover3_open;
+			CoverControl.close_cover3 := down AND CoverControl.cover3_closed;
 			//CoverControl.reset := reset;
 			lamp_error := CoverControl.Cover3_Error;
 		ELSE
@@ -154,8 +154,8 @@ CASE Selection OF
 	4:	// Nasmyth / mirror M3 control
 		
 	5:	// Focus Control
-		lamp_up := FocusControl.Ready AND NOT GVL_Telescope.focus_limit_far;
-		lamp_down := FocusControl.Ready AND NOT GVL_Telescope.focus_limit_near;
+		lamp_up := FocusControl.Ready AND NOT FocusControl.focus_limit_far;
+		lamp_down := FocusControl.Ready AND NOT FocusControl.focus_limit_near;
 		IF manual THEN
 			FocusEnable(SET := enable, Q := FocusControl.enable);
 			FocusControl.outward := up;
