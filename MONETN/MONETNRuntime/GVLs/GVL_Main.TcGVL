@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
   <GVL Name="GVL_Main" Id="{4c62cafc-6725-448b-aa29-7cf19ff00316}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 //TODO update to current RoboTel IOs
@@ -29,7 +29,6 @@ VAR_GLOBAL
 	//DOUT3 0.2
 	lamp_error			AT%Q*: BOOL;
 	
-	isRoboTel:		BOOL;
 	(*
 	NeutralCurrentGuardWarning		AT%I*:	BOOL;
 	NeutralCurrentGuarError			AT%I*:	BOOL;

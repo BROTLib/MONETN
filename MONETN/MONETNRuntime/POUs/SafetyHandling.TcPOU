@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
   <POU Name="SafetyHandling" Id="{6d4a788c-2168-4769-93de-c67314036861}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM SafetyHandling
 VAR
-	state           : INT := 0;            
+	state           : BOOL;		// safety is okay
+	estop			: BOOL;		// estop was triggered
+            
 	// power on delay
-	start_delay 	: TON := (PT := T#2S);
-	state_delay 	: TON := (PT := T#1S);
+	//start_delay 	: TON := (PT := T#2S);
+	//state_delay 	: TON := (PT := T#1S);
 
 	// Safety group
 	fbInfoGroup1			:FB_InfoGroup;
@@ -55,23 +57,28 @@ VAR_OUTPUT
 END_VAR
 VAR_INPUT
 	// issue a remote restart
-	remote_restart:		BOOL;
+	//remote_restart:		BOOL;
 	// issue a remute run/stop
 	remote_run:			BOOL := TRUE;
+	comm			: I_Comm;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Safety is running on start
 GVL_Safety.Run := remote_run;
 
+// get safety status
 fbInfoGroup1(
 	stInfoData	:= stInfoGroup1,
 	sState		=> sStateGroup1);
+state := sStateGroup1 = 'RUN';
 
+// estop triggered?
 fbInfoEStop1(
 	stInfoData	:= stInfoEStop1, 
 	sState		=> sStateEStop1, 
 	sDiag		=> sDiagEStop1);
+estop := sStateEStop1 = 'RUN';
 
 //Info SafetyIn EL1904
 fbInfoSafetyIn(
@@ -140,20 +147,28 @@ GVL_Safety.ErrAck := (GVL_Main.key_switch_remote AND GVL_Main.reset_switch);
 
 // manual Restart
 GVL_Safety.Restart := (GVL_Main.key_switch_remote AND GVL_Main.start_switch);
-
-ErrAckLog(	Trigger := GVL_Safety.ErrAck,
-			OnMessage := 'Safety error was acknowledged.');
-			
-RestartLog(	Trigger := GVL_Safety.Restart,
-			Level := ADSLOG_MSGTYPE_WARN,
-			OnMessage := 'Safety was restarted.');
-
-SafetyLog(	Trigger := Error,
-			Level := ADSLOG_MSGTYPE_ERROR,
-			OnMessage := 'Safety Error! Emergency stop enganged!',
-			OffMessage := 'Safety is OK.',
-			OffLevel := ADSLOG_MSGTYPE_HINT);
 *)
+
+ErrAckLog(  
+	Trigger 	:= GVL_Safety.ErrAck,
+	OnMessage 	:= 'Safety error was acknowledged.',
+	Comm		:= comm
+);
+			
+RestartLog(	
+	Trigger 	:= GVL_Safety.Restart,
+	Level 		:= ADSLOG_MSGTYPE_WARN,
+	OnMessage 	:= 'Safety was restarted.',
+	Comm		:= comm
+);
+
+SafetyLog(	
+	Trigger 	:= Error,
+	Level 		:= ADSLOG_MSGTYPE_ERROR,
+	OnMessage 	:= 'Safety Error! Emergency stop enganged!',
+	OffMessage 	:= 'Safety is OK.',
+	OffLevel 	:= ADSLOG_MSGTYPE_HINT,
+	Comm		:= comm);
 
 (*
 // wait n seconds after Start ...
@@ -195,12 +210,16 @@ SafetyLog(	Trigger := Error,
     </Implementation>
     <LineIds Name="SafetyHandling">
       <LineId Id="159" Count="1" />
-      <LineId Id="457" Count="0" />
+      <LineId Id="592" Count="0" />
+      <LineId Id="588" Count="0" />
       <LineId Id="456" Count="0" />
       <LineId Id="463" Count="1" />
+      <LineId Id="591" Count="0" />
+      <LineId Id="593" Count="0" />
       <LineId Id="503" Count="2" />
       <LineId Id="507" Count="0" />
       <LineId Id="453" Count="0" />
+      <LineId Id="594" Count="0" />
       <LineId Id="556" Count="0" />
       <LineId Id="558" Count="2" />
       <LineId Id="562" Count="4" />
@@ -251,9 +270,22 @@ SafetyLog(	Trigger := Error,
       <LineId Id="423" Count="1" />
       <LineId Id="413" Count="0" />
       <LineId Id="367" Count="0" />
-      <LineId Id="369" Count="10" />
+      <LineId Id="595" Count="0" />
+      <LineId Id="369" Count="0" />
+      <LineId Id="596" Count="0" />
+      <LineId Id="370" Count="0" />
+      <LineId Id="599" Count="0" />
+      <LineId Id="597" Count="0" />
+      <LineId Id="371" Count="1" />
+      <LineId Id="600" Count="0" />
+      <LineId Id="373" Count="1" />
+      <LineId Id="601" Count="0" />
+      <LineId Id="598" Count="0" />
+      <LineId Id="375" Count="1" />
+      <LineId Id="602" Count="0" />
+      <LineId Id="377" Count="2" />
       <LineId Id="368" Count="0" />
-      <LineId Id="380" Count="0" />
+      <LineId Id="603" Count="0" />
       <LineId Id="342" Count="0" />
       <LineId Id="165" Count="4" />
       <LineId Id="207" Count="0" />

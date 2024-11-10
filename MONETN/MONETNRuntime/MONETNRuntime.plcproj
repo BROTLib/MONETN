@@ -73,9 +73,6 @@
     <Compile Include="POUs\FunctionBlocks\FB_Cover.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FunctionBlocks\FB_EventLog.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\FunctionBlocks\FB_Horn.TcPOU">
       <SubType>Code</SubType>
     </Compile>

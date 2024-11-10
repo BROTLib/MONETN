@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
   <GVL Name="GVL_Safety" Id="{caac09d8-917a-47af-9e38-03ae3a5a9ed5}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
@@ -13,8 +13,6 @@ VAR_GLOBAL
 	ErrAck		AT%Q*:	BOOL;
 	// Stop signal coming from Safety
 	// Stop		AT%I*:	BOOL;
-	// state variable
-	State		AT%I*:	USINT;
 	
 	Reset_STO_Azimuth		AT%Q*: BOOL;
 	Reset_STO_Elevation		AT%Q*: BOOL;
