@@ -3059,12 +3059,17 @@ External Setpoint Generation:
 					<Name>Derotator</Name>
 					<AxisPara>
 						<General UnitName="°"/>
-						<Dynamic Acceleration="17.5834" Deceleration="17.5834" Jerk="52.7501"/>
-						<Velo RefSearch="0.117222517903646" RefSync="0.117222517903646" SlowManual="0.586112589518229" FastManual="3.51667553710938" Fast="11.7222517903646" Maximum="11.7223"/>
+						<Dynamic AccelerationMaximum="20" DecelerationMaximum="20" Acceleration="3.70696" Deceleration="3.70696" Jerk="1.65107"/>
+						<Velo RefSearch="1" RefSync="0.5" SlowManual="0.5" FastManual="5" Fast="11.7222517903646" Maximum="11.7223"/>
+						<PositionAreaControl Range="10"/>
+						<TargetPosControl Range="1" Time="0.1"/>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="8">
-						<EncPara ScaleFactorNumerator="0.2" ScaleFactorDenominator="1048576" MaxCount="#xffffffff"/>
+						<EncPara ScaleFactorNumerator="0.2" ScaleFactorDenominator="1048576" MaxCount="#xffffffff">
+							<SoftEndMinControl Enable="true" Range="-50"/>
+							<SoftEndMaxControl Enable="true" Range="400"/>
+						</EncPara>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
 							<Var>
@@ -3179,6 +3184,7 @@ External Setpoint Generation:
 					</Drive>
 					<Controller Name="Ctrl" CtrType="1">
 						<CtrPara PriorControlFactor="1">
+							<PosDiffControl Range="1" Time="0.1"/>
 							<Observer BandWidth="20"/>
 						</CtrPara>
 					</Controller>
