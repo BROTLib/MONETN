@@ -5,6 +5,7 @@
 VAR_INPUT
 	CoverControl	: FB_CoverControl;
 	HydraulicsControl : FB_HydraulicsControl;
+	Focuscontrol : FB_Focuscontrol;
 END_VAR
 VAR
 	// program selection of the pendant control

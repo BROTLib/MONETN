@@ -2605,7 +2605,7 @@ External Setpoint Generation:
 					<Name>Fokus</Name>
 					<AxisPara>
 						<Dynamic AccelerationMaximum="100" DecelerationMaximum="100" Acceleration="4.5" Deceleration="4.5" Jerk="13.5"/>
-						<Velo RefSearch="0.02" RefSync="0.02" SlowManual="0.02" FastManual="0.02" Maximum="0.02"/>
+						<Velo RefSearch="0.02" RefSync="0.02" SlowManual="0.02" FastManual="0.02" Maximum="0.04"/>
 						<OtherSettings AllowMotionCmdToSlave="true" PulseDistancePos="0.02" PulseDistanceNeg="0.02"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="4">
@@ -3201,7 +3201,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{3030719D-379B-4FDE-8513-3D0166A59B50}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{C88CCFF9-8E39-1DB3-0A46-22C97825E6AE}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -3320,6 +3320,15 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.FocusControl.FocusUnlock</Name>
+							<Comment><![CDATA[ whether focus is unlocked]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.FocusControl.FocusAxisRef.PlcToNc</Name>
+							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
 							<Name>TelescopeControl.CoverControl.open_cover1</Name>
 							<Comment><![CDATA[ open cover1 command]]></Comment>
 							<Type>BOOL</Type>
@@ -3365,6 +3374,15 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>TelescopeControl.Focuscontrol.FocusUnlock</Name>
+							<Comment><![CDATA[ whether focus is unlocked]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.Focuscontrol.FocusAxisRef.PlcToNc</Name>
+							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
 							<Name>PendantControl.CoverControl.open_cover1</Name>
 							<Comment><![CDATA[ open cover1 command]]></Comment>
 							<Type>BOOL</Type>
@@ -3408,6 +3426,15 @@ External Setpoint Generation:
 							<Name>PendantControl.HydraulicsControl.brake_azimuth_eve</Name>
 							<Comment><![CDATA[ brake set]]></Comment>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.Focuscontrol.FocusUnlock</Name>
+							<Comment><![CDATA[ whether focus is unlocked]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.Focuscontrol.FocusAxisRef.PlcToNc</Name>
+							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
 							<Name>ElevationControl.CoverControl.open_cover1</Name>
@@ -3571,6 +3598,10 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>GVL_Telescope.open_cover3</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>GVL_Telescope.AzimuthAxisRef.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
@@ -3585,10 +3616,6 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 						<Var>
 							<Name>GVL_Telescope.FocusAxisRef.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.open_cover3</Name>
-							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.close_cover3</Name>
@@ -3787,6 +3814,20 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.FocusControl.focus_limit_near</Name>
+							<Comment><![CDATA[ DIN29 3.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.FocusControl.focus_limit_far</Name>
+							<Comment><![CDATA[ DIN30 3.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.FocusControl.FocusAxisRef.NcToPlc</Name>
+							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+						</Var>
+						<Var>
 							<Name>TelescopeControl.CoverControl.limit_cover1_open</Name>
 							<Comment><![CDATA[ limit switches]]></Comment>
 							<Type>BOOL</Type>
@@ -3872,6 +3913,20 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>TelescopeControl.Focuscontrol.focus_limit_near</Name>
+							<Comment><![CDATA[ DIN29 3.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.Focuscontrol.focus_limit_far</Name>
+							<Comment><![CDATA[ DIN30 3.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.Focuscontrol.FocusAxisRef.NcToPlc</Name>
+							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+						</Var>
+						<Var>
 							<Name>PendantControl.CoverControl.limit_cover1_open</Name>
 							<Comment><![CDATA[ limit switches]]></Comment>
 							<Type>BOOL</Type>
@@ -3955,6 +4010,20 @@ nasmyth_right	AT%Q*: BOOL;]]></Comment>
 							<Name>PendantControl.HydraulicsControl.in_oil_reserve</Name>
 							<Comment><![CDATA[DIN40 4.7]]></Comment>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.Focuscontrol.focus_limit_near</Name>
+							<Comment><![CDATA[ DIN29 3.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.Focuscontrol.focus_limit_far</Name>
+							<Comment><![CDATA[ DIN30 3.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.Focuscontrol.FocusAxisRef.NcToPlc</Name>
+							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
 							<Name>ElevationControl.CoverControl.limit_cover1_open</Name>
@@ -4149,14 +4218,14 @@ DIN3 0.2]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Main.main_cabinet_temperature</Name>
-							<Comment><![CDATA[BT1]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Main.brake_clearing</Name>
 							<Comment><![CDATA[DIN15 1.6]]></Comment>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Main.main_cabinet_temperature</Name>
+							<Comment><![CDATA[BT1]]></Comment>
+							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>GVL_pendant_control.BCD1</Name>
@@ -4269,14 +4338,14 @@ DIN3 0.2]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.Derotator_sto</Name>
-							<Comment><![CDATA[ STO]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Telescope.Derotator_inputs</Name>
 							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
 							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.Derotator_torque</Name>
+							<Comment><![CDATA[ derotator torque feedback]]></Comment>
+							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.Derotator_diagnostic</Name>
@@ -4284,9 +4353,14 @@ DIN3 0.2]]></Comment>
 							<Type>UDINT</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.Derotator_torque</Name>
-							<Comment><![CDATA[ derotator torque feedback]]></Comment>
-							<Type>INT</Type>
+							<Name>GVL_Telescope.Derotator_sto</Name>
+							<Comment><![CDATA[ STO]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.Elevation_sto</Name>
+							<Comment><![CDATA[ STO]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.Elevation_inputs</Name>
@@ -4304,19 +4378,14 @@ DIN3 0.2]]></Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.Elevation_sto</Name>
-							<Comment><![CDATA[ STO]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.Azimuth_sto</Name>
-							<Comment><![CDATA[ STO]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Telescope.Azimuth_inputs</Name>
 							<Comment><![CDATA[ digital inputs for limit switches]]></Comment>
 							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>GVL_Telescope.Azimuth_diagnostic</Name>
+							<Comment><![CDATA[ diagnostic number]]></Comment>
+							<Type>UDINT</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.Azimuth_torque</Name>
@@ -4324,9 +4393,9 @@ DIN3 0.2]]></Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.Azimuth_diagnostic</Name>
-							<Comment><![CDATA[ diagnostic number]]></Comment>
-							<Type>UDINT</Type>
+							<Name>GVL_Telescope.Azimuth_sto</Name>
+							<Comment><![CDATA[ STO]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.AzimuthAxisRef.NcToPlc</Name>
@@ -4919,8 +4988,9 @@ DIN3 0.2]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 7" Index="#x1606" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Telescope.focus_unlock" Index="#x7060" Sub="#x01">
+								<Entry Name="MAIN.FocusControl.FocusUnlock" Index="#x7060" Sub="#x01">
 									<Type>BIT</Type>
+									<Comment><![CDATA[ whether focus is unlocked]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 8" Index="#x1607" InOut="1" Flags="#x0011" SyncMan="0">
@@ -4957,13 +5027,13 @@ DIN3 0.2]]></Comment>
 							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
 								<Entry Name="GVL_Telescope.focus_limit_near" Index="#x6030" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Limit Switch Focus (near M1)]]></Comment>
+									<Comment><![CDATA[ DIN29 3.4]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Telescope.focus_limit_far" Index="#x6040" Sub="#x01">
+								<Entry Name="MAIN.FocusControl.focus_limit_far" Index="#x6040" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Limit Switch Focus (away M1)]]></Comment>
+									<Comment><![CDATA[ DIN30 3.5]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
@@ -12966,8 +13036,8 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="PlcTask Outputs^GVL_Main.lamp_power" VarB="Channel 1^GVL_Main.lamp_power"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Hydraulics Focus IN (EL1008)">
-				<Link VarA="PlcTask Inputs^GVL_Telescope.focus_limit_far" VarB="Channel 5^GVL_Telescope.focus_limit_far"/>
-				<Link VarA="PlcTask Inputs^GVL_Telescope.focus_limit_near" VarB="Channel 4^GVL_Telescope.focus_limit_near"/>
+				<Link VarA="PlcTask Inputs^MAIN.FocusControl.focus_limit_far" VarB="Channel 5^MAIN.FocusControl.focus_limit_far"/>
+				<Link VarA="PlcTask Inputs^MAIN.FocusControl.focus_limit_near" VarB="Channel 4^GVL_Telescope.focus_limit_near"/>
 				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_pump_running" VarB="Channel 1^MAIN.HydraulicsControl.in_pump_running"/>
 				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_suction_running" VarB="Channel 2^MAIN.HydraulicsControl.in_suction_running"/>
 			</OwnerB>
@@ -12982,7 +13052,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oilpan_maximum" VarB="Channel 7^MAIN.HydraulicsControl.in_oilpan_maximum"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Hydraulics OUT (EL2008)">
-				<Link VarA="PlcTask Outputs^GVL_Telescope.focus_unlock" VarB="Channel 7^GVL_Telescope.focus_unlock"/>
+				<Link VarA="PlcTask Outputs^MAIN.FocusControl.FocusUnlock" VarB="Channel 7^MAIN.FocusControl.FocusUnlock"/>
 				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.out_oil_pump_enable" VarB="Channel 1^MAIN.HydraulicsControl.out_oil_pump_enable"/>
 				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.out_oil_suction_enable" VarB="Channel 3^MAIN.HydraulicsControl.out_oil_suction_enable"/>
 			</OwnerB>
@@ -13107,8 +13177,8 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="PlcTask Outputs^GVL_Telescope.AzimuthAxisRef.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Fokus">
-				<Link VarA="PlcTask Inputs^GVL_Telescope.FocusAxisRef.NcToPlc" VarB="Outputs^ToPlc"/>
-				<Link VarA="PlcTask Outputs^GVL_Telescope.FocusAxisRef.PlcToNc" VarB="Inputs^FromPlc"/>
+				<Link VarA="PlcTask Inputs^MAIN.FocusControl.FocusAxisRef.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^MAIN.FocusControl.FocusAxisRef.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

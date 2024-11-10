@@ -21,6 +21,16 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"730"</v>
+              <v n="TextDefault">"%.2f mm"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"339"</v>
+              <v n="TextDefault">"%.4f mm"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"616"</v>
               <v n="TextDefault">"%d"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -28,6 +38,16 @@
             <o>
               <v n="TextID">"792"</v>
               <v n="TextDefault">"%s"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"78"</v>
+              <v n="TextDefault">"+"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"114"</v>
+              <v n="TextDefault">"-"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -43,6 +63,11 @@
             <o>
               <v n="TextID">"785"</v>
               <v n="TextDefault">"Azimuth:"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"247"</v>
+              <v n="TextDefault">"Brake"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -68,6 +93,11 @@
             <o>
               <v n="TextID">"272"</v>
               <v n="TextDefault">"busy"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"688"</v>
+              <v n="TextDefault">"Calibrated"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -108,6 +138,11 @@
             <o>
               <v n="TextID">"857"</v>
               <v n="TextDefault">"Cover 3"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"816"</v>
+              <v n="TextDefault">"Current"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -166,6 +201,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"755"</v>
+              <v n="TextDefault">"Far"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"479"</v>
               <v n="TextDefault">"Global"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -186,6 +226,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"483"</v>
+              <v n="TextDefault">"Homing"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"81"</v>
               <v n="TextDefault">"Hot"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -201,8 +246,18 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"557"</v>
+              <v n="TextDefault">"Limits"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"58"</v>
               <v n="TextDefault">"Low"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"697"</v>
+              <v n="TextDefault">"Manual"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -218,6 +273,11 @@
             <o>
               <v n="TextID">"765"</v>
               <v n="TextDefault">"Moving"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"59"</v>
+              <v n="TextDefault">"Near"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -336,6 +396,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"176"</v>
+              <v n="TextDefault">"Ready"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"685"</v>
               <v n="TextDefault">"Reset"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -376,6 +441,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"309"</v>
+              <v n="TextDefault">"Set"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"777"</v>
               <v n="TextDefault">"slew"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -398,6 +468,11 @@
             <o>
               <v n="TextID">"49"</v>
               <v n="TextDefault">"Speed"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"566"</v>
+              <v n="TextDefault">"Start"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -483,6 +558,11 @@
             <o>
               <v n="TextID">"364"</v>
               <v n="TextDefault">"tracking"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"136"</v>
+              <v n="TextDefault">"Unlocked"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
