@@ -2605,8 +2605,8 @@ External Setpoint Generation:
 					<Name>Fokus</Name>
 					<AxisPara>
 						<Dynamic AccelerationMaximum="100" DecelerationMaximum="100" Acceleration="4.5" Deceleration="4.5" Jerk="13.5"/>
-						<Velo RefSearch="0.2" RefSync="0.2" SlowManual="0.1" FastManual="0.5" Maximum="3"/>
-						<OtherSettings AllowMotionCmdToSlave="true" PulseDistancePos="1" PulseDistanceNeg="1"/>
+						<Velo RefSearch="0.02" RefSync="0.02" SlowManual="0.02" FastManual="0.02" Maximum="0.02"/>
+						<OtherSettings AllowMotionCmdToSlave="true" PulseDistancePos="0.02" PulseDistanceNeg="0.02"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="4">
 						<EncPara ScaleFactorNumerator="0.001" ScaleFactorDenominator="5" MaxCount="#x0000ffff">
@@ -3201,7 +3201,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{968E7F27-EA76-3DD5-41BB-94F8C0AE4A60}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{3030719D-379B-4FDE-8513-3D0166A59B50}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -12834,12 +12834,16 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionOutputs^Message_6 RxPDO" VarB="Module 1 (Safety Process Data, 1 axis)^Inputs (Statusword)^FSOE"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Term 11 (EK1100)^Term 13 (EL1904)">
-				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionInputs^Message_28 TxPDO" VarB="Module 1 (FSOES)^RxPDO^FSOE"/>
 				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionOutputs^Message_28 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Term 11 (EK1100)^Term 45 (EL2904)">
 				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionInputs^Message_27 TxPDO" VarB="Module 1 (FSOES)^RxPDO^FSOE"/>
 				<Link VarA="Term 21 (EK1200)^Safety Logic (EL6910)^ConnectionOutputs^Message_27 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
+			</OwnerB>
+		</OwnerA>
+		<OwnerA Name="TIID^Device 5 (EtherCAT)">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Safety Logic (EL6910)">
+				<Link VarA="Term 11 (EK1100)^Term 13 (EL1904)^Module 1 (FSOES)^RxPDO^FSOE" VarB="ConnectionInputs^Message_28 TxPDO"/>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Azimuth">

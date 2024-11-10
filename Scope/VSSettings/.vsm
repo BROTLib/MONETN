@@ -5,7 +5,7 @@
   <Children>
     <Node>
       <Title>ScopeWizard</Title>
-      <Expanded>True</Expanded>
+      <Expanded>False</Expanded>
       <FileName>C:\Users\monet\Documents\MONET\Scope\ScopeWizard.tcscopex</FileName>
       <Children>
         <Node>
@@ -13,6 +13,24 @@
           <Expanded>True</Expanded>
           <FileName></FileName>
           <Children>
+            <Node>
+              <Title>Actual motor current phase U</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+            <Node>
+              <Title>Actual motor current phase V</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+            <Node>
+              <Title>Actual motor current phase W</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
             <Node>
               <Title>Following distance Az</Title>
               <Expanded>False</Expanded>
@@ -113,6 +131,38 @@
                 </Node>
                 <Node>
                   <Title>Velocity feedback 1 value El</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+              </Children>
+            </Node>
+          </Children>
+        </Node>
+        <Node>
+          <Title>YT Chart (1)</Title>
+          <Expanded>True</Expanded>
+          <FileName></FileName>
+          <Children>
+            <Node>
+              <Title>Axis Group</Title>
+              <Expanded>True</Expanded>
+              <FileName></FileName>
+              <Children>
+                <Node>
+                  <Title>Actual motor current phase U</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+                <Node>
+                  <Title>Actual motor current phase V</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+                <Node>
+                  <Title>Actual motor current phase W</Title>
                   <Expanded>False</Expanded>
                   <FileName></FileName>
                   <Children />
