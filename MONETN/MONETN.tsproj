@@ -3207,7 +3207,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{7A8D56F7-D00E-C02F-6CC7-36AEEC004846}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{C421847D-A328-B364-0686-F5EBA2E4A9A1}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -3311,30 +3311,6 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.out_oil_pump_enable</Name>
-							<Comment><![CDATA[DOUT4 0.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.out_oil_suction_enable</Name>
-							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.brake_azimuth_eve</Name>
-							<Comment><![CDATA[ brake set]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.FocusControl.FocusUnlock</Name>
-							<Comment><![CDATA[ whether focus is unlocked]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.FocusControl.FocusAxisRef.PlcToNc</Name>
-							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-						</Var>
-						<Var>
 							<Name>TelescopeControl.CoverControl.open_cover1</Name>
 							<Comment><![CDATA[ open cover1 command]]></Comment>
 							<Type>BOOL</Type>
@@ -3363,30 +3339,6 @@ External Setpoint Generation:
 							<Name>TelescopeControl.CoverControl.close_cover3</Name>
 							<Comment><![CDATA[ close cover3 command]]></Comment>
 							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.out_oil_pump_enable</Name>
-							<Comment><![CDATA[DOUT4 0.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.out_oil_suction_enable</Name>
-							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.brake_azimuth_eve</Name>
-							<Comment><![CDATA[ brake set]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.Focuscontrol.FocusUnlock</Name>
-							<Comment><![CDATA[ whether focus is unlocked]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.Focuscontrol.FocusAxisRef.PlcToNc</Name>
-							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
 							<Name>PendantControl.CoverControl.open_cover1</Name>
@@ -3419,30 +3371,6 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>PendantControl.HydraulicsControl.out_oil_pump_enable</Name>
-							<Comment><![CDATA[DOUT4 0.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.out_oil_suction_enable</Name>
-							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.brake_azimuth_eve</Name>
-							<Comment><![CDATA[ brake set]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.Focuscontrol.FocusUnlock</Name>
-							<Comment><![CDATA[ whether focus is unlocked]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.Focuscontrol.FocusAxisRef.PlcToNc</Name>
-							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-						</Var>
-						<Var>
 							<Name>ElevationControl.CoverControl.open_cover1</Name>
 							<Comment><![CDATA[ open cover1 command]]></Comment>
 							<Type>BOOL</Type>
@@ -3470,36 +3398,6 @@ External Setpoint Generation:
 						<Var>
 							<Name>ElevationControl.CoverControl.close_cover3</Name>
 							<Comment><![CDATA[ close cover3 command]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.out_oil_pump_enable</Name>
-							<Comment><![CDATA[DOUT4 0.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.out_oil_suction_enable</Name>
-							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.brake_azimuth_eve</Name>
-							<Comment><![CDATA[ brake set]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.out_oil_pump_enable</Name>
-							<Comment><![CDATA[DOUT4 0.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.out_oil_suction_enable</Name>
-							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.brake_azimuth_eve</Name>
-							<Comment><![CDATA[ brake set]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3593,6 +3491,148 @@ DOUT9 1.0]]></Comment>
 						<Var>
 							<Name>GVL_Telescope.DerotatorAxisRef.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.FocusControl.FocusUnlock</Name>
+							<Comment><![CDATA[ whether focus is unlocked]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.FocusControl.FocusAxisRef.PlcToNc</Name>
+							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.Focuscontrol.FocusUnlock</Name>
+							<Comment><![CDATA[ whether focus is unlocked]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.Focuscontrol.FocusAxisRef.PlcToNc</Name>
+							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.Focuscontrol.FocusUnlock</Name>
+							<Comment><![CDATA[ whether focus is unlocked]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.Focuscontrol.FocusAxisRef.PlcToNc</Name>
+							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.out_oil_pump_enable</Name>
+							<Comment><![CDATA[DOUT4 0.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.out_oil_suction_enable</Name>
+							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.brake_azimuth_eve</Name>
+							<Comment><![CDATA[ brake set]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.reset_oil_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.reset_succ_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.out_oil_pump_enable</Name>
+							<Comment><![CDATA[DOUT4 0.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.out_oil_suction_enable</Name>
+							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.brake_azimuth_eve</Name>
+							<Comment><![CDATA[ brake set]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.reset_oil_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.reset_succ_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.out_oil_pump_enable</Name>
+							<Comment><![CDATA[DOUT4 0.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.out_oil_suction_enable</Name>
+							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.brake_azimuth_eve</Name>
+							<Comment><![CDATA[ brake set]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.reset_oil_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.reset_succ_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.out_oil_pump_enable</Name>
+							<Comment><![CDATA[DOUT4 0.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.out_oil_suction_enable</Name>
+							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.brake_azimuth_eve</Name>
+							<Comment><![CDATA[ brake set]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.reset_oil_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.reset_succ_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.out_oil_pump_enable</Name>
+							<Comment><![CDATA[DOUT4 0.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.out_oil_suction_enable</Name>
+							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.brake_azimuth_eve</Name>
+							<Comment><![CDATA[ brake set]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.reset_oil_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.reset_succ_pump</Name>
+							<Type>BOOL</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="1">
@@ -3732,75 +3772,6 @@ DOUT9 1.0]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_low</Name>
-							<Comment><![CDATA[ 2.1]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_high</Name>
-							<Comment><![CDATA[ ?]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_pressure_OK</Name>
-							<Comment><![CDATA[ 2.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_overtemperature</Name>
-							<Comment><![CDATA[ 2.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_undertemperature</Name>
-							<Comment><![CDATA[ 2.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_oilfilter_dirty</Name>
-							<Comment><![CDATA[ 2.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_pump_running</Name>
-							<Comment><![CDATA[ 2.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_suction_running</Name>
-							<Comment><![CDATA[ 2.8]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_level</Name>
-							<Comment><![CDATA[BT2]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_oilpan_maximum</Name>
-							<Comment><![CDATA[DIN39 4.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_reserve</Name>
-							<Comment><![CDATA[DIN40 4.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.FocusControl.focus_limit_near</Name>
-							<Comment><![CDATA[ DIN29 3.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.FocusControl.focus_limit_far</Name>
-							<Comment><![CDATA[ DIN30 3.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.FocusControl.FocusAxisRef.NcToPlc</Name>
-							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-						</Var>
-						<Var>
 							<Name>TelescopeControl.CoverControl.limit_cover1_open</Name>
 							<Comment><![CDATA[ limit switches]]></Comment>
 							<Type>BOOL</Type>
@@ -3829,75 +3800,6 @@ DOUT9 1.0]]></Comment>
 							<Name>TelescopeControl.CoverControl.limit_cover3_closed</Name>
 							<Comment><![CDATA[ DIN38 4.5]]></Comment>
 							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oil_low</Name>
-							<Comment><![CDATA[ 2.1]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oil_high</Name>
-							<Comment><![CDATA[ ?]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oil_pressure_OK</Name>
-							<Comment><![CDATA[ 2.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oil_overtemperature</Name>
-							<Comment><![CDATA[ 2.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oil_undertemperature</Name>
-							<Comment><![CDATA[ 2.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oilfilter_dirty</Name>
-							<Comment><![CDATA[ 2.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_pump_running</Name>
-							<Comment><![CDATA[ 2.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_suction_running</Name>
-							<Comment><![CDATA[ 2.8]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oil_level</Name>
-							<Comment><![CDATA[BT2]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oilpan_maximum</Name>
-							<Comment><![CDATA[DIN39 4.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oil_reserve</Name>
-							<Comment><![CDATA[DIN40 4.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.Focuscontrol.focus_limit_near</Name>
-							<Comment><![CDATA[ DIN29 3.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.Focuscontrol.focus_limit_far</Name>
-							<Comment><![CDATA[ DIN30 3.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.Focuscontrol.FocusAxisRef.NcToPlc</Name>
-							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
 							<Name>PendantControl.CoverControl.limit_cover1_open</Name>
@@ -3930,75 +3832,6 @@ DOUT9 1.0]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oil_low</Name>
-							<Comment><![CDATA[ 2.1]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oil_high</Name>
-							<Comment><![CDATA[ ?]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oil_pressure_OK</Name>
-							<Comment><![CDATA[ 2.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oil_overtemperature</Name>
-							<Comment><![CDATA[ 2.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oil_undertemperature</Name>
-							<Comment><![CDATA[ 2.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oilfilter_dirty</Name>
-							<Comment><![CDATA[ 2.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_pump_running</Name>
-							<Comment><![CDATA[ 2.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_suction_running</Name>
-							<Comment><![CDATA[ 2.8]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oil_level</Name>
-							<Comment><![CDATA[BT2]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oilpan_maximum</Name>
-							<Comment><![CDATA[DIN39 4.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oil_reserve</Name>
-							<Comment><![CDATA[DIN40 4.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.Focuscontrol.focus_limit_near</Name>
-							<Comment><![CDATA[ DIN29 3.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.Focuscontrol.focus_limit_far</Name>
-							<Comment><![CDATA[ DIN30 3.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.Focuscontrol.FocusAxisRef.NcToPlc</Name>
-							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-						</Var>
-						<Var>
 							<Name>ElevationControl.CoverControl.limit_cover1_open</Name>
 							<Comment><![CDATA[ limit switches]]></Comment>
 							<Type>BOOL</Type>
@@ -4026,116 +3859,6 @@ DOUT9 1.0]]></Comment>
 						<Var>
 							<Name>ElevationControl.CoverControl.limit_cover3_closed</Name>
 							<Comment><![CDATA[ DIN38 4.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oil_low</Name>
-							<Comment><![CDATA[ 2.1]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oil_high</Name>
-							<Comment><![CDATA[ ?]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oil_pressure_OK</Name>
-							<Comment><![CDATA[ 2.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oil_overtemperature</Name>
-							<Comment><![CDATA[ 2.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oil_undertemperature</Name>
-							<Comment><![CDATA[ 2.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oilfilter_dirty</Name>
-							<Comment><![CDATA[ 2.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_pump_running</Name>
-							<Comment><![CDATA[ 2.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_suction_running</Name>
-							<Comment><![CDATA[ 2.8]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oil_level</Name>
-							<Comment><![CDATA[BT2]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oilpan_maximum</Name>
-							<Comment><![CDATA[DIN39 4.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oil_reserve</Name>
-							<Comment><![CDATA[DIN40 4.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_low</Name>
-							<Comment><![CDATA[ 2.1]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_high</Name>
-							<Comment><![CDATA[ ?]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_pressure_OK</Name>
-							<Comment><![CDATA[ 2.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_overtemperature</Name>
-							<Comment><![CDATA[ 2.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_undertemperature</Name>
-							<Comment><![CDATA[ 2.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oilfilter_dirty</Name>
-							<Comment><![CDATA[ 2.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_pump_running</Name>
-							<Comment><![CDATA[ 2.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_suction_running</Name>
-							<Comment><![CDATA[ 2.8]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_level</Name>
-							<Comment><![CDATA[BT2]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oilpan_maximum</Name>
-							<Comment><![CDATA[DIN39 4.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_reserve</Name>
-							<Comment><![CDATA[DIN40 4.7]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -4334,6 +4057,323 @@ DIN3 0.2]]></Comment>
 						<Var>
 							<Name>GVL_Telescope.DerotatorAxisRef.NcToPlc</Name>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.FocusControl.focus_limit_near</Name>
+							<Comment><![CDATA[ DIN29 3.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.FocusControl.focus_limit_far</Name>
+							<Comment><![CDATA[ DIN30 3.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.FocusControl.FocusAxisRef.NcToPlc</Name>
+							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.Focuscontrol.focus_limit_near</Name>
+							<Comment><![CDATA[ DIN29 3.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.Focuscontrol.focus_limit_far</Name>
+							<Comment><![CDATA[ DIN30 3.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.Focuscontrol.FocusAxisRef.NcToPlc</Name>
+							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.Focuscontrol.focus_limit_near</Name>
+							<Comment><![CDATA[ DIN29 3.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.Focuscontrol.focus_limit_far</Name>
+							<Comment><![CDATA[ DIN30 3.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.Focuscontrol.FocusAxisRef.NcToPlc</Name>
+							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_low</Name>
+							<Comment><![CDATA[ 2.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_high</Name>
+							<Comment><![CDATA[ ?]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_pressure_OK</Name>
+							<Comment><![CDATA[ 2.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_overtemperature</Name>
+							<Comment><![CDATA[ 2.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_undertemperature</Name>
+							<Comment><![CDATA[ 2.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oilfilter_dirty</Name>
+							<Comment><![CDATA[ 2.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_pump_running</Name>
+							<Comment><![CDATA[ 2.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_suction_running</Name>
+							<Comment><![CDATA[ 2.8]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_level</Name>
+							<Comment><![CDATA[BT2]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oilpan_maximum</Name>
+							<Comment><![CDATA[DIN39 4.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_reserve</Name>
+							<Comment><![CDATA[DIN40 4.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_low</Name>
+							<Comment><![CDATA[ 2.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_high</Name>
+							<Comment><![CDATA[ ?]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_pressure_OK</Name>
+							<Comment><![CDATA[ 2.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_overtemperature</Name>
+							<Comment><![CDATA[ 2.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_undertemperature</Name>
+							<Comment><![CDATA[ 2.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oilfilter_dirty</Name>
+							<Comment><![CDATA[ 2.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_pump_running</Name>
+							<Comment><![CDATA[ 2.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_suction_running</Name>
+							<Comment><![CDATA[ 2.8]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_level</Name>
+							<Comment><![CDATA[BT2]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oilpan_maximum</Name>
+							<Comment><![CDATA[DIN39 4.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_reserve</Name>
+							<Comment><![CDATA[DIN40 4.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_low</Name>
+							<Comment><![CDATA[ 2.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_high</Name>
+							<Comment><![CDATA[ ?]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_pressure_OK</Name>
+							<Comment><![CDATA[ 2.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_overtemperature</Name>
+							<Comment><![CDATA[ 2.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_undertemperature</Name>
+							<Comment><![CDATA[ 2.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oilfilter_dirty</Name>
+							<Comment><![CDATA[ 2.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_pump_running</Name>
+							<Comment><![CDATA[ 2.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_suction_running</Name>
+							<Comment><![CDATA[ 2.8]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_level</Name>
+							<Comment><![CDATA[BT2]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oilpan_maximum</Name>
+							<Comment><![CDATA[DIN39 4.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_reserve</Name>
+							<Comment><![CDATA[DIN40 4.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_low</Name>
+							<Comment><![CDATA[ 2.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_high</Name>
+							<Comment><![CDATA[ ?]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_pressure_OK</Name>
+							<Comment><![CDATA[ 2.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_overtemperature</Name>
+							<Comment><![CDATA[ 2.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_undertemperature</Name>
+							<Comment><![CDATA[ 2.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oilfilter_dirty</Name>
+							<Comment><![CDATA[ 2.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_pump_running</Name>
+							<Comment><![CDATA[ 2.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_suction_running</Name>
+							<Comment><![CDATA[ 2.8]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_level</Name>
+							<Comment><![CDATA[BT2]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oilpan_maximum</Name>
+							<Comment><![CDATA[DIN39 4.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_reserve</Name>
+							<Comment><![CDATA[DIN40 4.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_low</Name>
+							<Comment><![CDATA[ 2.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_high</Name>
+							<Comment><![CDATA[ ?]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_pressure_OK</Name>
+							<Comment><![CDATA[ 2.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_overtemperature</Name>
+							<Comment><![CDATA[ 2.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_undertemperature</Name>
+							<Comment><![CDATA[ 2.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oilfilter_dirty</Name>
+							<Comment><![CDATA[ 2.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_pump_running</Name>
+							<Comment><![CDATA[ 2.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_suction_running</Name>
+							<Comment><![CDATA[ 2.8]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_level</Name>
+							<Comment><![CDATA[BT2]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oilpan_maximum</Name>
+							<Comment><![CDATA[DIN39 4.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_reserve</Name>
+							<Comment><![CDATA[DIN40 4.7]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 					</Vars>
 					<Contexts>
@@ -4884,7 +4924,7 @@ DIN3 0.2]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="oil_pump_reset" Index="#x7010" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.reset_oil_pump" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
@@ -4895,7 +4935,7 @@ DIN3 0.2]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1603" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="oil_suction_reset" Index="#x7030" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.reset_succ_pump" Index="#x7030" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
@@ -12977,6 +13017,8 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="PlcTask Outputs^MAIN.FocusControl.FocusUnlock" VarB="Channel 7^MAIN.FocusControl.FocusUnlock"/>
 				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.out_oil_pump_enable" VarB="Channel 1^MAIN.HydraulicsControl.out_oil_pump_enable"/>
 				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.out_oil_suction_enable" VarB="Channel 3^MAIN.HydraulicsControl.out_oil_suction_enable"/>
+				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.reset_oil_pump" VarB="Channel 2^MAIN.HydraulicsControl.reset_oil_pump"/>
+				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.reset_succ_pump" VarB="Channel 4^MAIN.HydraulicsControl.reset_succ_pump"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Cover IN (EL1008)">
 				<Link VarA="PlcTask Inputs^MAIN.CoverControl.limit_cover1_closed" VarB="Channel 2^MAIN.CoverControl.limit_cover1_closed"/>
