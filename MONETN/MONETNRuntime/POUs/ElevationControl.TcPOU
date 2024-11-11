@@ -28,6 +28,7 @@ VAR_INPUT
 	
 	CoverControl	: FB_CoverControl;
 	HydraulicsControl : FB_HydraulicsControl;
+	comm : I_Comm;
 END_VAR
 VAR_OUTPUT
 	// axis is ready to operate
@@ -207,42 +208,47 @@ torque_timer(IN := ABS(elevation_torque) > 50.0, PT := T#1000MS);
 ElevationAxisEvent(	Trigger := Error, 
 				Level := ADSLOG_MSGTYPE_ERROR,
 				FormatString := 'Elevation Axis Error: %s',
-				OnMessage := NCError_TO_STRING(ErrorID));
+				OnMessage := NCError_TO_STRING(ErrorID), 
+				Comm := comm);
 
 ElevationDiagnosticEvent(	
 	Trigger := 		DiagnosticError, 
 	Level := 		ADSLOG_MSGTYPE_ERROR,
 	FormatString :=	'Elevation Axis Diagnostic Error: %s',
-	OnMessage := 	NCError_TO_STRING(GVL_Telescope.Elevation_diagnostic));
+	OnMessage := 	NCError_TO_STRING(GVL_Telescope.Elevation_diagnostic), 
+	Comm := comm);
 
 				
 HighElevationEvent(	Trigger := Calibrated AND actual_position > 85.0, 
 				Level := ADSLOG_MSGTYPE_WARN,
 				FormatString := 'High Elevation: %s',
-				OnMessage := LREAL_TO_FMTSTR(actual_position, 2, TRUE));
+				OnMessage := LREAL_TO_FMTSTR(actual_position, 2, TRUE), 
+				Comm := comm);
 
 LowElevationEvent(	Trigger := Calibrated AND actual_position < 5.0, 
 				Level := ADSLOG_MSGTYPE_WARN,
 				FormatString := 'Low Elevation: %s',
-				OnMessage := LREAL_TO_FMTSTR(actual_position, 2, TRUE));
+				OnMessage := LREAL_TO_FMTSTR(actual_position, 2, TRUE), 
+				Comm := comm);
 				
 ElevationBrakeEvent( Trigger := NOT enable AND HydraulicsControl.brake_open, 
 				Level := ADSLOG_MSGTYPE_WARN,
 				FormatString := '%s',
-				OnMessage := 'Brake was opened without elevation axis enabled!'); 
+				OnMessage := 'Brake was opened without elevation axis enabled!', 
+				Comm := comm); 
 
 TorqueWarning(	
 	Trigger := torque_timer.Q, 
 	Level := 		ADSLOG_MSGTYPE_WARN,
 	FormatString :=	'%s',
-	OnMessage := 	'Elevation torque is high.');
+	OnMessage := 	'Elevation torque is high.', 
+				Comm := comm);
 	
 CalibrationEvent(
 	Trigger :=	Calibrated,
 	Level :=	ADSLOG_MSGTYPE_HINT,
-	OnMessage := 'Elevation is calibrated.'
-	);
-]]></ST>
+	OnMessage := 'Elevation is calibrated.', 
+				Comm := comm);]]></ST>
     </Implementation>
     <LineIds Name="ElevationControl">
       <LineId Id="379" Count="0" />
@@ -327,24 +333,28 @@ CalibrationEvent(
       <LineId Id="827" Count="0" />
       <LineId Id="156" Count="2" />
       <LineId Id="160" Count="0" />
+      <LineId Id="1647" Count="0" />
       <LineId Id="1405" Count="0" />
       <LineId Id="1407" Count="0" />
       <LineId Id="1414" Count="0" />
       <LineId Id="1409" Count="2" />
+      <LineId Id="1648" Count="0" />
       <LineId Id="697" Count="0" />
       <LineId Id="1406" Count="0" />
       <LineId Id="693" Count="3" />
+      <LineId Id="1649" Count="0" />
       <LineId Id="692" Count="0" />
       <LineId Id="698" Count="3" />
+      <LineId Id="1650" Count="0" />
       <LineId Id="5" Count="0" />
       <LineId Id="396" Count="3" />
+      <LineId Id="1651" Count="0" />
       <LineId Id="837" Count="0" />
       <LineId Id="843" Count="3" />
       <LineId Id="842" Count="0" />
+      <LineId Id="1652" Count="0" />
       <LineId Id="902" Count="0" />
-      <LineId Id="904" Count="3" />
-      <LineId Id="903" Count="0" />
-      <LineId Id="908" Count="0" />
+      <LineId Id="904" Count="4" />
     </LineIds>
   </POU>
 </TcPlcObject>

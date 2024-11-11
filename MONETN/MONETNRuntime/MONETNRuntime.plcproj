@@ -55,9 +55,6 @@
     <Compile Include="POUs\AzimuthElevationControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\DerotatorControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\ElevationControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>

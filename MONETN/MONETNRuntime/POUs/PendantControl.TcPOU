@@ -6,6 +6,7 @@ VAR_INPUT
 	CoverControl	: FB_CoverControl;
 	HydraulicsControl : FB_HydraulicsControl;
 	Focuscontrol : FB_Focuscontrol;
+	DerotatorControl	: FB_DerotatorControl;
 END_VAR
 VAR
 	// program selection of the pendant control
@@ -165,12 +166,12 @@ CASE Selection OF
 		END_IF
 							
 	6:	// Derotator control
-		lamp_left := DerotatorControl.Ready AND NOT GVL_Telescope.Derotator_inputs.1;
-		lamp_right :=DerotatorControl.Ready AND NOT GVL_Telescope.Derotator_inputs.0;
+		lamp_left := DerotatorControl.Ready AND NOT DerotatorControl.digital_inputs.1;
+		lamp_right :=DerotatorControl.Ready AND NOT DerotatorControl.digital_inputs.0;
 		IF manual THEN
 			DerotatorEnable(SET := enable, Q := DerotatorControl.enable);
-			DerotatorControl.left := left AND NOT GVL_Telescope.Derotator_inputs.1;
-			DerotatorControl.right := right AND NOT GVL_Telescope.Derotator_inputs.0;
+			DerotatorControl.left := left AND NOT DerotatorControl.digital_inputs.1;
+			DerotatorControl.right := right AND NOT DerotatorControl.digital_inputs.0;
 			DerotatorControl.reset := reset;
 			lamp_error := DerotatorControl.Error;
 		END_IF

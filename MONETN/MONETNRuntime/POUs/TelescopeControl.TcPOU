@@ -46,6 +46,7 @@ see https://gitlab.aip.de/bmk10k/telescope_firmware/snippets/5
 	CoverControl	: FB_CoverControl;
 	HydraulicsControl : FB_HydraulicsControl;
 	Focuscontrol : FB_Focuscontrol;
+	DerotatorControl	: FB_DerotatorControl;
 END_VAR
 VAR
 	// actual command from the TCS

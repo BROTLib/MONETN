@@ -7,24 +7,12 @@ VAR_GLOBAL
 	temperature_mirror2		AT%I*: INT;
 	// BT10
 	temperature_mirror1		AT%I*: INT;
-
-	//DOUT6 0.5
-	brake_azimuth_eve	AT%Q*: BOOL;
 	
 	// DIN28 3.3 (absolute)
 	azimut_limit_switch	AT%I*: BOOL;
 
 	//Horn 4.7
 	horn			AT%Q*: BOOL;
-	
-	// digitale inputs der Endlagen
-	Derotator_inputs		AT%I*: WORD;
-	// diagnostic number
-	Derotator_diagnostic	AT%I*: UDINT;
-	// derotator torque feedback
-	Derotator_torque		AT%I*: INT;
-	// STO
-	Derotator_sto			AT%I*: BOOL;
 	
 	// digital inputs for limit switches
 	Elevation_inputs		AT%I*: WORD;
@@ -47,7 +35,6 @@ VAR_GLOBAL
 	// Zyklisches Interface zwischen NC und Achse
 	AzimuthAxisRef: 	AXIS_REF;
 	ElevationAxisRef: 	AXIS_REF;
-	DerotatorAxisRef: 	AXIS_REF;
 	
 	
 END_VAR]]></Declaration>

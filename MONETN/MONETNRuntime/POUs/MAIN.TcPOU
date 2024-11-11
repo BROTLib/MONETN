@@ -44,6 +44,7 @@ VAR
 	CoverControl					: FB_CoverControl;
 	HydraulicsControl				: FB_HydraulicsControl;
 	FocusControl					: FB_FocusControl;
+	DerotatorControl				: FB_DerotatorControl;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -103,11 +104,11 @@ ups_output_current := ups_output_current / 1000.0;
 ups_output_power := ups_output_voltage * ups_output_current;
 *)
 
-TelescopeControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol);
+TelescopeControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl);
 CoverControl(
 	comm				:= MQTTClient
 );
-PendantControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol);	//
+PendantControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl);	//
 HydraulicsControl(
 	pan_min_level		:= 3000,
 	pan_max_level		:= 10200,
@@ -116,9 +117,12 @@ HydraulicsControl(
 	brake_clearing		:= brake_clearing,
 	comm				:= MQTTClient
 );	//
-ElevationControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl);	//
+ElevationControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, comm := MQTTClient);	//
 AzimuthElevationControl(HydraulicsControl := HydraulicsControl);	//
-DerotatorControl();	//
+DerotatorControl(
+	calibration_position	:= 438.4623,
+	comm					:= MQTTClient
+);	//
 FocusControl(
 	comm				:= MQTTClient,
 	telescope_mode 		:= PendantControl.telescope_mode
@@ -226,7 +230,11 @@ TemperatureCriticalEvent(
       <LineId Id="1409" Count="2" />
       <LineId Id="1408" Count="0" />
       <LineId Id="1407" Count="0" />
-      <LineId Id="1394" Count="3" />
+      <LineId Id="1394" Count="2" />
+      <LineId Id="1419" Count="0" />
+      <LineId Id="1418" Count="0" />
+      <LineId Id="1417" Count="0" />
+      <LineId Id="1397" Count="0" />
       <LineId Id="1415" Count="1" />
       <LineId Id="1414" Count="0" />
       <LineId Id="1398" Count="8" />

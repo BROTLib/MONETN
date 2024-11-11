@@ -2773,7 +2773,7 @@ External Setpoint Generation:
 					<Encoder Name="Enc" EncType="8">
 						<EncPara ScaleFactorNumerator="360" ScaleFactorDenominator="1048576" MaxCount="#xffffffff">
 							<SoftEndMaxControl Enable="true" Range="450"/>
-							<Inc RefPosition="180" RefMode="1" HomingSensorSource="9"/>
+							<Inc RefPosition="180" HomingSensorSource="9"/>
 						</EncPara>
 						<Vars VarGrpType="1">
 							<Name>Eingänge</Name>
@@ -3067,8 +3067,8 @@ External Setpoint Generation:
 					</AxisPara>
 					<Encoder Name="Enc" EncType="8">
 						<EncPara ScaleFactorNumerator="0.2" ScaleFactorDenominator="1048576" MaxCount="#xffffffff">
-							<SoftEndMinControl Enable="true" Range="-50"/>
-							<SoftEndMaxControl Enable="true" Range="400"/>
+							<SoftEndMinControl Enable="true" Range="-170"/>
+							<SoftEndMaxControl Enable="true" Range="300"/>
 						</EncPara>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
@@ -3207,7 +3207,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{C421847D-A328-B364-0686-F5EBA2E4A9A1}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{2476BC25-7CB8-2526-74AF-AF36138614D9}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -3311,6 +3311,38 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.HydraulicsControl.out_oil_pump_enable</Name>
+							<Comment><![CDATA[DOUT4 0.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.out_oil_suction_enable</Name>
+							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.brake_azimuth_eve</Name>
+							<Comment><![CDATA[ brake set]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.reset_oil_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.reset_succ_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.FocusControl.FocusUnlock</Name>
+							<Comment><![CDATA[ whether focus is unlocked]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.FocusControl.FocusAxisRef.PlcToNc</Name>
+							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
 							<Name>TelescopeControl.CoverControl.open_cover1</Name>
 							<Comment><![CDATA[ open cover1 command]]></Comment>
 							<Type>BOOL</Type>
@@ -3339,6 +3371,38 @@ External Setpoint Generation:
 							<Name>TelescopeControl.CoverControl.close_cover3</Name>
 							<Comment><![CDATA[ close cover3 command]]></Comment>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.out_oil_pump_enable</Name>
+							<Comment><![CDATA[DOUT4 0.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.out_oil_suction_enable</Name>
+							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.brake_azimuth_eve</Name>
+							<Comment><![CDATA[ brake set]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.reset_oil_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.reset_succ_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.Focuscontrol.FocusUnlock</Name>
+							<Comment><![CDATA[ whether focus is unlocked]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.Focuscontrol.FocusAxisRef.PlcToNc</Name>
+							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
 							<Name>PendantControl.CoverControl.open_cover1</Name>
@@ -3371,6 +3435,38 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>PendantControl.HydraulicsControl.out_oil_pump_enable</Name>
+							<Comment><![CDATA[DOUT4 0.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.out_oil_suction_enable</Name>
+							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.brake_azimuth_eve</Name>
+							<Comment><![CDATA[ brake set]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.reset_oil_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.reset_succ_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.Focuscontrol.FocusUnlock</Name>
+							<Comment><![CDATA[ whether focus is unlocked]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.Focuscontrol.FocusAxisRef.PlcToNc</Name>
+							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
 							<Name>ElevationControl.CoverControl.open_cover1</Name>
 							<Comment><![CDATA[ open cover1 command]]></Comment>
 							<Type>BOOL</Type>
@@ -3398,6 +3494,52 @@ External Setpoint Generation:
 						<Var>
 							<Name>ElevationControl.CoverControl.close_cover3</Name>
 							<Comment><![CDATA[ close cover3 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.out_oil_pump_enable</Name>
+							<Comment><![CDATA[DOUT4 0.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.out_oil_suction_enable</Name>
+							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.brake_azimuth_eve</Name>
+							<Comment><![CDATA[ brake set]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.reset_oil_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.reset_succ_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.out_oil_pump_enable</Name>
+							<Comment><![CDATA[DOUT4 0.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.out_oil_suction_enable</Name>
+							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.brake_azimuth_eve</Name>
+							<Comment><![CDATA[ brake set]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.reset_oil_pump</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.reset_succ_pump</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3471,11 +3613,6 @@ DOUT9 1.0]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.brake_azimuth_eve</Name>
-							<Comment><![CDATA[DOUT6 0.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Telescope.horn</Name>
 							<Comment><![CDATA[Horn 4.7]]></Comment>
 							<Type>BOOL</Type>
@@ -3489,150 +3626,16 @@ DOUT9 1.0]]></Comment>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.DerotatorAxisRef.PlcToNc</Name>
+							<Name>MAIN.DerotatorControl.axis_ref.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.FocusControl.FocusUnlock</Name>
-							<Comment><![CDATA[ whether focus is unlocked]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.FocusControl.FocusAxisRef.PlcToNc</Name>
+							<Name>TelescopeControl.DerotatorControl.axis_ref.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>TelescopeControl.Focuscontrol.FocusUnlock</Name>
-							<Comment><![CDATA[ whether focus is unlocked]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.Focuscontrol.FocusAxisRef.PlcToNc</Name>
+							<Name>PendantControl.DerotatorControl.axis_ref.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.Focuscontrol.FocusUnlock</Name>
-							<Comment><![CDATA[ whether focus is unlocked]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.Focuscontrol.FocusAxisRef.PlcToNc</Name>
-							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.out_oil_pump_enable</Name>
-							<Comment><![CDATA[DOUT4 0.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.out_oil_suction_enable</Name>
-							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.brake_azimuth_eve</Name>
-							<Comment><![CDATA[ brake set]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.reset_oil_pump</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.reset_succ_pump</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.out_oil_pump_enable</Name>
-							<Comment><![CDATA[DOUT4 0.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.out_oil_suction_enable</Name>
-							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.brake_azimuth_eve</Name>
-							<Comment><![CDATA[ brake set]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.reset_oil_pump</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.reset_succ_pump</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.out_oil_pump_enable</Name>
-							<Comment><![CDATA[DOUT4 0.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.out_oil_suction_enable</Name>
-							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.brake_azimuth_eve</Name>
-							<Comment><![CDATA[ brake set]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.reset_oil_pump</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.reset_succ_pump</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.out_oil_pump_enable</Name>
-							<Comment><![CDATA[DOUT4 0.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.out_oil_suction_enable</Name>
-							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.brake_azimuth_eve</Name>
-							<Comment><![CDATA[ brake set]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.reset_oil_pump</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.reset_succ_pump</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.out_oil_pump_enable</Name>
-							<Comment><![CDATA[DOUT4 0.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.out_oil_suction_enable</Name>
-							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.brake_azimuth_eve</Name>
-							<Comment><![CDATA[ brake set]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.reset_oil_pump</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.reset_succ_pump</Name>
-							<Type>BOOL</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="1">
@@ -3772,6 +3775,75 @@ DOUT9 1.0]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_low</Name>
+							<Comment><![CDATA[ 2.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_high</Name>
+							<Comment><![CDATA[ ?]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_pressure_OK</Name>
+							<Comment><![CDATA[ 2.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_overtemperature</Name>
+							<Comment><![CDATA[ 2.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_undertemperature</Name>
+							<Comment><![CDATA[ 2.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oilfilter_dirty</Name>
+							<Comment><![CDATA[ 2.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_pump_running</Name>
+							<Comment><![CDATA[ 2.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_suction_running</Name>
+							<Comment><![CDATA[ 2.8]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_level</Name>
+							<Comment><![CDATA[BT2]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oilpan_maximum</Name>
+							<Comment><![CDATA[DIN39 4.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.HydraulicsControl.in_oil_reserve</Name>
+							<Comment><![CDATA[DIN40 4.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.FocusControl.focus_limit_near</Name>
+							<Comment><![CDATA[ DIN29 3.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.FocusControl.focus_limit_far</Name>
+							<Comment><![CDATA[ DIN30 3.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.FocusControl.FocusAxisRef.NcToPlc</Name>
+							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+						</Var>
+						<Var>
 							<Name>TelescopeControl.CoverControl.limit_cover1_open</Name>
 							<Comment><![CDATA[ limit switches]]></Comment>
 							<Type>BOOL</Type>
@@ -3800,6 +3872,75 @@ DOUT9 1.0]]></Comment>
 							<Name>TelescopeControl.CoverControl.limit_cover3_closed</Name>
 							<Comment><![CDATA[ DIN38 4.5]]></Comment>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_low</Name>
+							<Comment><![CDATA[ 2.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_high</Name>
+							<Comment><![CDATA[ ?]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_pressure_OK</Name>
+							<Comment><![CDATA[ 2.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_overtemperature</Name>
+							<Comment><![CDATA[ 2.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_undertemperature</Name>
+							<Comment><![CDATA[ 2.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oilfilter_dirty</Name>
+							<Comment><![CDATA[ 2.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_pump_running</Name>
+							<Comment><![CDATA[ 2.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_suction_running</Name>
+							<Comment><![CDATA[ 2.8]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_level</Name>
+							<Comment><![CDATA[BT2]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oilpan_maximum</Name>
+							<Comment><![CDATA[DIN39 4.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.HydraulicsControl.in_oil_reserve</Name>
+							<Comment><![CDATA[DIN40 4.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.Focuscontrol.focus_limit_near</Name>
+							<Comment><![CDATA[ DIN29 3.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.Focuscontrol.focus_limit_far</Name>
+							<Comment><![CDATA[ DIN30 3.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.Focuscontrol.FocusAxisRef.NcToPlc</Name>
+							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
 							<Name>PendantControl.CoverControl.limit_cover1_open</Name>
@@ -3832,6 +3973,75 @@ DOUT9 1.0]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_low</Name>
+							<Comment><![CDATA[ 2.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_high</Name>
+							<Comment><![CDATA[ ?]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_pressure_OK</Name>
+							<Comment><![CDATA[ 2.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_overtemperature</Name>
+							<Comment><![CDATA[ 2.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_undertemperature</Name>
+							<Comment><![CDATA[ 2.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oilfilter_dirty</Name>
+							<Comment><![CDATA[ 2.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_pump_running</Name>
+							<Comment><![CDATA[ 2.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_suction_running</Name>
+							<Comment><![CDATA[ 2.8]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_level</Name>
+							<Comment><![CDATA[BT2]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oilpan_maximum</Name>
+							<Comment><![CDATA[DIN39 4.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.HydraulicsControl.in_oil_reserve</Name>
+							<Comment><![CDATA[DIN40 4.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.Focuscontrol.focus_limit_near</Name>
+							<Comment><![CDATA[ DIN29 3.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.Focuscontrol.focus_limit_far</Name>
+							<Comment><![CDATA[ DIN30 3.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.Focuscontrol.FocusAxisRef.NcToPlc</Name>
+							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+						</Var>
+						<Var>
 							<Name>ElevationControl.CoverControl.limit_cover1_open</Name>
 							<Comment><![CDATA[ limit switches]]></Comment>
 							<Type>BOOL</Type>
@@ -3859,6 +4069,116 @@ DOUT9 1.0]]></Comment>
 						<Var>
 							<Name>ElevationControl.CoverControl.limit_cover3_closed</Name>
 							<Comment><![CDATA[ DIN38 4.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_low</Name>
+							<Comment><![CDATA[ 2.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_high</Name>
+							<Comment><![CDATA[ ?]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_pressure_OK</Name>
+							<Comment><![CDATA[ 2.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_overtemperature</Name>
+							<Comment><![CDATA[ 2.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_undertemperature</Name>
+							<Comment><![CDATA[ 2.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oilfilter_dirty</Name>
+							<Comment><![CDATA[ 2.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_pump_running</Name>
+							<Comment><![CDATA[ 2.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_suction_running</Name>
+							<Comment><![CDATA[ 2.8]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_level</Name>
+							<Comment><![CDATA[BT2]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oilpan_maximum</Name>
+							<Comment><![CDATA[DIN39 4.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>ElevationControl.HydraulicsControl.in_oil_reserve</Name>
+							<Comment><![CDATA[DIN40 4.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_low</Name>
+							<Comment><![CDATA[ 2.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_high</Name>
+							<Comment><![CDATA[ ?]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_pressure_OK</Name>
+							<Comment><![CDATA[ 2.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_overtemperature</Name>
+							<Comment><![CDATA[ 2.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_undertemperature</Name>
+							<Comment><![CDATA[ 2.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oilfilter_dirty</Name>
+							<Comment><![CDATA[ 2.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_pump_running</Name>
+							<Comment><![CDATA[ 2.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_suction_running</Name>
+							<Comment><![CDATA[ 2.8]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_level</Name>
+							<Comment><![CDATA[BT2]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oilpan_maximum</Name>
+							<Comment><![CDATA[DIN39 4.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_reserve</Name>
+							<Comment><![CDATA[DIN40 4.7]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3987,26 +4307,6 @@ DIN3 0.2]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.Derotator_inputs</Name>
-							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.Derotator_diagnostic</Name>
-							<Comment><![CDATA[ diagnostic number]]></Comment>
-							<Type>UDINT</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.Derotator_torque</Name>
-							<Comment><![CDATA[ derotator torque feedback]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.Derotator_sto</Name>
-							<Comment><![CDATA[ STO]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>GVL_Telescope.Elevation_sto</Name>
 							<Comment><![CDATA[ STO]]></Comment>
 							<Type>BOOL</Type>
@@ -4055,325 +4355,76 @@ DIN3 0.2]]></Comment>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Telescope.DerotatorAxisRef.NcToPlc</Name>
+							<Name>MAIN.DerotatorControl.digital_inputs</Name>
+							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.DerotatorControl.diagnostic</Name>
+							<Comment><![CDATA[ diagnostic number]]></Comment>
+							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.DerotatorControl.torque</Name>
+							<Comment><![CDATA[ derotator torque feedback]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.DerotatorControl.sto</Name>
+							<Comment><![CDATA[ STO]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.DerotatorControl.axis_ref.NcToPlc</Name>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.FocusControl.focus_limit_near</Name>
-							<Comment><![CDATA[ DIN29 3.4]]></Comment>
+							<Name>TelescopeControl.DerotatorControl.digital_inputs</Name>
+							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.DerotatorControl.diagnostic</Name>
+							<Comment><![CDATA[ diagnostic number]]></Comment>
+							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.DerotatorControl.torque</Name>
+							<Comment><![CDATA[ derotator torque feedback]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>TelescopeControl.DerotatorControl.sto</Name>
+							<Comment><![CDATA[ STO]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.FocusControl.focus_limit_far</Name>
-							<Comment><![CDATA[ DIN30 3.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.FocusControl.FocusAxisRef.NcToPlc</Name>
+							<Name>TelescopeControl.DerotatorControl.axis_ref.NcToPlc</Name>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>TelescopeControl.Focuscontrol.focus_limit_near</Name>
-							<Comment><![CDATA[ DIN29 3.4]]></Comment>
+							<Name>PendantControl.DerotatorControl.digital_inputs</Name>
+							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.DerotatorControl.diagnostic</Name>
+							<Comment><![CDATA[ diagnostic number]]></Comment>
+							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.DerotatorControl.torque</Name>
+							<Comment><![CDATA[ derotator torque feedback]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>PendantControl.DerotatorControl.sto</Name>
+							<Comment><![CDATA[ STO]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>TelescopeControl.Focuscontrol.focus_limit_far</Name>
-							<Comment><![CDATA[ DIN30 3.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.Focuscontrol.FocusAxisRef.NcToPlc</Name>
+							<Name>PendantControl.DerotatorControl.axis_ref.NcToPlc</Name>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.Focuscontrol.focus_limit_near</Name>
-							<Comment><![CDATA[ DIN29 3.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.Focuscontrol.focus_limit_far</Name>
-							<Comment><![CDATA[ DIN30 3.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.Focuscontrol.FocusAxisRef.NcToPlc</Name>
-							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_low</Name>
-							<Comment><![CDATA[ 2.1]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_high</Name>
-							<Comment><![CDATA[ ?]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_pressure_OK</Name>
-							<Comment><![CDATA[ 2.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_overtemperature</Name>
-							<Comment><![CDATA[ 2.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_undertemperature</Name>
-							<Comment><![CDATA[ 2.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_oilfilter_dirty</Name>
-							<Comment><![CDATA[ 2.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_pump_running</Name>
-							<Comment><![CDATA[ 2.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_suction_running</Name>
-							<Comment><![CDATA[ 2.8]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_level</Name>
-							<Comment><![CDATA[BT2]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_oilpan_maximum</Name>
-							<Comment><![CDATA[DIN39 4.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_reserve</Name>
-							<Comment><![CDATA[DIN40 4.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oil_low</Name>
-							<Comment><![CDATA[ 2.1]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oil_high</Name>
-							<Comment><![CDATA[ ?]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oil_pressure_OK</Name>
-							<Comment><![CDATA[ 2.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oil_overtemperature</Name>
-							<Comment><![CDATA[ 2.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oil_undertemperature</Name>
-							<Comment><![CDATA[ 2.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oilfilter_dirty</Name>
-							<Comment><![CDATA[ 2.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_pump_running</Name>
-							<Comment><![CDATA[ 2.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_suction_running</Name>
-							<Comment><![CDATA[ 2.8]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oil_level</Name>
-							<Comment><![CDATA[BT2]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oilpan_maximum</Name>
-							<Comment><![CDATA[DIN39 4.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>TelescopeControl.HydraulicsControl.in_oil_reserve</Name>
-							<Comment><![CDATA[DIN40 4.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oil_low</Name>
-							<Comment><![CDATA[ 2.1]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oil_high</Name>
-							<Comment><![CDATA[ ?]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oil_pressure_OK</Name>
-							<Comment><![CDATA[ 2.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oil_overtemperature</Name>
-							<Comment><![CDATA[ 2.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oil_undertemperature</Name>
-							<Comment><![CDATA[ 2.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oilfilter_dirty</Name>
-							<Comment><![CDATA[ 2.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_pump_running</Name>
-							<Comment><![CDATA[ 2.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_suction_running</Name>
-							<Comment><![CDATA[ 2.8]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oil_level</Name>
-							<Comment><![CDATA[BT2]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oilpan_maximum</Name>
-							<Comment><![CDATA[DIN39 4.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>PendantControl.HydraulicsControl.in_oil_reserve</Name>
-							<Comment><![CDATA[DIN40 4.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oil_low</Name>
-							<Comment><![CDATA[ 2.1]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oil_high</Name>
-							<Comment><![CDATA[ ?]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oil_pressure_OK</Name>
-							<Comment><![CDATA[ 2.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oil_overtemperature</Name>
-							<Comment><![CDATA[ 2.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oil_undertemperature</Name>
-							<Comment><![CDATA[ 2.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oilfilter_dirty</Name>
-							<Comment><![CDATA[ 2.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_pump_running</Name>
-							<Comment><![CDATA[ 2.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_suction_running</Name>
-							<Comment><![CDATA[ 2.8]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oil_level</Name>
-							<Comment><![CDATA[BT2]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oilpan_maximum</Name>
-							<Comment><![CDATA[DIN39 4.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>ElevationControl.HydraulicsControl.in_oil_reserve</Name>
-							<Comment><![CDATA[DIN40 4.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_low</Name>
-							<Comment><![CDATA[ 2.1]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_high</Name>
-							<Comment><![CDATA[ ?]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_pressure_OK</Name>
-							<Comment><![CDATA[ 2.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_overtemperature</Name>
-							<Comment><![CDATA[ 2.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_undertemperature</Name>
-							<Comment><![CDATA[ 2.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oilfilter_dirty</Name>
-							<Comment><![CDATA[ 2.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_pump_running</Name>
-							<Comment><![CDATA[ 2.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_suction_running</Name>
-							<Comment><![CDATA[ 2.8]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_level</Name>
-							<Comment><![CDATA[BT2]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oilpan_maximum</Name>
-							<Comment><![CDATA[DIN39 4.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>AzimuthElevationControl.HydraulicsControl.in_oil_reserve</Name>
-							<Comment><![CDATA[DIN40 4.7]]></Comment>
-							<Type>BOOL</Type>
 						</Var>
 					</Vars>
 					<Contexts>
@@ -5084,6 +5135,7 @@ DIN3 0.2]]></Comment>
 							<Fmmu>0000000000000000801100010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010f400f410f400</BootStrapData>
+							<SuName>Focus</SuName>
 							<DcMode>53796e6368726f6e00000000000000004672656552756e2f534d2d53796e6368726f6e00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</DcMode>
 							<DcMode>4443000000000000000000000000000044432d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000020030100000000000000000000000000000000000000000000000000000000000000</DcMode>
 							<DcMode>4443494e00000000000000000000000044432d53796e6368726f6e2028696e7075742062617365000000000000000000000000000000000000000000000020030100000000000000000001000000000000000000000000000000000000000000</DcMode>
@@ -5282,6 +5334,7 @@ DIN3 0.2]]></Comment>
 							<Fmmu>0000000000000000001200010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010f400f410f400</BootStrapData>
+							<SuName>Focus</SuName>
 							<DcData>0003000000000000000000000000000001000000010000000000000000000000</DcData>
 							<DcMode>53796e6368726f6e00000000000000004672656552756e2f534d2d53796e6368726f6e00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</DcMode>
 							<DcMode>4443000000000000000000000000000044432d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000030100000000000000000000000000000000000000000000000000000000000000</DcMode>
@@ -8177,6 +8230,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 						<Fmmu>0000000000000000000000010000000006000000000000000000000000000000</Fmmu>
 						<Fmmu>0000000000000000000000020000000005000000000000000000000000000000</Fmmu>
 						<BootStrapData>0010140200181402</BootStrapData>
+						<SuName>Drives</SuName>
 						<DcData>3007000090d0030000000000000000000000ffff000000000000000000000000</DcData>
 						<DcMode>446353796e633235300000000000000053796e63206379636c652074696d653a20323530c2b57300000000000000000090d003000000000000000000ffff30070000000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<DcMode>446353796e633132350000000000000053796e63206379636c652074696d653a20313235c2b57300000000000000000048e801000000000000000000ffff30070000000000000000000000000000000000000000000000000000000000000000</DcMode>
@@ -8193,7 +8247,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 						<MBoxUserCmdData>020005000a0000002600000000000000000000000000000000000000000000000340cb800000000064004d61696e7320766f6c74616765206e6567617469766520746f6c6572616e63652072616e676500</MBoxUserCmdData>
 						<MBoxUserCmdData>020005000a0000001d00000000000000000000000000000000000000000000000340cc80000000000908506f776572206d616e6167656d656e7420636f6e74726f6c20776f726400</MBoxUserCmdData>
 						<MBoxUserCmdData>020005000a0000001400000000000000000000000000000000000000000000000340fa8000000000000050726f626520312076616c756520736f7572636500</MBoxUserCmdData>
-						<MBoxUserCmdData>020005000a0000001700000000000000000000000000000000000000000000000340a90000000000210150726f626520636f6e74726f6c20706172616d6574657200</MBoxUserCmdData>
+						<MBoxUserCmdData>020005000a0000001700000000000000000000000000000000000000000000000340a90000000000210050726f626520636f6e74726f6c20706172616d6574657200</MBoxUserCmdData>
 						<MBoxUserCmdData>020005000a00000017000000000000000000000000000000000000000000000003406800000000000600506f736974696f6e206c6f6f70204b762d666163746f7200</MBoxUserCmdData>
 						<MBoxUserCmdData>02000500140000001b00000000000000000000000000000000000000000000000340fb800000000008000800000008000100000050726f62652031206c6f67696320636f6e66696775726174696f6e00</MBoxUserCmdData>
 						<MBoxUserCmdData>02000500140000001b00000000000000000000000000000000000000000000000340b88000000000080008000000000000000000466565646261636b2032207265666572656e6365207369676e616c00</MBoxUserCmdData>
@@ -8292,7 +8346,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<Fmmu>0000000000000000001900010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010f400f410f400</BootStrapData>
-							<SuName>TwinSAFE</SuName>
+							<SuName>TwinSAFE_Drive</SuName>
 							<SuTask>#x05000010</SuTask>
 							<MBoxUserCmdData>020003000a00000017000000000040000000000000000000000000000000000030002000020000000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
 							<MBoxUserCmdData>020003002a000000170000000000400000000000000000000000000000000000300120002200000010000000000000000000000000000000000000000000000000000000000000000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
@@ -9872,6 +9926,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 						<Fmmu>0000000000000000000000010000000006000000000000000000000000000000</Fmmu>
 						<Fmmu>0000000000000000000000020000000005000000000000000000000000000000</Fmmu>
 						<BootStrapData>0010140200181402</BootStrapData>
+						<SuName>Drives</SuName>
 						<DcData>3007000090d0030000000000000000000000ffff000000000000000000000000</DcData>
 						<DcMode>446353796e633235300000000000000053796e63206379636c652074696d653a20323530c2b57300000000000000000090d003000000000000000000ffff30070000000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<DcMode>446353796e633132350000000000000053796e63206379636c652074696d653a20313235c2b57300000000000000000048e801000000000000000000ffff30070000000000000000000000000000000000000000000000000000000000000000</DcMode>
@@ -9982,7 +10037,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<Fmmu>0000000000000000001900010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010f400f410f400</BootStrapData>
-							<SuName>TwinSAFE</SuName>
+							<SuName>TwinSAFE_Drive</SuName>
 							<SuTask>#x05000010</SuTask>
 							<MBoxUserCmdData>020003000a00000017000000000040000000000000000000000000000000000030002000020000000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
 							<MBoxUserCmdData>020003002a000000170000000000400000000000000000000000000000000000300120002200000010000000000000000000000000000000000000000000000000000000000000000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
@@ -10214,467 +10269,6 @@ Bit1: Value smaller than Limit2]]></Comment>
 					<Name>Derotator (AX5206-0000-0214)</Name>
 					<ImageId>1010</ImageId>
 					<Xml>
-						<AX5XXXDriveTool>
-							<AxisSettings>
-								<AxisSetting Channel="0">
-									<Property>
-										<Name>NcFeedConstant</Name>
-										<Value>0.200000</Value>
-									</Property>
-									<Property>
-										<Name>MotorDataSchema</Name>
-										<Value>ScannedDataSheet</Value>
-									</Property>
-									<Property>
-										<Name>MotorType</Name>
-										<Value>AM8532-0D20-0000</Value>
-									</Property>
-									<Parametersets>
-										<Parameter>
-											<Comment>Motor vendor</Comment>
-											<Name>Vendor</Name>
-											<Data type="visibleString">Beckhoff</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Electric motor type</Comment>
-											<Name>ElecType</Name>
-											<Data type="visibleString">AM8532-xDx0</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Compatible elec motor type</Comment>
-											<Name>CompElecType</Name>
-											<Data type="visibleString">AM8032-xDx0</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Motor Serial number</Comment>
-											<Name>Serial#</Name>
-											<Data type="visibleString">aa984461</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Motor oder code</Comment>
-											<Name>OrderCode</Name>
-											<Data type="visibleString">AM8532-0D20-0000</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Motor construction</Comment>
-											<Name>ConstrType</Name>
-											<Data type="uint8">0</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Pole Pairs</Comment>
-											<Name>PolePairs</Name>
-											<Data type="uint8">4</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Standstill Current</Comment>
-											<Name>I0rms</Name>
-											<Data type="uint16">1.70</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Rated Current</Comment>
-											<Name>Inrms</Name>
-											<Data type="uint16">1.60</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Peak Current</Comment>
-											<Name>Iprms</Name>
-											<Data type="uint16">9.60</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Nominal Voltage</Comment>
-											<Name>Unrms</Name>
-											<Data type="uint16">400</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Max Voltage</Comment>
-											<Name>Umaxrms</Name>
-											<Data type="uint16">890</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Max winding du/dt</Comment>
-											<Name>dudtMax</Name>
-											<Data type="uint16">8000000000</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Max Torque</Comment>
-											<Name>Mpeak</Name>
-											<Data type="uint16">11.7</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Torque Constant</Comment>
-											<Name>kT</Name>
-											<Data type="uint16">1.40</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>M(i) curve</Comment>
-											<Name>M(i)</Name>
-											<DataTable type="uint16[]" unitPrefix="-3" unitSiNumerator="A">
-												<item>0.960</item>
-												<item>1.920</item>
-												<item>2.880</item>
-												<item>3.840</item>
-												<item>4.800</item>
-												<item>5.760</item>
-												<item>6.720</item>
-												<item>7.680</item>
-												<item>8.640</item>
-												<item>9.600</item>
-											</DataTable>
-											<DataTable type="uint16[]" unitPrefix="-2" unitSiNumerator="Nm">
-												<item>1.61</item>
-												<item>3.12</item>
-												<item>4.53</item>
-												<item>5.84</item>
-												<item>7.05</item>
-												<item>8.17</item>
-												<item>9.19</item>
-												<item>10.11</item>
-												<item>10.93</item>
-												<item>11.70</item>
-											</DataTable>
-										</Parameter>
-										<Parameter>
-											<Comment>EMK</Comment>
-											<Name>kErms</Name>
-											<Data type="uint16">0.100</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Winding resistance Ph-Ph 20°C</Comment>
-											<Name>R</Name>
-											<Data type="uint16">21</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Lq Ph-Ph</Comment>
-											<Name>Lq</Name>
-											<Data type="uint16">0.0719</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Ld Ph-Ph</Comment>
-											<Name>Ld</Name>
-											<Data type="uint16">0.0719</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Lq(i) curve</Comment>
-											<Name>Lq(i)</Name>
-											<DataTable type="uint16[]" unitPrefix="-3" unitSiNumerator="A">
-												<item>0.960</item>
-												<item>1.920</item>
-												<item>2.880</item>
-												<item>3.840</item>
-												<item>4.800</item>
-												<item>5.760</item>
-												<item>6.720</item>
-												<item>7.680</item>
-												<item>8.640</item>
-												<item>9.600</item>
-											</DataTable>
-											<DataTable type="uint16[]" unitPrefix="-4" unitSiNumerator="H">
-												<item>0.0496</item>
-												<item>0.0445</item>
-												<item>0.0394</item>
-												<item>0.0351</item>
-												<item>0.0322</item>
-												<item>0.0292</item>
-												<item>0.0245</item>
-												<item>0.0198</item>
-												<item>0.0154</item>
-												<item>0.0115</item>
-											</DataTable>
-										</Parameter>
-										<Parameter>
-											<Comment>Max speed</Comment>
-											<Name>Nmax</Name>
-											<Data type="uint16">10000</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>J motor with brake and encoder</Comment>
-											<Name>J</Name>
-											<Data type="uint16">0.000207</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>T motor warn limit</Comment>
-											<Name>TMotorWarn</Name>
-											<Data type="uint16">120</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>T motor shut down</Comment>
-											<Name>TMotorLimit</Name>
-											<Data type="uint16">140</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Time constant i2t</Comment>
-											<Name>Ti2t</Name>
-											<Data type="uint16">95.5</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Motor thermal constant</Comment>
-											<Name>Mtc</Name>
-											<Data type="uint16">26</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Motor temp sensor connection</Comment>
-											<Name>TempSensorCon</Name>
-											<Data type="uint8">1</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Motor temp sensor R(T)</Comment>
-											<Name>TempSensorR(T)</Name>
-											<DataTable type="int16[]" unitPrefix="-1" unitSiNumerator="°C">
-												<item>-40.0</item>
-												<item>-15.5</item>
-												<item>9.0</item>
-												<item>33.5</item>
-												<item>58.0</item>
-												<item>82.5</item>
-												<item>107.0</item>
-												<item>131.5</item>
-												<item>156.0</item>
-												<item>181.0</item>
-											</DataTable>
-											<DataTable type="uint16[]" unitSiNumerator="ohm">
-												<item>359</item>
-												<item>440</item>
-												<item>534</item>
-												<item>642</item>
-												<item>762</item>
-												<item>896</item>
-												<item>1043</item>
-												<item>1204</item>
-												<item>1377</item>
-												<item>1560</item>
-											</DataTable>
-										</Parameter>
-										<Parameter>
-											<Comment>NnUnrms</Comment>
-											<Name>NnUnrms</Name>
-											<DataTable type="uint16[]" unitSiNumerator="V">
-												<item>115</item>
-												<item>230</item>
-												<item>400</item>
-												<item>480</item>
-											</DataTable>
-											<DataTable type="uint16[]" unitSiNumerator="1/min">
-												<item>600</item>
-												<item>1500</item>
-												<item>3000</item>
-												<item>3400</item>
-											</DataTable>
-										</Parameter>
-										<Parameter>
-											<Comment>MnUnrms</Comment>
-											<Name>MnUnrms</Name>
-											<DataTable type="uint16[]" unitSiNumerator="V">
-												<item>115</item>
-												<item>230</item>
-												<item>400</item>
-												<item>480</item>
-											</DataTable>
-											<DataTable type="uint16[]" unitPrefix="-2" unitSiNumerator="Nm">
-												<item>2.37</item>
-												<item>2.34</item>
-												<item>2.30</item>
-												<item>2.26</item>
-											</DataTable>
-										</Parameter>
-										<Parameter>
-											<Comment>Version</Comment>
-											<Name>Version</Name>
-											<Data type="uint16">1.26</Data>
-										</Parameter>
-									</Parametersets>
-								</AxisSetting>
-								<AxisSetting Channel="1">
-									<Property>
-										<Name>Feedback1Connector0</Name>
-										<Value>0</Value>
-									</Property>
-									<Property>
-										<Name>Feedback1Connector1</Name>
-										<Value>0</Value>
-									</Property>
-									<Property>
-										<Name>Feedback1Connector2</Name>
-										<Value>0</Value>
-									</Property>
-								</AxisSetting>
-							</AxisSettings>
-							<DialogSettings>
-								<DialogSetting Name="Power management" Channel="0">
-									<Property>
-										<Name>PowerSupplyType</Name>
-										<Value>0</Value>
-									</Property>
-								</DialogSetting>
-							</DialogSettings>
-							<InitCmds>
-								<InitCmd DriveNo="0" IDN="30" MotorDataLevel="0" DisableMode="0">
-									<RetainData>3e0042004669726d776172653a2076322e313420284275696c64203030303629202f20426f6f746c6f616465723a2076322e303220284275696c6420303030322900</RetainData>
-								</InitCmd>
-								<InitCmd DriveNo="0" IDN="91" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="100" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="101" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="106" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="107" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="109" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="111" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="113" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="196" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="201" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="204" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="432" MotorDataLevel="0" DisableMode="0">
-									<RetainData>1200160053657269616c233a20303030353530363137</RetainData>
-								</InitCmd>
-								<InitCmd DriveNo="0" IDN="32770" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32818" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32819" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32821" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32822" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32823" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32825" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32829" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32830" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32834" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32835" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32838" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32839" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32841" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32842" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32843" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32844" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32845" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32857" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32860" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32861" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32918" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="33088" MotorDataLevel="0" DisableMode="0">
-									<RetainData>24002400d6000600ca0002002c9d5b002c9d5b00c8000900660000001b534c002260000000000000</RetainData>
-								</InitCmd>
-								<InitCmd DriveNo="0" IDN="33093" MotorDataLevel="0" DisableMode="0">
-									<RetainData>16001a004a756e2020322032303232202c2031363a32353a3539</RetainData>
-								</InitCmd>
-								<InitCmd DriveNo="0" IDN="33219" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="33279" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="33282" MotorDataLevel="1" DisableMode="0"/>
-							</InitCmds>
-							<StatusBar>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>135</Index>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>390</Index>
-									<Width>115</Width>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>95</Index>
-									<Width>364</Width>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>32821</Index>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>32973</Index>
-									<SubItem>Bit0</SubItem>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>32973</Index>
-									<SubItem>Bit3</SubItem>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>384</Index>
-									<Width>124</Width>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>135</Index>
-									<SubItem>ActualOperationMode</SubItem>
-									<Width>197</Width>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33080</Index>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>32865</Index>
-									<SubItem>MotorBrakeUnlocked</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>380</Index>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>381</Index>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>32831</Index>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33221</Index>
-									<SubItem>Active</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33221</Index>
-									<SubItem>ReadyToEnable</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33221</Index>
-									<SubItem>IGreaterThanInom</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33221</Index>
-									<SubItem>IPeakLimitReached</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33221</Index>
-									<SubItem>IreductionActive</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33221</Index>
-									<SubItem>UmaxReached</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33221</Index>
-									<SubItem>FieldWeakeningActive</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>Active</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>ReadyToEnable</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>PosDirectionEnabled</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>NegDirectionEnabled</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>AccDecLimitationActive</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>vLimitationActive</SubItem>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>vZeroReached</SubItem>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>CmdMovPositive</SubItem>
-									<Width>110</Width>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>CmdMovNegative</SubItem>
-									<Width>110</Width>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>32983</Index>
-								</Element>
-							</StatusBar>
-						</AX5XXXDriveTool>
 						<TcDMDrive>
 							<SortId>2</SortId>
 							<DriveModuleType>31</DriveModuleType>
@@ -11824,6 +11418,467 @@ Bit1: Value smaller than Limit2]]></Comment>
 								</Channel>
 							</Inverter>
 						</TcDMDrive>
+						<AX5XXXDriveTool>
+							<AxisSettings>
+								<AxisSetting Channel="0">
+									<Property>
+										<Name>NcFeedConstant</Name>
+										<Value>0.200000</Value>
+									</Property>
+									<Property>
+										<Name>MotorDataSchema</Name>
+										<Value>ScannedDataSheet</Value>
+									</Property>
+									<Property>
+										<Name>MotorType</Name>
+										<Value>AM8532-0D20-0000</Value>
+									</Property>
+									<Parametersets>
+										<Parameter>
+											<Comment>Motor vendor</Comment>
+											<Name>Vendor</Name>
+											<Data type="visibleString">Beckhoff</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Electric motor type</Comment>
+											<Name>ElecType</Name>
+											<Data type="visibleString">AM8532-xDx0</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Compatible elec motor type</Comment>
+											<Name>CompElecType</Name>
+											<Data type="visibleString">AM8032-xDx0</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Motor Serial number</Comment>
+											<Name>Serial#</Name>
+											<Data type="visibleString">aa984461</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Motor oder code</Comment>
+											<Name>OrderCode</Name>
+											<Data type="visibleString">AM8532-0D20-0000</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Motor construction</Comment>
+											<Name>ConstrType</Name>
+											<Data type="uint8">0</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Pole Pairs</Comment>
+											<Name>PolePairs</Name>
+											<Data type="uint8">4</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Standstill Current</Comment>
+											<Name>I0rms</Name>
+											<Data type="uint16">1.70</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Rated Current</Comment>
+											<Name>Inrms</Name>
+											<Data type="uint16">1.60</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Peak Current</Comment>
+											<Name>Iprms</Name>
+											<Data type="uint16">9.60</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Nominal Voltage</Comment>
+											<Name>Unrms</Name>
+											<Data type="uint16">400</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Max Voltage</Comment>
+											<Name>Umaxrms</Name>
+											<Data type="uint16">890</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Max winding du/dt</Comment>
+											<Name>dudtMax</Name>
+											<Data type="uint16">8000000000</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Max Torque</Comment>
+											<Name>Mpeak</Name>
+											<Data type="uint16">11.7</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Torque Constant</Comment>
+											<Name>kT</Name>
+											<Data type="uint16">1.40</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>M(i) curve</Comment>
+											<Name>M(i)</Name>
+											<DataTable type="uint16[]" unitPrefix="-3" unitSiNumerator="A">
+												<item>0.960</item>
+												<item>1.920</item>
+												<item>2.880</item>
+												<item>3.840</item>
+												<item>4.800</item>
+												<item>5.760</item>
+												<item>6.720</item>
+												<item>7.680</item>
+												<item>8.640</item>
+												<item>9.600</item>
+											</DataTable>
+											<DataTable type="uint16[]" unitPrefix="-2" unitSiNumerator="Nm">
+												<item>1.61</item>
+												<item>3.12</item>
+												<item>4.53</item>
+												<item>5.84</item>
+												<item>7.05</item>
+												<item>8.17</item>
+												<item>9.19</item>
+												<item>10.11</item>
+												<item>10.93</item>
+												<item>11.70</item>
+											</DataTable>
+										</Parameter>
+										<Parameter>
+											<Comment>EMK</Comment>
+											<Name>kErms</Name>
+											<Data type="uint16">0.100</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Winding resistance Ph-Ph 20°C</Comment>
+											<Name>R</Name>
+											<Data type="uint16">21</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Lq Ph-Ph</Comment>
+											<Name>Lq</Name>
+											<Data type="uint16">0.0719</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Ld Ph-Ph</Comment>
+											<Name>Ld</Name>
+											<Data type="uint16">0.0719</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Lq(i) curve</Comment>
+											<Name>Lq(i)</Name>
+											<DataTable type="uint16[]" unitPrefix="-3" unitSiNumerator="A">
+												<item>0.960</item>
+												<item>1.920</item>
+												<item>2.880</item>
+												<item>3.840</item>
+												<item>4.800</item>
+												<item>5.760</item>
+												<item>6.720</item>
+												<item>7.680</item>
+												<item>8.640</item>
+												<item>9.600</item>
+											</DataTable>
+											<DataTable type="uint16[]" unitPrefix="-4" unitSiNumerator="H">
+												<item>0.0496</item>
+												<item>0.0445</item>
+												<item>0.0394</item>
+												<item>0.0351</item>
+												<item>0.0322</item>
+												<item>0.0292</item>
+												<item>0.0245</item>
+												<item>0.0198</item>
+												<item>0.0154</item>
+												<item>0.0115</item>
+											</DataTable>
+										</Parameter>
+										<Parameter>
+											<Comment>Max speed</Comment>
+											<Name>Nmax</Name>
+											<Data type="uint16">10000</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>J motor with brake and encoder</Comment>
+											<Name>J</Name>
+											<Data type="uint16">0.000207</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>T motor warn limit</Comment>
+											<Name>TMotorWarn</Name>
+											<Data type="uint16">120</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>T motor shut down</Comment>
+											<Name>TMotorLimit</Name>
+											<Data type="uint16">140</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Time constant i2t</Comment>
+											<Name>Ti2t</Name>
+											<Data type="uint16">95.5</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Motor thermal constant</Comment>
+											<Name>Mtc</Name>
+											<Data type="uint16">26</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Motor temp sensor connection</Comment>
+											<Name>TempSensorCon</Name>
+											<Data type="uint8">1</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Motor temp sensor R(T)</Comment>
+											<Name>TempSensorR(T)</Name>
+											<DataTable type="int16[]" unitPrefix="-1" unitSiNumerator="°C">
+												<item>-40.0</item>
+												<item>-15.5</item>
+												<item>9.0</item>
+												<item>33.5</item>
+												<item>58.0</item>
+												<item>82.5</item>
+												<item>107.0</item>
+												<item>131.5</item>
+												<item>156.0</item>
+												<item>181.0</item>
+											</DataTable>
+											<DataTable type="uint16[]" unitSiNumerator="ohm">
+												<item>359</item>
+												<item>440</item>
+												<item>534</item>
+												<item>642</item>
+												<item>762</item>
+												<item>896</item>
+												<item>1043</item>
+												<item>1204</item>
+												<item>1377</item>
+												<item>1560</item>
+											</DataTable>
+										</Parameter>
+										<Parameter>
+											<Comment>NnUnrms</Comment>
+											<Name>NnUnrms</Name>
+											<DataTable type="uint16[]" unitSiNumerator="V">
+												<item>115</item>
+												<item>230</item>
+												<item>400</item>
+												<item>480</item>
+											</DataTable>
+											<DataTable type="uint16[]" unitSiNumerator="1/min">
+												<item>600</item>
+												<item>1500</item>
+												<item>3000</item>
+												<item>3400</item>
+											</DataTable>
+										</Parameter>
+										<Parameter>
+											<Comment>MnUnrms</Comment>
+											<Name>MnUnrms</Name>
+											<DataTable type="uint16[]" unitSiNumerator="V">
+												<item>115</item>
+												<item>230</item>
+												<item>400</item>
+												<item>480</item>
+											</DataTable>
+											<DataTable type="uint16[]" unitPrefix="-2" unitSiNumerator="Nm">
+												<item>2.37</item>
+												<item>2.34</item>
+												<item>2.30</item>
+												<item>2.26</item>
+											</DataTable>
+										</Parameter>
+										<Parameter>
+											<Comment>Version</Comment>
+											<Name>Version</Name>
+											<Data type="uint16">1.26</Data>
+										</Parameter>
+									</Parametersets>
+								</AxisSetting>
+								<AxisSetting Channel="1">
+									<Property>
+										<Name>Feedback1Connector0</Name>
+										<Value>0</Value>
+									</Property>
+									<Property>
+										<Name>Feedback1Connector1</Name>
+										<Value>0</Value>
+									</Property>
+									<Property>
+										<Name>Feedback1Connector2</Name>
+										<Value>0</Value>
+									</Property>
+								</AxisSetting>
+							</AxisSettings>
+							<DialogSettings>
+								<DialogSetting Name="Power management" Channel="0">
+									<Property>
+										<Name>PowerSupplyType</Name>
+										<Value>0</Value>
+									</Property>
+								</DialogSetting>
+							</DialogSettings>
+							<InitCmds>
+								<InitCmd DriveNo="0" IDN="30" MotorDataLevel="0" DisableMode="0">
+									<RetainData>3e003e004669726d776172653a2076322e313420284275696c64203030303629202f20426f6f746c6f616465723a2076322e303220284275696c6420303030322900</RetainData>
+								</InitCmd>
+								<InitCmd DriveNo="0" IDN="91" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="100" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="101" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="106" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="107" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="109" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="111" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="113" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="196" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="201" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="204" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="432" MotorDataLevel="0" DisableMode="0">
+									<RetainData>1200120053657269616c233a20303030353530363137</RetainData>
+								</InitCmd>
+								<InitCmd DriveNo="0" IDN="32770" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32818" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32819" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32821" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32822" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32823" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32825" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32829" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32830" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32834" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32835" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32838" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32839" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32841" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32842" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32843" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32844" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32845" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32857" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32860" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32861" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32918" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="33088" MotorDataLevel="0" DisableMode="0">
+									<RetainData>24002400d6000600ca0002002c9d5b002c9d5b000000000000000000000000002260000000000000</RetainData>
+								</InitCmd>
+								<InitCmd DriveNo="0" IDN="33093" MotorDataLevel="0" DisableMode="0">
+									<RetainData>160016004a756e2020322032303232202c2031363a32353a3539</RetainData>
+								</InitCmd>
+								<InitCmd DriveNo="0" IDN="33219" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="33279" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="33282" MotorDataLevel="1" DisableMode="0"/>
+							</InitCmds>
+							<StatusBar>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>135</Index>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>390</Index>
+									<Width>115</Width>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>95</Index>
+									<Width>364</Width>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>32821</Index>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>32973</Index>
+									<SubItem>Bit0</SubItem>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>32973</Index>
+									<SubItem>Bit3</SubItem>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>384</Index>
+									<Width>124</Width>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>135</Index>
+									<SubItem>ActualOperationMode</SubItem>
+									<Width>197</Width>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33080</Index>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>32865</Index>
+									<SubItem>MotorBrakeUnlocked</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>380</Index>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>381</Index>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>32831</Index>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33221</Index>
+									<SubItem>Active</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33221</Index>
+									<SubItem>ReadyToEnable</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33221</Index>
+									<SubItem>IGreaterThanInom</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33221</Index>
+									<SubItem>IPeakLimitReached</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33221</Index>
+									<SubItem>IreductionActive</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33221</Index>
+									<SubItem>UmaxReached</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33221</Index>
+									<SubItem>FieldWeakeningActive</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>Active</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>ReadyToEnable</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>PosDirectionEnabled</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>NegDirectionEnabled</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>AccDecLimitationActive</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>vLimitationActive</SubItem>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>vZeroReached</SubItem>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>CmdMovPositive</SubItem>
+									<Width>110</Width>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>CmdMovNegative</SubItem>
+									<Width>110</Width>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>32983</Index>
+								</Element>
+							</StatusBar>
+						</AX5XXXDriveTool>
 					</Xml>
 					<EtherCAT SlaveType="2" PdiType="#x0c08" MboxDataLinkLayer="true" StateMBoxPolling="true" CfgModeSafeOp="true" DownloadPdoCfg="true" CycleMBoxPollingTime="0" FoeType="1" SoeChannels="2" VendorId="#x00000002" ProductCode="#x14566012" RevisionNo="#x00d60000" InfoDataAddr="true" InfoDataSoeDS401="true" InfoDataDcTimes="true" TimeoutStateChange2="20000" TimeoutStateChange3="10000" TimeoutStateChange4="500" AutoRestoreAfterWcOk="true" CheckRevisionNoType="4" PortPhys="12305" IdentificationAdo="308" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="AX5206-0000-0214 EtherCAT Drive (SoE, 2 Ch.)" Desc="AX5206-0000-0214" PortABoxInfo="#x01000003">
 						<SyncMan>001880002600010001000000800080008000001826010000</SyncMan>
@@ -11838,6 +11893,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 						<Fmmu>0000000000000000000000010000000006000000000000000000000000000000</Fmmu>
 						<Fmmu>0000000000000000000000020000000005000000000000000000000000000000</Fmmu>
 						<BootStrapData>0010140200181402</BootStrapData>
+						<SuName>Drives</SuName>
 						<DcData>3007000090d0030000000000000000000000ffff000000000000000000000000</DcData>
 						<DcMode>446353796e633235300000000000000053796e63206379636c652074696d653a20323530c2b57300000000000000000090d003000000000000000000ffff30070000000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<DcMode>446353796e633132350000000000000053796e63206379636c652074696d653a20313235c2b57300000000000000000048e801000000000000000000ffff30070000000000000000000000000000000000000000000000000000000000000000</DcMode>
@@ -11956,7 +12012,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<Fmmu>0000000000000000001900010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010f400f410f400</BootStrapData>
-							<SuName>TwinSAFE</SuName>
+							<SuName>TwinSAFE_Drive</SuName>
 							<SuTask>#x05000010</SuTask>
 							<MBoxUserCmdData>020003000a00000017000000000040000000000000000000000000000000000030002000020000000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
 							<MBoxUserCmdData>020003002a000000170000000000400000000000000000000000000000000000300120002200000010000000000000000000000000000000000000000000000000000000000000000000646f776e6c6f6164205361666520506172616d6574657200</MBoxUserCmdData>
@@ -12367,6 +12423,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x07d83052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL2008 8Ch. Dig. Output 24V, 0.5A" Desc="EL2008" PortABoxInfo="#x0100000b">
 							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
 							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
+							<SuName>Roof</SuName>
 							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
 								<Entry Name="MAIN.RoofControl.roofs[1].motors[1].direction_open" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
@@ -12419,6 +12476,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x07d83052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL2008 8Ch. Dig. Output 24V, 0.5A" Desc="EL2008" PortABoxInfo="#x0100002b">
 							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
 							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
+							<SuName>Roof</SuName>
 							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
 								<Entry Name="MAIN.RoofControl.roofs[1].motors[1].reset_drive" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
@@ -12473,6 +12531,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<Fmmu>0000000000000000001900010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0018f400f418f400</BootStrapData>
+							<SuName>TwinSAFE_Roof</SuName>
 							<Pdo Name="TxPDO" Index="#x1a00" Flags="#x0090" SyncMan="3">
 								<Entry Name="FSOE__FSoE Slave CMD" Index="#x6000" Sub="#x01">
 									<Type>USINT</Type>
@@ -12568,6 +12627,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<Fmmu>0000000000000000001900010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010f400f410f400</BootStrapData>
+							<SuName>TwinSAFE_Roof</SuName>
 							<Pdo Name="TxPDO" Index="#x1a00" Flags="#x0090" SyncMan="3">
 								<Entry Name="FSOE__FSoE Slave CMD" Index="#x6000" Sub="#x01">
 									<Type>USINT</Type>
@@ -12629,6 +12689,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03f03052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1008 8Ch. Dig. Input 24V, 3ms" Desc="EL1008" PortABoxInfo="#x0100000d">
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
+							<SuName>Roof</SuName>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
 								<Entry Name="MAIN.RoofControl.roofs[1].motors[1].counter" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
@@ -12685,6 +12746,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03f03052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1008 8Ch. Dig. Input 24V, 3ms" Desc="EL1008" PortABoxInfo="#x0100000e">
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
+							<SuName>Roof</SuName>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
 								<Entry Name="MAIN.RoofControl.roofs[1].close_roof" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
@@ -12738,6 +12800,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03f03052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1008 8Ch. Dig. Input 24V, 3ms" Desc="EL1008" PortABoxInfo="#x0100000f">
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
+							<SuName>Roof</SuName>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
 								<Entry Name="MAIN.RoofControl.roofs[2].motors[1].closed" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
@@ -12793,6 +12856,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
 							<BootStrapData>0010f400f410f400</BootStrapData>
+							<SuName>Roof</SuName>
 							<DcMode>53796e6368726f6e0000000000000000534d2d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</DcMode>
 							<DcMode>4443000000000000000000000000000044432d53796e6368726f6e0000000000000000000000000000000000000000000000000000000000a0860100000000070100000000000000000000000000000000000000000000000000000000000000</DcMode>
 							<Pdo Name="AO Outputs Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="2">
@@ -12881,6 +12945,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Azimuth">
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Azimuth (AX5125-0000-0214)">
 				<Link VarA="Drive^Inputs^In^nDataIn1" VarB="AT^Following distance"/>
+				<Link VarA="Drive^Inputs^In^nDataIn3[0]" VarB="AT^Torque/force feedback value"/>
 				<Link VarA="Drive^Inputs^In^nDcOutputTime" VarB="InfoData^DcOutputShift"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="AT^Drive status word" Size="8" OffsB="8"/>
 				<Link VarA="Drive^Inputs^In^nState2" VarB="AT^Drive status word"/>
@@ -12891,6 +12956,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="Enc^Inputs^In^nDataIn1" VarB="AT^Position feedback 1 value"/>
 				<Link VarA="Enc^Inputs^In^nDataIn3" VarB="AT^Probe value 1 positive edge"/>
 				<Link VarA="Enc^Inputs^In^nDataIn4" VarB="AT^Probe value 1 negative edge"/>
+				<Link VarA="Enc^Inputs^In^nDataIn7" VarB="AT^Velocity feedback 1 value"/>
 				<Link VarA="Enc^Inputs^In^nDcInputTime" VarB="InfoData^DcInputShift"/>
 				<Link VarA="Enc^Inputs^In^nState4" VarB="WcState^InputToggle" Size="1" OffsA="1"/>
 				<Link VarA="Enc^Inputs^In^nState4" VarB="WcState^WcState"/>
@@ -13067,8 +13133,8 @@ Bit1: Value smaller than Limit2]]></Comment>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Safety Logic (EL6910)">
 				<Link VarA="PlcTask Inputs^GVL_Telescope.Azimuth_sto" VarB="StandardInputs^Standard Out Var 18"/>
-				<Link VarA="PlcTask Inputs^GVL_Telescope.Derotator_sto" VarB="StandardInputs^Standard Out Var 20"/>
 				<Link VarA="PlcTask Inputs^GVL_Telescope.Elevation_sto" VarB="StandardInputs^Standard Out Var 19"/>
+				<Link VarA="PlcTask Inputs^MAIN.DerotatorControl.sto" VarB="StandardInputs^Standard Out Var 20"/>
 				<Link VarA="PlcTask Inputs^SafetyHandling.stInfoEStop1" VarB="Function Block Info Data^TwinSafeGroup1.Network1.FBEstop1 Info Data"/>
 				<Link VarA="PlcTask Inputs^SafetyHandling.stInfoGroup1" VarB="TwinSAFE Group Info Data^TwinSafeGroup1 Info Data"/>
 				<Link VarA="PlcTask Inputs^SafetyHandling.stInfoSafetyIn" VarB="Connection Info Data^Message_8 Info Data"/>
