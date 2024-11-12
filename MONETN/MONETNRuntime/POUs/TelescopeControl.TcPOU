@@ -50,6 +50,7 @@ VAR_IN_OUT
 	HydraulicsControl : FB_HydraulicsControl;
 	Focuscontrol : FB_Focuscontrol;
 	DerotatorControl	: FB_DerotatorControl;
+	ElevationControl	: FB_ElevationControl;
 END_VAR
 VAR
 	// actual command from the TCS

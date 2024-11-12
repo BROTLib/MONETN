@@ -55,9 +55,6 @@
     <Compile Include="POUs\AzimuthElevationControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\ElevationControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\FunctionBlocks\FB_AstroClock.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -147,6 +144,10 @@
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
     </Compile>
     <Compile Include="VISUs\Derotator.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="VISUs\Elevation.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
     </Compile>

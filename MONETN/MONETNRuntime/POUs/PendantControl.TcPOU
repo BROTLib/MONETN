@@ -7,6 +7,7 @@ VAR_IN_OUT
 	HydraulicsControl : FB_HydraulicsControl;
 	Focuscontrol : FB_Focuscontrol;
 	DerotatorControl	: FB_DerotatorControl;
+	ElevationControl	: FB_ElevationControl;
 END_VAR
 VAR_INPUT
 	comm: I_Comm;
@@ -181,16 +182,16 @@ CASE Selection OF
 							
 	7:	// Elevation Control
 		
-		ElevationControl.up := up AND GVL_Telescope.Elevation_inputs.0;
-		ElevationControl.down := down AND GVL_Telescope.Elevation_inputs.1;
+		ElevationControl.up := up AND ElevationControl.digital_inputs.0;
+		ElevationControl.down := down AND ElevationControl.digital_inputs.1;
 		IF manual THEN
 			ElevationEnable(
 				SET := enable, 
 				Q := ElevationControl.enable);	
 		END_IF
 		ElevationControl.reset := reset;
-		lamp_up := GVL_Telescope.Elevation_inputs.0;
-		lamp_down := GVL_Telescope.Elevation_inputs.1;
+		lamp_up := ElevationControl.digital_inputs.0;
+		lamp_down := ElevationControl.digital_inputs.1;
 		lamp_error := ElevationControl.error;
 		
 	8:	// Azimuth Control
@@ -237,12 +238,12 @@ CASE Selection OF
 			Q := TelescopeControl.power);
 		TelescopeControl.reset := reset;
 		IF manual THEN
-			lamp_up := GVL_Telescope.Elevation_inputs.0;
-			lamp_down := GVL_Telescope.Elevation_inputs.1;
+			lamp_up := ElevationControl.digital_inputs.0;
+			lamp_down := ElevationControl.digital_inputs.1;
 			lamp_left := GVL_Telescope.Azimuth_inputs.0;
 			lamp_right := GVL_Telescope.Azimuth_inputs.1;
-			ElevationControl.up := up AND GVL_Telescope.Elevation_inputs.0;
-			ElevationControl.down := down AND GVL_Telescope.Elevation_inputs.1;
+			ElevationControl.up := up AND ElevationControl.digital_inputs.0;
+			ElevationControl.down := down AND ElevationControl.digital_inputs.1;
 			AzimuthElevationControl.left := left AND GVL_Telescope.Azimuth_inputs.0;
 			AzimuthElevationControl.right := right AND GVL_Telescope.Azimuth_inputs.1;
 			TelescopeControl.rightascension := TelescopeControl.rightascension_calc;

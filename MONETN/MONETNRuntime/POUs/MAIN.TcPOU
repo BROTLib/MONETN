@@ -45,6 +45,7 @@ VAR
 	HydraulicsControl				: FB_HydraulicsControl;
 	FocusControl					: FB_FocusControl;
 	DerotatorControl				: FB_DerotatorControl;
+	ElevationControl				: FB_ElevationControl;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -104,11 +105,11 @@ ups_output_current := ups_output_current / 1000.0;
 ups_output_power := ups_output_voltage * ups_output_current;
 *)
 
-//TelescopeControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl, comm := MQTTClient);
+//TelescopeControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl, ElevationControl := ElevationControl, comm := MQTTClient);
 CoverControl(
 	comm				:= MQTTClient
 );
-PendantControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl, comm := MQTTClient);	//
+PendantControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl, ElevationControl := ElevationControl, comm := MQTTClient);	//
 HydraulicsControl(
 	pan_min_level		:= 3000,
 	pan_max_level		:= 10200,
@@ -116,9 +117,13 @@ HydraulicsControl(
 	pan_max_percent		:= 80.0, //56.0,
 	brake_clearing		:= brake_clearing,
 	comm				:= MQTTClient
-);	//
-ElevationControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, comm := MQTTClient);	//
-AzimuthElevationControl(HydraulicsControl := HydraulicsControl, comm := MQTTClient);	//
+);
+ElevationControl(
+	CoverControl := CoverControl, 
+	HydraulicsControl := HydraulicsControl, 
+	comm := MQTTClient)
+;
+AzimuthElevationControl(HydraulicsControl := HydraulicsControl, comm := MQTTClient);
 DerotatorControl(
 	min_position			:= -170.0,
 	max_position			:= 300.0,
@@ -231,7 +236,9 @@ TemperatureCriticalEvent(
       <LineId Id="1409" Count="2" />
       <LineId Id="1408" Count="0" />
       <LineId Id="1407" Count="0" />
-      <LineId Id="1394" Count="2" />
+      <LineId Id="1394" Count="0" />
+      <LineId Id="1422" Count="3" />
+      <LineId Id="1395" Count="1" />
       <LineId Id="1420" Count="1" />
       <LineId Id="1418" Count="0" />
       <LineId Id="1417" Count="0" />

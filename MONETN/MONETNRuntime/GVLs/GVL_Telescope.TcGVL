@@ -15,15 +15,6 @@ VAR_GLOBAL
 	horn			AT%Q*: BOOL;
 	
 	// digital inputs for limit switches
-	Elevation_inputs		AT%I*: WORD;
-	// diagnostic number
-	Elevation_diagnostic	AT%I*: UDINT;
-	// torque feedback
-	Elevation_torque		AT%I*: INT;
-	// STO
-	Elevation_sto			AT%I*: BOOL;
-	
-	// digital inputs for limit switches
 	Azimuth_inputs			AT%I*: WORD;
 	// diagnostic number
 	Azimuth_diagnostic		AT%I*: UDINT;
@@ -34,8 +25,7 @@ VAR_GLOBAL
 	
 	// Zyklisches Interface zwischen NC und Achse
 	AzimuthAxisRef: 	AXIS_REF;
-	ElevationAxisRef: 	AXIS_REF;
-	
+
 	
 END_VAR]]></Declaration>
   </GVL>
