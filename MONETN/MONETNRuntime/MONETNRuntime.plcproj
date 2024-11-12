@@ -52,9 +52,6 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\AzimuthElevationControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\FunctionBlocks\FB_AstroClock.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -80,9 +77,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\FunctionBlocks\FB_Timer.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FunctionBlocks\FB_TONTP.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\FunctionBlocks\TelescopeAxisClass.TcPOU">

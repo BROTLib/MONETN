@@ -8,6 +8,7 @@ VAR_IN_OUT
 	Focuscontrol : FB_Focuscontrol;
 	DerotatorControl	: FB_DerotatorControl;
 	ElevationControl	: FB_ElevationControl;
+	AzimuthControl : FB_AzimuthControl;
 END_VAR
 VAR_INPUT
 	comm: I_Comm;
@@ -195,16 +196,16 @@ CASE Selection OF
 		lamp_error := ElevationControl.error;
 		
 	8:	// Azimuth Control
-		lamp_left := GVL_Telescope.Azimuth_inputs.0; // NOT GVL_Telescope.azimut_limit_switch;
-		lamp_right := GVL_Telescope.Azimuth_inputs.1; // NOT GVL_Telescope.azimut_limit_switch;
-		AzimuthElevationControl.left := left AND GVL_Telescope.Azimuth_inputs.0;
-		AzimuthElevationControl.right := right AND GVL_Telescope.Azimuth_inputs.1;
-		AzimuthElevationControl.reset := reset;
+		lamp_left := AzimuthControl.digital_inputs.0; // NOT GVL_Telescope.azimut_limit_switch;
+		lamp_right := AzimuthControl.digital_inputs.1; // NOT GVL_Telescope.azimut_limit_switch;
+		AzimuthControl.left := left AND AzimuthControl.digital_inputs.0;
+		AzimuthControl.right := right AND AzimuthControl.digital_inputs.1;
+		AzimuthControl.reset := reset;
 		IF manual THEN
 			AzimuthEnable(
 				SET := enable, 
-				Q := AzimuthElevationControl.enable);
-			lamp_error := AzimuthElevationControl.error;
+				Q := AzimuthControl.enable);
+			lamp_error := AzimuthControl.error;
 		END_IF
 		
 	9: 	// Dome control
@@ -240,19 +241,19 @@ CASE Selection OF
 		IF manual THEN
 			lamp_up := ElevationControl.digital_inputs.0;
 			lamp_down := ElevationControl.digital_inputs.1;
-			lamp_left := GVL_Telescope.Azimuth_inputs.0;
-			lamp_right := GVL_Telescope.Azimuth_inputs.1;
+			lamp_left := AzimuthControl.digital_inputs.0;
+			lamp_right := AzimuthControl.digital_inputs.1;
 			ElevationControl.up := up AND ElevationControl.digital_inputs.0;
 			ElevationControl.down := down AND ElevationControl.digital_inputs.1;
-			AzimuthElevationControl.left := left AND GVL_Telescope.Azimuth_inputs.0;
-			AzimuthElevationControl.right := right AND GVL_Telescope.Azimuth_inputs.1;
+			AzimuthControl.left := left AND AzimuthControl.digital_inputs.0;
+			AzimuthControl.right := right AND AzimuthControl.digital_inputs.1;
 			TelescopeControl.rightascension := TelescopeControl.rightascension_calc;
 			TelescopeControl.declination := TelescopeControl.declination_calc;
 		ELSE
 			lamp_up := ElevationControl.enable;
 			lamp_down := ElevationControl.enable;
-			lamp_left := AzimuthElevationControl.enable;
-			lamp_right := AzimuthElevationControl.enable;
+			lamp_left := AzimuthControl.enable;
+			lamp_right := AzimuthControl.enable;
 			IF up THEN 
 				Telescopecontrol.elevation_offset := Telescopecontrol.elevation_offset + 10.0/3600.0; 
 			ELSIF down THEN 

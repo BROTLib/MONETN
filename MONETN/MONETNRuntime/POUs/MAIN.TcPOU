@@ -46,6 +46,7 @@ VAR
 	FocusControl					: FB_FocusControl;
 	DerotatorControl				: FB_DerotatorControl;
 	ElevationControl				: FB_ElevationControl;
+	AzimuthControl					: FB_AzimuthControl;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -105,11 +106,11 @@ ups_output_current := ups_output_current / 1000.0;
 ups_output_power := ups_output_voltage * ups_output_current;
 *)
 
-//TelescopeControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl, ElevationControl := ElevationControl, comm := MQTTClient);
+//TelescopeControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl, ElevationControl := ElevationControl, AzimuthControl := AzimuthControl, comm := MQTTClient);
 CoverControl(
 	comm				:= MQTTClient
 );
-PendantControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl, ElevationControl := ElevationControl, comm := MQTTClient);	//
+PendantControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl, ElevationControl := ElevationControl, AzimuthControl := AzimuthControl, comm := MQTTClient);	//
 HydraulicsControl(
 	pan_min_level		:= 3000,
 	pan_max_level		:= 10200,
@@ -119,15 +120,18 @@ HydraulicsControl(
 	comm				:= MQTTClient
 );
 ElevationControl(
-	CoverControl := CoverControl, 
-	HydraulicsControl := HydraulicsControl, 
-	comm := MQTTClient)
+	CoverControl 		:= CoverControl, 
+	HydraulicsControl 	:= HydraulicsControl, 
+	comm 				:= MQTTClient)
 ;
-AzimuthElevationControl(HydraulicsControl := HydraulicsControl, comm := MQTTClient);
+AzimuthControl(
+	HydraulicsControl	:= HydraulicsControl, 
+	comm 				:= MQTTClient
+);
 DerotatorControl(
-	min_position			:= -170.0,
-	max_position			:= 300.0,
-	comm					:= MQTTClient
+	min_position		:= -170.0,
+	max_position		:= 300.0,
+	comm				:= MQTTClient
 );	//
 FocusControl(
 	comm				:= MQTTClient,
@@ -160,7 +164,7 @@ GVL_Main.lamp_on_manual := PendantControl.manual;
 
 IF GVL_Safety.Error THEN
 	error_lamp.blink := e_blink.short;
-ELSIF ElevationControl.error OR AzimuthElevationControl.error OR DerotatorControl.Error THEN
+ELSIF ElevationControl.error OR AzimuthControl.error OR DerotatorControl.Error THEN
 	error_lamp.blink := e_blink.long;
 ELSIF HydraulicsControl.oil_warning OR HydraulicsControl.oil_hot OR HydraulicsControl.pressure_failure THEN
 	error_lamp.blink := e_blink.slow;
@@ -238,7 +242,9 @@ TemperatureCriticalEvent(
       <LineId Id="1407" Count="0" />
       <LineId Id="1394" Count="0" />
       <LineId Id="1422" Count="3" />
-      <LineId Id="1395" Count="1" />
+      <LineId Id="1395" Count="0" />
+      <LineId Id="1426" Count="2" />
+      <LineId Id="1396" Count="0" />
       <LineId Id="1420" Count="1" />
       <LineId Id="1418" Count="0" />
       <LineId Id="1417" Count="0" />

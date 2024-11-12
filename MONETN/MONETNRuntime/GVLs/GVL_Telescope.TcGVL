@@ -14,19 +14,6 @@ VAR_GLOBAL
 	//Horn 4.7
 	horn			AT%Q*: BOOL;
 	
-	// digital inputs for limit switches
-	Azimuth_inputs			AT%I*: WORD;
-	// diagnostic number
-	Azimuth_diagnostic		AT%I*: UDINT;
-	// torque feedback
-	Azimuth_torque			AT%I*: INT;
-	// STO
-	Azimuth_sto				AT%I*: BOOL;	
-	
-	// Zyklisches Interface zwischen NC und Achse
-	AzimuthAxisRef: 	AXIS_REF;
-
-	
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
