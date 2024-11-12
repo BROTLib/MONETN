@@ -2,11 +2,13 @@
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
   <POU Name="PendantControl" Id="{4c9494b1-b987-44f6-88ae-faae341979f2}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PendantControl
-VAR_INPUT
+VAR_IN_OUT
 	CoverControl	: FB_CoverControl;
 	HydraulicsControl : FB_HydraulicsControl;
 	Focuscontrol : FB_Focuscontrol;
 	DerotatorControl	: FB_DerotatorControl;
+END_VAR
+VAR_INPUT
 	comm: I_Comm;
 END_VAR
 VAR

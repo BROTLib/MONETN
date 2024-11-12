@@ -43,12 +43,13 @@ see https://gitlab.aip.de/bmk10k/telescope_firmware/snippets/5
 	// offset for the de-rotator
 	derotator_offset:	LREAL := 0.0;
 	
+	comm : I_Comm;	
+END_VAR
+VAR_IN_OUT	
 	CoverControl	: FB_CoverControl;
 	HydraulicsControl : FB_HydraulicsControl;
 	Focuscontrol : FB_Focuscontrol;
 	DerotatorControl	: FB_DerotatorControl;
-	
-	comm : I_Comm;
 END_VAR
 VAR
 	// actual command from the TCS

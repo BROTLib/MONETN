@@ -25,9 +25,10 @@ VAR_INPUT
 	StopAxis:	BOOL;
 	// diagnostic reset
 	bSoEReset:	BOOL;
-	
-	HydraulicsControl : FB_HydraulicsControl;
 	comm: I_Comm;
+END_VAR
+VAR_IN_OUT
+	HydraulicsControl : FB_HydraulicsControl;
 END_VAR
 VAR_OUTPUT
 	// error state of the axis

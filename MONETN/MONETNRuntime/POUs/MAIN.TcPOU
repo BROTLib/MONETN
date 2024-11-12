@@ -104,7 +104,7 @@ ups_output_current := ups_output_current / 1000.0;
 ups_output_power := ups_output_voltage * ups_output_current;
 *)
 
-TelescopeControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl, comm := MQTTClient);
+//TelescopeControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl, comm := MQTTClient);
 CoverControl(
 	comm				:= MQTTClient
 );
