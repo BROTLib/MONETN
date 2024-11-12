@@ -5,7 +5,7 @@
       <Data>
         <o xml:space="preserve" t="VisualObject">
           <n n="LastVisuLanguageModelEntry" />
-          <v n="UniqueIdGenerator">"8"</v>
+          <v n="UniqueIdGenerator">"11"</v>
           <o n="VisualElemList" t="VisualElemList">
             <l n="VisualElementList" t="VisualElemCollection" cet="GenericVisualElem">
               <o>
@@ -218,7 +218,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"GVL_Telescope.Azimuth_sto"</v>
+                      <v n="Value">"MAIN.AzimuthControl.sto"</v>
                     </o>
                   </l>
                 </o>
@@ -450,7 +450,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"GVL_Telescope.Elevation_sto"</v>
+                      <v n="Value">"MAIN.ElevationControl.sto"</v>
                     </o>
                   </l>
                 </o>
