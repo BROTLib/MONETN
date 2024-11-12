@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
   <POU Name="PowerMonitoring" Id="{8c6b81b0-5d31-4dfd-9f1e-620164ef7757}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PowerMonitoring
 VAR_INPUT
+	comm: I_Comm;
 END_VAR
 VAR_OUTPUT
 	phaseOK:				BOOL;
@@ -58,27 +59,27 @@ MQTTTimer(IN:=TRUE);
 IF MQTTTimer.Q OR VoltageGuardWarning OR CurrentGuardWarning THEN // publish new payload every second
 	MQTTTimer(IN:=FALSE);
 
-	MAIN.MQTTClient.Publish('telescope', 'power', 'Overvoltege',	BOOL_TO_STRING(Overvoltage));
-	MAIN.MQTTClient.Publish('telescope', 'power', 'Overcurrent',	BOOL_TO_STRING(Overcurrent));
+	comm.Publish('telescope', 'power', 'Overvoltege',	BOOL_TO_STRING(Overvoltage));
+	comm.Publish('telescope', 'power', 'Overcurrent',	BOOL_TO_STRING(Overcurrent));
 
-	MAIN.MQTTClient.Publish('telescope', 'power', 'VoltageGuardWarning',	BOOL_TO_STRING(VoltageGuardWarning));
-	MAIN.MQTTClient.Publish('telescope', 'power', 'VoltageGuardError',		BOOL_TO_STRING(VoltageGuardError));
-	MAIN.MQTTClient.Publish('telescope', 'power', 'CurrentGuardWarning',	BOOL_TO_STRING(CurrentGuardWarning));
-	MAIN.MQTTClient.Publish('telescope', 'power', 'CurrentGuardError',		BOOL_TO_STRING(CurrentGuardError));
+	comm.Publish('telescope', 'power', 'VoltageGuardWarning',	BOOL_TO_STRING(VoltageGuardWarning));
+	comm.Publish('telescope', 'power', 'VoltageGuardError',		BOOL_TO_STRING(VoltageGuardError));
+	comm.Publish('telescope', 'power', 'CurrentGuardWarning',	BOOL_TO_STRING(CurrentGuardWarning));
+	comm.Publish('telescope', 'power', 'CurrentGuardError',		BOOL_TO_STRING(CurrentGuardError));
 
-	MAIN.MQTTClient.Publish('telescope', 'power', 'Voltage', 		REAL_TO_STRING(Voltage));
-	MAIN.MQTTClient.Publish('telescope', 'power', 'Current',		REAL_TO_STRING(Current));
-	MAIN.MQTTClient.Publish('telescope', 'power', 'ActivePower',	REAL_TO_STRING(ActivePower));
-	MAIN.MQTTClient.Publish('telescope', 'power', 'ApparentPower',	REAL_TO_STRING(ApparentPower));
-	MAIN.MQTTClient.Publish('telescope', 'power', 'ReactivePower',	REAL_TO_STRING(ReactivePower));
-	MAIN.MQTTClient.Publish('telescope', 'power', 'PowerQualityFactor',	REAL_TO_STRING(PowerQualityFactor));
-	MAIN.MQTTClient.Publish('telescope', 'power', 'Frequency',		REAL_TO_STRING(Frequency));
-	MAIN.MQTTClient.Publish('telescope', 'power', 'PowerFactor',	REAL_TO_STRING(PowerFactor));
-	MAIN.MQTTClient.Publish('telescope', 'power', 'NeutralLineCurrent',	REAL_TO_STRING(NeutralLineCurrent));
+	comm.Publish('telescope', 'power', 'Voltage', 		REAL_TO_STRING(Voltage));
+	comm.Publish('telescope', 'power', 'Current',		REAL_TO_STRING(Current));
+	comm.Publish('telescope', 'power', 'ActivePower',	REAL_TO_STRING(ActivePower));
+	comm.Publish('telescope', 'power', 'ApparentPower',	REAL_TO_STRING(ApparentPower));
+	comm.Publish('telescope', 'power', 'ReactivePower',	REAL_TO_STRING(ReactivePower));
+	comm.Publish('telescope', 'power', 'PowerQualityFactor',	REAL_TO_STRING(PowerQualityFactor));
+	comm.Publish('telescope', 'power', 'Frequency',		REAL_TO_STRING(Frequency));
+	comm.Publish('telescope', 'power', 'PowerFactor',	REAL_TO_STRING(PowerFactor));
+	comm.Publish('telescope', 'power', 'NeutralLineCurrent',	REAL_TO_STRING(NeutralLineCurrent));
 
-	MAIN.MQTTClient.Publish('telescope', 'power', 'L1L2Voltage',	REAL_TO_STRING(L1L2Voltage));
-	MAIN.MQTTClient.Publish('telescope', 'power', 'L2L3Voltage',	REAL_TO_STRING(L2L3Voltage));
-	MAIN.MQTTClient.Publish('telescope', 'power', 'L3L1Voltage',	REAL_TO_STRING(L3L1Voltage));	
+	comm.Publish('telescope', 'power', 'L1L2Voltage',	REAL_TO_STRING(L1L2Voltage));
+	comm.Publish('telescope', 'power', 'L2L3Voltage',	REAL_TO_STRING(L2L3Voltage));
+	comm.Publish('telescope', 'power', 'L3L1Voltage',	REAL_TO_STRING(L3L1Voltage));	
 END_IF
 
 // EventLog section

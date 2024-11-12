@@ -7,6 +7,7 @@ VAR_INPUT
 	HydraulicsControl : FB_HydraulicsControl;
 	Focuscontrol : FB_Focuscontrol;
 	DerotatorControl	: FB_DerotatorControl;
+	comm: I_Comm;
 END_VAR
 VAR
 	// program selection of the pendant control

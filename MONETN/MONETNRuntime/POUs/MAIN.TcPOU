@@ -104,11 +104,11 @@ ups_output_current := ups_output_current / 1000.0;
 ups_output_power := ups_output_voltage * ups_output_current;
 *)
 
-TelescopeControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl);
+TelescopeControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl, comm := MQTTClient);
 CoverControl(
 	comm				:= MQTTClient
 );
-PendantControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl);	//
+PendantControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl, comm := MQTTClient);	//
 HydraulicsControl(
 	pan_min_level		:= 3000,
 	pan_max_level		:= 10200,
@@ -118,9 +118,10 @@ HydraulicsControl(
 	comm				:= MQTTClient
 );	//
 ElevationControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, comm := MQTTClient);	//
-AzimuthElevationControl(HydraulicsControl := HydraulicsControl);	//
+AzimuthElevationControl(HydraulicsControl := HydraulicsControl, comm := MQTTClient);	//
 DerotatorControl(
-	calibration_position	:= 438.4623,
+	min_position			:= -170.0,
+	max_position			:= 300.0,
 	comm					:= MQTTClient
 );	//
 FocusControl(
@@ -231,7 +232,7 @@ TemperatureCriticalEvent(
       <LineId Id="1408" Count="0" />
       <LineId Id="1407" Count="0" />
       <LineId Id="1394" Count="2" />
-      <LineId Id="1419" Count="0" />
+      <LineId Id="1420" Count="1" />
       <LineId Id="1418" Count="0" />
       <LineId Id="1417" Count="0" />
       <LineId Id="1397" Count="0" />

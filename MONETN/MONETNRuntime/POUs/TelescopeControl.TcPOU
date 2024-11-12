@@ -47,6 +47,8 @@ see https://gitlab.aip.de/bmk10k/telescope_firmware/snippets/5
 	HydraulicsControl : FB_HydraulicsControl;
 	Focuscontrol : FB_Focuscontrol;
 	DerotatorControl	: FB_DerotatorControl;
+	
+	comm : I_Comm;
 END_VAR
 VAR
 	// actual command from the TCS
@@ -163,7 +165,7 @@ VAR PERSISTENT
 	NPAE:	LREAL;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[TelescopeAuxiliary();
+      <ST><![CDATA[TelescopeAuxiliary(comm := comm);
 
 // get the system time
 fbTime();
@@ -404,28 +406,28 @@ MQTTTimer(IN:=TRUE);
 IF MQTTTimer.Q THEN // publish new payload every second
 	MQTTTimer(IN:=FALSE);
 
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'JulianDate', LREAL_TO_STRING(jd));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'LocalSiderialTime', LREAL_TO_STRING(lst));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'Azimuth', LREAL_TO_STRING(azimuth_current));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'Elevation', LREAL_TO_STRING(elevation_current));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'Derotator', LREAL_TO_STRING(derotator_current));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'HourAngle', LREAL_TO_STRING(hourangle_calc));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'RightAscension', LREAL_TO_STRING(rightascension_calc));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'Declination', LREAL_TO_STRING(declination_calc));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'azimuth_offset', LREAL_TO_STRING(azimuth_offset));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'elevation_offset', LREAL_TO_STRING(elevation_offset));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'derotator_torque', LREAL_TO_STRING(DerotatorControl.derotator_torque));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'elevation_torque', LREAL_TO_STRING(ElevationControl.elevation_torque));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'azimuth_torque', LREAL_TO_STRING(AzimuthElevationControl.azimuth_torque));
+	comm.Publish('telescope', 'dome', 'JulianDate', LREAL_TO_STRING(jd));
+	comm.Publish('telescope', 'dome', 'LocalSiderialTime', LREAL_TO_STRING(lst));
+	comm.Publish('telescope', 'dome', 'Azimuth', LREAL_TO_STRING(azimuth_current));
+	comm.Publish('telescope', 'dome', 'Elevation', LREAL_TO_STRING(elevation_current));
+	comm.Publish('telescope', 'dome', 'Derotator', LREAL_TO_STRING(derotator_current));
+	comm.Publish('telescope', 'dome', 'HourAngle', LREAL_TO_STRING(hourangle_calc));
+	comm.Publish('telescope', 'dome', 'RightAscension', LREAL_TO_STRING(rightascension_calc));
+	comm.Publish('telescope', 'dome', 'Declination', LREAL_TO_STRING(declination_calc));
+	comm.Publish('telescope', 'dome', 'azimuth_offset', LREAL_TO_STRING(azimuth_offset));
+	comm.Publish('telescope', 'dome', 'elevation_offset', LREAL_TO_STRING(elevation_offset));
+	comm.Publish('telescope', 'dome', 'derotator_torque', LREAL_TO_STRING(DerotatorControl.derotator_torque));
+	comm.Publish('telescope', 'dome', 'elevation_torque', LREAL_TO_STRING(ElevationControl.elevation_torque));
+	comm.Publish('telescope', 'dome', 'azimuth_torque', LREAL_TO_STRING(AzimuthElevationControl.azimuth_torque));
 	
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'errorid',		UDINT_TO_STRING(errorid));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'error',		BOOL_TO_STRING(error));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'ready',		BOOL_TO_STRING(ready));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'busy',		BOOL_TO_STRING(busy));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'sliding',		BOOL_TO_STRING(sliding));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'tracking', 	BOOL_TO_STRING(tracking));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'stopped',		BOOL_TO_STRING(stopped));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'homed',		BOOL_TO_STRING(homed));
+	comm.Publish('telescope', 'dome', 'errorid',		UDINT_TO_STRING(errorid));
+	comm.Publish('telescope', 'dome', 'error',		BOOL_TO_STRING(error));
+	comm.Publish('telescope', 'dome', 'ready',		BOOL_TO_STRING(ready));
+	comm.Publish('telescope', 'dome', 'busy',		BOOL_TO_STRING(busy));
+	comm.Publish('telescope', 'dome', 'sliding',		BOOL_TO_STRING(sliding));
+	comm.Publish('telescope', 'dome', 'tracking', 	BOOL_TO_STRING(tracking));
+	comm.Publish('telescope', 'dome', 'stopped',		BOOL_TO_STRING(stopped));
+	comm.Publish('telescope', 'dome', 'homed',		BOOL_TO_STRING(homed));
 END_IF
 
 StatusWord.0 := error;
@@ -445,20 +447,20 @@ StatusWord.13 := busy;
 
 IF StatusWord<>LastStatus THEN // publish new payload every second
 	LastStatus := StatusWord;
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'error',		BOOL_TO_STRING(error));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'ready',		BOOL_TO_STRING(ready));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'sliding',		BOOL_TO_STRING(sliding));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'tracking', 	BOOL_TO_STRING(tracking));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'stopped',		BOOL_TO_STRING(stopped));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'homed',		BOOL_TO_STRING(homed));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'power',		BOOL_TO_STRING(power));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'park',		BOOL_TO_STRING(park));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'gohome',		BOOL_TO_STRING(gohome));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'track',		BOOL_TO_STRING(track));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'goto',		BOOL_TO_STRING(goto));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'slew',		BOOL_TO_STRING(slew));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'stop',		BOOL_TO_STRING(stop));
-	MAIN.MQTTClient.Publish('telescope', 'dome', 'busy',		BOOL_TO_STRING(busy));
+	comm.Publish('telescope', 'dome', 'error',		BOOL_TO_STRING(error));
+	comm.Publish('telescope', 'dome', 'ready',		BOOL_TO_STRING(ready));
+	comm.Publish('telescope', 'dome', 'sliding',		BOOL_TO_STRING(sliding));
+	comm.Publish('telescope', 'dome', 'tracking', 	BOOL_TO_STRING(tracking));
+	comm.Publish('telescope', 'dome', 'stopped',		BOOL_TO_STRING(stopped));
+	comm.Publish('telescope', 'dome', 'homed',		BOOL_TO_STRING(homed));
+	comm.Publish('telescope', 'dome', 'power',		BOOL_TO_STRING(power));
+	comm.Publish('telescope', 'dome', 'park',		BOOL_TO_STRING(park));
+	comm.Publish('telescope', 'dome', 'gohome',		BOOL_TO_STRING(gohome));
+	comm.Publish('telescope', 'dome', 'track',		BOOL_TO_STRING(track));
+	comm.Publish('telescope', 'dome', 'goto',		BOOL_TO_STRING(goto));
+	comm.Publish('telescope', 'dome', 'slew',		BOOL_TO_STRING(slew));
+	comm.Publish('telescope', 'dome', 'stop',		BOOL_TO_STRING(stop));
+	comm.Publish('telescope', 'dome', 'busy',		BOOL_TO_STRING(busy));
 END_IF
 
 
@@ -467,47 +469,56 @@ TCSpowerEvent(	Trigger := powerfailure,
 				Level := ADSLOG_MSGTYPE_ERROR,
 				FormatString := 'power %s',
 				OnMessage := 'Failure',
-				OffMessage := 'OK');
+				OffMessage := 'OK', 
+				Comm := comm);
 
 TCSgohomeEvent(	Trigger := gohome, 
 				Level := ADSLOG_MSGTYPE_HINT,
 				FormatString := 'GOHOME %s',
 				OnMessage := 'commencing',
-				OffMEssage := 'completed');
+				OffMEssage := 'completed', 
+				Comm := comm);
 TCSparkEvent(	Trigger := park, 
 				Level := ADSLOG_MSGTYPE_HINT,
 				FormatString := 'PARK %s',
 				OnMessage := 'commencing',
-				OffMEssage := 'completed');
+				OffMEssage := 'completed', 
+				Comm := comm);
 TCSgotoEvent(	Trigger := goto, 
 				Level := ADSLOG_MSGTYPE_HINT,
 				FormatString := 'GOTO %s',
 				OnMessage := 'commencing',
-				OffMEssage := 'completed');
+				OffMEssage := 'completed', 
+				Comm := comm);
 TCStrackEvent(	Trigger := track, 
 				Level := ADSLOG_MSGTYPE_HINT,
 				FormatString := 'TRACK %s',
 				OnMessage := 'commencing',
-				OffMEssage := 'completed');
+				OffMEssage := 'completed', 
+				Comm := comm);
 TCSstopEvent(	Trigger := stop, 
 				Level := ADSLOG_MSGTYPE_WARN,
 				FormatString := 'STOP %s',
 				OnMessage := 'commencing',
 				OffMEssage := 'completed',
-				OffLevel := ADSLOG_MSGTYPE_HINT);
+				OffLevel := ADSLOG_MSGTYPE_HINT, 
+				Comm := comm);
 AltitudeEvent(	Trigger := power AND elevation_calc<0.0, 
 				Level := ADSLOG_MSGTYPE_WARN,
 				FormatString := '%s',
 				OnMessage := 'Target below horizon',
-				OffMEssage := '');
+				OffMEssage := '', 
+				Comm := comm);
 TCSreadyEvent(	Trigger := power AND ready, 
 				Level := ADSLOG_MSGTYPE_HINT,
 				FormatString := '%s',
-				OnMessage := 'STELLA1 startup finished');
+				OnMessage := 'STELLA1 startup finished', 
+				Comm := comm);
 TCSCTOEvent(	Trigger := command_timeout.Q,
 				Level := ADSLOG_MSGTYPE_WARN,
 				FormatString := 'A timeout occured during %s command!',
-				OnMessage := 'NOCOMMAND');]]></ST>
+				OnMessage := 'NOCOMMAND', 
+				Comm := comm);]]></ST>
     </Implementation>
     <Method Name="gototelescope" Id="{c7053474-39ba-4cc3-ab24-2521b02cf8f4}">
       <Declaration><![CDATA[METHOD gototelescope: USINT
@@ -1174,31 +1185,42 @@ END_IF
       <LineId Id="7092" Count="0" />
       <LineId Id="3530" Count="1" />
       <LineId Id="3583" Count="2" />
+      <LineId Id="9665" Count="0" />
       <LineId Id="6778" Count="0" />
       <LineId Id="5530" Count="0" />
       <LineId Id="3085" Count="0" />
       <LineId Id="931" Count="1" />
       <LineId Id="1179" Count="0" />
+      <LineId Id="9664" Count="0" />
       <LineId Id="933" Count="3" />
       <LineId Id="1180" Count="0" />
+      <LineId Id="9663" Count="0" />
       <LineId Id="937" Count="0" />
       <LineId Id="1183" Count="0" />
       <LineId Id="939" Count="1" />
       <LineId Id="1181" Count="0" />
+      <LineId Id="9662" Count="0" />
       <LineId Id="941" Count="0" />
       <LineId Id="1184" Count="0" />
       <LineId Id="943" Count="1" />
       <LineId Id="1182" Count="0" />
+      <LineId Id="9661" Count="0" />
       <LineId Id="945" Count="0" />
       <LineId Id="1185" Count="0" />
       <LineId Id="947" Count="2" />
       <LineId Id="1187" Count="0" />
+      <LineId Id="9660" Count="0" />
       <LineId Id="1186" Count="0" />
       <LineId Id="1209" Count="0" />
-      <LineId Id="1491" Count="4" />
-      <LineId Id="6773" Count="2" />
+      <LineId Id="1491" Count="2" />
+      <LineId Id="9659" Count="0" />
+      <LineId Id="1494" Count="1" />
+      <LineId Id="6773" Count="1" />
+      <LineId Id="9658" Count="0" />
+      <LineId Id="6775" Count="0" />
       <LineId Id="3293" Count="0" />
       <LineId Id="9475" Count="1" />
+      <LineId Id="9655" Count="0" />
     </LineIds>
     <LineIds Name="TelescopeControl.gototelescope">
       <LineId Id="96" Count="0" />
