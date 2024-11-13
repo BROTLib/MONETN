@@ -160,8 +160,8 @@ CASE Selection OF
 	4:	// Nasmyth / mirror M3 control
 		
 	5:	// Focus Control
-		lamp_up := FocusControl.Ready AND NOT FocusControl.focus_limit_far;
-		lamp_down := FocusControl.Ready AND NOT FocusControl.focus_limit_near;
+		lamp_up := FocusControl.Ready AND NOT FocusControl.limitFar;
+		lamp_down := FocusControl.Ready AND NOT FocusControl.limitNear;
 		IF manual THEN
 			FocusEnable(SET := enable, Q := FocusControl.enable);
 			FocusControl.outward := up;

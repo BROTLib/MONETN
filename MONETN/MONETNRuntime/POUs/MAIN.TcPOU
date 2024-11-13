@@ -107,6 +107,7 @@ ups_output_power := ups_output_voltage * ups_output_current;
 *)
 
 //TelescopeControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl, ElevationControl := ElevationControl, AzimuthControl := AzimuthControl, comm := MQTTClient);
+TelescopeAuxiliary(comm := MQTTClient);
 CoverControl(
 	comm				:= MQTTClient
 );
@@ -134,8 +135,9 @@ DerotatorControl(
 	comm				:= MQTTClient
 );	//
 FocusControl(
+	telescopeMode 		:= PendantControl.telescope_mode,
+	homingPosition		:= 92.02, // 104.02 - 12.00
 	comm				:= MQTTClient,
-	telescope_mode 		:= PendantControl.telescope_mode
 );
 RoofControl(
 	min_speed			:= 10000,
@@ -148,10 +150,12 @@ RoofControl(
 	comm				:= MQTTClient
 );
 MQTTClient(	
-	sHostName	:= '169.254.146.10',
-    nHostPort   := 1883,
-    nKeepAlive  := 60,
-	sTopicSub   := 'MONETN/Telescope/SET'
+	sHostName			:= '169.254.146.10',
+    nHostPort  			:= 1883,
+    nKeepAlive  		:= 60,
+	sTopicSub  		 	:= 'MONETN/Telescope/SET',
+	sTopicPublish		:= 'MONETN/Telemetry',
+	sTopicLog			:= 'MONETN/Log',
 );
 
 
@@ -235,7 +239,9 @@ TemperatureCriticalEvent(
       <LineId Id="1069" Count="1" />
       <LineId Id="1068" Count="0" />
       <LineId Id="1197" Count="0" />
-      <LineId Id="1388" Count="5" />
+      <LineId Id="1388" Count="0" />
+      <LineId Id="1433" Count="0" />
+      <LineId Id="1389" Count="4" />
       <LineId Id="1412" Count="1" />
       <LineId Id="1409" Count="2" />
       <LineId Id="1408" Count="0" />
@@ -249,11 +255,14 @@ TemperatureCriticalEvent(
       <LineId Id="1418" Count="0" />
       <LineId Id="1417" Count="0" />
       <LineId Id="1397" Count="0" />
-      <LineId Id="1415" Count="1" />
+      <LineId Id="1416" Count="0" />
+      <LineId Id="1431" Count="1" />
       <LineId Id="1414" Count="0" />
       <LineId Id="1398" Count="8" />
       <LineId Id="1279" Count="0" />
-      <LineId Id="1320" Count="5" />
+      <LineId Id="1320" Count="4" />
+      <LineId Id="1429" Count="1" />
+      <LineId Id="1325" Count="0" />
       <LineId Id="943" Count="0" />
       <LineId Id="718" Count="0" />
       <LineId Id="722" Count="0" />
