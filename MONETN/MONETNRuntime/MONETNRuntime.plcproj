@@ -37,10 +37,10 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\MAIN.TcPOU">
+    <Compile Include="POUs\FB_PowerMonitoring.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PowerMonitoring.TcPOU">
+    <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\SafetyHandling.TcPOU">
