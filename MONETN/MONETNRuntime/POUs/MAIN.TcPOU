@@ -40,7 +40,7 @@ VAR
 	cabinet_temperature_warning		: SR;
 	cabinet_temperature_critical	: SR;
 	MQTTClient						: FB_Comm_MQTT_Influx;
-	RoofControl						: FB_RoofControl;
+	RoofControl						: FB_RoofControl(comm := MQTTClient);
 	CoverControl					: FB_CoverControl(comm := MQTTClient);
 	HydraulicsControl				: FB_HydraulicsControl(comm := MQTTClient);
 	FocusControl					: FB_FocusControl(comm := MQTTClient);
@@ -136,8 +136,7 @@ RoofControl(
 	min_position 		:= 0,
 	max_position 		:= 202,
 	max_position_diff	:= 2,
-	limit_slowdown		:= 5,
-	comm				:= MQTTClient
+	limit_slowdown		:= 5
 );
 MQTTClient(	
 	sHostName			:= '169.254.146.10',
@@ -246,7 +245,7 @@ TemperatureCriticalEvent(
       <LineId Id="1416" Count="0" />
       <LineId Id="1431" Count="0" />
       <LineId Id="1414" Count="0" />
-      <LineId Id="1398" Count="8" />
+      <LineId Id="1398" Count="7" />
       <LineId Id="1279" Count="0" />
       <LineId Id="1320" Count="4" />
       <LineId Id="1429" Count="1" />
