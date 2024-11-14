@@ -41,12 +41,14 @@ VAR
 	cabinet_temperature_critical	: SR;
 	MQTTClient						: FB_Comm_MQTT_Influx;
 	RoofControl						: FB_RoofControl;
-	CoverControl					: FB_CoverControl;
-	HydraulicsControl				: FB_HydraulicsControl;
-	FocusControl					: FB_FocusControl;
-	DerotatorControl				: FB_DerotatorControl;
-	ElevationControl				: FB_ElevationControl;
-	AzimuthControl					: FB_AzimuthControl;
+	CoverControl					: FB_CoverControl(comm := MQTTClient);
+	HydraulicsControl				: FB_HydraulicsControl(comm := MQTTClient);
+	FocusControl					: FB_FocusControl(comm := MQTTClient);
+	DerotatorControl				: FB_DerotatorControl(comm := MQTTClient);
+	ElevationControl				: FB_ElevationControl(comm := MQTTClient, cover := CoverControl, hydraulics := HydraulicsControl);
+	AzimuthControl					: FB_AzimuthControl(comm := MQTTClient, hydraulics := HydraulicsControl);
+	TelescopeControl				: FB_TelescopeControl();
+	PendantControl					: FB_PendantControl(comm := MQTTClient, cover := CoverControl, hydraulics := HydraulicsControl, focus := FocusControl, elevation := ElevationControl, azimuth := AzimuthControl, derotator := DerotatorControl);
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -65,7 +67,7 @@ start := GVL_Main.start_switch OR remote_start;
 stop := (NOT GVL_Main.stop_switch) OR remote_stop;
 key_switch := GVL_Main.key_switch_remote OR remote_keyswitch;
 brake_clearing := GVL_Main.brake_clearing OR remote_brake_clearing;
-reset := GVL_Main.reset_switch OR GVL_pendant_control.reset_switch OR remote_reset;		
+reset := GVL_Main.reset_switch OR PendantControl.reset_switch OR remote_reset;		
 brake_clearing := NOT GVL_Main.brake_clearing;
 cabinet_temperature := INT_TO_REAL(GVL_Main.main_cabinet_temperature) / 10.0;
 cabinet_temperature_warning(SET1 := cabinet_temperature > 50.0,
@@ -107,37 +109,25 @@ ups_output_power := ups_output_voltage * ups_output_current;
 *)
 
 //TelescopeControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl, ElevationControl := ElevationControl, AzimuthControl := AzimuthControl, comm := MQTTClient);
-TelescopeAuxiliary(comm := MQTTClient);
-CoverControl(
-	comm				:= MQTTClient
-);
-PendantControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl, ElevationControl := ElevationControl, AzimuthControl := AzimuthControl, comm := MQTTClient);	//
+//TelescopeAuxiliary(comm := MQTTClient);
+CoverControl();
+PendantControl();
 HydraulicsControl(
-	pan_min_level		:= 3000,
-	pan_max_level		:= 10200,
-	pan_min_percent		:= 0.0,
-	pan_max_percent		:= 80.0, //56.0,
-	brake_clearing		:= brake_clearing,
-	comm				:= MQTTClient
+	panLevelMin			:= 3000,
+	panLevelMax			:= 10200,
+	panPercentMin		:= 0.0,
+	panPercentMax		:= 80.0, //56.0,
+	brakeClearing		:= brake_clearing
 );
-ElevationControl(
-	CoverControl 		:= CoverControl, 
-	HydraulicsControl 	:= HydraulicsControl, 
-	comm 				:= MQTTClient)
-;
-AzimuthControl(
-	HydraulicsControl	:= HydraulicsControl, 
-	comm 				:= MQTTClient
-);
+ElevationControl();
+AzimuthControl();
 DerotatorControl(
 	min_position		:= -170.0,
-	max_position		:= 300.0,
-	comm				:= MQTTClient
+	max_position		:= 300.0
 );	//
 FocusControl(
 	telescopeMode 		:= PendantControl.telescope_mode,
 	homingPosition		:= 92.02, // 104.02 - 12.00
-	comm				:= MQTTClient,
 );
 RoofControl(
 	min_speed			:= 10000,
@@ -164,13 +154,13 @@ error := GVL_Telescope.azimut_limit_switch
 			OR CoverControl.Error;
 //error := FALSE; // Todo: remove
 // set control lights					
-GVL_Main.lamp_on_manual := PendantControl.manual;
+GVL_Main.lamp_on_manual := PendantControl.key_switch;
 
 IF GVL_Safety.Error THEN
 	error_lamp.blink := e_blink.short;
 ELSIF ElevationControl.error OR AzimuthControl.error OR DerotatorControl.Error THEN
 	error_lamp.blink := e_blink.long;
-ELSIF HydraulicsControl.oil_warning OR HydraulicsControl.oil_hot OR HydraulicsControl.pressure_failure THEN
+ELSIF HydraulicsControl.oilWarning OR HydraulicsControl.oilHot OR HydraulicsControl.pressureFailure THEN
 	error_lamp.blink := e_blink.slow;
 ELSIF error THEN
 	error_lamp.blink := e_blink.on;
@@ -186,7 +176,7 @@ power_lamp(Q => GVL_Main.lamp_power);
 
 IF GVL_Telescope.azimut_limit_switch THEN
 	sound_horn.horn := E_horn.long;
-ELSIF Hydraulicscontrol.suction_failure THEN
+ELSIF Hydraulicscontrol.suctionFailure THEN
 	sound_horn.horn := E_horn.long;
 ELSIF TelescopeControl.poweronwarning.Q THEN
 	sound_horn.horn := E_horn.short;
@@ -241,22 +231,20 @@ TemperatureCriticalEvent(
       <LineId Id="1197" Count="0" />
       <LineId Id="1388" Count="0" />
       <LineId Id="1433" Count="0" />
-      <LineId Id="1389" Count="4" />
+      <LineId Id="1391" Count="0" />
+      <LineId Id="1441" Count="0" />
+      <LineId Id="1393" Count="0" />
       <LineId Id="1412" Count="1" />
       <LineId Id="1409" Count="2" />
-      <LineId Id="1408" Count="0" />
       <LineId Id="1407" Count="0" />
       <LineId Id="1394" Count="0" />
-      <LineId Id="1422" Count="3" />
-      <LineId Id="1395" Count="0" />
-      <LineId Id="1426" Count="2" />
+      <LineId Id="1428" Count="0" />
       <LineId Id="1396" Count="0" />
       <LineId Id="1420" Count="1" />
-      <LineId Id="1418" Count="0" />
       <LineId Id="1417" Count="0" />
       <LineId Id="1397" Count="0" />
       <LineId Id="1416" Count="0" />
-      <LineId Id="1431" Count="1" />
+      <LineId Id="1431" Count="0" />
       <LineId Id="1414" Count="0" />
       <LineId Id="1398" Count="8" />
       <LineId Id="1279" Count="0" />

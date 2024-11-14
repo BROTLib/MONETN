@@ -3207,7 +3207,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{7C9FDAFE-AC81-EC7C-5AE6-4841AF608539}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{BB5FBFC2-326C-FB32-72C0-CB73066CAB28}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -3311,26 +3311,26 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.out_oil_pump_enable</Name>
+							<Name>MAIN.HydraulicsControl.outOilPumpEnable</Name>
 							<Comment><![CDATA[DOUT4 0.3]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.out_oil_suction_enable</Name>
+							<Name>MAIN.HydraulicsControl.outOilSuctionEnable</Name>
 							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.brake_azimuth_eve</Name>
+							<Name>MAIN.HydraulicsControl.brakeAzimuthEve</Name>
 							<Comment><![CDATA[ brake set]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.reset_oil_pump</Name>
+							<Name>MAIN.HydraulicsControl.resetOilPump</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.reset_succ_pump</Name>
+							<Name>MAIN.HydraulicsControl.resetSucPump</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3353,6 +3353,32 @@ External Setpoint Generation:
 						<Var>
 							<Name>MAIN.AzimuthControl.axis_ref.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.lamp_up</Name>
+							<Comment><![CDATA[ Outputs
+DOUT9 1.0]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.lamp_down</Name>
+							<Comment><![CDATA[DOUT10 1.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.lamp_right</Name>
+							<Comment><![CDATA[DOUT11 1.2]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.lamp_left</Name>
+							<Comment><![CDATA[DOUT12 1.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.lamp_error</Name>
+							<Comment><![CDATA[DOUT13 1.4]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Safety.Run</Name>
@@ -3396,32 +3422,6 @@ External Setpoint Generation:
 						<Var>
 							<Name>GVL_Main.lamp_error</Name>
 							<Comment><![CDATA[DOUT3 0.2]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_pendant_control.lamp_up</Name>
-							<Comment><![CDATA[ Outputs
-DOUT9 1.0]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_pendant_control.lamp_down</Name>
-							<Comment><![CDATA[DOUT10 1.1]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_pendant_control.lamp_right</Name>
-							<Comment><![CDATA[DOUT11 1.2]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_pendant_control.lamp_left</Name>
-							<Comment><![CDATA[DOUT12 1.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_pendant_control.lamp_error</Name>
-							<Comment><![CDATA[DOUT13 1.4]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3567,57 +3567,57 @@ DOUT9 1.0]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_low</Name>
+							<Name>MAIN.HydraulicsControl.inOilLow</Name>
 							<Comment><![CDATA[ 2.1]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_high</Name>
+							<Name>MAIN.HydraulicsControl.inOilHigh</Name>
 							<Comment><![CDATA[ ?]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_pressure_OK</Name>
+							<Name>MAIN.HydraulicsControl.inOilPressureOK</Name>
 							<Comment><![CDATA[ 2.3]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_overtemperature</Name>
+							<Name>MAIN.HydraulicsControl.inOilOvertemperature</Name>
 							<Comment><![CDATA[ 2.4]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_undertemperature</Name>
+							<Name>MAIN.HydraulicsControl.inOilUndertemperature</Name>
 							<Comment><![CDATA[ 2.5]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.in_oilfilter_dirty</Name>
+							<Name>MAIN.HydraulicsControl.inOilfilterDirty</Name>
 							<Comment><![CDATA[ 2.6]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.in_pump_running</Name>
+							<Name>MAIN.HydraulicsControl.inPumpRunning</Name>
 							<Comment><![CDATA[ 2.7]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.in_suction_running</Name>
+							<Name>MAIN.HydraulicsControl.inSuctionRunning</Name>
 							<Comment><![CDATA[ 2.8]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_level</Name>
+							<Name>MAIN.HydraulicsControl.inOilLevel</Name>
 							<Comment><![CDATA[BT2]]></Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.in_oilpan_maximum</Name>
+							<Name>MAIN.HydraulicsControl.inOilpanMaximum</Name>
 							<Comment><![CDATA[DIN39 4.6]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.in_oil_reserve</Name>
+							<Name>MAIN.HydraulicsControl.inOilReserve</Name>
 							<Comment><![CDATA[DIN40 4.7]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
@@ -3708,6 +3708,81 @@ DOUT9 1.0]]></Comment>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM2</Name>
+							<Comment><![CDATA[ BT9 mirror]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM1</Name>
+							<Comment><![CDATA[ // BT10]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.TelescopeControl.TelescopeAuxiliary.tempSensorM2</Name>
+							<Comment><![CDATA[ BT9 mirror]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.TelescopeControl.TelescopeAuxiliary.tempSensorM1</Name>
+							<Comment><![CDATA[ // BT10]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.BCD0</Name>
+							<Comment><![CDATA[DIN17 2.0]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.BCD2</Name>
+							<Comment><![CDATA[DIN18 2.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.BCD4</Name>
+							<Comment><![CDATA[DIN19 2.2]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.BCD8</Name>
+							<Comment><![CDATA[DIN20 2.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.reset_switch</Name>
+							<Comment><![CDATA[DIN21 2.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.direction_up</Name>
+							<Comment><![CDATA[DIN22 2.5]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.direction_down</Name>
+							<Comment><![CDATA[DIN23 2.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.key_switch</Name>
+							<Comment><![CDATA[DIN24 2.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.start_switch</Name>
+							<Comment><![CDATA[DIN25 3.0 (enable)]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.direction_left</Name>
+							<Comment><![CDATA[DIN26 3.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.direction_right</Name>
+							<Comment><![CDATA[DIN27 3.2]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>SafetyHandling.stInfoGroup1</Name>
 							<Type GUID="{3C3F6E44-B5A2-08B5-8373-E690BB7B431C}" Namespace="BROTLib">ST_InfoDataGroup</Type>
 						</Var>
@@ -3761,71 +3836,6 @@ DIN3 0.2]]></Comment>
 							<Name>GVL_Main.brake_clearing</Name>
 							<Comment><![CDATA[DIN15 1.6]]></Comment>
 							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_pendant_control.BCD1</Name>
-							<Comment><![CDATA[DIN17 2.0]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_pendant_control.BCD2</Name>
-							<Comment><![CDATA[DIN18 2.1]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_pendant_control.BCD4</Name>
-							<Comment><![CDATA[DIN19 2.2]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_pendant_control.BCD8</Name>
-							<Comment><![CDATA[DIN20 2.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_pendant_control.reset_switch</Name>
-							<Comment><![CDATA[DIN21 2.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_pendant_control.direction_up</Name>
-							<Comment><![CDATA[DIN22 2.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_pendant_control.direction_down</Name>
-							<Comment><![CDATA[DIN23 2.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_pendant_control.key_switch</Name>
-							<Comment><![CDATA[DIN24 2.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_pendant_control.start_switch</Name>
-							<Comment><![CDATA[DIN25 3.0 (enable)]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_pendant_control.direction_left</Name>
-							<Comment><![CDATA[DIN26 3.1]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_pendant_control.direction_right</Name>
-							<Comment><![CDATA[DIN27 3.2]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.temperature_mirror2</Name>
-							<Comment><![CDATA[ BT9 mirror]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.temperature_mirror1</Name>
-							<Comment><![CDATA[ BT10]]></Comment>
-							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>GVL_Telescope.azimut_limit_switch</Name>
@@ -4031,7 +4041,7 @@ DIN3 0.2]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.brake_azimuth_eve" Index="#x7010" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.brakeAzimuthEve" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ brake set]]></Comment>
 								</Entry>
@@ -4375,24 +4385,24 @@ DIN3 0.2]]></Comment>
 							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
 							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.out_oil_pump_enable" Index="#x7000" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.outOilPumpEnable" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[DOUT4 0.3]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.reset_oil_pump" Index="#x7010" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.resetOilPump" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.out_oil_suction_enable" Index="#x7020" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.outOilSuctionEnable" Index="#x7020" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[DOUT5 0.4	]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1603" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.reset_succ_pump" Index="#x7030" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.resetSucPump" Index="#x7030" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
@@ -4407,7 +4417,7 @@ DIN3 0.2]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 7" Index="#x1606" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.FocusControl.FocusUnlock" Index="#x7060" Sub="#x01">
+								<Entry Name="MAIN.FocusControl.focusUnlock" Index="#x7060" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ whether focus is unlocked]]></Comment>
 								</Entry>
@@ -4426,13 +4436,13 @@ DIN3 0.2]]></Comment>
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.in_pump_running" Index="#x6000" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.inPumpRunning" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.7]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.in_suction_running" Index="#x6010" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.inSuctionRunning" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.8]]></Comment>
 								</Entry>
@@ -4444,13 +4454,13 @@ DIN3 0.2]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Telescope.focus_limit_near" Index="#x6030" Sub="#x01">
+								<Entry Name="MAIN.FocusControl.limitNear" Index="#x6030" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ DIN29 3.4]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.FocusControl.focus_limit_far" Index="#x6040" Sub="#x01">
+								<Entry Name="MAIN.FocusControl.limitFar" Index="#x6040" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ DIN30 3.5]]></Comment>
 								</Entry>
@@ -4480,49 +4490,49 @@ DIN3 0.2]]></Comment>
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.in_oil_low" Index="#x6000" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.inOilLow" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.1]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.in_oil_high" Index="#x6010" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.inOilHigh" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ ?]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.in_oil_pressure_OK" Index="#x6020" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.inOilPressureOK" Index="#x6020" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.3]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.in_oil_overtemperature" Index="#x6030" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.inOilOvertemperature" Index="#x6030" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.4]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.in_oil_undertemperature" Index="#x6040" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.inOilUndertemperature" Index="#x6040" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.5]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.in_oilfilter_dirty" Index="#x6050" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.inOilfilterDirty" Index="#x6050" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.6]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 7" Index="#x1a06" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.in_oilpan_maximum" Index="#x6060" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.inOilpanMaximum" Index="#x6060" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[DIN39 4.6]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 8" Index="#x1a07" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.in_oil_reserve" Index="#x6070" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.inOilReserve" Index="#x6070" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[DIN40 4.7]]></Comment>
 								</Entry>
@@ -5555,8 +5565,9 @@ Bit1: Value smaller than Limit2]]></Comment>
 								<Entry Name="Status__TxPDO Toggle" BitLen="1" Index="#x6000" Sub="#x10" Flags="#x000b0000">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Value" BitLen="16" Index="#x6000" Sub="#x11" Flags="#x000b0000">
+								<Entry Name="MAIN.PendantControl.TelescopeControl.TelescopeAuxiliary.tempSensorM2" BitLen="16" Index="#x6000" Sub="#x11" Flags="#x000b0000">
 									<Type>INT</Type>
+									<Comment><![CDATA[ BT9 mirror]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="AI Compact Channel 1" Index="#x1a01" Flags="#x0010">
@@ -5604,8 +5615,9 @@ Bit1: Value smaller than Limit2]]></Comment>
 								<Entry Name="Status__TxPDO Toggle" BitLen="1" Index="#x6010" Sub="#x10" Flags="#x000b0000">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Value" BitLen="16" Index="#x6010" Sub="#x11" Flags="#x000b0000">
+								<Entry Name="MAIN.PendantControl.TelescopeControl.TelescopeAuxiliary.tempSensorM1" BitLen="16" Index="#x6010" Sub="#x11" Flags="#x000b0000">
 									<Type>INT</Type>
+									<Comment><![CDATA[ // BT10]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="AI Compact Channel 2" Index="#x1a03" Flags="#x0010">
@@ -5653,7 +5665,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 								<Entry Name="Status__TxPDO Toggle" BitLen="1" Index="#x6020" Sub="#x10" Flags="#x00060000">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="MAIN.HydraulicsControl.in_oil_level" BitLen="16" Index="#x6020" Sub="#x11" Flags="#x00060000">
+								<Entry Name="MAIN.HydraulicsControl.inOilLevel" BitLen="16" Index="#x6020" Sub="#x11" Flags="#x00060000">
 									<Type>INT</Type>
 									<Comment><![CDATA[BT2]]></Comment>
 								</Entry>
@@ -6098,51 +6110,51 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_pendant_control.BCD0" Index="#x6000" Sub="#x01">
+								<Entry Name="MAIN.PendantControl.BCD0" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Selector switch BCD0]]></Comment>
+									<Comment><![CDATA[DIN17 2.0]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_pendant_control.BCD2" Index="#x6010" Sub="#x01">
+								<Entry Name="MAIN.PendantControl.BCD2" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Selector Switch BCD2]]></Comment>
+									<Comment><![CDATA[DIN18 2.1]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_pendant_control.BCD4" Index="#x6020" Sub="#x01">
+								<Entry Name="MAIN.PendantControl.BCD4" Index="#x6020" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Selector Switch BCD4]]></Comment>
+									<Comment><![CDATA[DIN19 2.2]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_pendant_control.BCD8" Index="#x6030" Sub="#x01">
+								<Entry Name="MAIN.PendantControl.BCD8" Index="#x6030" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Selector Switch BCD8]]></Comment>
+									<Comment><![CDATA[DIN20 2.3]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_pendant_control.reset_switch" Index="#x6040" Sub="#x01">
+								<Entry Name="MAIN.PendantControl.reset_switch" Index="#x6040" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Push Button Ack/Reset]]></Comment>
+									<Comment><![CDATA[DIN21 2.4]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_pendant_control.direction_up" Index="#x6050" Sub="#x01">
+								<Entry Name="MAIN.PendantControl.direction_up" Index="#x6050" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Push Button Dir Up]]></Comment>
+									<Comment><![CDATA[DIN22 2.5]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 7" Index="#x1a06" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_pendant_control.direction_down" Index="#x6060" Sub="#x01">
+								<Entry Name="MAIN.PendantControl.direction_down" Index="#x6060" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Push Button Dir Down]]></Comment>
+									<Comment><![CDATA[DIN23 2.6]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 8" Index="#x1a07" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_pendant_control.key_switch" Index="#x6070" Sub="#x01">
+								<Entry Name="MAIN.PendantControl.key_switch" Index="#x6070" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Key Switch]]></Comment>
+									<Comment><![CDATA[DIN24 2.7]]></Comment>
 								</Entry>
 							</Pdo>
 						</EtherCAT>
@@ -6154,21 +6166,21 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_pendant_control.start_switch" Index="#x6000" Sub="#x01">
+								<Entry Name="MAIN.PendantControl.start_switch" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Feeler start]]></Comment>
+									<Comment><![CDATA[DIN25 3.0 (enable)]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_pendant_control.direction_left" Index="#x6010" Sub="#x01">
+								<Entry Name="MAIN.PendantControl.direction_left" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Push Button Left]]></Comment>
+									<Comment><![CDATA[DIN26 3.1]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_pendant_control.direction_right" Index="#x6020" Sub="#x01">
+								<Entry Name="MAIN.PendantControl.direction_right" Index="#x6020" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Push Button Right]]></Comment>
+									<Comment><![CDATA[DIN27 3.2]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
@@ -6206,33 +6218,34 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
 							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_pendant_control.lamp_up" Index="#x7000" Sub="#x01">
+								<Entry Name="MAIN.PendantControl.lamp_up" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[LED Up]]></Comment>
+									<Comment><![CDATA[ Outputs
+DOUT9 1.0]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_pendant_control.lamp_down" Index="#x7010" Sub="#x01">
+								<Entry Name="MAIN.PendantControl.lamp_down" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[LED Down]]></Comment>
+									<Comment><![CDATA[DOUT10 1.1]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_pendant_control.lamp_right" Index="#x7020" Sub="#x01">
+								<Entry Name="MAIN.PendantControl.lamp_right" Index="#x7020" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[LED Right]]></Comment>
+									<Comment><![CDATA[DOUT11 1.2]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1603" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_pendant_control.lamp_left" Index="#x7030" Sub="#x01">
+								<Entry Name="MAIN.PendantControl.lamp_left" Index="#x7030" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[LED Left]]></Comment>
+									<Comment><![CDATA[DOUT12 1.3]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1604" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_pendant_control.lamp_error" Index="#x7040" Sub="#x01">
+								<Entry Name="MAIN.PendantControl.lamp_error" Index="#x7040" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[LED Fault]]></Comment>
+									<Comment><![CDATA[DOUT13 1.4]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 6" Index="#x1605" InOut="1" Flags="#x0011" SyncMan="0">
@@ -9408,7 +9421,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 						<MBoxUserCmdData>020005000a0000002b000000000000000000000000000000000000000000000003406b0000000000080043757272656e7420636f6e74726f6c206c6f6f7020696e74656772616c20616374696f6e2074696d65203100</MBoxUserCmdData>
 						<MBoxUserCmdData>020005000a0000002900000000000000000000000000000000000000000000000340ff8100000000640056656c6f636974792066696c74657220313a204c6f7720706173732074696d6520636f6e7374616e7400</MBoxUserCmdData>
 						<MBoxUserCmdData>020005000c0000001f0000000000000000000000000000000000000000000000034064000000000000127a0056656c6f63697479206c6f6f702070726f706f7274696f6e616c206761696e00</MBoxUserCmdData>
-						<MBoxUserCmdData>020005000a00000022000000000000000000000000000000000000000000000003406500000000002c0156656c6f63697479206c6f6f7020696e74656772616c20616374696f6e2074696d6500</MBoxUserCmdData>
+						<MBoxUserCmdData>020005000a0000002200000000000000000000000000000000000000000000000340650000000000c80056656c6f63697479206c6f6f7020696e74656772616c20616374696f6e2074696d6500</MBoxUserCmdData>
 						<MBoxUserCmdData>020005000a0000001d000000000000000000000000000000000000000000000003403d800000000003004d6f746f722074656d70657261747572652073656e736f72207479706500</MBoxUserCmdData>
 						<Pdo Name="AT" Index="#x0010" Flags="#x0001" SyncMan="3">
 							<Entry Name="Drive status word" BitLen="16" Index="#x0087" Flags="#x00000800">
@@ -12489,7 +12502,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 		</OwnerA>
 		<OwnerA Name="TIPC^MONETNRuntime^MONETNRuntime Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Brake AzEl (EL2004)">
-				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.brake_azimuth_eve" VarB="Channel 2^MAIN.HydraulicsControl.brake_azimuth_eve"/>
+				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.brakeAzimuthEve" VarB="Channel 2^MAIN.HydraulicsControl.brakeAzimuthEve"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Front Panel IN (EL1008)">
 				<Link VarA="PlcTask Inputs^GVL_Main.brake_clearing" VarB="Channel 5^GVL_Main.key_brake_clearing"/>
@@ -12504,24 +12517,27 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="PlcTask Outputs^GVL_Main.lamp_power" VarB="Channel 1^GVL_Main.lamp_power"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Hydraulics Focus IN (EL1008)">
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_pump_running" VarB="Channel 1^MAIN.HydraulicsControl.in_pump_running"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_suction_running" VarB="Channel 2^MAIN.HydraulicsControl.in_suction_running"/>
+				<Link VarA="PlcTask Inputs^MAIN.FocusControl.limitFar" VarB="Channel 5^MAIN.FocusControl.limitFar"/>
+				<Link VarA="PlcTask Inputs^MAIN.FocusControl.limitNear" VarB="Channel 4^MAIN.FocusControl.limitNear"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inPumpRunning" VarB="Channel 1^MAIN.HydraulicsControl.inPumpRunning"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inSuctionRunning" VarB="Channel 2^MAIN.HydraulicsControl.inSuctionRunning"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Hydraulics IN2 (EL1008)">
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oil_high" VarB="Channel 2^MAIN.HydraulicsControl.in_oil_high"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oil_low" VarB="Channel 1^MAIN.HydraulicsControl.in_oil_low"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oil_overtemperature" VarB="Channel 4^MAIN.HydraulicsControl.in_oil_overtemperature"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oil_pressure_OK" VarB="Channel 3^MAIN.HydraulicsControl.in_oil_pressure_OK"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oil_reserve" VarB="Channel 8^MAIN.HydraulicsControl.in_oil_reserve"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oil_undertemperature" VarB="Channel 5^MAIN.HydraulicsControl.in_oil_undertemperature"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oilfilter_dirty" VarB="Channel 6^MAIN.HydraulicsControl.in_oilfilter_dirty"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oilpan_maximum" VarB="Channel 7^MAIN.HydraulicsControl.in_oilpan_maximum"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilHigh" VarB="Channel 2^MAIN.HydraulicsControl.inOilHigh"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilLow" VarB="Channel 1^MAIN.HydraulicsControl.inOilLow"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilOvertemperature" VarB="Channel 4^MAIN.HydraulicsControl.inOilOvertemperature"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilPressureOK" VarB="Channel 3^MAIN.HydraulicsControl.inOilPressureOK"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilReserve" VarB="Channel 8^MAIN.HydraulicsControl.inOilReserve"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilUndertemperature" VarB="Channel 5^MAIN.HydraulicsControl.inOilUndertemperature"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilfilterDirty" VarB="Channel 6^MAIN.HydraulicsControl.inOilfilterDirty"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilpanMaximum" VarB="Channel 7^MAIN.HydraulicsControl.inOilpanMaximum"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Hydraulics OUT (EL2008)">
-				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.out_oil_pump_enable" VarB="Channel 1^MAIN.HydraulicsControl.out_oil_pump_enable"/>
-				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.out_oil_suction_enable" VarB="Channel 3^MAIN.HydraulicsControl.out_oil_suction_enable"/>
-				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.reset_oil_pump" VarB="Channel 2^MAIN.HydraulicsControl.reset_oil_pump"/>
-				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.reset_succ_pump" VarB="Channel 4^MAIN.HydraulicsControl.reset_succ_pump"/>
+				<Link VarA="PlcTask Outputs^MAIN.FocusControl.focusUnlock" VarB="Channel 7^MAIN.FocusControl.focusUnlock"/>
+				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.outOilPumpEnable" VarB="Channel 1^MAIN.HydraulicsControl.outOilPumpEnable"/>
+				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.outOilSuctionEnable" VarB="Channel 3^MAIN.HydraulicsControl.outOilSuctionEnable"/>
+				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.resetOilPump" VarB="Channel 2^MAIN.HydraulicsControl.resetOilPump"/>
+				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.resetSucPump" VarB="Channel 4^MAIN.HydraulicsControl.resetSucPump"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Cover IN (EL1008)">
 				<Link VarA="PlcTask Inputs^MAIN.CoverControl.limit_cover1_closed" VarB="Channel 2^MAIN.CoverControl.limit_cover1_closed"/>
@@ -12542,31 +12558,31 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="PlcTask Outputs^MAIN.CoverControl.open_cover3" VarB="Channel 1^MAIN.CoverControl.open_cover3"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Temperature IN (EL3164)">
-				<Link VarA="PlcTask Inputs^GVL_Telescope.temperature_mirror1" VarB="TempM1^Value"/>
-				<Link VarA="PlcTask Inputs^GVL_Telescope.temperature_mirror2" VarB="TempM2^Value"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.in_oil_level" VarB="OilLevel^MAIN.HydraulicsControl.in_oil_level"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilLevel" VarB="OilLevel^MAIN.HydraulicsControl.inOilLevel"/>
+				<Link VarA="PlcTask Inputs^MAIN.PendantControl.TelescopeControl.TelescopeAuxiliary.tempSensorM1" VarB="TempM1^MAIN.PendantControl.TelescopeControl.TelescopeAuxiliary.tempSensorM1"/>
+				<Link VarA="PlcTask Inputs^MAIN.PendantControl.TelescopeControl.TelescopeAuxiliary.tempSensorM2" VarB="TempM2^MAIN.PendantControl.TelescopeControl.TelescopeAuxiliary.tempSensorM2"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Pendant Control IN (EL1008)">
-				<Link VarA="PlcTask Inputs^GVL_pendant_control.BCD1" VarB="Channel 1^GVL_pendant_control.BCD0"/>
-				<Link VarA="PlcTask Inputs^GVL_pendant_control.BCD2" VarB="Channel 2^GVL_pendant_control.BCD2"/>
-				<Link VarA="PlcTask Inputs^GVL_pendant_control.BCD4" VarB="Channel 3^GVL_pendant_control.BCD4"/>
-				<Link VarA="PlcTask Inputs^GVL_pendant_control.BCD8" VarB="Channel 4^GVL_pendant_control.BCD8"/>
-				<Link VarA="PlcTask Inputs^GVL_pendant_control.direction_down" VarB="Channel 7^GVL_pendant_control.direction_down"/>
-				<Link VarA="PlcTask Inputs^GVL_pendant_control.direction_up" VarB="Channel 6^GVL_pendant_control.direction_up"/>
-				<Link VarA="PlcTask Inputs^GVL_pendant_control.key_switch" VarB="Channel 8^GVL_pendant_control.key_switch"/>
-				<Link VarA="PlcTask Inputs^GVL_pendant_control.reset_switch" VarB="Channel 5^GVL_pendant_control.reset_switch"/>
+				<Link VarA="PlcTask Inputs^MAIN.PendantControl.BCD0" VarB="Channel 1^MAIN.PendantControl.BCD0"/>
+				<Link VarA="PlcTask Inputs^MAIN.PendantControl.BCD2" VarB="Channel 2^MAIN.PendantControl.BCD2"/>
+				<Link VarA="PlcTask Inputs^MAIN.PendantControl.BCD4" VarB="Channel 3^MAIN.PendantControl.BCD4"/>
+				<Link VarA="PlcTask Inputs^MAIN.PendantControl.BCD8" VarB="Channel 4^MAIN.PendantControl.BCD8"/>
+				<Link VarA="PlcTask Inputs^MAIN.PendantControl.direction_down" VarB="Channel 7^MAIN.PendantControl.direction_down"/>
+				<Link VarA="PlcTask Inputs^MAIN.PendantControl.direction_up" VarB="Channel 6^MAIN.PendantControl.direction_up"/>
+				<Link VarA="PlcTask Inputs^MAIN.PendantControl.key_switch" VarB="Channel 8^MAIN.PendantControl.key_switch"/>
+				<Link VarA="PlcTask Inputs^MAIN.PendantControl.reset_switch" VarB="Channel 5^MAIN.PendantControl.reset_switch"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Pendant Control IN2 (EL1008)">
-				<Link VarA="PlcTask Inputs^GVL_pendant_control.direction_left" VarB="Channel 2^GVL_pendant_control.direction_left"/>
-				<Link VarA="PlcTask Inputs^GVL_pendant_control.direction_right" VarB="Channel 3^GVL_pendant_control.direction_right"/>
-				<Link VarA="PlcTask Inputs^GVL_pendant_control.start_switch" VarB="Channel 1^GVL_pendant_control.start_switch"/>
+				<Link VarA="PlcTask Inputs^MAIN.PendantControl.direction_left" VarB="Channel 2^MAIN.PendantControl.direction_left"/>
+				<Link VarA="PlcTask Inputs^MAIN.PendantControl.direction_right" VarB="Channel 3^MAIN.PendantControl.direction_right"/>
+				<Link VarA="PlcTask Inputs^MAIN.PendantControl.start_switch" VarB="Channel 1^MAIN.PendantControl.start_switch"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Pendant Control OUT (EL2008)">
-				<Link VarA="PlcTask Outputs^GVL_pendant_control.lamp_down" VarB="Channel 2^GVL_pendant_control.lamp_down"/>
-				<Link VarA="PlcTask Outputs^GVL_pendant_control.lamp_error" VarB="Channel 5^GVL_pendant_control.lamp_error"/>
-				<Link VarA="PlcTask Outputs^GVL_pendant_control.lamp_left" VarB="Channel 4^GVL_pendant_control.lamp_left"/>
-				<Link VarA="PlcTask Outputs^GVL_pendant_control.lamp_right" VarB="Channel 3^GVL_pendant_control.lamp_right"/>
-				<Link VarA="PlcTask Outputs^GVL_pendant_control.lamp_up" VarB="Channel 1^GVL_pendant_control.lamp_up"/>
+				<Link VarA="PlcTask Outputs^MAIN.PendantControl.lamp_down" VarB="Channel 2^MAIN.PendantControl.lamp_down"/>
+				<Link VarA="PlcTask Outputs^MAIN.PendantControl.lamp_error" VarB="Channel 5^MAIN.PendantControl.lamp_error"/>
+				<Link VarA="PlcTask Outputs^MAIN.PendantControl.lamp_left" VarB="Channel 4^MAIN.PendantControl.lamp_left"/>
+				<Link VarA="PlcTask Outputs^MAIN.PendantControl.lamp_right" VarB="Channel 3^MAIN.PendantControl.lamp_right"/>
+				<Link VarA="PlcTask Outputs^MAIN.PendantControl.lamp_up" VarB="Channel 1^MAIN.PendantControl.lamp_up"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Safety Logic (EL6910)">
 				<Link VarA="PlcTask Inputs^MAIN.AzimuthControl.sto" VarB="StandardInputs^Standard Out Var 18"/>
@@ -12658,9 +12674,9 @@ Bit1: Value smaller than Limit2]]></Comment>
 				<Link VarA="PlcTask Inputs^MAIN.DerotatorControl.axis_ref.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^MAIN.DerotatorControl.axis_ref.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
-			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Elevation">
-				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.axis_ref.NcToPlc" VarB="Outputs^ToPlc"/>
-				<Link VarA="PlcTask Outputs^MAIN.ElevationControl.axis_ref.PlcToNc" VarB="Inputs^FromPlc"/>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Fokus">
+				<Link VarA="PlcTask Inputs^MAIN.FocusControl.axisRef.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^MAIN.FocusControl.axisRef.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>
