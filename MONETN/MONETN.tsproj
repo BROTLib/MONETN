@@ -3207,11 +3207,26 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{945528CC-E278-FC8C-D92B-D869FAB7C156}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{7A7F31DE-ABA0-C034-9B07-BC571278E742}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
 						<Name>PlcTask Outputs</Name>
+						<Var>
+							<Name>MAIN.CabinetControl.outLampPower</Name>
+							<Comment><![CDATA[DOUT1 0.0]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CabinetControl.outLampManual</Name>
+							<Comment><![CDATA[DOUT2 0.1]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CabinetControl.outLampError</Name>
+							<Comment><![CDATA[DOUT3 0.2	]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
 						<Var>
 							<Name>MAIN.RoofControl.roofs[1].motors[1].reset_drive</Name>
 							<Type>BOOL</Type>
@@ -3347,6 +3362,10 @@ External Setpoint Generation:
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.ElevationControl.axisRef.PlcToNc</Name>
+							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.AzimuthControl.axis_ref.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
@@ -3405,33 +3424,123 @@ DOUT9 1.0]]></Comment>
 							<Name>GVL_Safety.Reset_STO_Derotator</Name>
 							<Type>BOOL</Type>
 						</Var>
-						<Var>
-							<Name>GVL_Main.lamp_power</Name>
-							<Comment><![CDATA[DOUT1 0.0]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Main.lamp_on_manual</Name>
-							<Comment><![CDATA[DOUT2 0.1]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Main.lamp_error</Name>
-							<Comment><![CDATA[DOUT3 0.2]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.horn</Name>
-							<Comment><![CDATA[Horn 4.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.ElevationControl.axisRef.PlcToNc</Name>
-							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-						</Var>
 					</Vars>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
+						<Var>
+							<Name>SafetyHandling.stInfoGroup1</Name>
+							<Type GUID="{3C3F6E44-B5A2-08B5-8373-E690BB7B431C}" Namespace="BROTLib">ST_InfoDataGroup</Type>
+						</Var>
+						<Var>
+							<Name>SafetyHandling.stInfoEStop1</Name>
+							<Type GUID="{C1EE62EE-4B85-17B2-E533-05C8266E1902}" Namespace="BROTLib">ST_InfoDataFB</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CabinetControl.inKeyRemote</Name>
+							<Comment><![CDATA[DIN3 0.2]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CabinetControl.inSwitchStart</Name>
+							<Comment><![CDATA[DIN4 0.3]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CabinetControl.inSwitchStop</Name>
+							<Comment><![CDATA[DIN5 0.4]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CabinetControl.inSwitchReset</Name>
+							<Comment><![CDATA[DIN8 0.7]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CabinetControl.inCabinetTemp</Name>
+							<Comment><![CDATA[BT1	]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CabinetControl.inKeyClearBrakes</Name>
+							<Comment><![CDATA[DIN15 1.6]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.FrequencyGuardWarning</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.FrequencyGuardError</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.QualityGuardWarning</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.QualityGuardError</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.UnbalanceGuardWarning</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.UnbalanceGuardError</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.PowerQuality</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.L1OverVoltage</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.L1InaccVoltage</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.L1VoltageGuardWarning</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.L1VoltageGuardError</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.L2OverVoltage</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.L2InaccVoltage</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.L2VoltageGuardWarning</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.L2VoltageGuardError</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.L3OverVoltage</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.L3InaccVoltage</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.L3VoltageGuardWarning</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PowerMonitoring.L3VoltageGuardError</Name>
+							<Type>BOOL</Type>
+						</Var>
 						<Var>
 							<Name>MAIN.RoofControl.automatic</Name>
 							<Comment><![CDATA[ automatic mode]]></Comment>
@@ -3660,6 +3769,30 @@ DOUT9 1.0]]></Comment>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.ElevationControl.digital_inputs</Name>
+							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.ElevationControl.diagnostic</Name>
+							<Comment><![CDATA[ diagnostic number]]></Comment>
+							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.ElevationControl.torque</Name>
+							<Comment><![CDATA[ derotator torque feedback]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.ElevationControl.sto</Name>
+							<Comment><![CDATA[ STO]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.ElevationControl.axisRef.NcToPlc</Name>
+							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.AzimuthControl.digital_inputs</Name>
 							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
 							<Type>WORD</Type>
@@ -3682,26 +3815,6 @@ DOUT9 1.0]]></Comment>
 						<Var>
 							<Name>MAIN.AzimuthControl.axis_ref.NcToPlc</Name>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM2</Name>
-							<Comment><![CDATA[ BT9 mirror]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM1</Name>
-							<Comment><![CDATA[ // BT10]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.PendantControl.TelescopeControl.TelescopeAuxiliary.tempSensorM2</Name>
-							<Comment><![CDATA[ BT9 mirror]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.PendantControl.TelescopeControl.TelescopeAuxiliary.tempSensorM1</Name>
-							<Comment><![CDATA[ // BT10]]></Comment>
-							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.PendantControl.BCD0</Name>
@@ -3759,14 +3872,6 @@ DOUT9 1.0]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>SafetyHandling.stInfoGroup1</Name>
-							<Type GUID="{3C3F6E44-B5A2-08B5-8373-E690BB7B431C}" Namespace="BROTLib">ST_InfoDataGroup</Type>
-						</Var>
-						<Var>
-							<Name>SafetyHandling.stInfoEStop1</Name>
-							<Type GUID="{C1EE62EE-4B85-17B2-E533-05C8266E1902}" Namespace="BROTLib">ST_InfoDataFB</Type>
-						</Var>
-						<Var>
 							<Name>SafetyHandling.stInfoSafetyIn</Name>
 							<Type GUID="{09C911EB-69BC-418A-FB6C-0128FB138416}" Namespace="BROTLib">ST_InfoDataConnection</Type>
 						</Var>
@@ -3780,67 +3885,14 @@ DOUT9 1.0]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Main.key_switch_remote</Name>
-							<Comment><![CDATA[DIN1 0.0
-phase_available		AT%I*: BOOL;
-not implemented on RoboTel
-key_switch			AT%I*: BOOL;
-DIN3 0.2]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Main.start_switch</Name>
-							<Comment><![CDATA[DIN4 0.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Main.stop_switch</Name>
-							<Comment><![CDATA[DIN5 0.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Main.reset_switch</Name>
-							<Comment><![CDATA[DIN8 0.7]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Main.main_cabinet_temperature</Name>
-							<Comment><![CDATA[BT1]]></Comment>
+							<Name>MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM2</Name>
+							<Comment><![CDATA[ BT9 mirror]]></Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>GVL_Main.brake_clearing</Name>
-							<Comment><![CDATA[DIN15 1.6]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Telescope.azimut_limit_switch</Name>
-							<Comment><![CDATA[ DIN28 3.3 (absolute)]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.ElevationControl.digital_inputs</Name>
-							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.ElevationControl.diagnostic</Name>
-							<Comment><![CDATA[ diagnostic number]]></Comment>
-							<Type>UDINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.ElevationControl.torque</Name>
-							<Comment><![CDATA[ derotator torque feedback]]></Comment>
+							<Name>MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM1</Name>
+							<Comment><![CDATA[ // BT10]]></Comment>
 							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.ElevationControl.sto</Name>
-							<Comment><![CDATA[ STO]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.ElevationControl.axisRef.NcToPlc</Name>
-							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 					</Vars>
 					<Contexts>
@@ -3991,8 +4043,9 @@ DIN3 0.2]]></Comment>
 								<Entry Name="Status__TxPDO Toggle" BitLen="1" Index="#x1800" Sub="#x09" Flags="#x00050000">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Value" BitLen="16" Index="#x6000" Sub="#x11" Flags="#x00050000">
+								<Entry Name="MAIN.CabinetControl.inCabinetTemp" BitLen="16" Index="#x6000" Sub="#x11" Flags="#x00050000">
 									<Type>INT</Type>
+									<Comment><![CDATA[BT1	]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="RTD Inputs Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="3">
@@ -5565,7 +5618,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 								<Entry Name="Status__TxPDO Toggle" BitLen="1" Index="#x6000" Sub="#x10" Flags="#x000b0000">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="MAIN.PendantControl.TelescopeControl.TelescopeAuxiliary.tempSensorM2" BitLen="16" Index="#x6000" Sub="#x11" Flags="#x000b0000">
+								<Entry Name="MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM2" BitLen="16" Index="#x6000" Sub="#x11" Flags="#x000b0000">
 									<Type>INT</Type>
 									<Comment><![CDATA[ BT9 mirror]]></Comment>
 								</Entry>
@@ -5615,7 +5668,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 								<Entry Name="Status__TxPDO Toggle" BitLen="1" Index="#x6010" Sub="#x10" Flags="#x000b0000">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="MAIN.PendantControl.TelescopeControl.TelescopeAuxiliary.tempSensorM1" BitLen="16" Index="#x6010" Sub="#x11" Flags="#x000b0000">
+								<Entry Name="MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM1" BitLen="16" Index="#x6010" Sub="#x11" Flags="#x000b0000">
 									<Type>INT</Type>
 									<Comment><![CDATA[ // BT10]]></Comment>
 								</Entry>
@@ -6049,33 +6102,33 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Main.start_switch" Index="#x6000" Sub="#x01">
+								<Entry Name="MAIN.CabinetControl.inSwitchStart" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Button Start]]></Comment>
+									<Comment><![CDATA[DIN4 0.3]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Main.stop_switch" Index="#x6010" Sub="#x01">
+								<Entry Name="MAIN.CabinetControl.inSwitchStop" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Button Stop]]></Comment>
+									<Comment><![CDATA[DIN5 0.4]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Main.reset_switch" Index="#x6020" Sub="#x01">
+								<Entry Name="MAIN.CabinetControl.inSwitchReset" Index="#x6020" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Button Reset]]></Comment>
+									<Comment><![CDATA[DIN8 0.7]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Main.key_switch_remote" Index="#x6030" Sub="#x01">
+								<Entry Name="MAIN.CabinetControl.inKeyRemote" Index="#x6030" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Key Local/Distant]]></Comment>
+									<Comment><![CDATA[DIN3 0.2]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Main.key_brake_clearing" Index="#x6040" Sub="#x01">
+								<Entry Name="MAIN.CabinetControl.inKeyClearBrakes" Index="#x6040" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[Key Enable Brake]]></Comment>
+									<Comment><![CDATA[DIN15 1.6]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
@@ -6102,21 +6155,21 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
 							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Main.lamp_power" Index="#x7000" Sub="#x01">
+								<Entry Name="MAIN.CabinetControl.outLampPower" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[LED Power On]]></Comment>
+									<Comment><![CDATA[DOUT1 0.0]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Main.lamp_ready" Index="#x7010" Sub="#x01">
+								<Entry Name="MAIN.CabinetControl.outLampManual" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[LED Controller]]></Comment>
+									<Comment><![CDATA[DOUT2 0.1]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="GVL_Main.lamp_error" Index="#x7020" Sub="#x01">
+								<Entry Name="MAIN.CabinetControl.outLampError" Index="#x7020" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[LED Fault]]></Comment>
+									<Comment><![CDATA[DOUT3 0.2	]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1603" InOut="1" Flags="#x0011" SyncMan="0">
@@ -11355,7 +11408,7 @@ DOUT9 1.0]]></Comment>
 						<SyncMan>001880002600010001000000800080008000001826010000</SyncMan>
 						<SyncMan>001a80002200010002000000800080008000001a22010000</SyncMan>
 						<SyncMan>00100c002400010003000000000000000000001024010000</SyncMan>
-						<SyncMan>001124002200010004000000000000000000001122010000</SyncMan>
+						<SyncMan>001128002200010004000000000000000000001122010000</SyncMan>
 						<SyncMan>002000002400010005000000000000000000002024010000</SyncMan>
 						<SyncMan>002400002000010006000000000000000000002420010000</SyncMan>
 						<Fmmu>0000000000000000001000020100000001000000000000000000000000000000</Fmmu>
@@ -11450,6 +11503,9 @@ DOUT9 1.0]]></Comment>
 							</Entry>
 							<Entry Name="Digital inputs, state" BitLen="16" Index="#x8321">
 								<Type>INT</Type>
+							</Entry>
+							<Entry Name="Velocity feedback 1 value" BitLen="32" Index="#x0028">
+								<Type>DINT</Type>
 							</Entry>
 						</Pdo>
 						<Pdo Name="AT 2" Index="#x1010" Flags="#x0001" SyncMan="3">
@@ -12528,16 +12584,16 @@ DOUT9 1.0]]></Comment>
 				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.brakeAzimuthEve" VarB="Channel 2^MAIN.HydraulicsControl.brakeAzimuthEve"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Front Panel IN (EL1008)">
-				<Link VarA="PlcTask Inputs^GVL_Main.brake_clearing" VarB="Channel 5^GVL_Main.key_brake_clearing"/>
-				<Link VarA="PlcTask Inputs^GVL_Main.key_switch_remote" VarB="Channel 4^GVL_Main.key_switch_remote"/>
-				<Link VarA="PlcTask Inputs^GVL_Main.reset_switch" VarB="Channel 3^GVL_Main.reset_switch"/>
-				<Link VarA="PlcTask Inputs^GVL_Main.start_switch" VarB="Channel 1^GVL_Main.start_switch"/>
-				<Link VarA="PlcTask Inputs^GVL_Main.stop_switch" VarB="Channel 2^GVL_Main.stop_switch"/>
+				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inKeyClearBrakes" VarB="Channel 5^MAIN.CabinetControl.inKeyClearBrakes"/>
+				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inKeyRemote" VarB="Channel 4^MAIN.CabinetControl.inKeyRemote"/>
+				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inSwitchReset" VarB="Channel 3^MAIN.CabinetControl.inSwitchReset"/>
+				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inSwitchStart" VarB="Channel 1^MAIN.CabinetControl.inSwitchStart"/>
+				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inSwitchStop" VarB="Channel 2^MAIN.CabinetControl.inSwitchStop"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Front Panel OUT (EL2004)">
-				<Link VarA="PlcTask Outputs^GVL_Main.lamp_error" VarB="Channel 3^GVL_Main.lamp_error"/>
-				<Link VarA="PlcTask Outputs^GVL_Main.lamp_on_manual" VarB="Channel 2^GVL_Main.lamp_ready"/>
-				<Link VarA="PlcTask Outputs^GVL_Main.lamp_power" VarB="Channel 1^GVL_Main.lamp_power"/>
+				<Link VarA="PlcTask Outputs^MAIN.CabinetControl.outLampError" VarB="Channel 3^MAIN.CabinetControl.outLampError"/>
+				<Link VarA="PlcTask Outputs^MAIN.CabinetControl.outLampManual" VarB="Channel 2^MAIN.CabinetControl.outLampManual"/>
+				<Link VarA="PlcTask Outputs^MAIN.CabinetControl.outLampPower" VarB="Channel 1^MAIN.CabinetControl.outLampPower"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Hydraulics Focus IN (EL1008)">
 				<Link VarA="PlcTask Inputs^MAIN.FocusControl.limitFar" VarB="Channel 5^MAIN.FocusControl.limitFar"/>
@@ -12582,8 +12638,8 @@ DOUT9 1.0]]></Comment>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Temperature IN (EL3164)">
 				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilLevel" VarB="OilLevel^MAIN.HydraulicsControl.inOilLevel"/>
-				<Link VarA="PlcTask Inputs^MAIN.PendantControl.TelescopeControl.TelescopeAuxiliary.tempSensorM1" VarB="TempM1^MAIN.PendantControl.TelescopeControl.TelescopeAuxiliary.tempSensorM1"/>
-				<Link VarA="PlcTask Inputs^MAIN.PendantControl.TelescopeControl.TelescopeAuxiliary.tempSensorM2" VarB="TempM2^MAIN.PendantControl.TelescopeControl.TelescopeAuxiliary.tempSensorM2"/>
+				<Link VarA="PlcTask Inputs^MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM1" VarB="TempM1^MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM1"/>
+				<Link VarA="PlcTask Inputs^MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM2" VarB="TempM2^MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM2"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Pendant Control IN (EL1008)">
 				<Link VarA="PlcTask Inputs^MAIN.PendantControl.BCD0" VarB="Channel 1^MAIN.PendantControl.BCD0"/>
@@ -12607,6 +12663,25 @@ DOUT9 1.0]]></Comment>
 				<Link VarA="PlcTask Outputs^MAIN.PendantControl.lamp_right" VarB="Channel 3^MAIN.PendantControl.lamp_right"/>
 				<Link VarA="PlcTask Outputs^MAIN.PendantControl.lamp_up" VarB="Channel 1^MAIN.PendantControl.lamp_up"/>
 			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Power Analysis (EL3483)">
+				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.FrequencyGuardError" VarB="Total Status^Frequency Guard Error"/>
+				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.FrequencyGuardWarning" VarB="Total Status^Frequency Guard Warning"/>
+				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.L1InaccVoltage" VarB="L1 Status^Inaccurate Voltage"/>
+				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.L1OverVoltage" VarB="L1 Status^Overvoltage"/>
+				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.L1VoltageGuardError" VarB="L1 Status^Voltage Guard Error"/>
+				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.L1VoltageGuardWarning" VarB="L1 Status^Voltage Guard Warning"/>
+				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.L2InaccVoltage" VarB="L2 Status^Inaccurate Voltage"/>
+				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.L2OverVoltage" VarB="L2 Status^Overvoltage"/>
+				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.L2VoltageGuardError" VarB="L2 Status^Voltage Guard Error"/>
+				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.L2VoltageGuardWarning" VarB="L2 Status^Voltage Guard Warning"/>
+				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.L3InaccVoltage" VarB="L3 Status^Inaccurate Voltage"/>
+				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.L3OverVoltage" VarB="L3 Status^Overvoltage"/>
+				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.L3VoltageGuardError" VarB="L3 Status^Voltage Guard Error"/>
+				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.L3VoltageGuardWarning" VarB="L3 Status^Voltage Guard Warning"/>
+				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.PowerQuality" VarB="Total Status^Power Quality Factor"/>
+				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.QualityGuardError" VarB="Total Status^Power Quality Guard Error"/>
+				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.QualityGuardWarning" VarB="Total Status^Power Quality Guard Warning"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Safety Logic (EL6910)">
 				<Link VarA="PlcTask Inputs^MAIN.AzimuthControl.sto" VarB="StandardInputs^Standard Out Var 18"/>
 				<Link VarA="PlcTask Inputs^MAIN.DerotatorControl.sto" VarB="StandardInputs^Standard Out Var 20"/>
@@ -12623,7 +12698,7 @@ DOUT9 1.0]]></Comment>
 				<Link VarA="PlcTask Outputs^GVL_Safety.Run" VarB="StandardOutputs^Standard In Var 2"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Temperature IN (EL3202)">
-				<Link VarA="PlcTask Inputs^GVL_Main.main_cabinet_temperature" VarB="RTD Inputs Channel 1^Value"/>
+				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inCabinetTemp" VarB="RTD Inputs Channel 1^MAIN.CabinetControl.inCabinetTemp"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Azimuth (AX5125-0000-0214)">
 				<Link VarA="PlcTask Inputs^MAIN.AzimuthControl.diagnostic" VarB="AT^Diagnostic number"/>

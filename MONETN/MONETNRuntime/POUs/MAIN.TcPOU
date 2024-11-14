@@ -3,55 +3,42 @@
   <POU Name="MAIN" Id="{0fe844df-7078-44d3-bc48-268e6c994874}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	// telescope drives are ready to enable
-	ready:				BOOL;
-	// error stat on drive, power or hydraulics
-	error:				BOOL;
-	// manual, panel or remote reset
-	reset:				BOOL;
-	// start hydraulics
-	start:				BOOL;
-	// stop hydraulics 
-	stop:				BOOL;
-	// soft start trafo
-	key_switch:			BOOL;
-	//	open brake
-	brake_clearing:		BOOL := FALSE;
+	ready				: BOOL;		// telescope drives are ready to enable
+	error				: BOOL;		// error stat on drive, power or hydraulics
+	reset				: BOOL;		// manual, panel or remote reset
+	start				: BOOL;		// start hydraulics
+	stop				: BOOL;		// stop hydraulics 
+	remoteKey			: BOOL;		// manual mode
+	brakeClearing		: BOOL := FALSE;	//	open brake
 	
-	remote_start:		BOOL;
-	remote_stop: 		BOOL;
-	remote_reset:		BOOL;
-	remote_keyswitch:	BOOL;
-	remote_brake_clearing:	BOOL;
-	// blink error lamp on warning
-	error_lamp: 		FB_BLINK;
-	power_lamp:			FB_BLINK;
-	sound_horn:			FB_Horn;
-	// main cabinet temperature in degrees
-	cabinet_temperature:	REAL;
-	TemperatureEvent,
-	TemperatureCriticalEvent:	FB_EventLog;
-	MQTTTimer : 		TON := (PT:=T#5S);
-	GetHostName:		FB_GetHostName;
-	HostName: 			STRING(255);
-//	LightSwitch:		FB_ButtonEnable;
-//	Lightbutton: 		BOOL;
-	bExecute:			BOOL := TRUE;
-	cabinet_temperature_warning		: SR;
-	cabinet_temperature_critical	: SR;
-	MQTTClient						: FB_Comm_MQTT_Influx;
-	//PowerMonitoring					: FB_PowerMonitoring(comm := MQTTClient);
-	RoofControl						: FB_RoofControl(comm := MQTTClient);
-	CoverControl					: FB_CoverControl(comm := MQTTClient);
-	HydraulicsControl				: FB_HydraulicsControl(comm := MQTTClient);
-	FocusControl					: FB_FocusControl(comm := MQTTClient);
-	DerotatorControl				: FB_DerotatorControl(comm := MQTTClient);
-	ElevationControl				: FB_ElevationControl(comm := MQTTClient, cover := CoverControl, hydraulics := HydraulicsControl);
-	AzimuthControl					: FB_AzimuthControl(comm := MQTTClient, hydraulics := HydraulicsControl);
-	TelescopeControl				: FB_TelescopeControl();
-	PendantControl					: FB_PendantControl(comm := MQTTClient, cover := CoverControl, hydraulics := HydraulicsControl, focus := FocusControl, elevation := ElevationControl, azimuth := AzimuthControl, derotator := DerotatorControl);
+	remote_start		: BOOL;
+	remote_stop			: BOOL;
+	remote_reset		: BOOL;
+	remote_keyswitch	: BOOL;
+	remote_brake_clearing: BOOL;
+	
+	commTimer 			: TON := (PT:=T#5S);
+	getHostName			: FB_GetHostName;
+	hostName			: STRING(255);
+	executeHostName		: BOOL := TRUE;
+	
+	
+	comm				: FB_Comm_MQTT_Influx;
+	CabinetControl		: FB_CabinetControl(comm := comm);
+	PowerMonitoring		: FB_PowerMonitoring(comm := comm);
+	RoofControl			: FB_RoofControl(comm := comm);
+	CoverControl		: FB_CoverControl(comm := comm);
+	HydraulicsControl	: FB_HydraulicsControl(comm := comm);
+	FocusControl		: FB_FocusControl(comm := comm);
+	DerotatorControl	: FB_DerotatorControl(comm := comm);
+	ElevationControl	: FB_ElevationControl(comm := comm, cover := CoverControl, hydraulics := HydraulicsControl);
+	AzimuthControl		: FB_AzimuthControl(comm := comm, hydraulics := HydraulicsControl);
+	TelescopeControl	: FB_TelescopeControl(comm := comm, cover := CoverControl, hydraulics := HydraulicsControl, focus := FocusControl, elevation := ElevationControl, azimuth := AzimuthControl, derotator := DerotatorControl);
+	PendantControl		: FB_PendantControl(comm := comm, cover := CoverControl, hydraulics := HydraulicsControl, focus := FocusControl, elevation := ElevationControl, azimuth := AzimuthControl, derotator := DerotatorControl, telescope := TelescopeControl);
 END_VAR
-]]></Declaration>
+VAR CONSTANT
+	telescopeConfig		: ST_TelescopeConfig := (longitude := -104.0217, latitude := 30.6714, altitude := 2000.0, azimuthPark := 210, derotatorPark := -116.42, azimuthHome := 210);
+END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(* 
 Main control loop
@@ -62,20 +49,22 @@ Main control loop
 * start switch activates Hydraulics and Trafo
 * 
 *)
-GetHostName(bExecute := bExecute, sHostName => HostName);
-bExecute := FALSE;
-start := GVL_Main.start_switch OR remote_start;
-stop := (NOT GVL_Main.stop_switch) OR remote_stop;
-key_switch := GVL_Main.key_switch_remote OR remote_keyswitch;
-brake_clearing := GVL_Main.brake_clearing OR remote_brake_clearing;
-reset := GVL_Main.reset_switch OR PendantControl.reset_switch OR remote_reset;		
-brake_clearing := NOT GVL_Main.brake_clearing;
-cabinet_temperature := INT_TO_REAL(GVL_Main.main_cabinet_temperature) / 10.0;
-cabinet_temperature_warning(SET1 := cabinet_temperature > 50.0,
-							RESET := cabinet_temperature < 40.0);
-cabinet_temperature_critical(SET1 := cabinet_temperature > 60.0,
-							RESET := cabinet_temperature < 50.0);
 
+// get hostname for MQTT connection
+GetHostName(bExecute := executeHostName, sHostName => HostName);
+executeHostName := FALSE;
+
+// run cabinet
+CabinetControl();
+
+// get some variables
+start 			:= CabinetControl.IsStartPushed() OR remote_start;
+stop 			:= CabinetControl.IsStopPushed() OR remote_stop;
+remoteKey 		:= CabinetControl.IsKeyOnManual() OR remote_keyswitch;
+brakeClearing 	:= CabinetControl.AreBreakesCleared() OR remote_brake_clearing;
+reset 			:= CabinetControl.IsResetPushed() OR PendantControl.reset_switch OR remote_reset;		
+
+// start or stop hydraulics
 IF start THEN
 	HydraulicsControl.enable := TRUE;
 END_IF
@@ -84,34 +73,10 @@ IF stop THEN
 END_IF
 
 // telescope is ready when power available
-ready :=  TRUE;
+PowerMonitoring(phaseOK => ready);
 
-// QUINT UPS control section
-(*
-ups(
-	xActivate:= xActivate, 
-	arrInputPD:= arrInputPD, 
-	xActive=> , 
-	xError=> , 
-	wDiagCode=> , 
-	wAddDiagCode=> , 
-	wOutputVoltage=> ups_output_voltage, 
-	wOutputCurrent=> ups_output_current, 
-	xBatModeActive=> , 
-	udtDataStruct=> , 
-	xAlarm=> , 
-	xWarning=> , 
-	xReplaceBattery=> , 
-	udtDiag=> );
-	
-ups_output_voltage := ups_output_voltage / 1000.0;
-ups_output_current := ups_output_current / 1000.0;
-ups_output_power := ups_output_voltage * ups_output_current;
-*)
-
-//PowerMonitoring();
-//TelescopeControl(CoverControl := CoverControl, HydraulicsControl := HydraulicsControl, Focuscontrol := Focuscontrol, DerotatorControl := DerotatorControl, ElevationControl := ElevationControl, AzimuthControl := AzimuthControl, comm := MQTTClient);
-//TelescopeAuxiliary(comm := MQTTClient);
+// run all control FBs
+//TelescopeControl(telescopeConfig := telescopeConfig);
 CoverControl();
 PendantControl();
 HydraulicsControl(
@@ -119,7 +84,7 @@ HydraulicsControl(
 	panLevelMax			:= 10200,
 	panPercentMin		:= 0.0,
 	panPercentMax		:= 80.0, //56.0,
-	brakeClearing		:= brake_clearing
+	brakeClearing		:= brakeClearing
 );
 ElevationControl(
 	calibPosition 		:= 28.5
@@ -142,7 +107,7 @@ RoofControl(
 	max_position_diff	:= 2,
 	limit_slowdown		:= 5
 );
-MQTTClient(	
+comm(	
 	sHostName			:= '169.254.146.10',
     nHostPort  			:= 1883,
     nKeepAlive  		:= 60,
@@ -151,154 +116,42 @@ MQTTClient(
 	sTopicLog			:= 'MONETN/Log',
 );
 
+// set control lights
+error := Focuscontrol.Error OR CoverControl.Error OR HydraulicsControl.error;
+CabinetControl.SetManualLamp(PendantControl.key_switch);
 
-error := GVL_Telescope.azimut_limit_switch
-			OR Focuscontrol.Error
-			OR CoverControl.Error;
-//error := FALSE; // Todo: remove
-// set control lights					
-GVL_Main.lamp_on_manual := PendantControl.key_switch;
-
+// blink errors
 IF GVL_Safety.Error THEN
-	error_lamp.blink := e_blink.short;
+	CabinetControl.SetBlinkError(E_Blink.short);
 ELSIF ElevationControl.error OR AzimuthControl.error OR DerotatorControl.Error THEN
-	error_lamp.blink := e_blink.long;
+	CabinetControl.SetBlinkError(E_Blink.long);
 ELSIF HydraulicsControl.oilWarning OR HydraulicsControl.oilHot OR HydraulicsControl.pressureFailure THEN
-	error_lamp.blink := e_blink.slow;
+	CabinetControl.SetBlinkError(E_Blink.slow);
 ELSIF error THEN
-	error_lamp.blink := e_blink.on;
+	CabinetControl.SetBlinkError(E_Blink.on);
 ELSE
-	error_lamp.blink := e_blink.off; 
+	CabinetControl.SetBlinkError(E_Blink.off); 
 END_IF
 
-power_lamp.blink := e_blink.on;
-error_lamp(Q => GVL_Main.lamp_error);
-//GVL_Main.lamp_error := error_lamp.Q;
-power_lamp(Q => GVL_Main.lamp_power);
-//GVL_Main.lamp_power := power_lamp.Q;
+// power lamp is always on
+CabinetControl.SetBlinkPower(E_Blink.on);
 
-IF GVL_Telescope.azimut_limit_switch THEN
-	sound_horn.horn := E_horn.long;
-ELSIF Hydraulicscontrol.suctionFailure THEN
-	sound_horn.horn := E_horn.long;
-ELSIF TelescopeControl.poweronwarning.Q THEN
-	sound_horn.horn := E_horn.short;
-ELSIF Pendantcontrol.horn THEN
-	sound_horn.horn := E_horn.beep;
-ELSE
-	sound_horn.horn := E_horn.off;
-END_IF 
+// do safety
+SafetyHandling(comm := comm);
 
-sound_horn(Q => GVL_Telescope.horn );
-
-SafetyHandling(comm := MQTTClient);
-
-MQTTTimer(IN:=TRUE);
-IF MQTTTimer.Q THEN // publish new payload every second
-	MQTTTimer(IN:=FALSE);
-	MQTTClient.Publish('electronics', 'base', 'MainCabinetTemperature', LREAL_TO_FMTSTR(cabinet_temperature, 2, TRUE));
-	MQTTClient.Publish('electronics', 'base', 'MainReady', BOOL_TO_STRING(ready));
-	MQTTClient.Publish('electronics', 'base', 'MasterError', BOOL_TO_STRING(error));
+// telemetry
+commTimer(IN:=TRUE);
+IF commTimer.Q THEN
+	commTimer(IN:=FALSE);
+	comm.Publish('electronics', 'base', 'MainReady', BOOL_TO_STRING(ready));
+	comm.Publish('electronics', 'base', 'MasterError', BOOL_TO_STRING(error));
 END_IF
-
-
-TemperatureEvent(	
-	Trigger := 		cabinet_temperature_warning.Q1, 
-	Level := 		ADSLOG_MSGTYPE_WARN,
-	FormatString :=	'Main cabinet temperature warning:	%s',
-	OnMessage := 	LREAL_TO_FMTSTR( cabinet_temperature, 1, TRUE),);
-TemperatureCriticalEvent(	
-	Trigger := 		cabinet_temperature_critical.Q1, 
-	Level := 		ADSLOG_MSGTYPE_ERROR,
-	FormatString :=	'Main cabinet temperature is critical:	%s!',
-	OnMessage := 	LREAL_TO_FMTSTR( cabinet_temperature, 1, TRUE),);
-
 
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="655" Count="21" />
-      <LineId Id="686" Count="2" />
-      <LineId Id="690" Count="2" />
-      <LineId Id="694" Count="1" />
-      <LineId Id="888" Count="1" />
-      <LineId Id="1023" Count="0" />
-      <LineId Id="994" Count="0" />
-      <LineId Id="1196" Count="0" />
-      <LineId Id="1008" Count="13" />
-      <LineId Id="1002" Count="0" />
-      <LineId Id="1022" Count="0" />
-      <LineId Id="1001" Count="0" />
-      <LineId Id="1069" Count="1" />
-      <LineId Id="1068" Count="0" />
-      <LineId Id="1442" Count="0" />
-      <LineId Id="1197" Count="0" />
-      <LineId Id="1388" Count="0" />
-      <LineId Id="1433" Count="0" />
-      <LineId Id="1391" Count="0" />
-      <LineId Id="1441" Count="0" />
-      <LineId Id="1393" Count="0" />
-      <LineId Id="1412" Count="1" />
-      <LineId Id="1409" Count="2" />
-      <LineId Id="1407" Count="0" />
-      <LineId Id="1394" Count="0" />
-      <LineId Id="1444" Count="0" />
-      <LineId Id="1443" Count="0" />
-      <LineId Id="1447" Count="0" />
-      <LineId Id="1396" Count="0" />
-      <LineId Id="1420" Count="1" />
-      <LineId Id="1417" Count="0" />
-      <LineId Id="1397" Count="0" />
-      <LineId Id="1416" Count="0" />
-      <LineId Id="1431" Count="0" />
-      <LineId Id="1414" Count="0" />
-      <LineId Id="1398" Count="7" />
-      <LineId Id="1279" Count="0" />
-      <LineId Id="1320" Count="4" />
-      <LineId Id="1429" Count="1" />
-      <LineId Id="1325" Count="0" />
-      <LineId Id="943" Count="0" />
-      <LineId Id="718" Count="0" />
-      <LineId Id="722" Count="0" />
-      <LineId Id="724" Count="0" />
-      <LineId Id="1238" Count="0" />
-      <LineId Id="728" Count="1" />
-      <LineId Id="832" Count="0" />
-      <LineId Id="829" Count="1" />
-      <LineId Id="842" Count="0" />
-      <LineId Id="844" Count="0" />
-      <LineId Id="833" Count="0" />
-      <LineId Id="835" Count="0" />
-      <LineId Id="840" Count="1" />
-      <LineId Id="838" Count="1" />
-      <LineId Id="831" Count="0" />
-      <LineId Id="884" Count="0" />
-      <LineId Id="854" Count="0" />
-      <LineId Id="859" Count="0" />
-      <LineId Id="730" Count="0" />
-      <LineId Id="860" Count="0" />
-      <LineId Id="731" Count="0" />
-      <LineId Id="865" Count="0" />
-      <LineId Id="864" Count="0" />
-      <LineId Id="867" Count="1" />
-      <LineId Id="870" Count="1" />
-      <LineId Id="873" Count="0" />
-      <LineId Id="878" Count="1" />
-      <LineId Id="875" Count="1" />
-      <LineId Id="866" Count="0" />
-      <LineId Id="880" Count="0" />
-      <LineId Id="862" Count="0" />
-      <LineId Id="861" Count="0" />
-      <LineId Id="732" Count="1" />
-      <LineId Id="744" Count="3" />
-      <LineId Id="750" Count="1" />
-      <LineId Id="760" Count="0" />
-      <LineId Id="1031" Count="1" />
-      <LineId Id="768" Count="8" />
-      <LineId Id="474" Count="0" />
-      <LineId Id="1126" Count="0" />
-      <LineId Id="1054" Count="0" />
-      <LineId Id="1034" Count="0" />
+      <LineId Id="2072" Count="36" />
+      <LineId Id="2110" Count="69" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>
