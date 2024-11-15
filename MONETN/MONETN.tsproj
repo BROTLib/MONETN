@@ -3207,7 +3207,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{E2F2DF5B-BC47-CF1C-5286-896E0D55AC84}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{C2B4FB34-DCAB-50E8-85C1-B138162A97D2}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -3366,10 +3366,6 @@ External Setpoint Generation:
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.AzimuthControl.axisRef.PlcToNc</Name>
-							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.PendantControl.lamp_up</Name>
 							<Comment><![CDATA[ Outputs
 DOUT9 1.0]]></Comment>
@@ -3423,6 +3419,10 @@ DOUT9 1.0]]></Comment>
 						<Var>
 							<Name>GVL_Safety.Reset_STO_Derotator</Name>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.AzimuthControl.axisRef.PlcToNc</Name>
+							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="1">
@@ -3793,30 +3793,6 @@ DOUT9 1.0]]></Comment>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.AzimuthControl.digitalInputs</Name>
-							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.AzimuthControl.diagnostic</Name>
-							<Comment><![CDATA[ diagnostic number]]></Comment>
-							<Type>UDINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.AzimuthControl.torque</Name>
-							<Comment><![CDATA[ derotator torque feedback]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.AzimuthControl.sto</Name>
-							<Comment><![CDATA[ STO]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.AzimuthControl.axisRef.NcToPlc</Name>
-							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM2</Name>
 							<Comment><![CDATA[ BT9 mirror]]></Comment>
 							<Type>INT</Type>
@@ -3893,6 +3869,30 @@ DOUT9 1.0]]></Comment>
 							<Name>GVL_Safety.Error</Name>
 							<Comment><![CDATA[ Safety Error Condition]]></Comment>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.AzimuthControl.digitalInputs</Name>
+							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.AzimuthControl.diagnostic</Name>
+							<Comment><![CDATA[ diagnostic number]]></Comment>
+							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.AzimuthControl.torque</Name>
+							<Comment><![CDATA[ derotator torque feedback]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.AzimuthControl.sto</Name>
+							<Comment><![CDATA[ STO]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.AzimuthControl.axisRef.NcToPlc</Name>
+							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 					</Vars>
 					<Contexts>

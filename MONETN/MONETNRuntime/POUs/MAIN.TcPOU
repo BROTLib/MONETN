@@ -32,7 +32,7 @@ VAR
 	FocusControl		: FB_FocusControl(comm := comm);
 	DerotatorControl	: FB_DerotatorControl(comm := comm);
 	ElevationControl	: FB_ElevationControl(comm := comm, cover := CoverControl, hydraulics := HydraulicsControl);
-	AzimuthControl		: FB_AzimuthControl(comm := comm, hydraulics := HydraulicsControl);
+	AzimuthControl		: FB_AzimuthControl(comm := comm);
 	TelescopeControl	: FB_TelescopeControl(comm := comm, cover := CoverControl, hydraulics := HydraulicsControl, focus := FocusControl, elevation := ElevationControl, azimuth := AzimuthControl, derotator := DerotatorControl);
 	PendantControl		: FB_PendantControl(comm := comm, cover := CoverControl, hydraulics := HydraulicsControl, focus := FocusControl, elevation := ElevationControl, azimuth := AzimuthControl, derotator := DerotatorControl, telescope := TelescopeControl);
 END_VAR
@@ -94,7 +94,9 @@ ElevationControl(
 AzimuthControl(
 	calibPosition		:= 212.75,
 	minPosition			:= -72.0,
-	maxPosition			:= 495.0);
+	maxPosition			:= 495.0,
+	brakeOpen			:= HydraulicsControl.brakeOpen,
+);
 DerotatorControl(
 	min_position		:= -170.0,
 	max_position		:= 300.0
@@ -159,6 +161,7 @@ END_IF
       <LineId Id="2110" Count="12" />
       <LineId Id="2182" Count="0" />
       <LineId Id="2180" Count="1" />
+      <LineId Id="2183" Count="1" />
       <LineId Id="2123" Count="56" />
       <LineId Id="2" Count="0" />
     </LineIds>
