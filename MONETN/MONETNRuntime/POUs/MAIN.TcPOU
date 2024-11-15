@@ -82,45 +82,45 @@ TelescopeControl(telescopeConfig := telescopeConfig);
 CoverControl();
 PendantControl();
 HydraulicsControl(
-	panLevelMin			:= 3000,
-	panLevelMax			:= 10200,
-	panPercentMin		:= 0.0,
-	panPercentMax		:= 80.0, //56.0,
-	brakeClearing		:= brakeClearing
+	panLevelMin		:= 3000,
+	panLevelMax		:= 10200,
+	panPercentMin	:= 0.0,
+	panPercentMax	:= 80.0, //56.0,
+	brakeClearing	:= brakeClearing
 );
 ElevationControl(
-	calibPosition 		:= 28.5
+	calibPosition 	:= 28.5
 );
 AzimuthControl(
-	calibPosition		:= 212.75,
-	minPosition			:= -72.0,
-	maxPosition			:= 495.0,
-	brakeOpen			:= HydraulicsControl.brakeOpen,
+	calibPosition	:= 212.75,
+	minPosition		:= -72.0,
+	maxPosition		:= 495.0,
+	brakeOpen		:= HydraulicsControl.brakeOpen,
 );
 DerotatorControl(
-	min_position		:= -170.0,
-	max_position		:= 300.0
+	minPosition		:= -170.0,
+	maxPosition		:= 300.0
 );	//
 FocusControl(
-	telescopeMode 		:= PendantControl.telescope_mode,
-	homingPosition		:= 92.02, // 104.02 - 12.00
+	telescopeMode 	:= PendantControl.telescope_mode,
+	homingPosition	:= 92.02, // 104.02 - 12.00
 );
 RoofControl(
-	min_speed			:= 10000,
-	max_speed 			:= 30000, 
-	acceleration 		:= 150,
-	min_position 		:= 0,
-	max_position 		:= 202,
+	min_speed		:= 10000,
+	max_speed 		:= 30000, 
+	acceleration 	:= 150,
+	min_position 	:= 0,
+	max_position 	:= 202,
 	max_position_diff	:= 2,
-	limit_slowdown		:= 5
+	limit_slowdown	:= 5
 );
 comm(	
-	sHostName			:= '169.254.146.10',
-    nHostPort  			:= 1883,
-    nKeepAlive  		:= 60,
-	sTopicSub  		 	:= 'MONETN/Telescope/SET',
-	sTopicPublish		:= 'MONETN/Telemetry',
-	sTopicLog			:= 'MONETN/Log',
+	sHostName		:= '169.254.146.10',
+    nHostPort  		:= 1883,
+    nKeepAlive  	:= 60,
+	sTopicSub  		:= 'MONETN/Telescope/SET',
+	sTopicPublish	:= 'MONETN/Telemetry',
+	sTopicLog		:= 'MONETN/Log',
 );
 
 // set control lights
