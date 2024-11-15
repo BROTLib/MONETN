@@ -5,7 +5,7 @@
       <Data>
         <o xml:space="preserve" t="VisualObject">
           <n n="LastVisuLanguageModelEntry" />
-          <v n="UniqueIdGenerator">"20"</v>
+          <v n="UniqueIdGenerator">"23"</v>
           <o n="VisualElemList" t="VisualElemList">
             <l n="VisualElementList" t="VisualElemCollection" cet="GenericVisualElem">
               <o>
@@ -450,7 +450,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"MAIN.ElevationControl.sto"</v>
+                      <v n="Value">"MAIN.ElevationControl.inSTO"</v>
                     </o>
                   </l>
                 </o>

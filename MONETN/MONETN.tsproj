@@ -3207,7 +3207,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{63D9FDD8-DDC1-8B1A-F01B-AD21945C9B2C}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{FC307A46-C5E1-C45A-FC89-F0FC9EA6C5A6}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -3328,10 +3328,6 @@ External Setpoint Generation:
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.ElevationControl.axisRef.PlcToNc</Name>
-							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.CoverControl.outOpenCover1</Name>
 							<Comment><![CDATA[ open cover1 command]]></Comment>
 							<Type>BOOL</Type>
@@ -3422,6 +3418,10 @@ DOUT9 1.0]]></Comment>
 						</Var>
 						<Var>
 							<Name>MAIN.AzimuthControl.axisRef.PlcToNc</Name>
+							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.ElevationControl.axisRef.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 					</Vars>
@@ -3715,30 +3715,6 @@ DOUT9 1.0]]></Comment>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.ElevationControl.digitalInputs</Name>
-							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.ElevationControl.diagnostic</Name>
-							<Comment><![CDATA[ diagnostic number]]></Comment>
-							<Type>UDINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.ElevationControl.torque</Name>
-							<Comment><![CDATA[ derotator torque feedback]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.ElevationControl.sto</Name>
-							<Comment><![CDATA[ STO]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.ElevationControl.axisRef.NcToPlc</Name>
-							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.CoverControl.inCover1Open</Name>
 							<Comment><![CDATA[ limit coper 1 open]]></Comment>
 							<Type>BOOL</Type>
@@ -3891,6 +3867,30 @@ DOUT9 1.0]]></Comment>
 						</Var>
 						<Var>
 							<Name>MAIN.AzimuthControl.axisRef.NcToPlc</Name>
+							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.ElevationControl.inDigitalInputs</Name>
+							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.ElevationControl.inDiagnostic</Name>
+							<Comment><![CDATA[ diagnostic number]]></Comment>
+							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.ElevationControl.inTorque</Name>
+							<Comment><![CDATA[ derotator torque feedback]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.ElevationControl.inSTO</Name>
+							<Comment><![CDATA[ STO]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.ElevationControl.axisRef.NcToPlc</Name>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 					</Vars>
@@ -12683,7 +12683,7 @@ DOUT9 1.0]]></Comment>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Safety Logic (EL6910)">
 				<Link VarA="PlcTask Inputs^MAIN.AzimuthControl.inSTO" VarB="StandardInputs^Standard Out Var 18"/>
 				<Link VarA="PlcTask Inputs^MAIN.DerotatorControl.inSTO" VarB="StandardInputs^Standard Out Var 20"/>
-				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.sto" VarB="StandardInputs^Standard Out Var 19"/>
+				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.inSTO" VarB="StandardInputs^Standard Out Var 19"/>
 				<Link VarA="PlcTask Inputs^SafetyHandling.stInfoEStop1" VarB="Function Block Info Data^TwinSafeGroup1.Network1.FBEstop1 Info Data"/>
 				<Link VarA="PlcTask Inputs^SafetyHandling.stInfoGroup1" VarB="TwinSAFE Group Info Data^TwinSafeGroup1 Info Data"/>
 				<Link VarA="PlcTask Inputs^SafetyHandling.stInfoSafetyIn" VarB="Connection Info Data^Message_8 Info Data"/>
@@ -12709,9 +12709,9 @@ DOUT9 1.0]]></Comment>
 				<Link VarA="PlcTask Inputs^MAIN.DerotatorControl.inTorque" VarB="AT 1^Torque/force feedback value"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Elevation (AX5125-0000-0214)">
-				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.diagnostic" VarB="AT^Diagnostic number"/>
-				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.digitalInputs" VarB="AT^Digital inputs, state"/>
-				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.torque" VarB="AT^Torque/force feedback value"/>
+				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.inDiagnostic" VarB="AT^Diagnostic number"/>
+				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.inDigitalInputs" VarB="AT^Digital inputs, state"/>
+				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.inTorque" VarB="AT^Torque/force feedback value"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Term 11 (EK1100)^Term 12 (EL2008)">
 				<Link VarA="PlcTask Outputs^MAIN.RoofControl.roofs[1].motors[1].reset_drive" VarB="Channel 1^MAIN.RoofControl.roofs[1].motors[1].reset_drive"/>
