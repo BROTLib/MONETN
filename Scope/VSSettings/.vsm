@@ -50,6 +50,12 @@
               <Children />
             </Node>
             <Node>
+              <Title>Velocity feedback 1 value</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+            <Node>
               <Title>Velocity feedback 1 value Az</Title>
               <Expanded>False</Expanded>
               <FileName></FileName>
@@ -131,6 +137,12 @@
                 </Node>
                 <Node>
                   <Title>Velocity feedback 1 value El</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+                <Node>
+                  <Title>Velocity feedback 1 value Dero</Title>
                   <Expanded>False</Expanded>
                   <FileName></FileName>
                   <Children />

@@ -37,7 +37,9 @@ VAR
 	PendantControl		: FB_PendantControl(comm := comm, cover := CoverControl, hydraulics := HydraulicsControl, focus := FocusControl, elevation := ElevationControl, azimuth := AzimuthControl, derotator := DerotatorControl, telescope := TelescopeControl);
 END_VAR
 VAR CONSTANT
-	telescopeConfig		: ST_TelescopeConfig := (longitude := -104.0217, latitude := 30.6714, altitude := 2000.0, azimuthPark := 210, derotatorPark := -116.42, azimuthHome := 210);
+	telescopeConfig		: ST_TelescopeConfig := (longitude := -104.0217, latitude := 30.6714, altitude := 2000.0, 
+												 azimuthPark := 190, elevationPark := 60, derotatorPark := -116.42, 
+												 azimuthHome := 190, elevationHome := 40, derotatorPark := -116.42);
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(* 
@@ -76,7 +78,7 @@ END_IF
 PowerMonitoring(phaseOK => ready);
 
 // run all control FBs
-//TelescopeControl(telescopeConfig := telescopeConfig);
+TelescopeControl(telescopeConfig := telescopeConfig);
 CoverControl();
 PendantControl();
 HydraulicsControl(
@@ -89,7 +91,10 @@ HydraulicsControl(
 ElevationControl(
 	calibPosition 		:= 28.5
 );
-AzimuthControl();
+AzimuthControl(
+	calibPosition		:= 212.75,
+	minPosition			:= -72.0,
+	maxPosition			:= 495.0);
 DerotatorControl(
 	min_position		:= -170.0,
 	max_position		:= 300.0
@@ -151,7 +156,10 @@ END_IF
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="2072" Count="36" />
-      <LineId Id="2110" Count="69" />
+      <LineId Id="2110" Count="12" />
+      <LineId Id="2182" Count="0" />
+      <LineId Id="2180" Count="1" />
+      <LineId Id="2123" Count="56" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>

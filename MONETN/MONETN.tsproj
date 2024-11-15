@@ -2767,12 +2767,12 @@ External Setpoint Generation:
 					<AxisPara>
 						<General UnitName="°"/>
 						<Dynamic AccelerationMaximum="10" DecelerationMaximum="10" Acceleration="3" Deceleration="3" Jerk="1"/>
-						<Velo RefSearch="1" RefSync="2" SlowManual="1" FastManual="5" Fast="798" Maximum="10"/>
+						<Velo RefSearch="2" RefSync="2" SlowManual="1" FastManual="5" Fast="798" Maximum="10"/>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="8">
 						<EncPara ScaleFactorNumerator="360" ScaleFactorDenominator="1048576" MaxCount="#xffffffff">
-							<SoftEndMaxControl Enable="true" Range="450"/>
+							<SoftEndMaxControl Range="450"/>
 							<Inc RefPosition="180" RefMode="2"/>
 						</EncPara>
 						<Vars VarGrpType="1">
@@ -3207,7 +3207,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{7A7F31DE-ABA0-C034-9B07-BC571278E742}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{253CAA7C-626C-4F95-6FC5-585E37136067}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -3366,10 +3366,6 @@ External Setpoint Generation:
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.AzimuthControl.axis_ref.PlcToNc</Name>
-							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.PendantControl.lamp_up</Name>
 							<Comment><![CDATA[ Outputs
 DOUT9 1.0]]></Comment>
@@ -3423,6 +3419,10 @@ DOUT9 1.0]]></Comment>
 						<Var>
 							<Name>GVL_Safety.Reset_STO_Derotator</Name>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.AzimuthControl.axis_ref.PlcToNc</Name>
+							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="1">
@@ -3793,30 +3793,6 @@ DOUT9 1.0]]></Comment>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.AzimuthControl.digital_inputs</Name>
-							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
-							<Type>WORD</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.AzimuthControl.diagnostic</Name>
-							<Comment><![CDATA[ diagnostic number]]></Comment>
-							<Type>UDINT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.AzimuthControl.torque</Name>
-							<Comment><![CDATA[ derotator torque feedback]]></Comment>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.AzimuthControl.sto</Name>
-							<Comment><![CDATA[ STO]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.AzimuthControl.axis_ref.NcToPlc</Name>
-							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.PendantControl.BCD0</Name>
 							<Comment><![CDATA[DIN17 2.0]]></Comment>
 							<Type>BOOL</Type>
@@ -3893,6 +3869,30 @@ DOUT9 1.0]]></Comment>
 							<Name>MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM1</Name>
 							<Comment><![CDATA[ // BT10]]></Comment>
 							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.AzimuthControl.digital_inputs</Name>
+							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.AzimuthControl.diagnostic</Name>
+							<Comment><![CDATA[ diagnostic number]]></Comment>
+							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.AzimuthControl.torque</Name>
+							<Comment><![CDATA[ derotator torque feedback]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.AzimuthControl.sto</Name>
+							<Comment><![CDATA[ STO]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.AzimuthControl.axis_ref.NcToPlc</Name>
+							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 					</Vars>
 					<Contexts>
@@ -7745,7 +7745,7 @@ DOUT9 1.0]]></Comment>
 						<Fmmu>0000000000000000000000010000000006000000000000000000000000000000</Fmmu>
 						<Fmmu>0000000000000000000000020000000005000000000000000000000000000000</Fmmu>
 						<BootStrapData>0010140200181402</BootStrapData>
-						<SuName>Drives</SuName>
+						<SuName>Drives1</SuName>
 						<DcData>3007000090d0030000000000000000000000ffff000000000000000000000000</DcData>
 						<DcMode>446353796e633235300000000000000053796e63206379636c652074696d653a20323530c2b57300000000000000000090d003000000000000000000ffff30070000000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<DcMode>446353796e633132350000000000000053796e63206379636c652074696d653a20313235c2b57300000000000000000048e801000000000000000000ffff30070000000000000000000000000000000000000000000000000000000000000000</DcMode>
@@ -9444,7 +9444,7 @@ DOUT9 1.0]]></Comment>
 						<Fmmu>0000000000000000000000010000000006000000000000000000000000000000</Fmmu>
 						<Fmmu>0000000000000000000000020000000005000000000000000000000000000000</Fmmu>
 						<BootStrapData>0010140200181402</BootStrapData>
-						<SuName>Drives</SuName>
+						<SuName>Drives2</SuName>
 						<DcData>3007000090d0030000000000000000000000ffff000000000000000000000000</DcData>
 						<DcMode>446353796e633235300000000000000053796e63206379636c652074696d653a20323530c2b57300000000000000000090d003000000000000000000ffff30070000000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<DcMode>446353796e633132350000000000000053796e63206379636c652074696d653a20313235c2b57300000000000000000048e801000000000000000000ffff30070000000000000000000000000000000000000000000000000000000000000000</DcMode>
@@ -11417,7 +11417,7 @@ DOUT9 1.0]]></Comment>
 						<Fmmu>0000000000000000000000010000000006000000000000000000000000000000</Fmmu>
 						<Fmmu>0000000000000000000000020000000005000000000000000000000000000000</Fmmu>
 						<BootStrapData>0010140200181402</BootStrapData>
-						<SuName>Drives</SuName>
+						<SuName>Drives3</SuName>
 						<DcData>3007000090d0030000000000000000000000ffff000000000000000000000000</DcData>
 						<DcMode>446353796e633235300000000000000053796e63206379636c652074696d653a20323530c2b57300000000000000000090d003000000000000000000ffff30070000000000000000000000000000000000000000000000000000000000000000</DcMode>
 						<DcMode>446353796e633132350000000000000053796e63206379636c652074696d653a20313235c2b57300000000000000000048e801000000000000000000ffff30070000000000000000000000000000000000000000000000000000000000000000</DcMode>
