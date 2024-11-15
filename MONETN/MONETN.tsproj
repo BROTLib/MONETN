@@ -3207,7 +3207,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{C2B4FB34-DCAB-50E8-85C1-B138162A97D2}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{61C1290E-2D7A-2DE6-6867-B096CD0A8B49}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -3296,36 +3296,6 @@ External Setpoint Generation:
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CoverControl.open_cover1</Name>
-							<Comment><![CDATA[ open cover1 command]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.CoverControl.close_cover1</Name>
-							<Comment><![CDATA[ close cover1 command]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.CoverControl.open_cover2</Name>
-							<Comment><![CDATA[ open cover2 command]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.CoverControl.close_cover2</Name>
-							<Comment><![CDATA[ close cover2 command]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.CoverControl.open_cover3</Name>
-							<Comment><![CDATA[ open cover3 command]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.CoverControl.close_cover3</Name>
-							<Comment><![CDATA[ close cover3 command]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.HydraulicsControl.outOilPumpEnable</Name>
 							<Comment><![CDATA[DOUT4 0.3]]></Comment>
 							<Type>BOOL</Type>
@@ -3364,6 +3334,36 @@ External Setpoint Generation:
 						<Var>
 							<Name>MAIN.ElevationControl.axisRef.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.outOpenCover1</Name>
+							<Comment><![CDATA[ open cover1 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.outCloseCover1</Name>
+							<Comment><![CDATA[ close cover1 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.outOpenCover2</Name>
+							<Comment><![CDATA[ open cover2 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.outCloseCover2</Name>
+							<Comment><![CDATA[ close cover2 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.outOpenCover3</Name>
+							<Comment><![CDATA[ open cover3 command]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.outCloseCover3</Name>
+							<Comment><![CDATA[ close cover3 command]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.PendantControl.lamp_up</Name>
@@ -3646,36 +3646,6 @@ DOUT9 1.0]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CoverControl.limit_cover1_open</Name>
-							<Comment><![CDATA[ limit switches]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.CoverControl.limit_cover1_closed</Name>
-							<Comment><![CDATA[ DIN34 4.1]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.CoverControl.limit_cover2_open</Name>
-							<Comment><![CDATA[ DIN35 4.2]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.CoverControl.limit_cover2_closed</Name>
-							<Comment><![CDATA[ DIN36 4.3]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.CoverControl.limit_cover3_open</Name>
-							<Comment><![CDATA[ DIN37 4.4]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.CoverControl.limit_cover3_closed</Name>
-							<Comment><![CDATA[ DIN38 4.5]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.HydraulicsControl.inOilLow</Name>
 							<Comment><![CDATA[ 2.1]]></Comment>
 							<Type>BOOL</Type>
@@ -3791,6 +3761,35 @@ DOUT9 1.0]]></Comment>
 						<Var>
 							<Name>MAIN.ElevationControl.axisRef.NcToPlc</Name>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.inCover1Open</Name>
+							<Comment><![CDATA[ limit coper 1 open]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.inCover1Closed</Name>
+							<Comment><![CDATA[ limit coper 1 closed]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.inCover2Open</Name>
+							<Comment><![CDATA[ limit coper 2 open]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.inCoverClosed</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.inCover3Open</Name>
+							<Comment><![CDATA[limit coper 2 closed]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.CoverControl.inCover3Closed</Name>
+							<Comment><![CDATA[ limit coper 3 closed	]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM2</Name>
@@ -5986,25 +5985,25 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
 							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.open_cover1" Index="#x7000" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.outOpenCover1" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ open cover1 command]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.close_cover1" Index="#x7010" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.outCloseCover1" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ close cover1 command]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.open_cover2" Index="#x7020" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.outOpenCover2" Index="#x7020" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ open cover2 command]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1603" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.close_cover2" Index="#x7030" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.outCloseCover2" Index="#x7030" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ close cover2 command]]></Comment>
 								</Entry>
@@ -6018,13 +6017,13 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
 							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.open_cover3" Index="#x7000" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.outOpenCover3" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ open cover3 command]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.close_cover3" Index="#x7010" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.outCloseCover3" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ close cover3 command]]></Comment>
 								</Entry>
@@ -6048,39 +6047,38 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.limit_cover1_open" Index="#x6000" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.inCover1Open" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[ limit switches]]></Comment>
+									<Comment><![CDATA[ limit coper 1 open]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.limit_cover1_closed" Index="#x6010" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.inCover1Closed" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[ DIN34 4.1]]></Comment>
+									<Comment><![CDATA[ limit coper 1 closed]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.limit_cover2_open" Index="#x6020" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.inCover2Open" Index="#x6020" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[ DIN35 4.2]]></Comment>
+									<Comment><![CDATA[ limit coper 2 open]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.limit_cover2_closed" Index="#x6030" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.inCoverClosed" Index="#x6030" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[ DIN36 4.3]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.limit_cover3_open" Index="#x6040" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.inCover3Open" Index="#x6040" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[ DIN37 4.4]]></Comment>
+									<Comment><![CDATA[limit coper 2 closed]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.limit_cover3_closed" Index="#x6050" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.inCover3Closed" Index="#x6050" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[ DIN38 4.5]]></Comment>
+									<Comment><![CDATA[ limit coper 3 closed	]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 7" Index="#x1a06" Flags="#x0011" SyncMan="0">
@@ -12619,22 +12617,22 @@ DOUT9 1.0]]></Comment>
 				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.resetSucPump" VarB="Channel 4^MAIN.HydraulicsControl.resetSucPump"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Cover IN (EL1008)">
-				<Link VarA="PlcTask Inputs^MAIN.CoverControl.limit_cover1_closed" VarB="Channel 2^MAIN.CoverControl.limit_cover1_closed"/>
-				<Link VarA="PlcTask Inputs^MAIN.CoverControl.limit_cover1_open" VarB="Channel 1^MAIN.CoverControl.limit_cover1_open"/>
-				<Link VarA="PlcTask Inputs^MAIN.CoverControl.limit_cover2_closed" VarB="Channel 4^MAIN.CoverControl.limit_cover2_closed"/>
-				<Link VarA="PlcTask Inputs^MAIN.CoverControl.limit_cover2_open" VarB="Channel 3^MAIN.CoverControl.limit_cover2_open"/>
-				<Link VarA="PlcTask Inputs^MAIN.CoverControl.limit_cover3_closed" VarB="Channel 6^MAIN.CoverControl.limit_cover3_closed"/>
-				<Link VarA="PlcTask Inputs^MAIN.CoverControl.limit_cover3_open" VarB="Channel 5^MAIN.CoverControl.limit_cover3_open"/>
+				<Link VarA="PlcTask Inputs^MAIN.CoverControl.inCover1Closed" VarB="Channel 2^MAIN.CoverControl.inCover1Closed"/>
+				<Link VarA="PlcTask Inputs^MAIN.CoverControl.inCover1Open" VarB="Channel 1^MAIN.CoverControl.inCover1Open"/>
+				<Link VarA="PlcTask Inputs^MAIN.CoverControl.inCover2Open" VarB="Channel 3^MAIN.CoverControl.inCover2Open"/>
+				<Link VarA="PlcTask Inputs^MAIN.CoverControl.inCover3Closed" VarB="Channel 6^MAIN.CoverControl.inCover3Closed"/>
+				<Link VarA="PlcTask Inputs^MAIN.CoverControl.inCover3Open" VarB="Channel 5^MAIN.CoverControl.inCover3Open"/>
+				<Link VarA="PlcTask Inputs^MAIN.CoverControl.inCoverClosed" VarB="Channel 4^MAIN.CoverControl.inCoverClosed"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Cover OUT1 (EL2004)">
-				<Link VarA="PlcTask Outputs^MAIN.CoverControl.close_cover1" VarB="Channel 2^MAIN.CoverControl.close_cover1"/>
-				<Link VarA="PlcTask Outputs^MAIN.CoverControl.close_cover2" VarB="Channel 4^MAIN.CoverControl.close_cover2"/>
-				<Link VarA="PlcTask Outputs^MAIN.CoverControl.open_cover1" VarB="Channel 1^MAIN.CoverControl.open_cover1"/>
-				<Link VarA="PlcTask Outputs^MAIN.CoverControl.open_cover2" VarB="Channel 3^MAIN.CoverControl.open_cover2"/>
+				<Link VarA="PlcTask Outputs^MAIN.CoverControl.outCloseCover1" VarB="Channel 2^MAIN.CoverControl.outCloseCover1"/>
+				<Link VarA="PlcTask Outputs^MAIN.CoverControl.outCloseCover2" VarB="Channel 4^MAIN.CoverControl.outCloseCover2"/>
+				<Link VarA="PlcTask Outputs^MAIN.CoverControl.outOpenCover1" VarB="Channel 1^MAIN.CoverControl.outOpenCover1"/>
+				<Link VarA="PlcTask Outputs^MAIN.CoverControl.outOpenCover2" VarB="Channel 3^MAIN.CoverControl.outOpenCover2"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Cover OUT2 (EL2004)">
-				<Link VarA="PlcTask Outputs^MAIN.CoverControl.close_cover3" VarB="Channel 2^MAIN.CoverControl.close_cover3"/>
-				<Link VarA="PlcTask Outputs^MAIN.CoverControl.open_cover3" VarB="Channel 1^MAIN.CoverControl.open_cover3"/>
+				<Link VarA="PlcTask Outputs^MAIN.CoverControl.outCloseCover3" VarB="Channel 2^MAIN.CoverControl.outCloseCover3"/>
+				<Link VarA="PlcTask Outputs^MAIN.CoverControl.outOpenCover3" VarB="Channel 1^MAIN.CoverControl.outOpenCover3"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Temperature IN (EL3164)">
 				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilLevel" VarB="OilLevel^MAIN.HydraulicsControl.inOilLevel"/>
