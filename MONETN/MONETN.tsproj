@@ -12766,6 +12766,10 @@ DOUT9 1.0]]></Comment>
 				<Link VarA="PlcTask Inputs^MAIN.AzimuthControl.axisRef.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^MAIN.AzimuthControl.axisRef.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Derotator">
+				<Link VarA="PlcTask Inputs^MAIN.DerotatorControl.axisRef.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^MAIN.DerotatorControl.axisRef.PlcToNc" VarB="Inputs^FromPlc"/>
+			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Elevation">
 				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.axisRef.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^MAIN.ElevationControl.axisRef.PlcToNc" VarB="Inputs^FromPlc"/>
