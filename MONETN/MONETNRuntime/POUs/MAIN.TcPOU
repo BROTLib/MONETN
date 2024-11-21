@@ -22,8 +22,8 @@ VAR
 	hostName			: STRING(255);
 	executeHostName		: BOOL := TRUE;
 	
-	
 	comm				: FB_Comm_MQTT_Influx;
+	SafetyHandling		: FB_SafetyHandling(comm := comm);
 	CabinetControl		: FB_CabinetControl(comm := comm);
 	PowerMonitoring		: FB_PowerMonitoring(comm := comm);
 	RoofControl			: FB_RoofControl(comm := comm);
@@ -38,7 +38,7 @@ VAR
 END_VAR
 VAR CONSTANT
 	telescopeConfig		: ST_TelescopeConfig := (longitude := -104.0217, latitude := 30.6714, altitude := 2000.0, 
-												 azimuthPark := 190, elevationPark := 60, derotatorPark := -116.42, 
+												 azimuthPark := 190, elevationPark := 60, derotatorPark := -116.42, focusPark := 32.0, 
 												 azimuthHome := 190, elevationHome := 40, derotatorPark := -116.42);
 END_VAR]]></Declaration>
     <Implementation>
@@ -128,7 +128,7 @@ error := Focuscontrol.Error OR CoverControl.Error OR HydraulicsControl.error;
 CabinetControl.SetManualLamp(PendantControl.key_switch);
 
 // blink errors
-IF GVL_Safety.Error THEN
+IF SafetyHandling.error THEN
 	CabinetControl.SetBlinkError(E_Blink.short);
 ELSIF ElevationControl.error OR AzimuthControl.error OR DerotatorControl.Error THEN
 	CabinetControl.SetBlinkError(E_Blink.long);
@@ -144,7 +144,7 @@ END_IF
 CabinetControl.SetBlinkPower(E_Blink.on);
 
 // do safety
-SafetyHandling(comm := comm);
+SafetyHandling();
 
 // telemetry
 commTimer(IN:=TRUE);

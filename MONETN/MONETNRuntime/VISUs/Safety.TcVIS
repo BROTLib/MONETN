@@ -5,7 +5,7 @@
       <Data>
         <o xml:space="preserve" t="VisualObject">
           <n n="LastVisuLanguageModelEntry" />
-          <v n="UniqueIdGenerator">"23"</v>
+          <v n="UniqueIdGenerator">"26"</v>
           <o n="VisualElemList" t="VisualElemList">
             <l n="VisualElementList" t="VisualElemCollection" cet="GenericVisualElem">
               <o>
@@ -922,7 +922,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"GVL_Safety.Restart"</v>
+                      <v n="Value">"MAIN.SafetyHandling.outRestart"</v>
                     </o>
                   </l>
                 </o>
@@ -1028,7 +1028,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"GVL_Safety.Reset_STO_Derotator"</v>
+                      <v n="Value">"MAIN.SafetyHandling.outResetDerotatorSTO"</v>
                     </o>
                   </l>
                 </o>
@@ -1134,7 +1134,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"GVL_Safety.Reset_STO_Azimuth"</v>
+                      <v n="Value">"MAIN.SafetyHandling.outResetAzimuthSTO"</v>
                     </o>
                   </l>
                 </o>
@@ -1240,7 +1240,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"GVL_Safety.Reset_STO_Elevation"</v>
+                      <v n="Value">"MAIN.SafetyHandling.outResetElevationSTO"</v>
                     </o>
                   </l>
                 </o>
@@ -1614,7 +1614,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"GVL_Safety.ErrAck"</v>
+                      <v n="Value">"MAIN.SafetyHandling.outErrAck"</v>
                     </o>
                   </l>
                 </o>
@@ -1910,7 +1910,7 @@
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"SafetyHandling.fbInfoEStop1.sState"</v>
+                      <v n="Value">"MAIN.SafetyHandling.fbInfoEStop1.sState"</v>
                     </o>
                     <o>
                       <v n="Id">2496894244L</v>
@@ -2080,7 +2080,7 @@
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"SafetyHandling.fbInfoEStop1.sState"</v>
+                      <v n="Value">"MAIN.SafetyHandling.fbInfoEStop1.sState"</v>
                     </o>
                     <o>
                       <v n="Id">2496894244L</v>
@@ -2250,7 +2250,7 @@
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"SafetyHandling.fbInfoEStop1.sDiag"</v>
+                      <v n="Value">"MAIN.SafetyHandling.fbInfoEStop1.sDiag"</v>
                     </o>
                     <o>
                       <v n="Id">2496894244L</v>
@@ -2688,7 +2688,7 @@
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"SafetyHandling.fbInfoSafetyIn.sState"</v>
+                      <v n="Value">"MAIN.SafetyHandling.fbInfoSafetyIn.sState"</v>
                     </o>
                     <o>
                       <v n="Id">2496894244L</v>
@@ -2858,7 +2858,7 @@
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"SafetyHandling.fbInfoSafetyIn.sDiag"</v>
+                      <v n="Value">"MAIN.SafetyHandling.fbInfoSafetyIn.sDiag"</v>
                     </o>
                     <o>
                       <v n="Id">2496894244L</v>
@@ -3028,7 +3028,7 @@
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"SafetyHandling.fbInfoSafetyOut.sState"</v>
+                      <v n="Value">"MAIN.SafetyHandling.fbInfoSafetyOut.sState"</v>
                     </o>
                     <o>
                       <v n="Id">2496894244L</v>
@@ -3198,7 +3198,7 @@
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"SafetyHandling.fbInfoSafetyOut.sDiag"</v>
+                      <v n="Value">"MAIN.SafetyHandling.fbInfoSafetyOut.sDiag"</v>
                     </o>
                     <o>
                       <v n="Id">2496894244L</v>
@@ -3300,7 +3300,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"SafetyHandling.bSafetyInCh1"</v>
+                      <v n="Value">"MAIN.SafetyHandling.bSafetyInCh1"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
@@ -3398,7 +3398,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"SafetyHandling.bSafetyInCh2"</v>
+                      <v n="Value">"MAIN.SafetyHandling.bSafetyInCh2"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
@@ -3496,7 +3496,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"SafetyHandling.bSafetyInCh3"</v>
+                      <v n="Value">"MAIN.SafetyHandling.bSafetyInCh3"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
@@ -3594,7 +3594,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"SafetyHandling.bSafetyInCh4"</v>
+                      <v n="Value">"MAIN.SafetyHandling.bSafetyInCh4"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
@@ -3692,7 +3692,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"SafetyHandling.bSafetyInCh1"</v>
+                      <v n="Value">"MAIN.SafetyHandling.bSafetyInCh1"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
@@ -3790,7 +3790,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"SafetyHandling.bSafetyInCh2"</v>
+                      <v n="Value">"MAIN.SafetyHandling.bSafetyInCh2"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
@@ -3888,7 +3888,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"SafetyHandling.bSafetyInCh3"</v>
+                      <v n="Value">"MAIN.SafetyHandling.bSafetyInCh3"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
@@ -3986,7 +3986,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"SafetyHandling.bSafetyInCh4"</v>
+                      <v n="Value">"MAIN.SafetyHandling.bSafetyInCh4"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>

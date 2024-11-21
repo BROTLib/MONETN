@@ -3207,11 +3207,38 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{1CE3F4C6-697F-D33C-A0DB-02877AAA0BED}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{6906B33A-A9FB-1E26-E96D-6DF9A314140B}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
 						<Name>PlcTask Outputs</Name>
+						<Var>
+							<Name>MAIN.SafetyHandling.outRun</Name>
+							<Comment><![CDATA[ Run/Stop Safety]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.SafetyHandling.outRestart</Name>
+							<Comment><![CDATA[ Restart Safety]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.SafetyHandling.outErrAck</Name>
+							<Comment><![CDATA[ Error Acknowledgement ]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.SafetyHandling.outResetAzimuthSTO</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.SafetyHandling.outResetElevationSTO</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.SafetyHandling.outResetDerotatorSTO</Name>
+							<Type>BOOL</Type>
+						</Var>
 						<Var>
 							<Name>MAIN.CabinetControl.outLampPower</Name>
 							<Comment><![CDATA[DOUT1 0.0]]></Comment>
@@ -3395,45 +3422,29 @@ DOUT9 1.0]]></Comment>
 							<Comment><![CDATA[DOUT13 1.4]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
-						<Var>
-							<Name>GVL_Safety.Run</Name>
-							<Comment><![CDATA[ Run/Stop Safety]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Safety.Restart</Name>
-							<Comment><![CDATA[ Restart Safety]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Safety.ErrAck</Name>
-							<Comment><![CDATA[ Error Acknowledgement ]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Safety.Reset_STO_Azimuth</Name>
-							<Comment><![CDATA[ Stop signal coming from Safety
- Stop		AT%I*:	BOOL;]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Safety.Reset_STO_Elevation</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Safety.Reset_STO_Derotator</Name>
-							<Type>BOOL</Type>
-						</Var>
 					</Vars>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
-							<Name>SafetyHandling.stInfoGroup1</Name>
+							<Name>MAIN.SafetyHandling.inError</Name>
+							<Comment><![CDATA[ Safety Error Condition]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.SafetyHandling.stInfoGroup1</Name>
 							<Type GUID="{3C3F6E44-B5A2-08B5-8373-E690BB7B431C}" Namespace="BROTLib">ST_InfoDataGroup</Type>
 						</Var>
 						<Var>
-							<Name>SafetyHandling.stInfoEStop1</Name>
+							<Name>MAIN.SafetyHandling.stInfoEStop1</Name>
 							<Type GUID="{C1EE62EE-4B85-17B2-E533-05C8266E1902}" Namespace="BROTLib">ST_InfoDataFB</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.SafetyHandling.stInfoSafetyIn</Name>
+							<Type GUID="{09C911EB-69BC-418A-FB6C-0128FB138416}" Namespace="BROTLib">ST_InfoDataConnection</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.SafetyHandling.stInfoSafetyOut</Name>
+							<Type GUID="{09C911EB-69BC-418A-FB6C-0128FB138416}" Namespace="BROTLib">ST_InfoDataConnection</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.CabinetControl.inKeyRemote</Name>
@@ -3878,19 +3889,6 @@ DOUT9 1.0]]></Comment>
 						<Var>
 							<Name>MAIN.PendantControl.direction_right</Name>
 							<Comment><![CDATA[DIN27 3.2]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>SafetyHandling.stInfoSafetyIn</Name>
-							<Type GUID="{09C911EB-69BC-418A-FB6C-0128FB138416}" Namespace="BROTLib">ST_InfoDataConnection</Type>
-						</Var>
-						<Var>
-							<Name>SafetyHandling.stInfoSafetyOut</Name>
-							<Type GUID="{09C911EB-69BC-418A-FB6C-0128FB138416}" Namespace="BROTLib">ST_InfoDataConnection</Type>
-						</Var>
-						<Var>
-							<Name>GVL_Safety.Error</Name>
-							<Comment><![CDATA[ Safety Error Condition]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 					</Vars>
@@ -7604,9 +7602,6 @@ DOUT9 1.0]]></Comment>
 								<InitCmd DriveNo="0" IDN="32861" MotorDataLevel="1" DisableMode="0"/>
 								<InitCmd DriveNo="0" IDN="32918" MotorDataLevel="1" DisableMode="0"/>
 								<InitCmd DriveNo="0" IDN="32922" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="33088" MotorDataLevel="0" DisableMode="0">
-									<RetainData>24002400d6000600ca0002002c9d5b002c9d5b000000000000000000000000002260000000000000</RetainData>
-								</InitCmd>
 								<InitCmd DriveNo="0" IDN="33093" MotorDataLevel="0" DisableMode="0">
 									<RetainData>160016004a756e2020322032303232202c2031363a32303a3538</RetainData>
 								</InitCmd>
@@ -12684,16 +12679,16 @@ DOUT9 1.0]]></Comment>
 				<Link VarA="PlcTask Inputs^MAIN.AzimuthControl.inSTO" VarB="StandardInputs^Standard Out Var 18"/>
 				<Link VarA="PlcTask Inputs^MAIN.DerotatorControl.inSTO" VarB="StandardInputs^Standard Out Var 20"/>
 				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.inSTO" VarB="StandardInputs^Standard Out Var 19"/>
-				<Link VarA="PlcTask Inputs^SafetyHandling.stInfoEStop1" VarB="Function Block Info Data^TwinSafeGroup1.Network1.FBEstop1 Info Data"/>
-				<Link VarA="PlcTask Inputs^SafetyHandling.stInfoGroup1" VarB="TwinSAFE Group Info Data^TwinSafeGroup1 Info Data"/>
-				<Link VarA="PlcTask Inputs^SafetyHandling.stInfoSafetyIn" VarB="Connection Info Data^Message_8 Info Data"/>
-				<Link VarA="PlcTask Inputs^SafetyHandling.stInfoSafetyOut" VarB="Connection Info Data^Message_7 Info Data"/>
-				<Link VarA="PlcTask Outputs^GVL_Safety.ErrAck" VarB="StandardOutputs^Standard In Var 1"/>
-				<Link VarA="PlcTask Outputs^GVL_Safety.Reset_STO_Azimuth" VarB="StandardOutputs^Standard In Var 25"/>
-				<Link VarA="PlcTask Outputs^GVL_Safety.Reset_STO_Derotator" VarB="StandardOutputs^Standard In Var 22"/>
-				<Link VarA="PlcTask Outputs^GVL_Safety.Reset_STO_Elevation" VarB="StandardOutputs^Standard In Var 26"/>
-				<Link VarA="PlcTask Outputs^GVL_Safety.Restart" VarB="StandardOutputs^Standard In Var 3"/>
-				<Link VarA="PlcTask Outputs^GVL_Safety.Run" VarB="StandardOutputs^Standard In Var 2"/>
+				<Link VarA="PlcTask Inputs^MAIN.SafetyHandling.stInfoEStop1" VarB="Function Block Info Data^TwinSafeGroup1.Network1.FBEstop1 Info Data"/>
+				<Link VarA="PlcTask Inputs^MAIN.SafetyHandling.stInfoGroup1" VarB="TwinSAFE Group Info Data^TwinSafeGroup1 Info Data"/>
+				<Link VarA="PlcTask Inputs^MAIN.SafetyHandling.stInfoSafetyIn" VarB="Connection Info Data^Message_7 Info Data"/>
+				<Link VarA="PlcTask Inputs^MAIN.SafetyHandling.stInfoSafetyOut" VarB="Connection Info Data^Message_8 Info Data"/>
+				<Link VarA="PlcTask Outputs^MAIN.SafetyHandling.outErrAck" VarB="StandardOutputs^Standard In Var 1"/>
+				<Link VarA="PlcTask Outputs^MAIN.SafetyHandling.outResetAzimuthSTO" VarB="StandardOutputs^Standard In Var 25"/>
+				<Link VarA="PlcTask Outputs^MAIN.SafetyHandling.outResetDerotatorSTO" VarB="StandardOutputs^Standard In Var 22"/>
+				<Link VarA="PlcTask Outputs^MAIN.SafetyHandling.outResetElevationSTO" VarB="StandardOutputs^Standard In Var 26"/>
+				<Link VarA="PlcTask Outputs^MAIN.SafetyHandling.outRestart" VarB="StandardOutputs^Standard In Var 3"/>
+				<Link VarA="PlcTask Outputs^MAIN.SafetyHandling.outRun" VarB="StandardOutputs^Standard In Var 2"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Temperature IN (EL3202)">
 				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inCabinetTemp" VarB="RTD Inputs Channel 1^MAIN.CabinetControl.inCabinetTemp"/>
