@@ -3207,38 +3207,11 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{6906B33A-A9FB-1E26-E96D-6DF9A314140B}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{D626984D-3077-FC28-C5CF-B180664C7391}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
 						<Name>PlcTask Outputs</Name>
-						<Var>
-							<Name>MAIN.SafetyHandling.outRun</Name>
-							<Comment><![CDATA[ Run/Stop Safety]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.SafetyHandling.outRestart</Name>
-							<Comment><![CDATA[ Restart Safety]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.SafetyHandling.outErrAck</Name>
-							<Comment><![CDATA[ Error Acknowledgement ]]></Comment>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.SafetyHandling.outResetAzimuthSTO</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.SafetyHandling.outResetElevationSTO</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.SafetyHandling.outResetDerotatorSTO</Name>
-							<Type>BOOL</Type>
-						</Var>
 						<Var>
 							<Name>MAIN.CabinetControl.outLampPower</Name>
 							<Comment><![CDATA[DOUT1 0.0]]></Comment>
@@ -3422,30 +3395,36 @@ DOUT9 1.0]]></Comment>
 							<Comment><![CDATA[DOUT13 1.4]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
-					</Vars>
-					<Vars VarGrpType="1">
-						<Name>PlcTask Inputs</Name>
 						<Var>
-							<Name>MAIN.SafetyHandling.inError</Name>
-							<Comment><![CDATA[ Safety Error Condition]]></Comment>
+							<Name>MAIN.SafetyHandling.outRun</Name>
+							<Comment><![CDATA[ Run/Stop Safety]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.SafetyHandling.stInfoGroup1</Name>
-							<Type GUID="{3C3F6E44-B5A2-08B5-8373-E690BB7B431C}" Namespace="BROTLib">ST_InfoDataGroup</Type>
+							<Name>MAIN.SafetyHandling.outRestart</Name>
+							<Comment><![CDATA[ Restart Safety]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.SafetyHandling.stInfoEStop1</Name>
-							<Type GUID="{C1EE62EE-4B85-17B2-E533-05C8266E1902}" Namespace="BROTLib">ST_InfoDataFB</Type>
+							<Name>MAIN.SafetyHandling.outErrAck</Name>
+							<Comment><![CDATA[ Error Acknowledgement ]]></Comment>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.SafetyHandling.stInfoSafetyIn</Name>
-							<Type GUID="{09C911EB-69BC-418A-FB6C-0128FB138416}" Namespace="BROTLib">ST_InfoDataConnection</Type>
+							<Name>MAIN.SafetyHandling.outResetAzimuthSTO</Name>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.SafetyHandling.stInfoSafetyOut</Name>
-							<Type GUID="{09C911EB-69BC-418A-FB6C-0128FB138416}" Namespace="BROTLib">ST_InfoDataConnection</Type>
+							<Name>MAIN.SafetyHandling.outResetElevationSTO</Name>
+							<Type>BOOL</Type>
 						</Var>
+						<Var>
+							<Name>MAIN.SafetyHandling.outResetDerotatorSTO</Name>
+							<Type>BOOL</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="1">
+						<Name>PlcTask Inputs</Name>
 						<Var>
 							<Name>MAIN.CabinetControl.inKeyRemote</Name>
 							<Comment><![CDATA[DIN3 0.2]]></Comment>
@@ -3890,6 +3869,27 @@ DOUT9 1.0]]></Comment>
 							<Name>MAIN.PendantControl.direction_right</Name>
 							<Comment><![CDATA[DIN27 3.2]]></Comment>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.SafetyHandling.inError</Name>
+							<Comment><![CDATA[ Safety Error Condition]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.SafetyHandling.stInfoGroup1</Name>
+							<Type GUID="{3C3F6E44-B5A2-08B5-8373-E690BB7B431C}" Namespace="BROTLib">ST_InfoDataGroup</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.SafetyHandling.stInfoEStop1</Name>
+							<Type GUID="{C1EE62EE-4B85-17B2-E533-05C8266E1902}" Namespace="BROTLib">ST_InfoDataFB</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.SafetyHandling.stInfoSafetyIn</Name>
+							<Type GUID="{09C911EB-69BC-418A-FB6C-0128FB138416}" Namespace="BROTLib">ST_InfoDataConnection</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.SafetyHandling.stInfoSafetyOut</Name>
+							<Type GUID="{09C911EB-69BC-418A-FB6C-0128FB138416}" Namespace="BROTLib">ST_InfoDataConnection</Type>
 						</Var>
 					</Vars>
 					<Contexts>
