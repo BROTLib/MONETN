@@ -33,7 +33,7 @@ VAR
 	DerotatorControl	: FB_DerotatorControl(comm := comm);
 	ElevationControl	: FB_ElevationControl(comm := comm, cover := CoverControl, hydraulics := HydraulicsControl);
 	AzimuthControl		: FB_AzimuthControl(comm := comm);
-	TelescopeControl	: FB_TelescopeControl(comm := comm, cover := CoverControl, hydraulics := HydraulicsControl, focus := FocusControl, elevation := ElevationControl, azimuth := AzimuthControl, derotator := DerotatorControl);
+	TelescopeControl	: FB_TelescopeControl(comm := comm, hydraulics := HydraulicsControl, focus := FocusControl, elevation := ElevationControl, azimuth := AzimuthControl, derotator := DerotatorControl);
 	PendantControl		: FB_PendantControl(comm := comm, cover := CoverControl, hydraulics := HydraulicsControl, focus := FocusControl, elevation := ElevationControl, azimuth := AzimuthControl, derotator := DerotatorControl, telescope := TelescopeControl);
 END_VAR
 VAR CONSTANT
@@ -78,7 +78,10 @@ END_IF
 PowerMonitoring(phaseOK => ready);
 
 // run all control FBs
-TelescopeControl(telescopeConfig := telescopeConfig);
+TelescopeControl(
+	telescopeConfig := telescopeConfig,
+	coversOpen		:= CoverControl.isOpen
+);
 CoverControl();
 PendantControl();
 HydraulicsControl(
@@ -158,6 +161,9 @@ END_IF
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="2072" Count="36" />
+      <LineId Id="2185" Count="0" />
+      <LineId Id="2187" Count="0" />
+      <LineId Id="2186" Count="0" />
       <LineId Id="2110" Count="12" />
       <LineId Id="2182" Count="0" />
       <LineId Id="2180" Count="1" />
