@@ -6,11 +6,11 @@
     <Node>
       <Title>ScopeWizard</Title>
       <Expanded>True</Expanded>
-      <FileName>C:\Users\Tim-Oliver Husser\Documents\MONET\Scope\ScopeWizard.tcscopex</FileName>
+      <FileName>C:\Users\monet\Documents\MONET\Scope\ScopeWizard.tcscopex</FileName>
       <Children>
         <Node>
           <Title>DataPool</Title>
-          <Expanded>False</Expanded>
+          <Expanded>True</Expanded>
           <FileName></FileName>
           <Children>
             <Node>
