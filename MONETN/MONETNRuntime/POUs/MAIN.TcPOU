@@ -78,7 +78,9 @@ END_IF
 PowerMonitoring(phaseOK => ready);
 
 // run all control FBs
-TelescopeControl(telescopeConfig := telescopeConfig);
+TelescopeControl(
+	telescopeConfig := telescopeConfig
+);
 CoverControl();
 PendantControl();
 HydraulicsControl(
@@ -158,6 +160,7 @@ END_IF
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="2072" Count="36" />
+      <LineId Id="2185" Count="1" />
       <LineId Id="2110" Count="12" />
       <LineId Id="2182" Count="0" />
       <LineId Id="2180" Count="1" />
