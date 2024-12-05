@@ -3216,7 +3216,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{43EAEC48-75EA-353A-8D5D-E251C64DDE64}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{CB695CD9-F38F-73B3-ECAD-CEFAC8FE61C5}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -3332,45 +3332,45 @@ External Setpoint Generation:
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CoverControl.out_open_cover</Name>
+							<Name>MAIN.CoverControl.OabOpenCover</Name>
 							<Comment><![CDATA[ open cover1-3 command]]></Comment>
 							<Type GUID="{FCC357D1-7124-E2AD-B3F6-8EAA3F7F80C9}">ARRAY [1..3] OF BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CoverControl.out_close_cover</Name>
+							<Name>MAIN.CoverControl.OabCloseCover</Name>
 							<Comment><![CDATA[ close cover1-3 command]]></Comment>
 							<Type GUID="{FCC357D1-7124-E2AD-B3F6-8EAA3F7F80C9}">ARRAY [1..3] OF BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.outOilPumpEnable</Name>
+							<Name>MAIN.HydraulicsControl.ObOilPumpEnable</Name>
 							<Comment><![CDATA[DOUT4 0.3]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.outOilSuctionEnable</Name>
+							<Name>MAIN.HydraulicsControl.ObOilSuctionEnable</Name>
 							<Comment><![CDATA[DOUT5 0.4	]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.brakeAzimuthEve</Name>
+							<Name>MAIN.HydraulicsControl.ObBrakeAzEl</Name>
 							<Comment><![CDATA[ brake set]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.resetOilPump</Name>
+							<Name>MAIN.HydraulicsControl.ObResetOilPump</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.resetSucPump</Name>
+							<Name>MAIN.HydraulicsControl.ObResetSuctionPump</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.FocusControl.outFocusUnlock</Name>
+							<Name>MAIN.FocusControl.ObFocusUnlock</Name>
 							<Comment><![CDATA[ whether focus is unlocked]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.FocusControl.axisRef.PlcToNc</Name>
+							<Name>MAIN.FocusControl.refAxis.PlcToNc</Name>
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
@@ -3646,82 +3646,82 @@ DOUT9 1.0]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CoverControl.in_cover_open</Name>
+							<Name>MAIN.CoverControl.IabCoverOpen</Name>
 							<Comment><![CDATA[ limit coper 1 open switch]]></Comment>
 							<Type GUID="{FCC357D1-7124-E2AD-B3F6-8EAA3F7F80C9}">ARRAY [1..3] OF BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CoverControl.in_cover_closed</Name>
+							<Name>MAIN.CoverControl.IabCoverClosed</Name>
 							<Comment><![CDATA[ limit coper 1 closed switch]]></Comment>
 							<Type GUID="{FCC357D1-7124-E2AD-B3F6-8EAA3F7F80C9}">ARRAY [1..3] OF BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.inOilLow</Name>
+							<Name>MAIN.HydraulicsControl.IbOilLow</Name>
 							<Comment><![CDATA[ 2.1]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.inOilHigh</Name>
+							<Name>MAIN.HydraulicsControl.IbOilHigh</Name>
 							<Comment><![CDATA[ ?]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.inOilPressureOK</Name>
+							<Name>MAIN.HydraulicsControl.IbOilPressureOK</Name>
 							<Comment><![CDATA[ 2.3]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.inOilOvertemperature</Name>
+							<Name>MAIN.HydraulicsControl.IbOilHot</Name>
 							<Comment><![CDATA[ 2.4]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.inOilUndertemperature</Name>
+							<Name>MAIN.HydraulicsControl.IbOilCold</Name>
 							<Comment><![CDATA[ 2.5]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.inOilfilterDirty</Name>
+							<Name>MAIN.HydraulicsControl.IbOilFilterDirty</Name>
 							<Comment><![CDATA[ 2.6]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.inPumpRunning</Name>
+							<Name>MAIN.HydraulicsControl.IbPumpRunning</Name>
 							<Comment><![CDATA[ 2.7]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.inSuctionRunning</Name>
+							<Name>MAIN.HydraulicsControl.IbSuctionRunning</Name>
 							<Comment><![CDATA[ 2.8]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.inOilLevel</Name>
+							<Name>MAIN.HydraulicsControl.InOilLevel</Name>
 							<Comment><![CDATA[BT2]]></Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.inOilpanMaximum</Name>
+							<Name>MAIN.HydraulicsControl.IbOilpanMaximum</Name>
 							<Comment><![CDATA[DIN39 4.6]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.HydraulicsControl.inOilReserve</Name>
+							<Name>MAIN.HydraulicsControl.IbOilReserve</Name>
 							<Comment><![CDATA[DIN40 4.7]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.FocusControl.inLimitNear</Name>
+							<Name>MAIN.FocusControl.IbLimitNear</Name>
 							<Comment><![CDATA[ DIN29 3.4]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.FocusControl.inLimitFar</Name>
+							<Name>MAIN.FocusControl.IbLimitFar</Name>
 							<Comment><![CDATA[ DIN30 3.5]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.FocusControl.axisRef.NcToPlc</Name>
+							<Name>MAIN.FocusControl.refAxis.NcToPlc</Name>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
@@ -4061,7 +4061,7 @@ DOUT9 1.0]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.brakeAzimuthEve" Index="#x7010" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.ObBrakeAzEl" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ brake set]]></Comment>
 								</Entry>
@@ -4405,24 +4405,24 @@ DOUT9 1.0]]></Comment>
 							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
 							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.outOilPumpEnable" Index="#x7000" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.ObOilPumpEnable" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[DOUT4 0.3]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.resetOilPump" Index="#x7010" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.ObResetOilPump" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.outOilSuctionEnable" Index="#x7020" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.ObOilSuctionEnable" Index="#x7020" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[DOUT5 0.4	]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1603" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.resetSucPump" Index="#x7030" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.ObResetSuctionPump" Index="#x7030" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
@@ -4437,7 +4437,7 @@ DOUT9 1.0]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 7" Index="#x1606" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.FocusControl.outFocusUnlock" Index="#x7060" Sub="#x01">
+								<Entry Name="MAIN.FocusControl.ObFocusUnlock" Index="#x7060" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ whether focus is unlocked]]></Comment>
 								</Entry>
@@ -4456,13 +4456,13 @@ DOUT9 1.0]]></Comment>
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.inPumpRunning" Index="#x6000" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.IbPumpRunning" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.7]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.inSuctionRunning" Index="#x6010" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.IbSuctionRunning" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.8]]></Comment>
 								</Entry>
@@ -4474,13 +4474,13 @@ DOUT9 1.0]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.FocusControl.inLimitNear" Index="#x6030" Sub="#x01">
+								<Entry Name="MAIN.FocusControl.IbLimitNear" Index="#x6030" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ DIN29 3.4]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.FocusControl.inLimitFar" Index="#x6040" Sub="#x01">
+								<Entry Name="MAIN.FocusControl.IbLimitFar" Index="#x6040" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ DIN30 3.5]]></Comment>
 								</Entry>
@@ -4510,49 +4510,49 @@ DOUT9 1.0]]></Comment>
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.inOilLow" Index="#x6000" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.IbOilLow" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.1]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.inOilHigh" Index="#x6010" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.IbOilHigh" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ ?]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.inOilPressureOK" Index="#x6020" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.IbOilPressureOK" Index="#x6020" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.3]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.inOilOvertemperature" Index="#x6030" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.IbOilHot" Index="#x6030" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.4]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.inOilUndertemperature" Index="#x6040" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.IbOilCold" Index="#x6040" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.5]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.inOilfilterDirty" Index="#x6050" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.IbOilFilterDirty" Index="#x6050" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.6]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 7" Index="#x1a06" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.inOilpanMaximum" Index="#x6060" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.IbOilpanMaximum" Index="#x6060" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[DIN39 4.6]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 8" Index="#x1a07" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.inOilReserve" Index="#x6070" Sub="#x01">
+								<Entry Name="MAIN.HydraulicsControl.IbOilReserve" Index="#x6070" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[DIN40 4.7]]></Comment>
 								</Entry>
@@ -5685,7 +5685,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 								<Entry Name="Status__TxPDO Toggle" BitLen="1" Index="#x6020" Sub="#x10" Flags="#x00060000">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="MAIN.HydraulicsControl.inOilLevel" BitLen="16" Index="#x6020" Sub="#x11" Flags="#x00060000">
+								<Entry Name="MAIN.HydraulicsControl.InOilLevel" BitLen="16" Index="#x6020" Sub="#x11" Flags="#x00060000">
 									<Type>INT</Type>
 									<Comment><![CDATA[BT2]]></Comment>
 								</Entry>
@@ -5953,22 +5953,22 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
 							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.out_open_cover[1]" Index="#x7000" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.OabOpenCover[1]" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.out_close_cover[1]" Index="#x7010" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.OabCloseCover[1]" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.out_open_cover[2]" Index="#x7020" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.OabOpenCover[2]" Index="#x7020" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1603" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.out_close_cover[2]" Index="#x7030" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.OabCloseCover[2]" Index="#x7030" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
@@ -5981,14 +5981,13 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
 							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.out_open_cover[3]" Index="#x7000" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.OabOpenCover[3]" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.outCloseCover3" Index="#x7010" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.OabCloseCover[3]" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[ close cover3 command]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="0">
@@ -6010,34 +6009,33 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.in_cover_open[1]" Index="#x6000" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.IabCoverOpen[1]" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.in_cover_closed[1]" Index="#x6010" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.IabCoverClosed[1]" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.in_cover_open[2]" Index="#x6020" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.IabCoverOpen[2]" Index="#x6020" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.in_cover_closed[2]" Index="#x6030" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.IabCoverClosed[2]" Index="#x6030" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.in_cover_open[3]" Index="#x6040" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.IabCoverOpen[3]" Index="#x6040" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.inCover3Closed" Index="#x6050" Sub="#x01">
+								<Entry Name="MAIN.CoverControl.IabCoverClosed[3]" Index="#x6050" Sub="#x01">
 									<Type>BIT</Type>
-									<Comment><![CDATA[ limit coper 3 closed	]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 7" Index="#x1a06" Flags="#x0011" SyncMan="0">
@@ -12538,7 +12536,7 @@ DOUT9 1.0]]></Comment>
 		</OwnerA>
 		<OwnerA Name="TIPC^MONETNRuntime^MONETNRuntime Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Brake AzEl (EL2004)">
-				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.brakeAzimuthEve" VarB="Channel 2^MAIN.HydraulicsControl.brakeAzimuthEve"/>
+				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.ObBrakeAzEl" VarB="Channel 2^MAIN.HydraulicsControl.ObBrakeAzEl"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Front Panel IN (EL1008)">
 				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inKeyClearBrakes" VarB="Channel 5^MAIN.CabinetControl.inKeyClearBrakes"/>
@@ -12553,48 +12551,48 @@ DOUT9 1.0]]></Comment>
 				<Link VarA="PlcTask Outputs^MAIN.CabinetControl.outLampPower" VarB="Channel 1^MAIN.CabinetControl.outLampPower"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Hydraulics Focus IN (EL1008)">
-				<Link VarA="PlcTask Inputs^MAIN.FocusControl.inLimitFar" VarB="Channel 5^MAIN.FocusControl.inLimitFar"/>
-				<Link VarA="PlcTask Inputs^MAIN.FocusControl.inLimitNear" VarB="Channel 4^MAIN.FocusControl.inLimitNear"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inPumpRunning" VarB="Channel 1^MAIN.HydraulicsControl.inPumpRunning"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inSuctionRunning" VarB="Channel 2^MAIN.HydraulicsControl.inSuctionRunning"/>
+				<Link VarA="PlcTask Inputs^MAIN.FocusControl.IbLimitFar" VarB="Channel 5^MAIN.FocusControl.IbLimitFar"/>
+				<Link VarA="PlcTask Inputs^MAIN.FocusControl.IbLimitNear" VarB="Channel 4^MAIN.FocusControl.IbLimitNear"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.IbPumpRunning" VarB="Channel 1^MAIN.HydraulicsControl.IbPumpRunning"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.IbSuctionRunning" VarB="Channel 2^MAIN.HydraulicsControl.IbSuctionRunning"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Hydraulics IN2 (EL1008)">
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilHigh" VarB="Channel 2^MAIN.HydraulicsControl.inOilHigh"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilLow" VarB="Channel 1^MAIN.HydraulicsControl.inOilLow"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilOvertemperature" VarB="Channel 4^MAIN.HydraulicsControl.inOilOvertemperature"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilPressureOK" VarB="Channel 3^MAIN.HydraulicsControl.inOilPressureOK"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilReserve" VarB="Channel 8^MAIN.HydraulicsControl.inOilReserve"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilUndertemperature" VarB="Channel 5^MAIN.HydraulicsControl.inOilUndertemperature"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilfilterDirty" VarB="Channel 6^MAIN.HydraulicsControl.inOilfilterDirty"/>
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilpanMaximum" VarB="Channel 7^MAIN.HydraulicsControl.inOilpanMaximum"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.IbOilCold" VarB="Channel 5^MAIN.HydraulicsControl.IbOilCold"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.IbOilFilterDirty" VarB="Channel 6^MAIN.HydraulicsControl.IbOilFilterDirty"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.IbOilHigh" VarB="Channel 2^MAIN.HydraulicsControl.IbOilHigh"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.IbOilHot" VarB="Channel 4^MAIN.HydraulicsControl.IbOilHot"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.IbOilLow" VarB="Channel 1^MAIN.HydraulicsControl.IbOilLow"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.IbOilPressureOK" VarB="Channel 3^MAIN.HydraulicsControl.IbOilPressureOK"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.IbOilReserve" VarB="Channel 8^MAIN.HydraulicsControl.IbOilReserve"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.IbOilpanMaximum" VarB="Channel 7^MAIN.HydraulicsControl.IbOilpanMaximum"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Hydraulics OUT (EL2008)">
-				<Link VarA="PlcTask Outputs^MAIN.FocusControl.outFocusUnlock" VarB="Channel 7^MAIN.FocusControl.outFocusUnlock"/>
-				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.outOilPumpEnable" VarB="Channel 1^MAIN.HydraulicsControl.outOilPumpEnable"/>
-				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.outOilSuctionEnable" VarB="Channel 3^MAIN.HydraulicsControl.outOilSuctionEnable"/>
-				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.resetOilPump" VarB="Channel 2^MAIN.HydraulicsControl.resetOilPump"/>
-				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.resetSucPump" VarB="Channel 4^MAIN.HydraulicsControl.resetSucPump"/>
+				<Link VarA="PlcTask Outputs^MAIN.FocusControl.ObFocusUnlock" VarB="Channel 7^MAIN.FocusControl.ObFocusUnlock"/>
+				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.ObOilPumpEnable" VarB="Channel 1^MAIN.HydraulicsControl.ObOilPumpEnable"/>
+				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.ObOilSuctionEnable" VarB="Channel 3^MAIN.HydraulicsControl.ObOilSuctionEnable"/>
+				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.ObResetOilPump" VarB="Channel 2^MAIN.HydraulicsControl.ObResetOilPump"/>
+				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.ObResetSuctionPump" VarB="Channel 4^MAIN.HydraulicsControl.ObResetSuctionPump"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Cover IN (EL1008)">
-				<Link VarA="PlcTask Inputs^MAIN.CoverControl.in_cover_closed[1]" VarB="Channel 2^MAIN.CoverControl.in_cover_closed[1]"/>
-				<Link VarA="PlcTask Inputs^MAIN.CoverControl.in_cover_closed[2]" VarB="Channel 4^MAIN.CoverControl.in_cover_closed[2]"/>
-				<Link VarA="PlcTask Inputs^MAIN.CoverControl.in_cover_closed[3]" VarB="Channel 6^MAIN.CoverControl.inCover3Closed"/>
-				<Link VarA="PlcTask Inputs^MAIN.CoverControl.in_cover_open[1]" VarB="Channel 1^MAIN.CoverControl.in_cover_open[1]"/>
-				<Link VarA="PlcTask Inputs^MAIN.CoverControl.in_cover_open[2]" VarB="Channel 3^MAIN.CoverControl.in_cover_open[2]"/>
-				<Link VarA="PlcTask Inputs^MAIN.CoverControl.in_cover_open[3]" VarB="Channel 5^MAIN.CoverControl.in_cover_open[3]"/>
+				<Link VarA="PlcTask Inputs^MAIN.CoverControl.IabCoverClosed[1]" VarB="Channel 2^MAIN.CoverControl.IabCoverClosed[1]"/>
+				<Link VarA="PlcTask Inputs^MAIN.CoverControl.IabCoverClosed[2]" VarB="Channel 4^MAIN.CoverControl.IabCoverClosed[2]"/>
+				<Link VarA="PlcTask Inputs^MAIN.CoverControl.IabCoverClosed[3]" VarB="Channel 6^MAIN.CoverControl.IabCoverClosed[3]"/>
+				<Link VarA="PlcTask Inputs^MAIN.CoverControl.IabCoverOpen[1]" VarB="Channel 1^MAIN.CoverControl.IabCoverOpen[1]"/>
+				<Link VarA="PlcTask Inputs^MAIN.CoverControl.IabCoverOpen[2]" VarB="Channel 3^MAIN.CoverControl.IabCoverOpen[2]"/>
+				<Link VarA="PlcTask Inputs^MAIN.CoverControl.IabCoverOpen[3]" VarB="Channel 5^MAIN.CoverControl.IabCoverOpen[3]"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Cover OUT1 (EL2004)">
-				<Link VarA="PlcTask Outputs^MAIN.CoverControl.out_close_cover[1]" VarB="Channel 2^MAIN.CoverControl.out_close_cover[1]"/>
-				<Link VarA="PlcTask Outputs^MAIN.CoverControl.out_close_cover[2]" VarB="Channel 4^MAIN.CoverControl.out_close_cover[2]"/>
-				<Link VarA="PlcTask Outputs^MAIN.CoverControl.out_open_cover[1]" VarB="Channel 1^MAIN.CoverControl.out_open_cover[1]"/>
-				<Link VarA="PlcTask Outputs^MAIN.CoverControl.out_open_cover[2]" VarB="Channel 3^MAIN.CoverControl.out_open_cover[2]"/>
+				<Link VarA="PlcTask Outputs^MAIN.CoverControl.OabCloseCover[1]" VarB="Channel 2^MAIN.CoverControl.OabCloseCover[1]"/>
+				<Link VarA="PlcTask Outputs^MAIN.CoverControl.OabCloseCover[2]" VarB="Channel 4^MAIN.CoverControl.OabCloseCover[2]"/>
+				<Link VarA="PlcTask Outputs^MAIN.CoverControl.OabOpenCover[1]" VarB="Channel 1^MAIN.CoverControl.OabOpenCover[1]"/>
+				<Link VarA="PlcTask Outputs^MAIN.CoverControl.OabOpenCover[2]" VarB="Channel 3^MAIN.CoverControl.OabOpenCover[2]"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Cover OUT2 (EL2004)">
-				<Link VarA="PlcTask Outputs^MAIN.CoverControl.out_close_cover[3]" VarB="Channel 2^MAIN.CoverControl.outCloseCover3"/>
-				<Link VarA="PlcTask Outputs^MAIN.CoverControl.out_open_cover[3]" VarB="Channel 1^MAIN.CoverControl.out_open_cover[3]"/>
+				<Link VarA="PlcTask Outputs^MAIN.CoverControl.OabCloseCover[3]" VarB="Channel 2^MAIN.CoverControl.OabCloseCover[3]"/>
+				<Link VarA="PlcTask Outputs^MAIN.CoverControl.OabOpenCover[3]" VarB="Channel 1^MAIN.CoverControl.OabOpenCover[3]"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Temperature IN (EL3164)">
-				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.inOilLevel" VarB="OilLevel^MAIN.HydraulicsControl.inOilLevel"/>
+				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.InOilLevel" VarB="OilLevel^MAIN.HydraulicsControl.InOilLevel"/>
 				<Link VarA="PlcTask Inputs^MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM1" VarB="TempM1^MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM1"/>
 				<Link VarA="PlcTask Inputs^MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM2" VarB="TempM2^MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM2"/>
 			</OwnerB>
@@ -12732,10 +12730,6 @@ DOUT9 1.0]]></Comment>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Elevation">
 				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.axisRef.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^MAIN.ElevationControl.axisRef.PlcToNc" VarB="Inputs^FromPlc"/>
-			</OwnerB>
-			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Fokus">
-				<Link VarA="PlcTask Inputs^MAIN.FocusControl.axisRef.NcToPlc" VarB="Outputs^ToPlc"/>
-				<Link VarA="PlcTask Outputs^MAIN.FocusControl.axisRef.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

@@ -31,10 +31,10 @@ VAR
 	HydraulicsControl	: FB_HydraulicsControl(comm := comm);
 	FocusControl		: FB_FocusControl(comm := comm);
 	DerotatorControl	: FB_DerotatorControl(comm := comm);
-	ElevationControl	: FB_ElevationControl(comm := comm, cover := CoverControl, hydraulics := HydraulicsControl);
+	ElevationControl	: FB_ElevationControl(comm := comm, cover := CoverControl, brake := HydraulicsControl);
 	AzimuthControl		: FB_AzimuthControl(comm := comm);
-	TelescopeControl	: FB_TelescopeControl(comm := comm, cover := CoverControl, hydraulics := HydraulicsControl, focus := FocusControl, elevation := ElevationControl, azimuth := AzimuthControl, derotator := DerotatorControl);
-	PendantControl		: FB_PendantControl(comm := comm, cover := CoverControl, hydraulics := HydraulicsControl, focus := FocusControl, elevation := ElevationControl, azimuth := AzimuthControl, derotator := DerotatorControl, telescope := TelescopeControl);
+	TelescopeControl	: FB_TelescopeControl(comm := comm,  cover := CoverControl, brake := HydraulicsControl, hydraulics := HydraulicsControl, focus := FocusControl, elevation := ElevationControl, azimuth := AzimuthControl, derotator := DerotatorControl);
+	PendantControl		: FB_PendantControl(comm := comm, cover := CoverControl, brake := HydraulicsControl, hydraulics := HydraulicsControl, focus := FocusControl, elevation := ElevationControl, azimuth := AzimuthControl, derotator := DerotatorControl, telescope := TelescopeControl);
 END_VAR
 VAR CONSTANT
 	telescopeConfig		: ST_TelescopeConfig := (longitude := -104.0217, latitude := 30.6714, altitude := 2000.0, 
@@ -68,10 +68,10 @@ reset 			:= CabinetControl.IsResetPushed() OR PendantControl.reset_switch OR rem
 
 // start or stop hydraulics
 IF start THEN
-	HydraulicsControl.enable := TRUE;
+	HydraulicsControl.bEnable := TRUE;
 END_IF
 IF stop THEN
-	HydraulicsControl.enable := FALSE;
+	HydraulicsControl.bEnable := FALSE;
 END_IF
 
 // telescope is ready when power available
@@ -84,11 +84,11 @@ TelescopeControl(
 CoverControl();
 PendantControl();
 HydraulicsControl(
-	panLevelMin		:= 3000,
-	panLevelMax		:= 10200,
-	panPercentMin	:= 0.0,
-	panPercentMax	:= 80.0, //56.0,
-	brakeClearing	:= brakeClearing
+	nMinPanLevel	:= 3000,
+	nMaxPanLevel	:= 10200,
+	fMinPanPercent	:= 0.0,
+	fMaxPanPercent	:= 80.0, //56.0,
+	bBrakeClearing	:= brakeClearing
 );
 ElevationControl(
 	calibPosition 	:= 28.5
@@ -104,8 +104,8 @@ DerotatorControl(
 	maxPosition		:= 300.0
 );	//
 FocusControl(
-	telescopeMode 	:= PendantControl.telescope_mode,
-	homingPosition	:= 92.02, // 104.02 - 12.00
+	eTelescopeMode 	:= PendantControl.telescope_mode,
+	fHomingPosition	:= 92.02, // 104.02 - 12.00
 );
 RoofControl(
 	min_speed		:= 10000,
@@ -126,7 +126,7 @@ comm(
 );
 
 // set control lights
-error := Focuscontrol.Error OR CoverControl.Error OR HydraulicsControl.error;
+error := Focuscontrol.Error OR CoverControl.bError OR HydraulicsControl.bError;
 CabinetControl.SetManualLamp(PendantControl.key_switch);
 
 // blink errors
@@ -134,7 +134,7 @@ IF SafetyHandling.error THEN
 	CabinetControl.SetBlinkError(E_Blink.short);
 ELSIF ElevationControl.error OR AzimuthControl.error OR DerotatorControl.Error THEN
 	CabinetControl.SetBlinkError(E_Blink.long);
-ELSIF HydraulicsControl.oilWarning OR HydraulicsControl.oilHot OR HydraulicsControl.pressureFailure THEN
+ELSIF HydraulicsControl.bOilWarning OR HydraulicsControl.bOilHot OR HydraulicsControl.bPressureFailure THEN
 	CabinetControl.SetBlinkError(E_Blink.slow);
 ELSIF error THEN
 	CabinetControl.SetBlinkError(E_Blink.on);
