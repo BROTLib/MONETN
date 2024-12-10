@@ -3216,7 +3216,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{CB695CD9-F38F-73B3-ECAD-CEFAC8FE61C5}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{42258B98-8B35-46FE-ACF4-1E0D45AA6D9E}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -3725,22 +3725,22 @@ DOUT9 1.0]]></Comment>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.DerotatorControl.inDigitalInputs</Name>
+							<Name>MAIN.DerotatorControl.InDigitalInputs</Name>
 							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
 							<Type>WORD</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.DerotatorControl.inDiagnostic</Name>
+							<Name>MAIN.DerotatorControl.InDiagnostic</Name>
 							<Comment><![CDATA[ diagnostic number]]></Comment>
 							<Type>UDINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.DerotatorControl.inTorque</Name>
+							<Name>MAIN.DerotatorControl.InTorque</Name>
 							<Comment><![CDATA[ derotator torque feedback]]></Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.DerotatorControl.inSTO</Name>
+							<Name>MAIN.DerotatorControl.IbSTO</Name>
 							<Comment><![CDATA[ STO]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
@@ -3749,22 +3749,22 @@ DOUT9 1.0]]></Comment>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.ElevationControl.inDigitalInputs</Name>
+							<Name>MAIN.ElevationControl.InDigitalInputs</Name>
 							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
 							<Type>WORD</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.ElevationControl.inDiagnostic</Name>
+							<Name>MAIN.ElevationControl.InDiagnostic</Name>
 							<Comment><![CDATA[ diagnostic number]]></Comment>
 							<Type>UDINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.ElevationControl.inTorque</Name>
+							<Name>MAIN.ElevationControl.InTorque</Name>
 							<Comment><![CDATA[ derotator torque feedback]]></Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.ElevationControl.inSTO</Name>
+							<Name>MAIN.ElevationControl.IbSTO</Name>
 							<Comment><![CDATA[ STO]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
@@ -3773,22 +3773,22 @@ DOUT9 1.0]]></Comment>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.AzimuthControl.inDigitalInputs</Name>
+							<Name>MAIN.AzimuthControl.InDigitalInputs</Name>
 							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
 							<Type>WORD</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.AzimuthControl.inDiagnostic</Name>
+							<Name>MAIN.AzimuthControl.InDiagnostic</Name>
 							<Comment><![CDATA[ diagnostic number]]></Comment>
 							<Type>UDINT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.AzimuthControl.inTorque</Name>
+							<Name>MAIN.AzimuthControl.InTorque</Name>
 							<Comment><![CDATA[ derotator torque feedback]]></Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.AzimuthControl.inSTO</Name>
+							<Name>MAIN.AzimuthControl.IbSTO</Name>
 							<Comment><![CDATA[ STO]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
@@ -12638,9 +12638,9 @@ DOUT9 1.0]]></Comment>
 				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.QualityGuardWarning" VarB="Total Status^Power Quality Guard Warning"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Safety Logic (EL6910)">
-				<Link VarA="PlcTask Inputs^MAIN.AzimuthControl.inSTO" VarB="StandardInputs^Standard Out Var 18"/>
-				<Link VarA="PlcTask Inputs^MAIN.DerotatorControl.inSTO" VarB="StandardInputs^Standard Out Var 20"/>
-				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.inSTO" VarB="StandardInputs^Standard Out Var 19"/>
+				<Link VarA="PlcTask Inputs^MAIN.AzimuthControl.IbSTO" VarB="StandardInputs^Standard Out Var 18"/>
+				<Link VarA="PlcTask Inputs^MAIN.DerotatorControl.IbSTO" VarB="StandardInputs^Standard Out Var 20"/>
+				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.IbSTO" VarB="StandardInputs^Standard Out Var 19"/>
 				<Link VarA="PlcTask Inputs^MAIN.SafetyHandling.stInfoEStop1" VarB="Function Block Info Data^TwinSafeGroup1.Network1.FBEstop1 Info Data"/>
 				<Link VarA="PlcTask Inputs^MAIN.SafetyHandling.stInfoGroup1" VarB="TwinSAFE Group Info Data^TwinSafeGroup1 Info Data"/>
 				<Link VarA="PlcTask Inputs^MAIN.SafetyHandling.stInfoSafetyIn" VarB="Connection Info Data^Message_7 Info Data"/>
@@ -12656,19 +12656,19 @@ DOUT9 1.0]]></Comment>
 				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inCabinetTemp" VarB="RTD Inputs Channel 1^MAIN.CabinetControl.inCabinetTemp"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Azimuth (AX5125-0000-0214)">
-				<Link VarA="PlcTask Inputs^MAIN.AzimuthControl.inDiagnostic" VarB="AT^Diagnostic number"/>
-				<Link VarA="PlcTask Inputs^MAIN.AzimuthControl.inDigitalInputs" VarB="AT^Digital inputs, state"/>
-				<Link VarA="PlcTask Inputs^MAIN.AzimuthControl.inTorque" VarB="AT^Torque/force feedback value"/>
+				<Link VarA="PlcTask Inputs^MAIN.AzimuthControl.InDiagnostic" VarB="AT^Diagnostic number"/>
+				<Link VarA="PlcTask Inputs^MAIN.AzimuthControl.InDigitalInputs" VarB="AT^Digital inputs, state"/>
+				<Link VarA="PlcTask Inputs^MAIN.AzimuthControl.InTorque" VarB="AT^Torque/force feedback value"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Derotator (AX5206-0000-0214)">
-				<Link VarA="PlcTask Inputs^MAIN.DerotatorControl.inDiagnostic" VarB="AT 1^Diagnostic number"/>
-				<Link VarA="PlcTask Inputs^MAIN.DerotatorControl.inDigitalInputs" VarB="AT 1^Digital inputs, state"/>
-				<Link VarA="PlcTask Inputs^MAIN.DerotatorControl.inTorque" VarB="AT 1^Torque/force feedback value"/>
+				<Link VarA="PlcTask Inputs^MAIN.DerotatorControl.InDiagnostic" VarB="AT 1^Diagnostic number"/>
+				<Link VarA="PlcTask Inputs^MAIN.DerotatorControl.InDigitalInputs" VarB="AT 1^Digital inputs, state"/>
+				<Link VarA="PlcTask Inputs^MAIN.DerotatorControl.InTorque" VarB="AT 1^Actual torque/force generating current"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Elevation (AX5125-0000-0214)">
-				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.inDiagnostic" VarB="AT^Diagnostic number"/>
-				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.inDigitalInputs" VarB="AT^Digital inputs, state"/>
-				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.inTorque" VarB="AT^Torque/force feedback value"/>
+				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.InDiagnostic" VarB="AT^Diagnostic number"/>
+				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.InDigitalInputs" VarB="AT^Digital inputs, state"/>
+				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.InTorque" VarB="AT^Torque/force feedback value"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Term 11 (EK1100)^Term 12 (EL2008)">
 				<Link VarA="PlcTask Outputs^MAIN.RoofControl.roofs[1].motors[1].reset_drive" VarB="Channel 1^MAIN.RoofControl.roofs[1].motors[1].reset_drive"/>
@@ -12730,6 +12730,10 @@ DOUT9 1.0]]></Comment>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Elevation">
 				<Link VarA="PlcTask Inputs^MAIN.ElevationControl.axisRef.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^MAIN.ElevationControl.axisRef.PlcToNc" VarB="Inputs^FromPlc"/>
+			</OwnerB>
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Fokus">
+				<Link VarA="PlcTask Inputs^MAIN.FocusControl.refAxis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^MAIN.FocusControl.refAxis.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

@@ -91,17 +91,17 @@ HydraulicsControl(
 	bBrakeClearing	:= brakeClearing
 );
 ElevationControl(
-	calibPosition 	:= 28.5
+	fCalibPosition 	:= 28.5
 );
 AzimuthControl(
-	calibPosition	:= 212.75,
-	minPosition		:= -72.0,
-	maxPosition		:= 495.0,
-	brakeOpen		:= HydraulicsControl.brakeOpen,
+	fCalibPosition	:= 212.75,
+	fMinPosition		:= -72.0,
+	fMaxPosition		:= 495.0,
+	bBrakeOpen		:= HydraulicsControl.brakeOpen,
 );
 DerotatorControl(
-	minPosition		:= -170.0,
-	maxPosition		:= 300.0
+	fMinPosition		:= -170.0,
+	fMaxPosition		:= 300.0
 );	//
 FocusControl(
 	eTelescopeMode 	:= PendantControl.telescope_mode,
@@ -132,7 +132,7 @@ CabinetControl.SetManualLamp(PendantControl.key_switch);
 // blink errors
 IF SafetyHandling.error THEN
 	CabinetControl.SetBlinkError(E_Blink.short);
-ELSIF ElevationControl.error OR AzimuthControl.error OR DerotatorControl.Error THEN
+ELSIF ElevationControl.bError OR AzimuthControl.bError OR DerotatorControl.bError THEN
 	CabinetControl.SetBlinkError(E_Blink.long);
 ELSIF HydraulicsControl.bOilWarning OR HydraulicsControl.bOilHot OR HydraulicsControl.bPressureFailure THEN
 	CabinetControl.SetBlinkError(E_Blink.slow);
