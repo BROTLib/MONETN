@@ -8,7 +8,7 @@
     <WriteProductVersion>true</WriteProductVersion>
     <GenerateTpy>false</GenerateTpy>
     <Name>MONETNRuntime</Name>
-    <ProgramVersion>3.1.4026.11</ProgramVersion>
+    <ProgramVersion>3.1.4026.12</ProgramVersion>
     <Application>{871a658d-301d-40cb-a7bc-530550c7313b}</Application>
     <TypeSystem>{7cbec500-4611-45d7-82b8-8145305f1ef0}</TypeSystem>
     <Implicit_Task_Info>{c262b7d1-a90d-4abc-a69e-b4b2cdc4c998}</Implicit_Task_Info>

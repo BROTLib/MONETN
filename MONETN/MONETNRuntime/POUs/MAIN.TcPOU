@@ -68,10 +68,10 @@ reset 			:= CabinetControl.IsResetPushed() OR PendantControl.reset_switch OR rem
 
 // start or stop hydraulics
 IF start THEN
-	HydraulicsControl.bEnable := TRUE;
+	HydraulicsControl.Enable := TRUE;
 END_IF
 IF stop THEN
-	HydraulicsControl.bEnable := FALSE;
+	HydraulicsControl.Enable := FALSE;
 END_IF
 
 // telescope is ready when power available
@@ -126,7 +126,7 @@ comm(
 );
 
 // set control lights
-error := Focuscontrol.Error OR CoverControl.bError OR HydraulicsControl.bError;
+error := Focuscontrol.Error OR CoverControl.Error OR HydraulicsControl.Error;
 CabinetControl.SetManualLamp(PendantControl.key_switch);
 
 // blink errors
