@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.11">
   <POU Name="MAIN" Id="{0fe844df-7078-44d3-bc48-268e6c994874}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -31,10 +31,10 @@ VAR
 	HydraulicsControl	: FB_HydraulicsControl(comm := comm);
 	FocusControl		: FB_FocusControl(comm := comm);
 	DerotatorControl	: FB_DerotatorControl(comm := comm);
-	ElevationControl	: FB_ElevationControl(comm := comm, cover := CoverControl, brake := HydraulicsControl);
+	ElevationControl	: FB_ElevationControl(comm := comm);
 	AzimuthControl		: FB_AzimuthControl(comm := comm);
-	TelescopeControl	: FB_TelescopeControl(comm := comm,  cover := CoverControl, brake := HydraulicsControl, hydraulics := HydraulicsControl, focus := FocusControl, elevation := ElevationControl, azimuth := AzimuthControl, derotator := DerotatorControl);
-	PendantControl		: FB_PendantControl(comm := comm, cover := CoverControl, brake := HydraulicsControl, hydraulics := HydraulicsControl, focus := FocusControl, elevation := ElevationControl, azimuth := AzimuthControl, derotator := DerotatorControl, telescope := TelescopeControl);
+	TelescopeControl	: FB_TelescopeControl(comm := comm);
+	PendantControl		: FB_PendantControl(comm := comm);
 END_VAR
 VAR CONSTANT
 	telescopeConfig		: ST_TelescopeConfig := (longitude := -104.0217, latitude := 30.6714, altitude := 2000.0, 
@@ -79,10 +79,25 @@ PowerMonitoring(phaseOK => ready);
 
 // run all control FBs
 TelescopeControl(
-	telescopeConfig := telescopeConfig
+	telescopeConfig := telescopeConfig,	
+	fbCovers 		:= CoverControl, 
+	fbBrake 		:= HydraulicsControl, 
+	fbHydraulics 	:= HydraulicsControl, 
+	fbFocus 		:= FocusControl, 
+	fbElevation 	:= ElevationControl, 
+	fbAzimuth 		:= AzimuthControl, 
+	fbDerotator 	:= DerotatorControl
 );
 CoverControl();
-PendantControl();
+PendantControl(
+	fbCovers 		:= CoverControl, 
+	fbBrake 		:= HydraulicsControl, 
+	fbHydraulics 	:= HydraulicsControl, 
+	fbFocus 		:= FocusControl, 
+	fbElevation 	:= ElevationControl, 
+	fbAzimuth 		:= AzimuthControl, 
+	fbDerotator 	:= DerotatorControl	
+);
 HydraulicsControl(
 	nMinPanLevel	:= 3000,
 	nMaxPanLevel	:= 10200,
@@ -91,12 +106,14 @@ HydraulicsControl(
 	bBrakeClearing	:= brakeClearing
 );
 ElevationControl(
-	fCalibPosition 	:= 28.5
+	fCalibPosition 	:= 28.5,
+	fbCovers 		:= CoverControl, 
+	fbBrake 		:= HydraulicsControl
 );
 AzimuthControl(
 	fCalibPosition	:= 212.75,
-	fMinPosition		:= -72.0,
-	fMaxPosition		:= 495.0,
+	fMinPosition	:= -72.0,
+	fMaxPosition	:= 495.0,
 	bBrakeOpen		:= HydraulicsControl.brakeOpen,
 );
 DerotatorControl(
@@ -160,12 +177,23 @@ END_IF
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="2072" Count="36" />
-      <LineId Id="2185" Count="1" />
-      <LineId Id="2110" Count="12" />
+      <LineId Id="2205" Count="0" />
+      <LineId Id="2185" Count="0" />
+      <LineId Id="2190" Count="5" />
+      <LineId Id="2186" Count="0" />
+      <LineId Id="2110" Count="1" />
+      <LineId Id="2199" Count="5" />
+      <LineId Id="2198" Count="0" />
+      <LineId Id="2196" Count="0" />
+      <LineId Id="2112" Count="8" />
+      <LineId Id="2188" Count="1" />
+      <LineId Id="2121" Count="1" />
       <LineId Id="2182" Count="0" />
       <LineId Id="2180" Count="1" />
       <LineId Id="2183" Count="1" />
-      <LineId Id="2123" Count="56" />
+      <LineId Id="2123" Count="1" />
+      <LineId Id="2187" Count="0" />
+      <LineId Id="2126" Count="53" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>
