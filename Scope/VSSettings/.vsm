@@ -5,8 +5,8 @@
   <Children>
     <Node>
       <Title>ScopeWizard</Title>
-      <Expanded>True</Expanded>
-      <FileName>C:\Users\mail\Documents\MONET\Scope\ScopeWizard.tcscopex</FileName>
+      <Expanded>False</Expanded>
+      <FileName>C:\Users\monet\Documents\MONET\Scope\ScopeWizard.tcscopex</FileName>
       <Children>
         <Node>
           <Title>DataPool</Title>
@@ -65,12 +65,12 @@
         </Node>
         <Node>
           <Title>YT Chart</Title>
-          <Expanded>True</Expanded>
+          <Expanded>False</Expanded>
           <FileName></FileName>
           <Children>
             <Node>
               <Title>Torque/force feedback</Title>
-              <Expanded>True</Expanded>
+              <Expanded>False</Expanded>
               <FileName></FileName>
               <Children>
                 <Node>
@@ -95,7 +95,7 @@
             </Node>
             <Node>
               <Title>Follow distance</Title>
-              <Expanded>True</Expanded>
+              <Expanded>False</Expanded>
               <FileName></FileName>
               <Children>
                 <Node>
@@ -120,7 +120,7 @@
             </Node>
             <Node>
               <Title>Velocity feedback</Title>
-              <Expanded>True</Expanded>
+              <Expanded>False</Expanded>
               <FileName></FileName>
               <Children>
                 <Node>

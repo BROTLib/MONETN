@@ -5,7 +5,7 @@
       <Data>
         <o xml:space="preserve" t="VisualObject">
           <n n="LastVisuLanguageModelEntry" />
-          <v n="UniqueIdGenerator">"26"</v>
+          <v n="UniqueIdGenerator">"29"</v>
           <o n="VisualElemList" t="VisualElemList">
             <l n="VisualElementList" t="VisualElemCollection" cet="GenericVisualElem">
               <o>
@@ -218,7 +218,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"MAIN.AzimuthControl.inSTO"</v>
+                      <v n="Value">"MAIN.AzimuthControl.IbSTO"</v>
                     </o>
                   </l>
                 </o>
@@ -450,7 +450,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"MAIN.ElevationControl.inSTO"</v>
+                      <v n="Value">"MAIN.ElevationControl.IbSTO"</v>
                     </o>
                   </l>
                 </o>
@@ -682,7 +682,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"MAIN.DerotatorControl.inSTO"</v>
+                      <v n="Value">"MAIN.DerotatorControl.IbSTO"</v>
                     </o>
                   </l>
                 </o>
