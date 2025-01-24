@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.11">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
   <POU Name="MAIN" Id="{0fe844df-7078-44d3-bc48-268e6c994874}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -83,7 +83,7 @@ TelescopeControl(
 	fbCovers 		:= CoverControl, 
 	fbBrake 		:= HydraulicsControl, 
 	fbHydraulics 	:= HydraulicsControl, 
-	fbFocus 		:= FocusControl, 
+	//fbFocus 		:= FocusControl, 
 	fbElevation 	:= ElevationControl, 
 	fbAzimuth 		:= AzimuthControl, 
 	fbDerotator 	:= DerotatorControl
@@ -143,7 +143,8 @@ comm(
 );
 
 // set control lights
-error := Focuscontrol.Error OR CoverControl.Error OR HydraulicsControl.Error;
+//error := Focuscontrol.Error OR CoverControl.Error OR HydraulicsControl.Error;
+error := CoverControl.Error OR HydraulicsControl.Error;
 CabinetControl.SetManualLamp(PendantControl.key_switch);
 
 // blink errors
@@ -193,7 +194,9 @@ END_IF
       <LineId Id="2183" Count="1" />
       <LineId Id="2123" Count="1" />
       <LineId Id="2187" Count="0" />
-      <LineId Id="2126" Count="53" />
+      <LineId Id="2126" Count="24" />
+      <LineId Id="2206" Count="0" />
+      <LineId Id="2151" Count="28" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>
