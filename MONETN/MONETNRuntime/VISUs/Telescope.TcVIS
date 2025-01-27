@@ -5,7 +5,7 @@
       <Data>
         <o xml:space="preserve" t="VisualObject">
           <n n="LastVisuLanguageModelEntry" />
-          <v n="UniqueIdGenerator">"60"</v>
+          <v n="UniqueIdGenerator">"69"</v>
           <o n="VisualElemList" t="VisualElemList">
             <l n="VisualElementList" t="VisualElemCollection" cet="GenericVisualElem">
               <o>
@@ -216,7 +216,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.TelescopeControl.error"</v>
+                          <v n="Value">"MAIN.TelescopeControl.bError"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -447,7 +447,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.TelescopeControl.ready"</v>
+                          <v n="Value">"MAIN.TelescopeControl.bReady"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -686,7 +686,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.TelescopeControl.power"</v>
+                          <v n="Value">"MAIN.TelescopeControl.bPower"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -792,7 +792,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.TelescopeControl.park"</v>
+                          <v n="Value">"MAIN.TelescopeControl.bPark"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -890,7 +890,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.TelescopeControl.busy"</v>
+                          <v n="Value">"MAIN.TelescopeControl.bBusy"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -1129,7 +1129,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.TelescopeControl.park"</v>
+                          <v n="Value">"MAIN.TelescopeControl.bPark"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -1888,7 +1888,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.TelescopeControl.azimuth"</v>
+                          <v n="Value">"MAIN.TelescopeControl.fAzimuth"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -1906,7 +1906,7 @@
                     <v n="VisualElementIdentifier">"GenElemInst_33"</v>
                     <n n="VisualElementOfflinePaintCommands" />
                     <n n="VisualElementFrameInformation" />
-                    <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
+                    <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="InputBoxInputAction[]">
                       <v>OnMouseClick</v>
                       <a cet="InputBoxInputAction">
                         <o>
@@ -1917,7 +1917,7 @@
                           <v n="InputBoxDialogTitle">""</v>
                           <v n="Password">false</v>
                           <v n="UseTextOutputVariable">true</v>
-                          <v n="TextOutputVariableInitialized">false</v>
+                          <v n="TextOutputVariableInitialized">true</v>
                           <v n="OtherVarConversion">""</v>
                           <v n="Format">""</v>
                           <v n="DialogPosition" t="DialogPositionSetting">UseGlobalSetting</v>
@@ -2150,7 +2150,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.TelescopeControl.slew"</v>
+                          <v n="Value">"MAIN.TelescopeControl.bSlew"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -2640,7 +2640,7 @@
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"MAIN.TelescopeControl.elevation"</v>
+                      <v n="Value">"MAIN.TelescopeControl.fElevation"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
@@ -2658,7 +2658,7 @@
                 <v n="VisualElementIdentifier">"GenElemInst_35"</v>
                 <n n="VisualElementOfflinePaintCommands" />
                 <n n="VisualElementFrameInformation" />
-                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
+                <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="InputBoxInputAction[]">
                   <v>OnMouseClick</v>
                   <a cet="InputBoxInputAction">
                     <o>
@@ -2669,7 +2669,7 @@
                       <v n="InputBoxDialogTitle">""</v>
                       <v n="Password">false</v>
                       <v n="UseTextOutputVariable">true</v>
-                      <v n="TextOutputVariableInitialized">false</v>
+                      <v n="TextOutputVariableInitialized">true</v>
                       <v n="OtherVarConversion">""</v>
                       <v n="Format">""</v>
                       <v n="DialogPosition" t="DialogPositionSetting">UseGlobalSetting</v>
@@ -5221,7 +5221,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.TelescopeControl.sliding"</v>
+                          <v n="Value">"MAIN.TelescopeControl.bSliding"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -5452,7 +5452,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.TelescopeControl.stopped"</v>
+                          <v n="Value">"MAIN.TelescopeControl.bStopped"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -5683,7 +5683,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.TelescopeControl.tracking"</v>
+                          <v n="Value">"MAIN.TelescopeControl.bTracking"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -5914,7 +5914,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.TelescopeControl.homed"</v>
+                          <v n="Value">"MAIN.TelescopeControl.bHomed"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -6540,7 +6540,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.TelescopeControl.rightascension"</v>
+                          <v n="Value">"MAIN.TelescopeControl.fRightAscension"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -6558,7 +6558,7 @@
                     <v n="VisualElementIdentifier">"GenElemInst_102"</v>
                     <n n="VisualElementOfflinePaintCommands" />
                     <n n="VisualElementFrameInformation" />
-                    <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
+                    <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="InputBoxInputAction[]">
                       <v>OnMouseClick</v>
                       <a cet="InputBoxInputAction">
                         <o>
@@ -6802,7 +6802,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.TelescopeControl.goto"</v>
+                          <v n="Value">"MAIN.TelescopeControl.bGoto"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -7106,7 +7106,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.TelescopeControl.declination"</v>
+                          <v n="Value">"MAIN.TelescopeControl.fDeclination"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -7124,7 +7124,7 @@
                     <v n="VisualElementIdentifier">"GenElemInst_106"</v>
                     <n n="VisualElementOfflinePaintCommands" />
                     <n n="VisualElementFrameInformation" />
-                    <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
+                    <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="InputBoxInputAction[]">
                       <v>OnMouseClick</v>
                       <a cet="InputBoxInputAction">
                         <o>
@@ -7565,8 +7565,8 @@ END_VAR"</v>
         <Type n="Guid">System.Guid</Type>
         <Type n="Hashtable">System.Collections.Hashtable</Type>
         <Type n="HotkeyConfiguration">{6b108d46-58af-4e41-a3f4-174d8f160cc4}</Type>
-        <Type n="IInputAction[]">_3S.CoDeSys.VisualElem.IInputAction[], VisualElem, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</Type>
         <Type n="InputBoxInputAction">{e8e7e747-f76f-4dee-ab1c-b9637e41ac26}</Type>
+        <Type n="InputBoxInputAction[]">_3S.CoDeSys.VisualElem.InputBoxInputAction[], VisualElem.plugin, Version=4.6.0.0, Culture=neutral, PublicKeyToken=null</Type>
         <Type n="Int16">System.Int16</Type>
         <Type n="Int32">System.Int32</Type>
         <Type n="Int64">System.Int64</Type>

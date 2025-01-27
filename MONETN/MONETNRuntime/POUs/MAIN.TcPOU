@@ -140,6 +140,7 @@ comm(
 	sTopicSub  		:= 'MONETN/Telescope/SET',
 	sTopicPublish	:= 'MONETN/Telemetry',
 	sTopicLog		:= 'MONETN/Log',
+	Telescope		:= TelescopeControl
 );
 
 // set control lights
@@ -194,7 +195,9 @@ END_IF
       <LineId Id="2183" Count="1" />
       <LineId Id="2123" Count="1" />
       <LineId Id="2187" Count="0" />
-      <LineId Id="2126" Count="24" />
+      <LineId Id="2126" Count="20" />
+      <LineId Id="2207" Count="0" />
+      <LineId Id="2147" Count="3" />
       <LineId Id="2206" Count="0" />
       <LineId Id="2151" Count="28" />
       <LineId Id="2" Count="0" />
