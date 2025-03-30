@@ -9,6 +9,9 @@
     <Name>Scope</Name>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Scope Project1.tcscopex">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="ScopeWizard.tcscopex">
       <SubType>Content</SubType>
     </Content>
