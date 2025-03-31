@@ -5,17 +5,7 @@
 VAR
 	ready				: BOOL;		// telescope drives are ready to enable
 	error				: BOOL;		// error stat on drive, power or hydraulics
-	reset				: BOOL;		// manual, panel or remote reset
-	start				: BOOL;		// start hydraulics
-	stop				: BOOL;		// stop hydraulics 
-	remoteKey			: BOOL;		// manual mode
 	brakeClearing		: BOOL := FALSE;	//	open brake
-	
-	remote_start		: BOOL;
-	remote_stop			: BOOL;
-	remote_reset		: BOOL;
-	remote_keyswitch	: BOOL;
-	remote_brake_clearing: BOOL;
 	
 	commTimer 			: TON := (PT:=T#5S);
 	getHostName			: FB_GetHostName;
@@ -34,7 +24,7 @@ VAR
 	ElevationControl	: FB_ElevationControl(comm := comm);
 	AzimuthControl		: FB_AzimuthControl(comm := comm);
 	TelescopeControl	: FB_TelescopeControl(comm := comm);
-	PendantControl		: FB_PendantControl(comm := comm);
+	PendantControl		: FB_MonetPendantControl(comm := comm);
 END_VAR
 VAR CONSTANT
 	telescopeConfig		: ST_TelescopeConfig := (longitude := -104.0217, latitude := 30.6714, altitude := 2000.0, 
@@ -59,45 +49,44 @@ executeHostName := FALSE;
 // run cabinet
 CabinetControl();
 
-// get some variables
-start 			:= CabinetControl.IsStartPushed() OR remote_start;
-stop 			:= CabinetControl.IsStopPushed() OR remote_stop;
-remoteKey 		:= CabinetControl.IsKeyOnManual() OR remote_keyswitch;
-brakeClearing 	:= CabinetControl.AreBreakesCleared() OR remote_brake_clearing;
-reset 			:= CabinetControl.IsResetPushed() OR PendantControl.reset_switch OR remote_reset;		
-
-// start or stop hydraulics
-IF start THEN
-	HydraulicsControl.Enable := TRUE;
+// in local mode we can start or stop hydraulics and open the brake
+brakeClearing := TRUE;
+IF CabinetControl.eTelescopeMode = E_TelescopeMode.manual THEN
+	IF CabinetControl.IsStartPushed() THEN
+		HydraulicsControl.Enable := TRUE;
+	END_IF
+	IF CabinetControl.IsStopPushed() THEN
+		HydraulicsControl.Enable := FALSE;
+	END_IF
+	IF NOT CabinetControl.AreBreakesCleared() THEN
+		brakeClearing := FALSE;
+	END_IF
 END_IF
-IF stop THEN
-	HydraulicsControl.Enable := FALSE;
+
+// clear errors
+IF CabinetControl.IsResetPushed() OR PendantControl.reset_switch THEN
+	;
 END_IF
 
 // telescope is ready when power available
 PowerMonitoring(phaseOK => ready);
 
+// only run TelescopeControl in automatic mode
+IF CabinetControl.eTelescopeMode = E_TelescopeMode.automatic THEN
+	TelescopeControl(
+		telescopeConfig := telescopeConfig,	
+		fbCovers 		:= CoverControl, 
+		fbBrake 		:= HydraulicsControl, 
+		fbHydraulics 	:= HydraulicsControl, 
+		fbFocus 		:= FocusControl, 
+		fbElevation 	:= ElevationControl, 
+		fbAzimuth 		:= AzimuthControl, 
+		fbDerotator 	:= DerotatorControl
+	);
+END_IF
+
 // run all control FBs
-TelescopeControl(
-	telescopeConfig := telescopeConfig,	
-	fbCovers 		:= CoverControl, 
-	fbBrake 		:= HydraulicsControl, 
-	fbHydraulics 	:= HydraulicsControl, 
-	//fbFocus 		:= FocusControl, 
-	fbElevation 	:= ElevationControl, 
-	fbAzimuth 		:= AzimuthControl, 
-	fbDerotator 	:= DerotatorControl
-);
 CoverControl();
-PendantControl(
-	fbCovers 		:= CoverControl, 
-	fbBrake 		:= HydraulicsControl, 
-	fbHydraulics 	:= HydraulicsControl, 
-	fbFocus 		:= FocusControl, 
-	fbElevation 	:= ElevationControl, 
-	fbAzimuth 		:= AzimuthControl, 
-	fbDerotator 	:= DerotatorControl	
-);
 HydraulicsControl(
 	nMinPanLevel	:= 3000,
 	nMaxPanLevel	:= 10200,
@@ -121,7 +110,7 @@ DerotatorControl(
 	fMaxPosition		:= 300.0
 );	//
 FocusControl(
-	eTelescopeMode 	:= PendantControl.telescope_mode,
+	eTelescopeMode 	:= CabinetControl.eTelescopeMode,
 	fHomingPosition	:= 92.02, // 104.02 - 12.00
 );
 RoofControl(
@@ -133,6 +122,17 @@ RoofControl(
 	max_position_diff	:= 2,
 	limit_slowdown	:= 5
 );
+PendantControl(
+	fbCovers 		:= CoverControl, 
+	fbBrake 		:= HydraulicsControl, 
+	fbHydraulics 	:= HydraulicsControl, 
+	fbFocus 		:= FocusControl, 
+	fbElevation 	:= ElevationControl, 
+	fbAzimuth 		:= AzimuthControl, 
+	fbDerotator 	:= DerotatorControl	
+);
+
+// and comm
 comm(	
 	sHostName		:= '169.254.146.10',
     nHostPort  		:= 1883,
@@ -146,7 +146,7 @@ comm(
 // set control lights
 //error := Focuscontrol.Error OR CoverControl.Error OR HydraulicsControl.Error;
 error := CoverControl.Error OR HydraulicsControl.Error;
-CabinetControl.SetManualLamp(PendantControl.key_switch);
+CabinetControl.SetManualLamp(CabinetControl.eTelescopeMode = E_TelescopeMode.manual);
 
 // blink errors
 IF SafetyHandling.error THEN
@@ -178,15 +178,24 @@ END_IF
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="2072" Count="36" />
-      <LineId Id="2205" Count="0" />
-      <LineId Id="2185" Count="0" />
-      <LineId Id="2190" Count="5" />
-      <LineId Id="2186" Count="0" />
-      <LineId Id="2110" Count="1" />
-      <LineId Id="2199" Count="5" />
-      <LineId Id="2198" Count="0" />
-      <LineId Id="2196" Count="0" />
+      <LineId Id="2072" Count="16" />
+      <LineId Id="2096" Count="0" />
+      <LineId Id="2229" Count="0" />
+      <LineId Id="2208" Count="0" />
+      <LineId Id="2097" Count="5" />
+      <LineId Id="2225" Count="2" />
+      <LineId Id="2209" Count="0" />
+      <LineId Id="2231" Count="0" />
+      <LineId Id="2230" Count="0" />
+      <LineId Id="2232" Count="2" />
+      <LineId Id="2103" Count="2" />
+      <LineId Id="2211" Count="0" />
+      <LineId Id="2210" Count="0" />
+      <LineId Id="2212" Count="10" />
+      <LineId Id="2106" Count="0" />
+      <LineId Id="2223" Count="0" />
+      <LineId Id="2107" Count="0" />
+      <LineId Id="2110" Count="0" />
       <LineId Id="2112" Count="8" />
       <LineId Id="2188" Count="1" />
       <LineId Id="2121" Count="1" />
@@ -195,7 +204,10 @@ END_IF
       <LineId Id="2183" Count="1" />
       <LineId Id="2123" Count="1" />
       <LineId Id="2187" Count="0" />
-      <LineId Id="2126" Count="20" />
+      <LineId Id="2126" Count="13" />
+      <LineId Id="2236" Count="9" />
+      <LineId Id="2235" Count="0" />
+      <LineId Id="2140" Count="6" />
       <LineId Id="2207" Count="0" />
       <LineId Id="2147" Count="3" />
       <LineId Id="2206" Count="0" />

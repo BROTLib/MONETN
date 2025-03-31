@@ -5,12 +5,13 @@
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
+	eTelescopeMode 	: E_TelescopeMode;
 END_VAR
 VAR
 	inKeyRemote			AT%I*: BOOL;	//DIN3 0.2
-	inSwitchStart		AT%I*: BOOL;	//DIN4 0.3
-	inSwitchStop		AT%I*: BOOL;	//DIN5 0.4
-	inSwitchReset		AT%I*: BOOL;	//DIN8 0.7
+	inButtonStart		AT%I*: BOOL;	//DIN4 0.3
+	inButtonStop		AT%I*: BOOL;	//DIN5 0.4
+	inButtonReset		AT%I*: BOOL;	//DIN8 0.7
 	inCabinetTemp		AT%I*: INT;		//BT1	
 	inKeyClearBrakes	AT%I*: BOOL;	//DIN15 1.6
 	outLampPower		AT%Q*: BOOL;	//DOUT1 0.0
@@ -28,7 +29,10 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// check temperature
+      <ST><![CDATA[// telescope mode
+eTelescopeMode := SEL(inKeyRemote, E_TelescopeMode.automatic, E_TelescopeMode.manual);
+
+// check temperature
 cabinetTemp := INT_TO_REAL(inCabinetTemp) / 10.0;
 tempWarning(SET1 := cabinetTemp > 50.0, RESET := cabinetTemp < 40.0);
 tempCritical(SET1 := cabinetTemp > 60.0, RESET := cabinetTemp < 50.0);
@@ -100,7 +104,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IsResetPushed := inSwitchReset;]]></ST>
+        <ST><![CDATA[IsResetPushed := inButtonReset;]]></ST>
       </Implementation>
     </Method>
     <Method Name="IsStartPushed" Id="{1ca9b4ce-3543-45dd-a0d5-ec2fcef43780}">
@@ -109,7 +113,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IsStartPushed := inSwitchStart;]]></ST>
+        <ST><![CDATA[IsStartPushed := inButtonStart;]]></ST>
       </Implementation>
     </Method>
     <Method Name="IsStopPushed" Id="{2e5a1388-2bbb-4716-8012-08858212fbd5}">
@@ -118,7 +122,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IsStopPushed := NOT inSwitchStop;]]></ST>
+        <ST><![CDATA[IsStopPushed := NOT inButtonStop;]]></ST>
       </Implementation>
     </Method>
     <Method Name="SetBlinkError" Id="{f01ddc4d-dc53-44dc-b62c-672aa08804ee}">
@@ -152,7 +156,8 @@ END_VAR
       </Implementation>
     </Method>
     <LineIds Name="FB_CabinetControl">
-      <LineId Id="1" Count="31" />
+      <LineId Id="37" Count="33" />
+      <LineId Id="32" Count="0" />
     </LineIds>
     <LineIds Name="FB_CabinetControl.AreBreakesCleared">
       <LineId Id="1" Count="0" />

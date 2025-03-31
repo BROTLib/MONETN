@@ -3216,7 +3216,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{9A60D693-727A-3B1A-A5DD-002D0483FBCC}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{B12FC6D1-3FEA-9F61-59F8-F4A878915393}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -3441,17 +3441,17 @@ DOUT9 1.0]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CabinetControl.inSwitchStart</Name>
+							<Name>MAIN.CabinetControl.inButtonStart</Name>
 							<Comment><![CDATA[DIN4 0.3]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CabinetControl.inSwitchStop</Name>
+							<Name>MAIN.CabinetControl.inButtonStop</Name>
 							<Comment><![CDATA[DIN5 0.4]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CabinetControl.inSwitchReset</Name>
+							<Name>MAIN.CabinetControl.inButtonReset</Name>
 							<Comment><![CDATA[DIN8 0.7]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
@@ -12539,11 +12539,11 @@ DOUT9 1.0]]></Comment>
 				<Link VarA="PlcTask Outputs^MAIN.HydraulicsControl.ObBrakeAzEl" VarB="Channel 2^MAIN.HydraulicsControl.ObBrakeAzEl"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Front Panel IN (EL1008)">
+				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inButtonReset" VarB="Channel 3^MAIN.CabinetControl.inSwitchReset"/>
+				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inButtonStart" VarB="Channel 1^MAIN.CabinetControl.inSwitchStart"/>
+				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inButtonStop" VarB="Channel 2^MAIN.CabinetControl.inSwitchStop"/>
 				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inKeyClearBrakes" VarB="Channel 5^MAIN.CabinetControl.inKeyClearBrakes"/>
 				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inKeyRemote" VarB="Channel 4^MAIN.CabinetControl.inKeyRemote"/>
-				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inSwitchReset" VarB="Channel 3^MAIN.CabinetControl.inSwitchReset"/>
-				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inSwitchStart" VarB="Channel 1^MAIN.CabinetControl.inSwitchStart"/>
-				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inSwitchStop" VarB="Channel 2^MAIN.CabinetControl.inSwitchStop"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Front Panel OUT (EL2004)">
 				<Link VarA="PlcTask Outputs^MAIN.CabinetControl.outLampError" VarB="Channel 3^MAIN.CabinetControl.outLampError"/>
