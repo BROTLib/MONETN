@@ -58,13 +58,11 @@ IF CabinetControl.eTelescopeMode = E_TelescopeMode.manual THEN
 	IF CabinetControl.IsStopPushed() THEN
 		HydraulicsControl.Enable := FALSE;
 	END_IF
-	IF NOT CabinetControl.AreBreakesCleared() THEN
-		brakeClearing := FALSE;
-	END_IF
+	brakeClearing := NOT CabinetControl.AreBreakesCleared();
 END_IF
 
 // clear errors
-IF CabinetControl.IsResetPushed() OR PendantControl.reset_switch THEN
+IF CabinetControl.IsResetPushed() OR PendantControl.IbResetButton THEN
 	;
 END_IF
 
@@ -112,6 +110,7 @@ DerotatorControl(
 FocusControl(
 	eTelescopeMode 	:= CabinetControl.eTelescopeMode,
 	fHomingPosition	:= 92.02, // 104.02 - 12.00
+	fVelocity		:= 0.2
 );
 RoofControl(
 	min_speed		:= 10000,
@@ -183,7 +182,7 @@ END_IF
       <LineId Id="2229" Count="0" />
       <LineId Id="2208" Count="0" />
       <LineId Id="2097" Count="5" />
-      <LineId Id="2225" Count="2" />
+      <LineId Id="2225" Count="0" />
       <LineId Id="2209" Count="0" />
       <LineId Id="2231" Count="0" />
       <LineId Id="2230" Count="0" />
@@ -204,7 +203,9 @@ END_IF
       <LineId Id="2183" Count="1" />
       <LineId Id="2123" Count="1" />
       <LineId Id="2187" Count="0" />
-      <LineId Id="2126" Count="13" />
+      <LineId Id="2126" Count="3" />
+      <LineId Id="2246" Count="0" />
+      <LineId Id="2130" Count="9" />
       <LineId Id="2236" Count="9" />
       <LineId Id="2235" Count="0" />
       <LineId Id="2140" Count="6" />

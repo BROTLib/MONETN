@@ -8,7 +8,7 @@ VAR_OUTPUT
 	eTelescopeMode 	: E_TelescopeMode;
 END_VAR
 VAR
-	inKeyRemote			AT%I*: BOOL;	//DIN3 0.2
+	inKeyLocal			AT%I*: BOOL;	//DIN3 0.2
 	inButtonStart		AT%I*: BOOL;	//DIN4 0.3
 	inButtonStop		AT%I*: BOOL;	//DIN5 0.4
 	inButtonReset		AT%I*: BOOL;	//DIN8 0.7
@@ -30,7 +30,7 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// telescope mode
-eTelescopeMode := SEL(inKeyRemote, E_TelescopeMode.automatic, E_TelescopeMode.manual);
+eTelescopeMode := SEL(inKeyLocal, E_TelescopeMode.automatic, E_TelescopeMode.manual);
 
 // check temperature
 cabinetTemp := INT_TO_REAL(inCabinetTemp) / 10.0;
@@ -95,7 +95,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IsKeyOnManual := inKeyRemote;]]></ST>
+        <ST><![CDATA[IsKeyOnManual := inKeyLocal;]]></ST>
       </Implementation>
     </Method>
     <Method Name="IsResetPushed" Id="{c5f0543d-d2ee-4085-9cc6-f6a37ba59d95}">
@@ -156,7 +156,7 @@ END_VAR
       </Implementation>
     </Method>
     <LineIds Name="FB_CabinetControl">
-      <LineId Id="37" Count="33" />
+      <LineId Id="71" Count="33" />
       <LineId Id="32" Count="0" />
     </LineIds>
     <LineIds Name="FB_CabinetControl.AreBreakesCleared">
