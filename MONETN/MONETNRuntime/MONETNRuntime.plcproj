@@ -30,13 +30,13 @@
     <Compile Include="POUs\FB_CabinetControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\FB_MonetFocusControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\FB_MonetPendantControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\FB_PowerMonitoring.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FB_SafetyHandling.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
@@ -60,6 +60,9 @@
     <Compile Include="VISUs\Elevation.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="VISUs\FB_SafetyHandling.TcPOU">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="VISUs\Focus.TcVIS">
       <SubType>Code</SubType>

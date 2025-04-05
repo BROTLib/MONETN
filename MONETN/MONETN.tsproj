@@ -2619,6 +2619,7 @@ External Setpoint Generation:
 					</AxisPara>
 					<Encoder Name="Enc" EncType="4">
 						<EncPara ScaleFactorNumerator="0.001" ScaleFactorDenominator="5" MaxCount="#x0000ffff">
+							<SoftEndMinControl Range="15"/>
 							<SoftEndMaxControl Range="100"/>
 							<Inc RefMode="2" RefSoftSyncMask="#x0000ffff"/>
 						</EncPara>
@@ -2752,7 +2753,7 @@ External Setpoint Generation:
 					</Drive>
 					<Controller Name="Ctrl" CtrType="1">
 						<CtrPara PriorControlFactor="1">
-							<PID PosKp="20" CtrlOutputLimit="1"/>
+							<PID PosKp="150" CtrlOutputLimit="1"/>
 							<Observer BandWidth="20"/>
 						</CtrPara>
 					</Controller>
@@ -3216,7 +3217,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{E428BE88-F392-C064-D548-6C7AEC648A62}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{6CFAF5EB-C59C-BD14-EEAD-9C7C244239F3}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
