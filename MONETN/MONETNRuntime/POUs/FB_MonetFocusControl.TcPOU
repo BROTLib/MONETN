@@ -15,8 +15,6 @@ END_VAR
 VAR
 	bMoveAxis			: BOOL;		// move the axis to new position
 	ObFocusUnlock AT%Q* : BOOL;		// whether focus is unlocked
-	tonFocusDelay		: TON;
-	tonBrakeDelay		: TON;
 	fActualPosition		: LREAL;
 	tonMqttTimer 		: TON := (PT:=T#5S);
 	//getlastposition:	BOOL := TRUE;
@@ -49,29 +47,24 @@ fPosition := LIMIT(fMinPosition, fPosition, fMaxPosition);
 
 // focus is unlocked if enabled and no eror
 ObFocusUnlock := bEnable AND NOT bError;
+bFocusUnlocked := ObFocusUnlock;
 
-// wait until the focus is unlocked for n milliseconds
-tonFocusDelay(IN := ObFocusUnlock, PT := T#500MS, Q => bFocusUnlocked);
-// wait for brake until we are at rest
-tonBrakeDelay(IN := NOT fbAxis.Busy AND fbAxis.StandStill, PT := T#4000MS);
-
-// if we are on automatic mode then position the focus
-IF eTelescopeMode = E_TelescopeMode.automatic THEN
-	IF fbAxis.calibrated THEN
-		IF ABS(fPosition - fActualPosition) > fTolerance THEN
-			IF fbAxis.Ready THEN
-				bMoveAxis := TRUE;
-			END_IF
-		END_IF
-		// store actual position, if we are calibrated and locked
-		IF NOT ObFocusUnlock THEN
-			fLastPposition := fActualPosition;
-		END_IF
-	ELSE // not calibrated
+// position focus
+IF fbAxis.calibrated THEN
+	IF ABS(fPosition - fActualPosition) > fTolerance THEN
 		IF fbAxis.Ready THEN
-			bHomeAxis := TRUE;
+			bMoveAxis := TRUE;
 		END_IF
 	END_IF
+	// store actual position, if we are calibrated and locked
+	IF NOT ObFocusUnlock THEN
+		fLastPposition := fActualPosition;
+	END_IF
+END_IF
+
+// if we are on automatic mode, calibrate if necessary
+IF eTelescopeMode = E_TelescopeMode.automatic AND NOT fbAxis.calibrated AND fbAxis.Ready THEN
+	bHomeAxis := TRUE;
 END_IF
 
 IF bHomeAxis THEN
@@ -201,7 +194,7 @@ END_IF
       </Implementation>
     </Method>
     <LineIds Name="FB_MonetFocusControl">
-      <LineId Id="1" Count="103" />
+      <LineId Id="1" Count="98" />
     </LineIds>
     <LineIds Name="FB_MonetFocusControl.HandleEvents">
       <LineId Id="1" Count="14" />
