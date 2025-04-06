@@ -3217,7 +3217,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{6CFAF5EB-C59C-BD14-EEAD-9C7C244239F3}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{B9F44CA3-586F-6CFF-C17F-7F70523FC4E3}" TmcPath="MONETNRuntime\MONETNRuntime.tmc">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -3250,23 +3250,18 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.PendantControl.ObLampUp</Name>
+							<Name>MAIN.CabinetControl.outLampPower</Name>
+							<Comment><![CDATA[DOUT1 0.0]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.PendantControl.ObLampDown</Name>
+							<Name>MAIN.CabinetControl.outLampManual</Name>
+							<Comment><![CDATA[DOUT2 0.1]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.PendantControl.ObLampRight</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.PendantControl.ObLampLeft</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.PendantControl.ObLampError</Name>
+							<Name>MAIN.CabinetControl.outLampError</Name>
+							<Comment><![CDATA[DOUT3 0.2	]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3392,18 +3387,23 @@ External Setpoint Generation:
 							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CabinetControl.outLampPower</Name>
-							<Comment><![CDATA[DOUT1 0.0]]></Comment>
+							<Name>MAIN.PendantControl.ObLampUp</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CabinetControl.outLampManual</Name>
-							<Comment><![CDATA[DOUT2 0.1]]></Comment>
+							<Name>MAIN.PendantControl.ObLampDown</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CabinetControl.outLampError</Name>
-							<Comment><![CDATA[DOUT3 0.2	]]></Comment>
+							<Name>MAIN.PendantControl.ObLampRight</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.ObLampLeft</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.ObLampError</Name>
 							<Type>BOOL</Type>
 						</Var>
 					</Vars>
@@ -3431,48 +3431,33 @@ External Setpoint Generation:
 							<Type GUID="{09C911EB-69BC-418A-FB6C-0128FB138416}" Namespace="BROTLib">ST_InfoDataConnection</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.PendantControl.IbBCD0</Name>
-							<Comment><![CDATA[DIN17 2.0]]></Comment>
+							<Name>MAIN.CabinetControl.inKeyLocal</Name>
+							<Comment><![CDATA[DIN3 0.2]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.PendantControl.IbBCD2</Name>
+							<Name>MAIN.CabinetControl.inButtonStart</Name>
+							<Comment><![CDATA[DIN4 0.3]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.PendantControl.IbBCD4</Name>
+							<Name>MAIN.CabinetControl.inButtonStop</Name>
+							<Comment><![CDATA[DIN5 0.4]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.PendantControl.IbBCD8</Name>
+							<Name>MAIN.CabinetControl.inButtonReset</Name>
+							<Comment><![CDATA[DIN8 0.7]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.PendantControl.IbResetButton</Name>
-							<Type>BOOL</Type>
+							<Name>MAIN.CabinetControl.inCabinetTemp</Name>
+							<Comment><![CDATA[BT1	]]></Comment>
+							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.PendantControl.IbDirectionUp</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.PendantControl.IbDirectionDown</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.PendantControl.IbEnableKey</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.PendantControl.IbEnableButton</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.PendantControl.IbDirectionLeft</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.PendantControl.IbDirectionRight</Name>
+							<Name>MAIN.CabinetControl.inKeyClearBrakes</Name>
+							<Comment><![CDATA[DIN15 1.6]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3817,33 +3802,48 @@ External Setpoint Generation:
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CabinetControl.inKeyLocal</Name>
-							<Comment><![CDATA[DIN3 0.2]]></Comment>
+							<Name>MAIN.PendantControl.IbBCD0</Name>
+							<Comment><![CDATA[DIN17 2.0]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CabinetControl.inButtonStart</Name>
-							<Comment><![CDATA[DIN4 0.3]]></Comment>
+							<Name>MAIN.PendantControl.IbBCD2</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CabinetControl.inButtonStop</Name>
-							<Comment><![CDATA[DIN5 0.4]]></Comment>
+							<Name>MAIN.PendantControl.IbBCD4</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CabinetControl.inButtonReset</Name>
-							<Comment><![CDATA[DIN8 0.7]]></Comment>
+							<Name>MAIN.PendantControl.IbBCD8</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CabinetControl.inCabinetTemp</Name>
-							<Comment><![CDATA[BT1	]]></Comment>
-							<Type>INT</Type>
+							<Name>MAIN.PendantControl.IbResetButton</Name>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.CabinetControl.inKeyClearBrakes</Name>
-							<Comment><![CDATA[DIN15 1.6]]></Comment>
+							<Name>MAIN.PendantControl.IbDirectionUp</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.IbDirectionDown</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.IbEnableKey</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.IbEnableButton</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.IbDirectionLeft</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.PendantControl.IbDirectionRight</Name>
 							<Type>BOOL</Type>
 						</Var>
 					</Vars>

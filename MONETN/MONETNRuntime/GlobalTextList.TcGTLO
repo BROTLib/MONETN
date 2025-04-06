@@ -436,6 +436,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"1197"</v>
+              <v n="TextDefault">"Open/Close"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"186"</v>
               <v n="TextDefault">"Opening"</v>
               <l n="LanguageTexts" t="ArrayList" />

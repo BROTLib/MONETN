@@ -18,7 +18,7 @@ VAR
 	PowerMonitoring		: FB_PowerMonitoring(comm := comm);
 	RoofControl			: FB_RoofControl(comm := comm);
 	CoverControl		: FB_CoverControl(comm := comm);
-	HydraulicsControl	: FB_HydraulicsControl(comm := comm);
+	HydraulicsControl	: FB_MonetHydraulicsControl(comm := comm);
 	FocusControl		: FB_FocusControl(comm := comm);
 	DerotatorControl	: FB_DerotatorControl(comm := comm);
 	ElevationControl	: FB_ElevationControl(comm := comm);
@@ -58,7 +58,8 @@ IF CabinetControl.eTelescopeMode = E_TelescopeMode.manual THEN
 	IF CabinetControl.IsStopPushed() THEN
 		HydraulicsControl.Enable := FALSE;
 	END_IF
-	brakeClearing := NOT CabinetControl.AreBreakesCleared();
+	brakeClearing := CabinetControl.AreBreakesCleared();
+	HydraulicsControl.bOpenBrake := brakeClearing;
 END_IF
 
 // clear errors
@@ -183,6 +184,7 @@ END_IF
       <LineId Id="2208" Count="0" />
       <LineId Id="2097" Count="5" />
       <LineId Id="2225" Count="0" />
+      <LineId Id="2248" Count="0" />
       <LineId Id="2209" Count="0" />
       <LineId Id="2231" Count="0" />
       <LineId Id="2230" Count="0" />

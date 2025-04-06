@@ -30,6 +30,9 @@
     <Compile Include="POUs\FB_CabinetControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\FB_MonetHydraulicsControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\FB_MonetFocusControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
