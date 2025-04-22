@@ -16,15 +16,15 @@
         <AxisSetting Channel="0">
           <Property>
             <Name>Feedback1Connector0</Name>
-            <Value>41</Value>
+            <Value>3</Value>
           </Property>
           <Property>
             <Name>Feedback1Connector1</Name>
-            <Value>41</Value>
+            <Value>3</Value>
           </Property>
           <Property>
             <Name>Feedback1Connector2</Name>
-            <Value>41</Value>
+            <Value>3</Value>
           </Property>
           <Property>
             <Name>NcFeedConstant</Name>
@@ -235,7 +235,7 @@
         <InitCmd DriveNo="0" IDN="32918" MotorDataLevel="1" DisableMode="0" />
         <InitCmd DriveNo="0" IDN="32922" MotorDataLevel="1" DisableMode="0" />
         <InitCmd DriveNo="0" IDN="33088" MotorDataLevel="0" DisableMode="0">
-          <RetainData>24002400d6000600ca0002002c9d5b002c9d5b00c8000500660000001b534c002260000000000000</RetainData>
+          <RetainData>24002400d6000600ca0002002c9d5b002c9d5b000000000000000000000000002260000000000000</RetainData>
         </InitCmd>
         <InitCmd DriveNo="0" IDN="33093" MotorDataLevel="0" DisableMode="0">
           <RetainData>160016004a756e2020322032303232202c2031363a32303a3538</RetainData>
@@ -372,9 +372,11 @@
       <Name>Azimuth (AX5125-0000-0214)</Name>
       <FirmwareVersion>Firmware: v2.14 (Build 0006) / Bootloader: v2.02 (Build 0002)</FirmwareVersion>
       <CatalogNo>AX5125-0000-0214</CatalogNo>
-      <HardwareVersion>c:0180  p:0103  d:0102  f:0101  o:0101  s:----</HardwareVersion>
+      <HardwareVersion>c:0180  p:0103  d:0102  f:0101  o:----  s:----</HardwareVersion>
       <SerialNr>Serial#: 000530596</SerialNr>
       <ProductRevision>AX5125-0000-0214</ProductRevision>
+      <HasDualUseInfo>true</HasDualUseInfo>
+      <OperatingFrequencyLimitation>true</OperatingFrequencyLimitation>
       <WatchLog UpdateIntervalInMs="500">
         <WatchLogItem>
           <WatchLogParaSoE Index="33092" />
@@ -1376,7 +1378,7 @@
         </Send>
         <Recv>
           <BitStart>576</BitStart>
-          <BitLength>224</BitLength>
+          <BitLength>272</BitLength>
         </Recv>
         <Sm2>
           <Type>Outputs</Type>
@@ -1542,6 +1544,36 @@
               <Length>4</Length>
             </AdsInfo>
           </Entry>
+          <Entry>
+            <Index>#x8321</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>16</BitLen>
+            <Name>Digital inputs, state</Name>
+            <DataType>INT</DataType>
+            <AdsInfo>
+              <AmsAddress>
+                <AmsPort>27910</AmsPort>
+              </AmsAddress>
+              <IndexGroup>61488</IndexGroup>
+              <IndexOffset>100</IndexOffset>
+              <Length>2</Length>
+            </AdsInfo>
+          </Entry>
+          <Entry>
+            <Index>#x186</Index>
+            <SubIndex>0</SubIndex>
+            <BitLen>32</BitLen>
+            <Name>Diagnostic number</Name>
+            <DataType>UDINT</DataType>
+            <AdsInfo>
+              <AmsAddress>
+                <AmsPort>27910</AmsPort>
+              </AmsAddress>
+              <IndexGroup>61488</IndexGroup>
+              <IndexOffset>102</IndexOffset>
+              <Length>4</Length>
+            </AdsInfo>
+          </Entry>
         </TxPdo>
         <RxPdo Mandatory="true" Sm="2">
           <Index>#x18</Index>
@@ -1641,7 +1673,7 @@
               <IDN>16</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>100010003300bd008200990183009a0154002800</Data>
+              <Data>140014003300bd008200990183009a015400280021838601</Data>
             </InitCmd>
             <InitCmd Fixed="true">
               <Transition>PS</Transition>
@@ -1795,7 +1827,7 @@
               <IDN>169</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>2300</Data>
+              <Data>2101</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -1817,7 +1849,7 @@
               <IDN>33019</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>080008000000090001000000</Data>
+              <Data>080008000000080001000000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -1839,7 +1871,7 @@
               <IDN>32933</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>3c003c000100000064000000f401b80b0000000000000000f4016400f401f40104000500e1009600b80b84030000000000000000000000000000000000000000</Data>
+              <Data>3c003c000100000064000000f401b80b0000000000000000f401e803f401f40104000500e1009600b80b84030000000000000000000000000000000000000000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -1883,7 +1915,7 @@
               <IDN>32918</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>e000e00000000000556e6b6e23315670702d3336303030532d35560000000000000000000000000000000000000000000200200329000000000000000100290000000000a08c000000000000e8030000e8030000000000000000000000000000000000000000000000000000000029000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</Data>
+              <Data>e000e00000000000556e6b6e23315670702d3336303030532d35560000000000000000000000000000000000000000000200200303000000000000000100030000000000a08c000000000000e8030000e8030000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2620,7 +2652,7 @@
           <Cmd>5</Cmd>
           <Adp>1001</Adp>
           <Ado>2072</Ado>
-          <Data>00111c0022000100</Data>
+          <Data>0011220022000100</Data>
           <Cnt>1</Cnt>
           <Retries>3</Retries>
         </InitCmd>
@@ -2640,7 +2672,7 @@
           <Cmd>5</Cmd>
           <Adp>1001</Adp>
           <Ado>1552</Ado>
-          <Data>000000011c0000070011000101000000</Data>
+          <Data>00000001220000070011000101000000</Data>
           <Cnt>1</Cnt>
           <Retries>3</Retries>
         </InitCmd>
@@ -2906,6 +2938,9 @@
           </Validate>
         </InitCmd>
       </InitCmds>
+      <SyncUnits>
+        <SyncUnit>Drives1</SyncUnit>
+      </SyncUnits>
       <DC>
         <PotentialReferenceClock>false</PotentialReferenceClock>
         <TimeLoopControlOnly>false</TimeLoopControlOnly>

@@ -7,7 +7,7 @@ VAR_INPUT
 	fbCovers			: REFERENCE TO FB_CoverControl;
 	fbBrake				: REFERENCE TO FB_MonetHydraulicsControl;
 	fbHydraulics		: REFERENCE TO FB_MonetHydraulicsControl;
-	fbFocus		 		: REFERENCE TO FB_MonetFocusControl;
+	fbFocus		 		: REFERENCE TO FB_FocusControl;
 	fbElevation			: REFERENCE TO FB_ElevationControl;
 	fbAzimuth	 		: REFERENCE TO FB_AzimuthControl;
 	fbDerotator			: REFERENCE TO FB_DerotatorControl;

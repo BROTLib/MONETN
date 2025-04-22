@@ -4,9 +4,6 @@
     <Declaration><![CDATA[FUNCTION_BLOCK FB_CabinetControl
 VAR_INPUT
 END_VAR
-VAR_OUTPUT
-	eTelescopeMode 	: E_TelescopeMode;
-END_VAR
 VAR
 	inKeyLocal			AT%I*: BOOL;	//DIN3 0.2
 	inButtonStart		AT%I*: BOOL;	//DIN4 0.3
@@ -29,10 +26,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// telescope mode
-eTelescopeMode := SEL(inKeyLocal, E_TelescopeMode.automatic, E_TelescopeMode.manual);
-
-// check temperature
+      <ST><![CDATA[// check temperature
 cabinetTemp := INT_TO_REAL(inCabinetTemp) / 10.0;
 tempWarning(SET1 := cabinetTemp > 50.0, RESET := cabinetTemp < 40.0);
 tempCritical(SET1 := cabinetTemp > 60.0, RESET := cabinetTemp < 50.0);
@@ -125,6 +119,17 @@ END_VAR
         <ST><![CDATA[IsStopPushed := NOT inButtonStop;]]></ST>
       </Implementation>
     </Method>
+    <Property Name="KeyLocal" Id="{ad8e8c92-5a56-4bc4-94dd-dcc3a456a9f1}">
+      <Declaration><![CDATA[PROPERTY KeyLocal : BOOL]]></Declaration>
+      <Get Name="Get" Id="{8be1cdac-bba1-4a4a-bac4-cea38f645137}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[KeyLocal := inKeyLocal;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
     <Method Name="SetBlinkError" Id="{f01ddc4d-dc53-44dc-b62c-672aa08804ee}">
       <Declaration><![CDATA[METHOD PUBLIC SetBlinkError : BOOL
 VAR_INPUT
@@ -156,7 +161,7 @@ END_VAR
       </Implementation>
     </Method>
     <LineIds Name="FB_CabinetControl">
-      <LineId Id="71" Count="33" />
+      <LineId Id="74" Count="30" />
       <LineId Id="32" Count="0" />
     </LineIds>
     <LineIds Name="FB_CabinetControl.AreBreakesCleared">
@@ -175,6 +180,9 @@ END_VAR
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="FB_CabinetControl.IsStopPushed">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CabinetControl.KeyLocal.Get">
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="FB_CabinetControl.SetBlinkError">
