@@ -45,6 +45,9 @@
     <Compile Include="POUs\FB_MonetTelescopeControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\FB_SafetyHandling.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -66,9 +69,6 @@
     <Compile Include="VISUs\Elevation.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="VISUs\FB_SafetyHandling.TcPOU">
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="VISUs\Focus.TcVIS">
       <SubType>Code</SubType>
