@@ -95,7 +95,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.AzimuthControl.bEnable"</v>
+                          <v n="Value">"MAIN.CoverControl.bOpen"</v>
                         </o>
                       </l>
                     </o>
@@ -197,7 +197,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.AzimuthControl.bReset"</v>
+                          <v n="Value">"MAIN.CoverControl.bClose"</v>
                         </o>
                       </l>
                     </o>
@@ -291,7 +291,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.AzimuthControl.bReady"</v>
+                          <v n="Value">"MAIN.CoverControl.bAllClosed"</v>
                         </o>
                       </l>
                     </o>
@@ -385,7 +385,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.AzimuthControl.bCalibrated"</v>
+                          <v n="Value">"MAIN.CoverControl.bAllOpen"</v>
                         </o>
                       </l>
                     </o>
@@ -1003,7 +1003,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.AzimuthControl.bReset"</v>
+                          <v n="Value">"MAIN.CoverControl.bReset"</v>
                         </o>
                       </l>
                     </o>
@@ -1097,7 +1097,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.AzimuthControl.bHomeAxis"</v>
+                          <v n="Value">"MAIN.CoverControl.bWarning"</v>
                         </o>
                       </l>
                     </o>
@@ -1188,6 +1188,10 @@
                         <o>
                           <v n="Id">2597686782L</v>
                           <v n="Value">false</v>
+                        </o>
+                        <o>
+                          <v n="Id">743958181L</v>
+                          <v n="Value">"MAIN.CoverControl.bError"</v>
                         </o>
                       </l>
                     </o>

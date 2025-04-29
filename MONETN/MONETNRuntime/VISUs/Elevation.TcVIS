@@ -289,6 +289,10 @@
                           <v n="Id">2597686782L</v>
                           <v n="Value">false</v>
                         </o>
+                        <o>
+                          <v n="Id">743958181L</v>
+                          <v n="Value">"MAIN.ElevationControl.bError"</v>
+                        </o>
                       </l>
                     </o>
                     <v n="VisualElementName">"Lamp1"</v>
@@ -2684,6 +2688,10 @@
                           <v n="Id">2597686782L</v>
                           <v n="Value">false</v>
                         </o>
+                        <o>
+                          <v n="Id">743958181L</v>
+                          <v n="Value">"MAIN.ElevationControl.bMoveNeg"</v>
+                        </o>
                       </l>
                     </o>
                     <v n="VisualElementName">"PushSwitch"</v>
@@ -2781,6 +2789,10 @@
                         <o>
                           <v n="Id">2597686782L</v>
                           <v n="Value">false</v>
+                        </o>
+                        <o>
+                          <v n="Id">743958181L</v>
+                          <v n="Value">"MAIN.ElevationControl.bMovePos"</v>
                         </o>
                       </l>
                     </o>
@@ -2880,6 +2892,10 @@
                           <v n="Id">2597686782L</v>
                           <v n="Value">false</v>
                         </o>
+                        <o>
+                          <v n="Id">743958181L</v>
+                          <v n="Value">"MAIN.ElevationControl.bMoveAxis"</v>
+                        </o>
                       </l>
                     </o>
                     <v n="VisualElementName">"DipSwitch"</v>
@@ -2964,7 +2980,7 @@
                         </o>
                         <o>
                           <v n="Id">390574330L</v>
-                          <v n="Value">"Velocity"</v>
+                          <v n="Value">"-"</v>
                         </o>
                         <o>
                           <v n="Id">3729828405L</v>
@@ -3007,7 +3023,7 @@
                         </o>
                         <o>
                           <v n="Id">823443203L</v>
-                          <v n="Value">"67"</v>
+                          <v n="Value">"114"</v>
                         </o>
                       </l>
                     </o>
@@ -3093,7 +3109,7 @@
                         </o>
                         <o>
                           <v n="Id">390574330L</v>
-                          <v n="Value">"Velocity"</v>
+                          <v n="Value">"+"</v>
                         </o>
                         <o>
                           <v n="Id">3729828405L</v>
@@ -3136,7 +3152,7 @@
                         </o>
                         <o>
                           <v n="Id">823443203L</v>
-                          <v n="Value">"67"</v>
+                          <v n="Value">"78"</v>
                         </o>
                       </l>
                     </o>
@@ -3222,7 +3238,7 @@
                         </o>
                         <o>
                           <v n="Id">390574330L</v>
-                          <v n="Value">"Velocity"</v>
+                          <v n="Value">"Move"</v>
                         </o>
                         <o>
                           <v n="Id">3729828405L</v>
@@ -3265,7 +3281,7 @@
                         </o>
                         <o>
                           <v n="Id">823443203L</v>
-                          <v n="Value">"67"</v>
+                          <v n="Value">"712"</v>
                         </o>
                       </l>
                     </o>
@@ -3776,8 +3792,12 @@
                 <v>9154e9b0-c830-4526-a319-15668d9fbb90</v>
                 <v>HasInputAccess</v>
                 <v>a9bd8a7b-b262-4358-b3e7-ec97b6186f02</v>
+                <v>HasInputAccessIntern</v>
+                <v>879c8a38-aac6-4992-8662-a61d831e150f</v>
                 <v>HasVisibilityAccess</v>
                 <v>4c25983d-f60e-419e-a055-86610f5dba19</v>
+                <v>HasVisibilityAccessIntern</v>
+                <v>83c2c5c3-fd5c-4439-b1ce-3dab2e2cb706</v>
                 <v>Initialize</v>
                 <v>bb778577-8265-4510-9ed1-d7453fcd86bb</v>
                 <v>IsAntialiasingInactive</v>

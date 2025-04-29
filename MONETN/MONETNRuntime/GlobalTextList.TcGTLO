@@ -376,6 +376,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"712"</v>
+              <v n="TextDefault">"Move"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"466"</v>
               <v n="TextDefault">"Movement"</v>
               <l n="LanguageTexts" t="ArrayList" />
