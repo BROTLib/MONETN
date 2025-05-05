@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_TelescopeControl2" Id="{eddbf876-a986-4fe1-ba5b-16d782882b92}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TelescopeControl2
+VAR_INPUT
+	fbMachine	: FB_TelescopeMachine;
+	bInit		: BOOL;
+	bPark		: BOOL;
+	bSlew		: BOOL;
+	bTrack		: BOOL;
+	bStop		: BOOL;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbMachine(
+	bInit	:= bInit,
+	bPark	:= bPark,
+	bSlew 	:= bSlew,
+	bTrack 	:= bTrack,
+	bStop 	:= bStop
+);
+
+bInit	:= FALSE;
+bPark	:= FALSE;
+bSlew 	:= FALSE;
+bTrack 	:= FALSE;
+bStop 	:= FALSE;
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_TelescopeControl2">
+      <LineId Id="25" Count="0" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="26" Count="2" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="37" Count="3" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
