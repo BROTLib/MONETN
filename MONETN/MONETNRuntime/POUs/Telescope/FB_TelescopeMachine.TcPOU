@@ -8,24 +8,23 @@ VAR_INPUT
 	bSlew				: BOOL;
 	bTrack				: BOOL;
 	bStop				: BOOL;
+	
+	fbParkedState		: I_TelescopeState;
+	fbInitializingState	: I_TelescopeState;
+	fbParkingState		: I_TelescopeState;
+	fbIdleState			: I_TelescopeState;
+	fbSlewingState		: I_TelescopeState;
+	fbTrackingState		: I_TelescopeState;
 END_VAR
 VAR_OUTPUT
-	ipState				: I_TelescopeState := fbOffState; 
+	ipState				: I_TelescopeState := fbParkedState; 
 END_VAR	
-VAR
-	fbOffState			: FB_TelescopeOffState(THIS);
-	fbInitializingState	: FB_TelescopeInitializingState(THIS);
-	fbParkingState		: FB_TelescopeParkingState(THIS);
-	fbIdleState			: FB_TelescopeIdleState(THIS);
-	fbSlewingState		: FB_TelescopeSlewingState(THIS);
-	fbTrackingState		: FB_TelescopeTrackingState(THIS);
-	
+VAR	
 	rtrigInit			: R_TRIG;
 	rtrigPark			: R_TRIG;
 	rtrigSlew			: R_TRIG;
 	rtrigTrack			: R_TRIG;
 	rtrigStop			: R_TRIG;
-	
 END_VAR
 ]]></Declaration>
     <Implementation>

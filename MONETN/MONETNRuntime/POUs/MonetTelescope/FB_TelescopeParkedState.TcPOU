@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
-  <POU Name="FB_TelescopeOffState" Id="{fee317fb-bf48-4714-9d76-2e33fa60c6a5}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK FB_TelescopeOffState EXTENDS FB_TelescopeState
+  <POU Name="FB_TelescopeParkedState" Id="{fee317fb-bf48-4714-9d76-2e33fa60c6a5}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TelescopeParkedState EXTENDS FB_TelescopeState
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
@@ -34,13 +34,13 @@ END_VAR
         <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
-    <LineIds Name="FB_TelescopeOffState">
+    <LineIds Name="FB_TelescopeParkedState">
       <LineId Id="9" Count="0" />
     </LineIds>
-    <LineIds Name="FB_TelescopeOffState.FB_init">
+    <LineIds Name="FB_TelescopeParkedState.FB_init">
       <LineId Id="7" Count="0" />
     </LineIds>
-    <LineIds Name="FB_TelescopeOffState.Initialize">
+    <LineIds Name="FB_TelescopeParkedState.Initialize">
       <LineId Id="5" Count="0" />
     </LineIds>
   </POU>
