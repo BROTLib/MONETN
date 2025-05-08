@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
   <POU Name="MAIN" Id="{0fe844df-7078-44d3-bc48-268e6c994874}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -19,7 +19,7 @@ VAR
 	CabinetControl		: FB_CabinetControl(comm := comm);
 	PowerMonitoring		: FB_PowerMonitoring(comm := comm);
 	RoofControl			: FB_RoofControl(comm := comm);
-	CoverControl		: FB_CoverControl(comm := comm);
+	CoverControl		: FB_MonetCoverControl(comm := comm);
 	HydraulicsControl	: FB_MonetHydraulicsControl(comm := comm);
 	FocusControl		: FB_FocusControl(comm := comm);
 	DerotatorControl	: FB_DerotatorControl(comm := comm);

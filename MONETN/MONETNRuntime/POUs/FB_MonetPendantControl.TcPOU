@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
   <POU Name="FB_MonetPendantControl" Id="{e2b10f6c-d16d-4403-9ebe-8d8a369c8dbd}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_MonetPendantControl
 VAR_INPUT
 	eTelescopeMode		: E_TelescopeMode;
-	fbCovers			: REFERENCE TO FB_CoverControl;
+	fbCovers			: REFERENCE TO FB_MonetCoverControl;
 	fbBrake				: REFERENCE TO FB_MonetHydraulicsControl;
 	fbHydraulics		: REFERENCE TO FB_MonetHydraulicsControl;
 	fbFocus		 		: REFERENCE TO FB_FocusControl;
@@ -93,12 +93,12 @@ END_IF
 // enable only the selected item and connect lamps and buttons accordingly
 CASE nSelection OF
 	1, 2, 3:	// reserved for Cover 1-3 control
-		ObLampUp := fbCovers.IabCoverOpen[nSelection];
-		ObLampDown := fbCovers.IabCoverClosed[nSelection];
+		ObLampUp := fbCovers.Opened;
+		ObLampDown := fbCovers.Closed;
 		IF IbEnableKey THEN
-			fbCovers.OabOpenCover[nSelection] := IbDirectionUp AND fbCovers.IabCoverOpen[nSelection];
-			fbCovers.OabCloseCover[nSelection] := IbDirectionDown AND fbCovers.IabCoverClosed[nSelection];
-			ObLampError := fbCovers.abCoverError[nSelection];	
+			fbCovers.bOpen := IbDirectionUp AND fbCovers.Opened;
+			fbCovers.bClose := IbDirectionDown AND fbCovers.Closed;
+			ObLampError := fbCovers.bError;	
 		ELSE
 			IF IbDirectionDown THEN 
 				fbCovers.Close();
