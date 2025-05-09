@@ -1785,7 +1785,7 @@
                         </o>
                         <o>
                           <v n="Id">4062784938L</v>
-                          <v n="Value">"Element-Lamp-Lamp1-Red"</v>
+                          <v n="Value">"Element-Lamp-Lamp1-Yellow"</v>
                         </o>
                         <o>
                           <v n="Id">493260384L</v>
@@ -5346,7 +5346,7 @@
               <o>
                 <v n="Id">2L</v>
                 <n n="Tag" />
-                <v n="Text">"4096VAR_IN_OUT"</v>
+                <v n="Text">"VAR_IN_OUT"</v>
               </o>
               <o>
                 <v n="Id">3L</v>
