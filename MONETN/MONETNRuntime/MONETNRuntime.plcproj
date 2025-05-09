@@ -21,6 +21,9 @@
     <GlobalVersionStructureIncluded>false</GlobalVersionStructureIncluded>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Components\FB_MonetCoverControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
@@ -51,7 +54,37 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Telescope\FB_TelescopeStateMachine.TcPOU">
+    <Compile Include="POUs\Telescope\E_TelescopeState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\FB_TelescopeControl2.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\FB_TelescopeIdleState.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\FB_TelescopeInitializingState.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\FB_TelescopeMachine.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\FB_TelescopeOffState.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\FB_TelescopeParkingState.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\FB_TelescopeSlewingState.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\FB_TelescopeState.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\FB_TelescopeTrackingState.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\I_TelescopeState.TcIO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="VisualizationManager.TcVMO">
@@ -105,6 +138,7 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="Components" />
     <Folder Include="POUs\Telescope" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />

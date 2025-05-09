@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_TelescopeMachine" Id="{d878fe8e-6ab3-467d-9898-60a0958e8303}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TelescopeMachine
+VAR_INPUT
+	bInit				: BOOL;
+	bPark				: BOOL;
+	bSlew				: BOOL;
+	bTrack				: BOOL;
+	bStop				: BOOL;
+END_VAR
+VAR_OUTPUT
+	ipState				: I_TelescopeState := fbOffState; 
+END_VAR	
+VAR
+	fbOffState			: FB_TelescopeOffState(THIS);
+	fbInitializingState	: FB_TelescopeInitializingState(THIS);
+	fbParkingState		: FB_TelescopeParkingState(THIS);
+	fbIdleState			: FB_TelescopeIdleState(THIS);
+	fbSlewingState		: FB_TelescopeSlewingState(THIS);
+	fbTrackingState		: FB_TelescopeTrackingState(THIS);
+	
+	rtrigInit			: R_TRIG;
+	rtrigPark			: R_TRIG;
+	rtrigSlew			: R_TRIG;
+	rtrigTrack			: R_TRIG;
+	rtrigStop			: R_TRIG;
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[	rtrigInit(CLK := bInit);
+	rtrigPark(CLK := bPark);
+	rtrigSlew(CLK := bSlew);
+	rtrigTrack(CLK := bTrack);
+	rtrigStop(CLK := bStop);
+	
+	IF rtrigInit.Q THEN
+		ipState.Initialize();
+	END_IF
+	
+	IF rtrigPark.Q THEN
+		ipState.Park();
+	END_IF
+	
+	IF rtrigSlew.Q THEN
+		ipState.Slew(0, 0);
+	END_IF
+	
+	IF rtrigTrack.Q THEN
+		ipState.Track(0, 0);
+	END_IF
+	
+	IF rtrigStop.Q THEN
+		ipState.Stop();
+	END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="FB_TelescopeMachine">
+      <LineId Id="37" Count="3" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="41" Count="19" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

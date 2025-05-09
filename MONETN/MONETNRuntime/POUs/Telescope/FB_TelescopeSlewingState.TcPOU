@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_TelescopeSlewingState" Id="{edf837d7-00f7-4665-86d4-0431da6cffec}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TelescopeSlewingState EXTENDS FB_TelescopeState
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	pMachine : POINTER TO FB_TelescopeMachine;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="FB_init" Id="{7b51a5dc-97b4-45ed-9e5c-4aa95e9a2bef}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+	bInCopyCode : BOOL;  // if TRUE, the instance afterwards gets moved into the copy code (online change)
+	pMachine : POINTER TO FB_TelescopeMachine;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^.pMachine := pMachine;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Park" Id="{b917d2c7-d098-4540-9842-edfdeaaf0bcd}">
+      <Declaration><![CDATA[METHOD Park : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Slew" Id="{0f710bfe-2197-4b37-849c-9bf1417623c0}">
+      <Declaration><![CDATA[METHOD Slew : BOOL
+VAR_INPUT
+	fAzimuth	: LREAL;
+	fAltitude	: LREAL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Stop" Id="{e027a8c8-3486-40d1-a1fe-d2068ce4d75f}">
+      <Declaration><![CDATA[METHOD Stop : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Track" Id="{e3d5ebbe-9256-4180-9dd6-2ad33d746f90}">
+      <Declaration><![CDATA[METHOD Track : BOOL
+VAR_INPUT
+	fRightAscension	: LREAL;
+	fDeclination	: LREAL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_TelescopeSlewingState">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_TelescopeSlewingState.FB_init">
+      <LineId Id="7" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_TelescopeSlewingState.Park">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_TelescopeSlewingState.Slew">
+      <LineId Id="7" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_TelescopeSlewingState.Stop">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_TelescopeSlewingState.Track">
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
