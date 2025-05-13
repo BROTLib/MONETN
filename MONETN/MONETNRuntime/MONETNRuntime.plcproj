@@ -54,10 +54,16 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\MonetTelescope\FB_MonetTelescopeControl2.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Telescope\E_TelescopeState.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Telescope\FB_TelescopeControl2.TcPOU">
+    <Compile Include="POUs\Telescope\FB_AltAzTelescopeControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\FB_BaseTelescopeControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Telescope\FB_TelescopeIdleState.TcPOU">
@@ -69,7 +75,7 @@
     <Compile Include="POUs\Telescope\FB_TelescopeMachine.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Telescope\FB_TelescopeOffState.TcPOU">
+    <Compile Include="POUs\Telescope\FB_TelescopeParkedState.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Telescope\FB_TelescopeParkingState.TcPOU">
@@ -139,6 +145,7 @@
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
     <Folder Include="Components" />
+    <Folder Include="POUs\MonetTelescope" />
     <Folder Include="POUs\Telescope" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
