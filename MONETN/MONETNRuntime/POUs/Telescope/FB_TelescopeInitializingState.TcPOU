@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_TelescopeInitializingState" Id="{10605cd4-f7cc-4286-ab4b-dec57477668d}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_TelescopeInitializingState EXTENDS FB_TelescopeState
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// run until initialized
+IF pMachine^.pControl^._Initialize() THEN
+	// change to idle state
+	pMachine^.SetState(pMachine^.fbIdleState);
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="FB_TelescopeInitializingState">
+      <LineId Id="21" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

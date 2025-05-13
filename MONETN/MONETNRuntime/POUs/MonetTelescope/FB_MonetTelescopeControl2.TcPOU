@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_MonetTelescopeControl2" Id="{392c90d3-a441-4c8d-a752-42b25b49f5cd}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_MonetTelescopeControl2 EXTENDS FB_AltAzTelescopeControl
+VAR_INPUT
+	fbFocus				: I_Focus;
+	fbCovers			: I_MirrorCovers;
+	fbBrake				: I_Brake;	
+	fbHydraulics   		: I_Hydraulics;
+	fbElevation			: REFERENCE TO FB_ElevationControl;
+	fbAzimuth			: REFERENCE TO FB_AzimuthControl;
+	fbDerotator			: REFERENCE TO FB_DerotatorControl;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="_Initialize" Id="{b82ca6ca-e327-451f-ab83-9e7ad8e568da}">
+      <Declaration><![CDATA[METHOD _Initialize : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF NOT bBrakeClearing THEN
+	bPowerFailure := TRUE;
+	TCSpowerEvent.OnMessage := 'failure: brake clearing not set';
+	bPower := FALSE;
+ELSIF bError THEN
+	bPowerFailure := TRUE;
+	TCSpowerEvent.OnMessage := 'Generic error during power on occured.';
+	bPower := FALSE;
+ELSE
+	bPowerFailure := FALSE;		
+END_IF
+
+// COVER MUST BE OPENED FOR A SUCCESSFUL WAKE & SHAKE COMMAND!
+fbCovers.Open();
+
+// enable elevation, enable azimuth
+IF bMainReady AND fbCovers.Opened THEN
+	fbElevation.Enable := TRUE;
+	fbAzimuth.Enable := TRUE;
+	fbDerotator.Enable := TRUE;
+END_IF
+
+IF fbElevation.Ready AND NOT fbElevation.Calibrated THEN
+	fbElevation.HomeAxis := TRUE;
+END_IF
+
+IF fbAzimuth.Ready AND NOT fbAzimuth.Calibrated THEN
+	fbAzimuth.HomeAxis := TRUE;
+END_IF
+
+// enable derotator
+IF fbElevation.Ready THEN
+	fbDerotator.HomeAxis := fbDerotator.Ready AND NOT fbDerotator.Calibrated;
+END_IF
+
+// start calibration of focus after elevation has been calibrated
+// this avoids imbalance by the M2 mirror on the elvation during its calibration
+IF fbElevation.Calibrated AND (fbFocus <> 0 AND_THEN NOT fbFocus.Calibrated) THEN
+	fbFocus.Enable := TRUE;
+	fbFocus.HomeAxis := TRUE;
+END_IF
+
+IF fbCovers.Opened AND 
+	fbElevation.Calibrated AND
+	fbAzimuth.Calibrated AND
+	fbDerotator.Calibrated THEN
+	//FocusControl.Calibrated THEN
+	bPower := FALSE;
+	_Initialize := TRUE;
+	isparked := FALSE;
+	// slew the telescope to the home position
+	bGoHome := TRUE;
+ELSE
+	_Initialize := FALSE;
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_MonetTelescopeControl2">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_MonetTelescopeControl2._Initialize">
+      <LineId Id="6" Count="10" />
+      <LineId Id="60" Count="0" />
+      <LineId Id="17" Count="42" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

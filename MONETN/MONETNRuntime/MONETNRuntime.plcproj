@@ -51,34 +51,40 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\MonetTelescope\FB_TelescopeIdleState.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\MonetTelescope\FB_TelescopeInitializingState.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\MonetTelescope\FB_TelescopeParkedState.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\MonetTelescope\FB_TelescopeParkingState.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\MonetTelescope\FB_TelescopeSlewingState.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\MonetTelescope\FB_TelescopeTrackingState.TcPOU">
+    <Compile Include="POUs\MonetTelescope\FB_MonetTelescopeControl2.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Telescope\E_TelescopeState.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Telescope\FB_TelescopeControl2.TcPOU">
+    <Compile Include="POUs\Telescope\FB_AltAzTelescopeControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\FB_BaseTelescopeControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\FB_TelescopeIdleState.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\FB_TelescopeInitializingState.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Telescope\FB_TelescopeMachine.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Telescope\FB_TelescopeParkedState.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\FB_TelescopeParkingState.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\FB_TelescopeSlewingState.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Telescope\FB_TelescopeState.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\FB_TelescopeTrackingState.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Telescope\I_TelescopeState.TcIO">
