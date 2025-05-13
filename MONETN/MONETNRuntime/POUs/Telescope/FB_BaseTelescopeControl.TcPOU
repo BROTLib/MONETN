@@ -8,6 +8,7 @@ VAR_INPUT
 	bSlew				: BOOL;
 	bTrack				: BOOL;
 	bStop				: BOOL;
+	bReset				: BOOL;
 	
 	bBrakeClearing		: BOOL	:= TRUE;
 	
@@ -16,7 +17,7 @@ END_VAR
 VAR_OUTPUT
 	bPower				: BOOL;
 	bError				: BOOL;
-	bReset				: BOOL;
+	
 END_VAR
 VAR
 	comm				: I_Comm;
@@ -35,6 +36,8 @@ VAR
 	fJD					: LREAL;	// current Julian Date calculated from system time
 	fLST				: LREAL;	// local siderial time calculated from Julian date
 
+	MQTTTimer 			: TON := (PT:=T#5S);
+	
 	TCSpowerEvent,
 	TCSgohomeEvent,
 	TCSparkEvent,
@@ -73,7 +76,18 @@ bSlew 	:= FALSE;
 bTrack 	:= FALSE;
 bStop 	:= FALSE;
 
-]]></ST>
+// has error been reset?
+IF NOT bError THEN
+	bReset := FALSE;
+END_IF
+
+// telemetry cadence depends on state
+IF fbMachine.State = E_TelescopeState.slewing OR fbMachine.State = E_TelescopeState.tracking THEN
+	MQTTTimer.PT := T#1000MS;
+ELSE
+	MQTTTimer.PT := T#5000MS;
+END_IF
+MQTTTimer(IN:=TRUE);]]></ST>
     </Implementation>
     <Method Name="_Initialize" Id="{f5caea65-cedf-4c3b-8428-6180ca9de8c7}">
       <Declaration><![CDATA[METHOD _Initialize : BOOL
@@ -120,7 +134,10 @@ END_VAR
       <LineId Id="30" Count="0" />
       <LineId Id="37" Count="3" />
       <LineId Id="33" Count="0" />
-      <LineId Id="103" Count="0" />
+      <LineId Id="177" Count="0" />
+      <LineId Id="159" Count="3" />
+      <LineId Id="178" Count="0" />
+      <LineId Id="169" Count="5" />
       <LineId Id="9" Count="0" />
     </LineIds>
     <LineIds Name="FB_BaseTelescopeControl._Initialize">

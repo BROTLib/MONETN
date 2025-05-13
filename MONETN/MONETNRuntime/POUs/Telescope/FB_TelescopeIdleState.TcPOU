@@ -19,7 +19,7 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// just change state to parking
-pMachine^.SetState(pMachine^.fbParkingState);]]></ST>
+pMachine^.State := pMachine^.fbParkingState;]]></ST>
       </Implementation>
     </Method>
     <Method Name="Slew" Id="{e8a6077b-8fe1-44d4-9a66-ac64e9f8ab2e}">

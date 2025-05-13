@@ -17,6 +17,7 @@ VAR_INPUT
 	fbTrackingState		: I_TelescopeState;
 END_VAR
 VAR_OUTPUT
+	eState				: E_TelescopeState := E_TelescopeState.parked;
 	ipState				: I_TelescopeState := fbParkedState; 
 END_VAR	
 VAR	
@@ -68,16 +69,43 @@ END_VAR
         <ST><![CDATA[THIS^.pControl := pControl;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="SetState" Id="{23e34f8a-deec-4f17-b25a-17df8bb6d32a}">
-      <Declaration><![CDATA[METHOD INTERNAL SetState : BOOL
-VAR_INPUT
-	newState	: I_TelescopeState;
+    <Property Name="State" Id="{8a257365-d0e0-49c6-ad50-1dc0f794a1fd}">
+      <Declaration><![CDATA[PROPERTY State : E_TelescopeState]]></Declaration>
+      <Get Name="Get" Id="{bac14e72-4e75-42fa-9d7d-04644d0b6712}">
+        <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[THIS^.ipState := newState;]]></ST>
-      </Implementation>
-    </Method>
+        <Implementation>
+          <ST><![CDATA[State := THIS^.eState;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{ab3e2683-fe73-4c26-be05-bdf3f7bd2aee}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[THIS^.eState := State;
+
+CASE State OF
+	E_TelescopeState.off:
+		THIS^.ipState := fbParkedState;
+	E_TelescopeState.parked:
+		THIS^.ipState := fbParkedState;
+	E_TelescopeState.initializing:
+		THIS^.ipState := fbInitializingState;
+	E_TelescopeState.parking:
+		THIS^.ipState := fbParkingState;
+	E_TelescopeState.idle:
+		THIS^.ipState := fbIdleState;
+	E_TelescopeState.slewing:
+		THIS^.ipState := fbSlewingState;
+	E_TelescopeState.tracking:
+		THIS^.ipState := fbTrackingState;
+END_CASE
+]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
     <LineIds Name="FB_TelescopeMachine">
       <LineId Id="37" Count="3" />
       <LineId Id="9" Count="0" />
@@ -86,7 +114,26 @@ END_VAR
     <LineIds Name="FB_TelescopeMachine.FB_init">
       <LineId Id="7" Count="0" />
     </LineIds>
-    <LineIds Name="FB_TelescopeMachine.SetState">
+    <LineIds Name="FB_TelescopeMachine.State.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_TelescopeMachine.State.Set">
+      <LineId Id="2" Count="0" />
+      <LineId Id="6" Count="1" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="21" Count="1" />
       <LineId Id="5" Count="0" />
     </LineIds>
   </POU>

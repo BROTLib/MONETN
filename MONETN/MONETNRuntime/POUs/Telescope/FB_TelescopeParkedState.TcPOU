@@ -19,7 +19,7 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// just change state to initializing
-pMachine^.SetState(pMachine^.fbInitializingState);]]></ST>
+pMachine^.State := pMachine^.fbInitializingState;]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="FB_TelescopeParkedState">

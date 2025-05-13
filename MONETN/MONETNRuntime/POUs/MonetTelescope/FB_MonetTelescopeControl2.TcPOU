@@ -10,6 +10,7 @@ VAR_INPUT
 	fbElevation			: REFERENCE TO FB_ElevationControl;
 	fbAzimuth			: REFERENCE TO FB_AzimuthControl;
 	fbDerotator			: REFERENCE TO FB_DerotatorControl;
+	bEstopTriggered		: BOOL := FALSE;
 END_VAR
 VAR_OUTPUT
 END_VAR
@@ -17,18 +18,48 @@ VAR
 	bSlewing			: BOOL;
 	bStopped			: BOOL;
 	bTracking			: BOOL;
+	bHomed				: BOOL;
+	bReady				: BOOL;
+	bBusy				: BOOL;
+	tonTrackingDelay	: TON;		// tracking delay
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[bTracking := FALSE;
-
+      <ST><![CDATA[// is telescope slewing?
 bSlewing := NOT bTracking AND (fbElevation.fbAxis.InMotion OR fbElevation.fbAxis.InRamp OR
 			fbAzimuth.fbAxis.InMotion OR fbAzimuth.fbAxis.InRamp OR
 			fbDerotator.fbAxis.InMotion OR fbDerotator.fbAxis.InRamp);
 			
-bStopped :=  (NOT fbElevation.bEnable OR fbElevation.fbAxis.StandStill) AND 
+// signal must be stable for 5500MS
+tonTrackingDelay(
+	in := fbElevation.fbAxis.isTracking AND fbAzimuth.fbAxis.isTracking AND fbDerotator.fbAxis.isTracking,
+	PT :=T#5500MS, 
+	Q => bTracking);
+			
+// is telescope stopped?
+bStopped := (NOT fbElevation.bEnable OR fbElevation.fbAxis.StandStill) AND 
 			(NOT fbAzimuth.bEnable OR fbAzimuth.fbAxis.StandStill) AND
-			(NOT fbDerotator.bEnable OR fbDerotator.fbAxis.StandStill);]]></ST>
+			(NOT fbDerotator.bEnable OR fbDerotator.fbAxis.StandStill);
+			
+// get current coordinates	
+fAzimuthCurrent := fbAzimuth.fActualPosition;
+fElevationCurrent := fbElevation.fActualPosition;
+fDerotatorCurrent := fbDerotator.fActualPosition;
+
+// call super
+SUPER^();
+
+// homed, ready, busy
+bHomed := fbElevation.bCalibrated AND fbAzimuth.bCalibrated AND fbDerotator.bCalibrated AND fbFocus.Calibrated;
+bReady := bHomed AND fbCovers.Opened AND fbElevation.bEnable AND fbAzimuth.bEnable AND fbDerotator.bEnable AND fbBrake.BrakeOpen AND NOT bError;
+bBusy  := fbElevation.fbAxis.Busy OR fbAzimuth.fbAxis.Busy OR fbDerotator.fbAxis.Busy OR fbFocus.Busy;
+
+// estop?
+IF bEstopTriggered THEN
+	fbElevation.Enable := FALSE;
+	fbAzimuth.Enable := FALSE;
+	fbDerotator.Enable := FALSE;
+END_IF]]></ST>
     </Implementation>
     <Method Name="_Initialize" Id="{b82ca6ca-e327-451f-ab83-9e7ad8e568da}">
       <Declaration><![CDATA[METHOD _Initialize : BOOL
@@ -178,10 +209,28 @@ LastStage := Stage;
       </Implementation>
     </Method>
     <LineIds Name="FB_MonetTelescopeControl2">
-      <LineId Id="31" Count="1" />
+      <LineId Id="32" Count="0" />
       <LineId Id="17" Count="2" />
-      <LineId Id="25" Count="2" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="60" Count="1" />
+      <LineId Id="65" Count="2" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="68" Count="0" />
+      <LineId Id="26" Count="1" />
       <LineId Id="9" Count="0" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="53" Count="2" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="91" Count="0" />
+      <LineId Id="71" Count="1" />
+      <LineId Id="79" Count="0" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="100" Count="0" />
+      <LineId Id="95" Count="4" />
+      <LineId Id="70" Count="0" />
     </LineIds>
     <LineIds Name="FB_MonetTelescopeControl2._Initialize">
       <LineId Id="6" Count="10" />
