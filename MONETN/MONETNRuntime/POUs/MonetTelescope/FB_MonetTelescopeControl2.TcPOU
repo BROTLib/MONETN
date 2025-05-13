@@ -14,10 +14,21 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
+	bSlewing			: BOOL;
+	bStopped			: BOOL;
+	bTracking			: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[bTracking := FALSE;
+
+bSlewing := NOT bTracking AND (fbElevation.fbAxis.InMotion OR fbElevation.fbAxis.InRamp OR
+			fbAzimuth.fbAxis.InMotion OR fbAzimuth.fbAxis.InRamp OR
+			fbDerotator.fbAxis.InMotion OR fbDerotator.fbAxis.InRamp);
+			
+bStopped :=  (NOT fbElevation.bEnable OR fbElevation.fbAxis.StandStill) AND 
+			(NOT fbAzimuth.bEnable OR fbAzimuth.fbAxis.StandStill) AND
+			(NOT fbDerotator.bEnable OR fbDerotator.fbAxis.StandStill);]]></ST>
     </Implementation>
     <Method Name="_Initialize" Id="{b82ca6ca-e327-451f-ab83-9e7ad8e568da}">
       <Declaration><![CDATA[METHOD _Initialize : BOOL
@@ -41,7 +52,7 @@ END_IF
 fbCovers.Open();
 
 // enable elevation, enable azimuth
-IF bMainReady AND fbCovers.Opened THEN
+IF fbCovers.Opened THEN
 	fbElevation.Enable := TRUE;
 	fbAzimuth.Enable := TRUE;
 	fbDerotator.Enable := TRUE;
@@ -62,34 +73,131 @@ END_IF
 
 // start calibration of focus after elevation has been calibrated
 // this avoids imbalance by the M2 mirror on the elvation during its calibration
-IF fbElevation.Calibrated AND (fbFocus <> 0 AND_THEN NOT fbFocus.Calibrated) THEN
+IF fbElevation.Calibrated AND NOT fbFocus.Calibrated THEN
 	fbFocus.Enable := TRUE;
 	fbFocus.HomeAxis := TRUE;
 END_IF
 
-IF fbCovers.Opened AND 
-	fbElevation.Calibrated AND
-	fbAzimuth.Calibrated AND
-	fbDerotator.Calibrated THEN
-	//FocusControl.Calibrated THEN
+IF fbCovers.Opened AND fbElevation.Calibrated AND fbAzimuth.Calibrated AND fbDerotator.Calibrated AND fbFocus.Calibrated THEN
 	bPower := FALSE;
 	_Initialize := TRUE;
-	isparked := FALSE;
-	// slew the telescope to the home position
-	bGoHome := TRUE;
 ELSE
 	_Initialize := FALSE;
 END_IF
 ]]></ST>
       </Implementation>
     </Method>
+    <Method Name="_Park" Id="{b753730c-f439-4fd9-a185-d431d3c6a732}">
+      <Declaration><![CDATA[METHOD _Park : BOOL
+VAR_INPUT
+END_VAR
+VAR
+	ParkEvent	: FB_Eventlog;
+END_VAR
+VAR_STAT
+	Stage		: USINT := 0;
+	LastStage	: USINT := 101;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF bReset OR bError THEN
+	Stage := 0;
+END_IF
+_Park := FALSE;
+CASE Stage OF
+	0: 
+		fbFocus.Position := telescopeConfig.focusPark;
+		IF bError THEN // emergency park
+			fbBrake.CloseBrake();
+			fbElevation.Enable := FALSE;
+			fbAzimuth.Enable := FALSE;
+			fbDerotator.Enable := FALSE;	
+			fbCovers.Close();	
+			Stage := 80;
+		END_IF
+		Stage := 20;
+	20:
+		fbElevation.Position := telescopeConfig.elevationPark;
+		fbElevation.Velocity := 10.0;
+		fbElevation.MoveAxis := TRUE;
+		fbAzimuth.Position := telescopeConfig.azimuthPark;
+		fbAzimuth.Velocity := 10;
+		fbAzimuth.MoveAxis := TRUE;
+		fbDerotator.Position := telescopeConfig.derotatorPark;
+		fbDerotator.Velocity := 10.0;
+		fbDerotator.MoveAxis := TRUE;
+		IF fbElevation.Busy AND
+			fbAzimuth.Busy AND
+			fbDerotator.Busy THEN
+				Stage := 40;
+		END_IF
+	40:
+		IF fbElevation.MoveDone THEN
+			fbElevation.MoveAxis := FALSE;
+		END_IF
+		IF fbAzimuth.MoveDone THEN
+			fbAzimuth.MoveAxis := FALSE;
+		END_IF
+		IF fbDerotator.MoveDone THEN
+			fbDerotator.MoveAxis := FALSE;
+		END_IF
+		IF NOT bSlewing THEN // all axis standstill
+			Stage := 60;
+		END_IF
+	60:
+		IF NOT fbElevation.Enable AND NOT fbAzimuth.Enable AND NOT fbDerotator.Enable THEN
+			stage := 80;
+		END_IF
+
+		IF bStopped THEN
+			fbElevation.Enable := FALSE;
+			fbAzimuth.Enable := FALSE;
+			fbDerotator.Enable := FALSE;
+		END_IF
+		
+		fbElevation.bMoveAxis := FALSE;
+		fbAzimuth.bMoveAxis := FALSE;
+		fbDerotator.bMoveAxis := FALSE;
+	80:
+		IF fbElevation.Enable OR fbAzimuth.Enable OR fbDerotator.Enable THEN
+			stage := 60;
+		END_IF
+		IF NOT fbBrake.BrakeOpen THEN
+			fbCovers.Close();
+			fbHydraulics.Enable := FALSE;
+		END_IF
+		IF fbCovers.Closed THEN
+			Stage := 100;
+		END_IF
+	100:
+		_Park := TRUE;
+		Stage := 0;	
+END_CASE
+ParkEvent(Trigger := Stage > LastStage, FormatString := 'Parking progress: %s', OnMessage := USINT_TO_STRING(Stage), comm := comm);
+LastStage := Stage;
+]]></ST>
+      </Implementation>
+    </Method>
     <LineIds Name="FB_MonetTelescopeControl2">
+      <LineId Id="31" Count="1" />
+      <LineId Id="17" Count="2" />
+      <LineId Id="25" Count="2" />
       <LineId Id="9" Count="0" />
     </LineIds>
     <LineIds Name="FB_MonetTelescopeControl2._Initialize">
       <LineId Id="6" Count="10" />
       <LineId Id="60" Count="0" />
-      <LineId Id="17" Count="42" />
+      <LineId Id="17" Count="30" />
+      <LineId Id="52" Count="1" />
+      <LineId Id="57" Count="2" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_MonetTelescopeControl2._Park">
+      <LineId Id="13" Count="2" />
+      <LineId Id="98" Count="0" />
+      <LineId Id="19" Count="1" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="28" Count="62" />
+      <LineId Id="93" Count="4" />
       <LineId Id="5" Count="0" />
     </LineIds>
   </POU>

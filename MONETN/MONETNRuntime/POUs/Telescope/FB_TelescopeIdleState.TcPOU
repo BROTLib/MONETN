@@ -18,7 +18,8 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[// just change state to parking
+pMachine^.SetState(pMachine^.fbParkingState);]]></ST>
       </Implementation>
     </Method>
     <Method Name="Slew" Id="{e8a6077b-8fe1-44d4-9a66-ac64e9f8ab2e}">
@@ -47,6 +48,7 @@ END_VAR
       <LineId Id="9" Count="0" />
     </LineIds>
     <LineIds Name="FB_TelescopeIdleState.Park">
+      <LineId Id="9" Count="0" />
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_TelescopeIdleState.Slew">

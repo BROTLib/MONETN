@@ -10,9 +10,14 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[// run until parked
+IF pMachine^.pControl^._Park() THEN
+	// change to idle state
+	pMachine^.SetState(pMachine^.fbParkedState);
+END_IF]]></ST>
     </Implementation>
     <LineIds Name="FB_TelescopeParkingState">
+      <LineId Id="18" Count="3" />
       <LineId Id="9" Count="0" />
     </LineIds>
   </POU>
