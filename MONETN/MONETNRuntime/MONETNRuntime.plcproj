@@ -21,6 +21,9 @@
     <GlobalVersionStructureIncluded>false</GlobalVersionStructureIncluded>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Components\FB_MonetCoverControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
@@ -51,16 +54,10 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\MonetTelescope\FB_MonetTelescopeControl2.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\Telescope\E_TelescopeState.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Telescope\FB_AltAzTelescopeControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Telescope\FB_BaseTelescopeControl.TcPOU">
+    <Compile Include="POUs\Telescope\FB_TelescopeControl2.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Telescope\FB_TelescopeIdleState.TcPOU">
@@ -72,7 +69,7 @@
     <Compile Include="POUs\Telescope\FB_TelescopeMachine.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Telescope\FB_TelescopeParkedState.TcPOU">
+    <Compile Include="POUs\Telescope\FB_TelescopeOffState.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Telescope\FB_TelescopeParkingState.TcPOU">
@@ -113,6 +110,10 @@
       <SubType>Code</SubType>
       <DependentUpon>VisualizationManager.TcVMO</DependentUpon>
     </Compile>
+    <Compile Include="VISUs\Hydraulics.TcVIS">
+      <SubType>Code</SubType>
+      <DependentUpon>VisualizationManager.TcVMO</DependentUpon>
+    </Compile>
     <Compile Include="VISUs\Pendant.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>VisualizationManager.TcVMO</DependentUpon>
@@ -137,7 +138,7 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
-    <Folder Include="POUs\MonetTelescope" />
+    <Folder Include="Components" />
     <Folder Include="POUs\Telescope" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />

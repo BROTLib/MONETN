@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
   <POU Name="FB_MonetTelescopeControl" Id="{10c2c294-efcf-424f-afd3-75ac57a5e8bc}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_MonetTelescopeControl IMPLEMENTS I_Telescope
 VAR_INPUT
@@ -187,8 +187,8 @@ eq2hor(
 	ha => hourangle_calc);
 
 // apply pointing model
-elevation_calc := elevation_calc + PointingModelElevation(azimuth_calc, elevation_calc, EOFF + fElevationOffset, AN_E, AE_E, TF);
-azimuth_calc := azimuth_calc + PointingModelAzimuth(azimuth_calc, elevation_calc, AOFF + fAzimuthOffset, BNP, AN_A, AE_A, NPAE);
+//elevation_calc := elevation_calc + PointingModelElevation(azimuth_calc, elevation_calc, EOFF + fElevationOffset, AN_E, AE_E, TF);
+//azimuth_calc := azimuth_calc + PointingModelAzimuth(azimuth_calc, elevation_calc, AOFF + fAzimuthOffset, BNP, AN_A, AE_A, NPAE);
 // calculate derotator position 
 derotation_calc := F_DerotatorPosition2(azimuth_calc, elevation_calc, declination_calc, telescopeConfig.latitude, derotatation_sign)  + fDerotatorOffset;
 // calculate velocities
