@@ -12,15 +12,12 @@ END_VAR
     <Implementation>
       <ST><![CDATA[// run until initialized
 IF pMachine^.pControl^._Initialize() THEN
-	// change to idle state
-	pMachine^.SetState(pMachine^.fbIdleState);
+	pMachine^.State := E_TelescopeState.idle;
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="FB_TelescopeInitializingState">
       <LineId Id="21" Count="0" />
-      <LineId Id="19" Count="0" />
-      <LineId Id="22" Count="0" />
-      <LineId Id="20" Count="0" />
+      <LineId Id="19" Count="1" />
       <LineId Id="9" Count="0" />
     </LineIds>
   </POU>

@@ -7,7 +7,14 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-	pMachine : POINTER TO FB_TelescopeMachine;
+	pMachine 		: POINTER TO FB_TelescopeMachine;
+	bInitialize		: BOOL;
+	bPark			: BOOL;
+	bReset			: BOOL;
+	bSlew			: BOOL;
+	bStop			: BOOL;
+	bTrack			: BOOL;
+	iStage			: UINT;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -31,7 +38,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[bInitialize := TRUE;]]></ST>
       </Implementation>
     </Method>
     <Method Name="Park" Id="{1d7b2094-1b9e-4f3f-8684-35da700e0b9a}">
@@ -40,7 +47,18 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[bPark := TRUE;
+iStage := 0;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reset" Id="{57d7d305-bed4-400e-bbf9-c181dc7d793e}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bReset := TRUE;
+iStage := 0;]]></ST>
       </Implementation>
     </Method>
     <Method Name="Slew" Id="{e5dd4f78-c7c2-4163-9dee-c9e4a43c707b}">
@@ -51,7 +69,8 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[bSlew := TRUE;
+iStage := 0;]]></ST>
       </Implementation>
     </Method>
     <Method Name="Stop" Id="{f88b6084-031f-4751-912f-ee2fd3d7f783}">
@@ -60,7 +79,8 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[bStop := TRUE;
+iStage := 0;]]></ST>
       </Implementation>
     </Method>
     <Method Name="Track" Id="{33662814-9536-4e5d-81b1-cbf07479cb1d}">
@@ -71,7 +91,8 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[bTrack := TRUE;
+iStage := 0;]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="FB_TelescopeState">
@@ -85,15 +106,22 @@ END_VAR
     </LineIds>
     <LineIds Name="FB_TelescopeState.Park">
       <LineId Id="5" Count="0" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_TelescopeState.Reset">
+      <LineId Id="5" Count="1" />
     </LineIds>
     <LineIds Name="FB_TelescopeState.Slew">
       <LineId Id="7" Count="0" />
+      <LineId Id="13" Count="0" />
     </LineIds>
     <LineIds Name="FB_TelescopeState.Stop">
       <LineId Id="5" Count="0" />
+      <LineId Id="9" Count="0" />
     </LineIds>
     <LineIds Name="FB_TelescopeState.Track">
       <LineId Id="7" Count="0" />
+      <LineId Id="13" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

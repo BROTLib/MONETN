@@ -15,6 +15,12 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
     </Method>
+    <Method Name="Reset" Id="{3b6b0397-164d-456e-b576-aff7445d880a}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
     <Method Name="Slew" Id="{450f3ea7-fafb-479a-9f57-9786e356f3ca}">
       <Declaration><![CDATA[METHOD Slew : BOOL
 VAR_INPUT

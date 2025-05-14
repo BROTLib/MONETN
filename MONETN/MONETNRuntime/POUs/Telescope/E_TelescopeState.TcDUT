@@ -5,13 +5,15 @@
 {attribute 'strict'}
 TYPE E_TelescopeState :
 (
-	off := 0,
+	none := 0,
 	parked := 1,
 	initializing := 2,
 	parking := 3,
 	idle := 4,
 	slewing := 5,
-	tracking := 6
+	tracking := 6,
+	referencing := 7,
+	error := 8
 );
 END_TYPE
 ]]></Declaration>

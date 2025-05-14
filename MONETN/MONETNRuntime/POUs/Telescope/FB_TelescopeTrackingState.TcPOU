@@ -10,62 +10,54 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[IF bPark THEN
+	CASE iStage OF
+		0:
+			IF pMachine^.pControl^._Stop() THEN
+				iStage := 1;
+			END_IF
+		1:
+			pMachine^.State := E_TelescopeState.parking;
+			bPark := FALSE;
+	END_CASE
+END_IF
+
+IF bSlew THEN
+	CASE iStage OF
+		0:
+			IF pMachine^.pControl^._Stop() THEN
+				iStage := 1;
+			END_IF
+		1:
+			pMachine^.State := E_TelescopeState.slewing;
+			bTrack := FALSE;
+	END_CASE
+END_IF
+
+IF bStop THEN
+	IF pMachine^.pControl^._Stop() THEN
+		pMachine^.State := E_TelescopeState.idle;
+		bStop := FALSE;
+	END_IF
+END_IF
+
+IF bTrack THEN
+	CASE iStage OF
+		0:
+			IF pMachine^.pControl^._Stop() THEN
+				iStage := 1;
+			END_IF
+		1:
+			pMachine^.State := E_TelescopeState.tracking;
+			bTrack := FALSE;
+	END_CASE
+END_IF]]></ST>
     </Implementation>
-    <Method Name="Park" Id="{ab2d278a-f6a1-455c-971a-220210dec268}">
-      <Declaration><![CDATA[METHOD Park : BOOL
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="Slew" Id="{711baa5c-acc3-43a5-947a-f41614b97294}">
-      <Declaration><![CDATA[METHOD Slew : BOOL
-VAR_INPUT
-	fAzimuth	: LREAL;
-	fAltitude	: LREAL;
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="Stop" Id="{52d33a34-7731-4a63-a56d-e9297b9bc334}">
-      <Declaration><![CDATA[METHOD Stop : BOOL
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="Track" Id="{9cf2bc44-0f8a-4eca-b0b1-f2d3a353f164}">
-      <Declaration><![CDATA[METHOD Track : BOOL
-VAR_INPUT
-	fRightAscension	: LREAL;
-	fDeclination	: LREAL;
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[]]></ST>
-      </Implementation>
-    </Method>
     <LineIds Name="FB_TelescopeTrackingState">
+      <LineId Id="31" Count="12" />
+      <LineId Id="64" Count="7" />
+      <LineId Id="44" Count="19" />
       <LineId Id="9" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_TelescopeTrackingState.Park">
-      <LineId Id="5" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_TelescopeTrackingState.Slew">
-      <LineId Id="7" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_TelescopeTrackingState.Stop">
-      <LineId Id="5" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_TelescopeTrackingState.Track">
-      <LineId Id="7" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

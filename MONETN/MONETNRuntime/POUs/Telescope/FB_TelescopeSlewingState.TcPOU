@@ -3,6 +3,7 @@
   <POU Name="FB_TelescopeSlewingState" Id="{edf837d7-00f7-4665-86d4-0431da6cffec}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_TelescopeSlewingState EXTENDS FB_TelescopeState
 VAR_INPUT
+	bAutoTrack		: BOOL := FALSE;
 END_VAR
 VAR_OUTPUT
 END_VAR
@@ -10,62 +11,94 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[// slew until finished
+IF pMachine^.pControl^._Slew() THEN
+	IF bAutoTrack THEN
+		pMachine^.State := E_TelescopeState.tracking;
+	ELSE
+		pMachine^.State := E_TelescopeState.idle;
+	END_IF
+END_IF
+
+// park command
+IF bPark THEN
+	CASE iStage OF
+		0:
+			IF pMachine^.pControl^._Stop() THEN
+				iStage := 1;
+			END_IF
+		1:
+			pMachine^.State := E_TelescopeState.parking;
+			bPark := FALSE;
+	END_CASE
+END_IF
+
+// slew command
+IF bSlew THEN
+	bAutoTrack := FALSE;
+	pMachine^.State := E_TelescopeState.slewing;	
+	bSlew := FALSE;
+END_IF
+
+// stop command
+IF bStop THEN
+	IF pMachine^.pControl^._Stop() THEN
+		pMachine^.State := E_TelescopeState.idle;
+		bStop := FALSE;
+	END_IF
+END_IF
+
+// track command
+IF bTrack THEN
+	CASE iStage OF
+		0:
+			IF pMachine^.pControl^._Stop() THEN
+				iStage := 1;
+			END_IF
+		1:
+			bAutoTrack := TRUE;
+			pMachine^.State := E_TelescopeState.slewing;
+			bTrack := FALSE;
+	END_CASE
+END_IF]]></ST>
     </Implementation>
-    <Method Name="Park" Id="{b917d2c7-d098-4540-9842-edfdeaaf0bcd}">
-      <Declaration><![CDATA[METHOD Park : BOOL
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="Slew" Id="{0f710bfe-2197-4b37-849c-9bf1417623c0}">
-      <Declaration><![CDATA[METHOD Slew : BOOL
-VAR_INPUT
-	fAzimuth	: LREAL;
-	fAltitude	: LREAL;
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="Stop" Id="{e027a8c8-3486-40d1-a1fe-d2068ce4d75f}">
-      <Declaration><![CDATA[METHOD Stop : BOOL
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="Track" Id="{e3d5ebbe-9256-4180-9dd6-2ad33d746f90}">
-      <Declaration><![CDATA[METHOD Track : BOOL
-VAR_INPUT
-	fRightAscension	: LREAL;
-	fDeclination	: LREAL;
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[]]></ST>
-      </Implementation>
-    </Method>
     <LineIds Name="FB_TelescopeSlewingState">
+      <LineId Id="60" Count="0" />
+      <LineId Id="62" Count="1" />
+      <LineId Id="67" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="68" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="64" Count="0" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="61" Count="0" />
       <LineId Id="9" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_TelescopeSlewingState.Park">
-      <LineId Id="5" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_TelescopeSlewingState.Slew">
-      <LineId Id="7" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_TelescopeSlewingState.Stop">
-      <LineId Id="5" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_TelescopeSlewingState.Track">
-      <LineId Id="7" Count="0" />
+      <LineId Id="31" Count="1" />
+      <LineId Id="34" Count="5" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="59" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="21" Count="1" />
+      <LineId Id="71" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="72" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="46" Count="5" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="52" Count="1" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="54" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

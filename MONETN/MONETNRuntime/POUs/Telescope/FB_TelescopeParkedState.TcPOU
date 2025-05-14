@@ -10,23 +10,14 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[IF bInitialize THEN
+	pMachine^.State := E_TelescopeState.initializing;
+	bInitialize := FALSE;
+END_IF]]></ST>
     </Implementation>
-    <Method Name="Initialize" Id="{024a7c0d-a2a7-4107-a61c-720f5506c0dc}">
-      <Declaration><![CDATA[METHOD Initialize : BOOL
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[// just change state to initializing
-pMachine^.State := pMachine^.fbInitializingState;]]></ST>
-      </Implementation>
-    </Method>
     <LineIds Name="FB_TelescopeParkedState">
+      <LineId Id="17" Count="2" />
       <LineId Id="9" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_TelescopeParkedState.Initialize">
-      <LineId Id="9" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

@@ -81,7 +81,13 @@
     <Compile Include="POUs\Telescope\FB_TelescopeParkingState.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Telescope\FB_TelescopeErrorState.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Telescope\FB_TelescopeSlewingState.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Telescope\FB_TelescopeReferencingState.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\Telescope\FB_TelescopeState.TcPOU">

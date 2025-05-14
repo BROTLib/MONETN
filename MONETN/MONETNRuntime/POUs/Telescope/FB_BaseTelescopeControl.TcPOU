@@ -12,6 +12,11 @@ VAR_INPUT
 	
 	bBrakeClearing		: BOOL	:= TRUE;
 	
+	fRightAscension		: LREAL;	
+	fDeclination		: LREAL;
+	fAzimuth			: LREAL;
+	fElevation			: LREAL;
+	
 	telescopeConfig		: ST_TelescopeConfig;
 END_VAR
 VAR_OUTPUT
@@ -107,6 +112,24 @@ END_VAR
         <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
+    <Method Name="_Slew" Id="{c957e7ca-0ba7-48bf-b704-d815850fcff1}">
+      <Declaration><![CDATA[METHOD _Slew : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="_Stop" Id="{7cad4e81-581c-422c-b1a5-ad091472f55c}">
+      <Declaration><![CDATA[METHOD _Stop : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="FB_init" Id="{a32d2f32-4a31-4d05-8712-e937ed61ba13}">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT
@@ -117,6 +140,15 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[THIS^.comm := comm;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reset" Id="{3d17fa40-fd53-4e7d-b2aa-5ea6dd1055c0}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bReset := TRUE;]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="FB_BaseTelescopeControl">
@@ -146,8 +178,17 @@ END_VAR
     <LineIds Name="FB_BaseTelescopeControl._Park">
       <LineId Id="5" Count="0" />
     </LineIds>
+    <LineIds Name="FB_BaseTelescopeControl._Slew">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_BaseTelescopeControl._Stop">
+      <LineId Id="5" Count="0" />
+    </LineIds>
     <LineIds Name="FB_BaseTelescopeControl.FB_init">
       <LineId Id="7" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_BaseTelescopeControl.Reset">
+      <LineId Id="5" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

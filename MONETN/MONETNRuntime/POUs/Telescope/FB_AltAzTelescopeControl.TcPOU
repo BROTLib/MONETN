@@ -3,8 +3,6 @@
   <POU Name="FB_AltAzTelescopeControl" Id="{ab7ff9f6-f0dc-473a-bd67-87367819c272}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_AltAzTelescopeControl EXTENDS FB_BaseTelescopeControl
 VAR_INPUT
-	fRightAscension		: LREAL;	
-	fDeclination		: LREAL;
 END_VAR
 VAR_OUTPUT
 END_VAR

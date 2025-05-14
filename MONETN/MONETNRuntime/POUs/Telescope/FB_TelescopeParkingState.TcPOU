@@ -12,13 +12,13 @@ END_VAR
     <Implementation>
       <ST><![CDATA[// run until parked
 IF pMachine^.pControl^._Park() THEN
-	// change to idle state
-	pMachine^.SetState(pMachine^.fbParkedState);
+	pMachine^.State := E_TelescopeState.parked;
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="FB_TelescopeParkingState">
-      <LineId Id="18" Count="3" />
-      <LineId Id="9" Count="0" />
+      <LineId Id="31" Count="1" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="29" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

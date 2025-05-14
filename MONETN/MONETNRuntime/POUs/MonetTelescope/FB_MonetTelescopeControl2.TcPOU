@@ -208,6 +208,98 @@ LastStage := Stage;
 ]]></ST>
       </Implementation>
     </Method>
+    <Method Name="_Slew" Id="{b97e5388-b217-43fc-a742-07bcca507bbe}">
+      <Declaration><![CDATA[METHOD PRIVATE _Slew : BOOL;
+VAR_INPUT
+END_VAR
+VAR
+	SlewEvent			:	FB_Eventlog;
+	tonCommandTimeout	: TON;
+END_VAR
+VAR_STAT
+	iStage				: USINT;
+	iLastStage			: USINT := 101;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[_Slew := TRUE;
+tonCommandTimeout(IN := iStage < 100, PT := T#600S);
+IF tonCommandTimeout.Q THEN
+	bError := TRUE;
+	//errorid := 16#40;
+	//bSlew := FALSE;
+	_Slew := FALSE;
+	iStage := 0;
+END_IF
+IF bReset OR bError THEN
+	iStage := 0;
+END_IF
+CASE iStage OF
+	0:	
+		IF bReady AND bStopped AND NOT bBusy AND NOT bTracking THEN
+			iStage := 25;
+		END_IF
+	25:
+		fbElevation.Position := fElevation + PointingModelElevation(fAzimuth, fElevation, EOFF + fElevationOffset, AN_E, AE_E, TF);
+		fbElevation.Velocity := 10.0;
+		fbElevation.MoveAxis := TRUE;
+		fbAzimuth.Position := fAzimuth + PointingModelAzimuth(fAzimuth, fElevation, AOFF + fAzimuthOffset, BNP, AN_A, AE_A, NPAE);
+		fbAzimuth.Velocity := 10.0;
+		fbAzimuth.MoveAxis := TRUE;
+		fbDerotator.Position := fElevation + fDerotatorOffset;
+		fbDerotator.Velocity := 10.0;
+		fbDerotator.MoveAxis := TRUE;
+		IF fbElevation.Busy AND fbAzimuth.Busy AND fbDerotator.Busy THEN
+			iStage := 50;
+		END_IF
+	50:
+		IF fbElevation.MoveDone THEN
+			fbElevation.bMoveAxis := FALSE;
+		END_IF
+		
+		IF fbAzimuth.MoveDone THEN
+			fbAzimuth.MoveAxis := FALSE;
+		END_IF
+
+		IF fbDerotator.MoveDone THEN
+			fbDerotator.MoveAxis := FALSE;
+		END_IF
+		IF NOT bSlewing AND bStopped THEN // all axis standstill
+			iStage := 100;
+		END_IF
+	100:
+		fbElevation.MoveAxis := FALSE;
+		fbAzimuth.MoveAxis := FALSE;
+		fbDerotator.MoveAxis := FALSE;
+		fRightAscension := fRightAscensionCalc;
+		fDeclination := fDeclinationCalc;
+		_Slew := FALSE;
+END_CASE
+
+SlewEvent(Trigger := iStage > iLastStage, FormatString := 'Slew progress: %s', OnMessage := USINT_TO_STRING(iStage), comm := comm);
+iLastStage := iStage;		
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="_Stop" Id="{25d1a575-544b-48f0-8dce-8d30aad96001}">
+      <Declaration><![CDATA[METHOD _Stop : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fbElevation.StopAxis := TRUE;
+fbAzimuth.StopAxis := TRUE;
+fbDerotator.StopAxis := TRUE;
+_Stop := FALSE;
+
+IF bStopped THEN
+	fbElevation.StopAxis := FALSE;
+	fbAzimuth.StopAxis := FALSE;
+	fbDerotator.StopAxis := FALSE;
+	_Stop := TRUE;
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
     <LineIds Name="FB_MonetTelescopeControl2">
       <LineId Id="32" Count="0" />
       <LineId Id="17" Count="2" />
@@ -247,6 +339,17 @@ LastStage := Stage;
       <LineId Id="26" Count="0" />
       <LineId Id="28" Count="62" />
       <LineId Id="93" Count="4" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_MonetTelescopeControl2._Slew">
+      <LineId Id="150" Count="27" />
+      <LineId Id="180" Count="27" />
+      <LineId Id="58" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_MonetTelescopeControl2._Stop">
+      <LineId Id="6" Count="2" />
+      <LineId Id="15" Count="1" />
+      <LineId Id="9" Count="5" />
       <LineId Id="5" Count="0" />
     </LineIds>
   </POU>

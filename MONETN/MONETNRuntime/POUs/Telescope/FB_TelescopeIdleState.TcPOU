@@ -10,52 +10,32 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[IF bPark THEN
+	pMachine^.State := E_TelescopeState.parking;
+	bPark := FALSE;
+END_IF
+
+IF bSlew THEN
+	pMachine^.State := E_TelescopeState.slewing;
+	bSlew := FALSE;
+END_IF
+
+IF bTrack THEN
+	pMachine^.State := E_TelescopeState.tracking;
+	bTrack := FALSE;
+END_IF]]></ST>
     </Implementation>
-    <Method Name="Park" Id="{b4c875aa-42a3-40df-abd5-00dd16ea6370}">
-      <Declaration><![CDATA[METHOD Park : BOOL
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[// just change state to parking
-pMachine^.State := pMachine^.fbParkingState;]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="Slew" Id="{e8a6077b-8fe1-44d4-9a66-ac64e9f8ab2e}">
-      <Declaration><![CDATA[METHOD Slew : BOOL
-VAR_INPUT
-	fAzimuth	: LREAL;
-	fAltitude	: LREAL;
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="Track" Id="{db24f220-0cc3-4d50-b558-3436eb190c49}">
-      <Declaration><![CDATA[METHOD Track : BOOL
-VAR_INPUT
-	fRightAscension	: LREAL;
-	fDeclination	: LREAL;
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[]]></ST>
-      </Implementation>
-    </Method>
     <LineIds Name="FB_TelescopeIdleState">
       <LineId Id="9" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_TelescopeIdleState.Park">
-      <LineId Id="9" Count="0" />
-      <LineId Id="5" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_TelescopeIdleState.Slew">
-      <LineId Id="7" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_TelescopeIdleState.Track">
-      <LineId Id="7" Count="0" />
+      <LineId Id="19" Count="1" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="25" Count="1" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="28" Count="1" />
+      <LineId Id="31" Count="1" />
+      <LineId Id="27" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
