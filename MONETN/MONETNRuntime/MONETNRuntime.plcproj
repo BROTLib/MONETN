@@ -27,6 +27,9 @@
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Telescope\FB_MonetTelescopeControl2.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
@@ -52,54 +55,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\MonetTelescope\FB_MonetTelescopeControl2.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Telescope\E_TelescopeState.TcDUT">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Telescope\FB_AltAzTelescopeControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Telescope\FB_RaDecTelescopeControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Telescope\FB_BaseTelescopeControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Telescope\FB_TelescopeIdleState.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Telescope\FB_TelescopeInitializingState.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Telescope\FB_TelescopeMachine.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Telescope\FB_TelescopeParkedState.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Telescope\FB_TelescopeParkingState.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Telescope\FB_TelescopeErrorState.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Telescope\FB_TelescopeSlewingState.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Telescope\FB_TelescopeReferencingState.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Telescope\FB_TelescopeState.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Telescope\FB_TelescopeTrackingState.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Telescope\I_TelescopeState.TcIO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="VisualizationManager.TcVMO">
@@ -154,8 +109,7 @@
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
     <Folder Include="Components" />
-    <Folder Include="POUs\MonetTelescope" />
-    <Folder Include="POUs\Telescope" />
+    <Folder Include="Telescope" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>
