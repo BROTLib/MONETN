@@ -63,6 +63,9 @@
     <Compile Include="POUs\Telescope\FB_AltAzTelescopeControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Telescope\FB_RaDecTelescopeControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Telescope\FB_BaseTelescopeControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
