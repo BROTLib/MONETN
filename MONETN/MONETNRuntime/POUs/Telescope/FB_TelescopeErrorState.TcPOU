@@ -10,10 +10,18 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// wait until error is gone
+      <ST><![CDATA[// 
+// state
+//
+
+// wait until error is gone
 IF NOT pMachine^.pControl^.bError THEN
 	pMachine^.State := E_TelescopeState.idle;
 END_IF
+
+//
+// commands
+// 
 
 IF bReset THEN
 	pMachine^.pControl^.Reset();
@@ -21,9 +29,14 @@ IF bReset THEN
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="FB_TelescopeErrorState">
+      <LineId Id="49" Count="1" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="51" Count="0" />
       <LineId Id="9" Count="0" />
       <LineId Id="36" Count="2" />
+      <LineId Id="44" Count="2" />
       <LineId Id="40" Count="0" />
+      <LineId Id="47" Count="0" />
       <LineId Id="39" Count="0" />
       <LineId Id="41" Count="0" />
       <LineId Id="43" Count="0" />

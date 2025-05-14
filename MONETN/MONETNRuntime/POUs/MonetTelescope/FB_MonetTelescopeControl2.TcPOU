@@ -300,6 +300,84 @@ END_IF
 ]]></ST>
       </Implementation>
     </Method>
+    <Method Name="_Track" Id="{bb0a3c7f-5e67-4187-be04-e73fcf00db3f}">
+      <Declaration><![CDATA[METHOD _Track : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fDerotatorVelocity := F_Derotatorvelocity(fElevationCalc, fAzimuthCalc, telescopeConfig.latitude);
+fElevationVelocity := F_Elevationvelocity(fAzimuthCalc, telescopeConfig.latitude);
+fAzimuthVelocity := F_Azimuthvelocity(fElevationCalc, fAzimuthCalc, telescopeConfig.latitude);
+
+IF fElevationCurrent < 5.0 OR fElevationCurrent > 89.5 THEN 
+	bTrack := FALSE;
+END_IF
+IF fAzimuthCurrent > 440.0 THEN
+	bTrack := FALSE;
+END_IF
+IF (fDerotatorCurrent < -69.0 AND fDerotatorVelocity<0.0) OR (fDerotatorCurrent > 379.0 AND fDerotatorVelocity>0.0) THEN
+	bTrack := FALSE;
+END_IF
+
+// Elevation
+fbElevation.Position := fElevationCalc;
+IF NOT fbElevation.Tracking THEN
+	fbElevation.Velocity := 10.0;
+	fbElevation.MoveAxis := TRUE;
+	IF NOT fbElevation.Busy AND fbElevation.MoveDone THEN
+		fbElevation.MoveAxis := FALSE;
+		IF fbElevation.isTracking THEN
+			fbElevation.Velocity := fElevationVelocity;
+		ELSE
+			fbElevation.Velocity := 3.0*fElevationVelocity;
+		END_IF
+		fbElevation.Velocity := fElevationVelocity;
+		fbElevation.Tracking := TRUE;
+	END_IF
+ELSE
+	fbElevation.Velocity := fElevationVelocity;
+END_IF
+
+// Azimuth
+fbAzimuth.Position := fAzimuthCalc;
+IF NOT fbAzimuth.Tracking THEN
+	fbAzimuth.Velocity := 10.0;
+	fbAzimuth.MoveAxis := TRUE;
+	IF NOT fbAzimuth.Busy AND fbAzimuth.MoveDone THEN
+		fbAzimuth.MoveAxis := FALSE;
+		IF fbAzimuth.isTracking THEN
+			fbAzimuth.Velocity := fAzimuthVelocity;
+		ELSE
+			fbAzimuth.Velocity := 3.0*fAzimuthVelocity;
+		END_IF
+		fbAzimuth.Velocity := fAzimuthVelocity;
+		fbAzimuth.Tracking := TRUE;
+	END_IF
+ELSE
+	fbAzimuth.Velocity := fAzimuthVelocity;
+END_IF
+
+// Derotator
+fbDerotator.Position := fDerotatorCalc;
+IF NOT fbDerotator.Tracking THEN
+	fbDerotator.Velocity := 10.0;
+	fbDerotator.MoveAxis := TRUE;
+	IF NOT fbDerotator.Busy AND fbDerotator.MoveDone THEN
+		fbDerotator.MoveAxis := FALSE;
+		IF fbDerotator.isTracking THEN
+			fbDerotator.Velocity := fDerotatorVelocity;
+		ELSE
+			fbDerotator.Velocity := 3.0*fDerotatorVelocity;
+		END_IF
+		fbDerotator.Velocity := fDerotatorVelocity;
+		fbDerotator.Tracking := TRUE;
+	END_IF
+ELSE
+	fbDerotator.Velocity := fDerotatorVelocity;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
     <LineIds Name="FB_MonetTelescopeControl2">
       <LineId Id="32" Count="0" />
       <LineId Id="17" Count="2" />
@@ -351,6 +429,13 @@ END_IF
       <LineId Id="15" Count="1" />
       <LineId Id="9" Count="5" />
       <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_MonetTelescopeControl2._Track">
+      <LineId Id="13" Count="2" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="16" Count="8" />
+      <LineId Id="82" Count="0" />
+      <LineId Id="25" Count="55" />
     </LineIds>
   </POU>
 </TcPlcObject>

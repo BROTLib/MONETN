@@ -10,7 +10,17 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF bPark THEN
+      <ST><![CDATA[// 
+// state
+//
+
+pMachine^.pControl^._Track();
+
+//
+// commands
+//
+
+IF bPark THEN
 	CASE iStage OF
 		0:
 			IF pMachine^.pControl^._Stop() THEN
@@ -54,6 +64,13 @@ IF bTrack THEN
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="FB_TelescopeTrackingState">
+      <LineId Id="73" Count="1" />
+      <LineId Id="72" Count="0" />
+      <LineId Id="81" Count="1" />
+      <LineId Id="80" Count="0" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="78" Count="1" />
       <LineId Id="31" Count="12" />
       <LineId Id="64" Count="7" />
       <LineId Id="44" Count="19" />

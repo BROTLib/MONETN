@@ -10,12 +10,19 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// run until initialized
+      <ST><![CDATA[// 
+// state
+//
+
+// run until initialized
 IF pMachine^.pControl^._Initialize() THEN
 	pMachine^.State := E_TelescopeState.idle;
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="FB_TelescopeInitializingState">
+      <LineId Id="31" Count="1" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="33" Count="0" />
       <LineId Id="21" Count="0" />
       <LineId Id="19" Count="1" />
       <LineId Id="9" Count="0" />

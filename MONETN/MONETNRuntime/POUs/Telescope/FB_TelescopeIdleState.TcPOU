@@ -10,7 +10,11 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF bPark THEN
+      <ST><![CDATA[//
+// commands
+// 
+
+IF bPark THEN
 	pMachine^.State := E_TelescopeState.parking;
 	bPark := FALSE;
 END_IF
@@ -26,6 +30,7 @@ IF bTrack THEN
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="FB_TelescopeIdleState">
+      <LineId Id="33" Count="3" />
       <LineId Id="9" Count="0" />
       <LineId Id="19" Count="1" />
       <LineId Id="18" Count="0" />

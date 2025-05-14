@@ -10,12 +10,19 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF bInitialize THEN
+      <ST><![CDATA[//
+// commands
+// 
+
+IF bInitialize THEN
 	pMachine^.State := E_TelescopeState.initializing;
 	bInitialize := FALSE;
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="FB_TelescopeParkedState">
+      <LineId Id="21" Count="1" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="23" Count="0" />
       <LineId Id="17" Count="2" />
       <LineId Id="9" Count="0" />
     </LineIds>
