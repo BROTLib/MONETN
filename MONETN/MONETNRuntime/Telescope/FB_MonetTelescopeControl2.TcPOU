@@ -22,10 +22,53 @@ VAR
 	bReady				: BOOL;
 	bBusy				: BOOL;
 	tonTrackingDelay	: TON;		// tracking delay
+	TelescopeAuxiliary	: FB_TelescopeAuxiliary;
+	rtrigReset			: R_TRIG;
+	nErrorID			: UDINT;
+	fSlewTime			: LREAL;
+	tpPowerOnWarning	: TP;		// triggers power warning
+	tonPowerTimeout		: TON;		// power on timeout
+	StatusWord, LastStatus:	UDINT;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// is telescope slewing?
+      <ST><![CDATA[TelescopeAuxiliary(comm := comm);
+
+rtrigReset(CLK := bReset);
+
+IF fbElevation.Error THEN
+	nErrorID := fbElevation.nErrorID;
+	fbElevation.bReset := bReset;
+ELSIF fbAzimuth.bError THEN
+	nErrorID := fbAzimuth.nErrorID;
+	fbAzimuth.bReset := bReset;
+ELSIF fbFocus <> 0 AND_THEN fbFocus.Error THEN
+	nErrorID := fbFocus.ErrorID;
+	IF rtrigReset.Q THEN
+		fbFocus.Reset();
+	END_IF
+ELSIF fbDerotator.bError THEN
+	nErrorID := fbDerotator.nErrorID;
+	fbDerotator.bReset := bReset;
+END_IF
+
+bError := fbElevation.Error OR fbAzimuth.bError OR fbFocus.Error OR fbDerotator.bError;
+
+fSlewTime := MAX(MAX(fbElevation.fSlewTime, fbAzimuth.fSlewTime), fbDerotator.fSlewTime);
+			
+IF bError THEN
+	fbMachine.State := E_TelescopeState.error;
+ELSE
+	nErrorID := 0;
+END_IF
+
+IF fbElevation.bError THEN
+	fbElevation.Enable := FALSE;
+	fbAzimuth.Enable := FALSE;
+	fbBrake.CloseBrake();
+END_IF
+
+// is telescope slewing?
 bSlewing := NOT bTracking AND (fbElevation.fbAxis.InMotion OR fbElevation.fbAxis.InRamp OR
 			fbAzimuth.fbAxis.InMotion OR fbAzimuth.fbAxis.InRamp OR
 			fbDerotator.fbAxis.InMotion OR fbDerotator.fbAxis.InRamp);
@@ -59,7 +102,143 @@ IF bEstopTriggered THEN
 	fbElevation.Enable := FALSE;
 	fbAzimuth.Enable := FALSE;
 	fbDerotator.Enable := FALSE;
-END_IF]]></ST>
+END_IF
+
+IF bSlewing OR bTracking THEN
+	MQTTTimer.PT := T#1000MS;
+ELSE
+	MQTTTimer.PT := T#5000MS;
+END_IF
+MQTTTimer(IN:=TRUE);
+IF MQTTTimer.Q THEN // publish new payload every second
+	MQTTTimer(IN:=FALSE);
+
+	comm.Publish('telescope', 'dome', 'JulianDate', LREAL_TO_STRING(fJD));
+	comm.Publish('telescope', 'dome', 'LocalSiderialTime', LREAL_TO_STRING(fLST));
+	comm.Publish('telescope', 'dome', 'Azimuth', LREAL_TO_STRING(fAzimuthCurrent));
+	comm.Publish('telescope', 'dome', 'Elevation', LREAL_TO_STRING(fElevationCurrent));
+	comm.Publish('telescope', 'dome', 'Derotator', LREAL_TO_STRING(fDerotatorCurrent));
+	comm.Publish('telescope', 'dome', 'HourAngle', LREAL_TO_STRING(fHourAngleCalc));
+	//comm.Publish('telescope', 'dome', 'RightAscension', LREAL_TO_STRING(rightascension_calc));
+	//comm.Publish('telescope', 'dome', 'Declination', LREAL_TO_STRING(declination_calc));
+	comm.Publish('telescope', 'dome', 'RightAscension', LREAL_TO_STRING(fRightAscension));
+	comm.Publish('telescope', 'dome', 'Declination', LREAL_TO_STRING(fDeclination));
+	comm.Publish('telescope', 'dome', 'azimuth_offset', LREAL_TO_STRING(fAzimuthOffset));
+	comm.Publish('telescope', 'dome', 'elevation_offset', LREAL_TO_STRING(fElevationOffset));
+	comm.Publish('telescope', 'dome', 'derotator_torque', LREAL_TO_STRING(fbDerotator.fTorque));
+	comm.Publish('telescope', 'dome', 'elevation_torque', LREAL_TO_STRING(fbElevation.fTorque));
+	comm.Publish('telescope', 'dome', 'azimuth_torque', LREAL_TO_STRING(fbAzimuth.fTorque));
+	
+	comm.Publish('telescope', 'dome', 'errorid',		UDINT_TO_STRING(nErrorID));
+	comm.Publish('telescope', 'dome', 'error',		BOOL_TO_STRING(bError));
+	comm.Publish('telescope', 'dome', 'ready',		BOOL_TO_STRING(bReady));
+	comm.Publish('telescope', 'dome', 'busy',		BOOL_TO_STRING(bBusy));
+	comm.Publish('telescope', 'dome', 'sliding',		BOOL_TO_STRING(bSlewing));
+	comm.Publish('telescope', 'dome', 'tracking', 	BOOL_TO_STRING(bTracking));
+	comm.Publish('telescope', 'dome', 'stopped',		BOOL_TO_STRING(bStopped));
+	comm.Publish('telescope', 'dome', 'homed',		BOOL_TO_STRING(bHomed));
+	//comm.Publish('telescope', 'dome', 'parked',		BOOL_TO_STRING(isparked));
+	
+	comm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.AZ', LREAL_TO_STRING(fAzimuthCurrent));
+	comm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.ALT', LREAL_TO_STRING(fElevationCurrent));
+	comm.Publish('telescope', 'dome', 'POSITION.CURRENT.AZ', LREAL_TO_STRING(fAzimuthPointing));
+	comm.Publish('telescope', 'dome', 'POSITION.CURRENT.ALT', LREAL_TO_STRING(fElevationPointing));
+	comm.Publish('telescope', 'dome', 'POSITION.CURRENT.RA', LREAL_TO_STRING(fRightAscensionPointing));
+	comm.Publish('telescope', 'dome', 'POSITION.CURRENT.DEC', LREAL_TO_STRING(fDeclinationPointing));
+	comm.Publish('telescope', 'dome', 'POSITION.REAL.AZ', LREAL_TO_STRING(fAzimuthCurrent));
+	comm.Publish('telescope', 'dome', 'POSITION.REAL.ALT', LREAL_TO_STRING(fElevationCurrent));
+
+END_IF
+
+StatusWord.0 := bError;
+StatusWord.1 := bReady;
+StatusWord.2 := bSlewing;
+StatusWord.3 := bTracking;
+StatusWord.4 := bStopped;
+StatusWord.5 := bHomed;
+StatusWord.6 := bPower;
+StatusWord.7 := bPark;
+//StatusWord.8 := bGoHome;
+StatusWord.9 := bTrack;
+//StatusWord.10 := bGoto;
+StatusWord.11 := bSlew;
+StatusWord.12 := bStop;
+StatusWord.13 := bBusy;
+
+IF StatusWord<>LastStatus THEN // publish new payload every second
+	LastStatus := StatusWord;
+	comm.Publish('telescope', 'dome', 'error',		BOOL_TO_STRING(bError));
+	comm.Publish('telescope', 'dome', 'ready',		BOOL_TO_STRING(bReady));
+	comm.Publish('telescope', 'dome', 'sliding',		BOOL_TO_STRING(bSlewing));
+	comm.Publish('telescope', 'dome', 'tracking', 	BOOL_TO_STRING(bTracking));
+	comm.Publish('telescope', 'dome', 'stopped',		BOOL_TO_STRING(bStopped));
+	comm.Publish('telescope', 'dome', 'homed',		BOOL_TO_STRING(bHomed));
+	comm.Publish('telescope', 'dome', 'power',		BOOL_TO_STRING(bPower));
+	comm.Publish('telescope', 'dome', 'park',		BOOL_TO_STRING(bPark));
+	//comm.Publish('telescope', 'dome', 'gohome',		BOOL_TO_STRING(bGoHome));
+	comm.Publish('telescope', 'dome', 'track',		BOOL_TO_STRING(bTrack));
+	//comm.Publish('telescope', 'dome', 'goto',		BOOL_TO_STRING(bGoto));
+	comm.Publish('telescope', 'dome', 'slew',		BOOL_TO_STRING(bSlew));
+	comm.Publish('telescope', 'dome', 'stop',		BOOL_TO_STRING(bStop));
+	comm.Publish('telescope', 'dome', 'busy',		BOOL_TO_STRING(bBusy));
+END_IF
+
+
+(* Event function blocks start here. *)
+//TCSpowerEvent(	Trigger := powerfailure, 
+//				Level := ADSLOG_MSGTYPE_ERROR,
+//				FormatString := 'power %s',
+//				//OnMessage := 'Failure',
+//				OffMessage := 'OK', 
+//				Comm := comm);
+
+//TCSgohomeEvent(	Trigger := bGoHome, 
+//				Level := ADSLOG_MSGTYPE_HINT,
+//				FormatString := 'GOHOME %s',
+//				OnMessage := 'commencing',
+//				OffMEssage := 'completed', 
+//				Comm := comm);
+//TCSparkEvent(	Trigger := bPark, 
+//				Level := ADSLOG_MSGTYPE_HINT,
+//				FormatString := 'PARK %s',
+//				OnMessage := 'commencing',
+//				OffMEssage := 'completed', 
+//				Comm := comm);
+//TCSgotoEvent(	Trigger := bGoto, 
+//				Level := ADSLOG_MSGTYPE_HINT,
+//				FormatString := 'GOTO %s',
+//				OnMessage := 'commencing',
+//				OffMEssage := 'completed', 
+//				Comm := comm);
+TCStrackEvent(	Trigger := bTrack, 
+				Level := ADSLOG_MSGTYPE_HINT,
+				FormatString := 'TRACK %s',
+				OnMessage := 'commencing',
+				OffMEssage := 'completed', 
+				Comm := comm);
+TCSstopEvent(	Trigger := bStop, 
+				Level := ADSLOG_MSGTYPE_WARN,
+				FormatString := 'STOP %s',
+				OnMessage := 'commencing',
+				OffMEssage := 'completed',
+				OffLevel := ADSLOG_MSGTYPE_HINT, 
+				Comm := comm);
+AltitudeEvent(	Trigger := bPower AND fElevationCalc<0.0, 
+				Level := ADSLOG_MSGTYPE_WARN,
+				FormatString := '%s',
+				OnMessage := 'Target below horizon',
+				OffMEssage := '', 
+				Comm := comm);
+TCSreadyEvent(	Trigger := bPower AND bReady, 
+				Level := ADSLOG_MSGTYPE_HINT,
+				FormatString := '%s',
+				OnMessage := 'STELLA1 startup finished', 
+				Comm := comm);
+//TCSCTOEvent(	Trigger := command_timeout.Q,
+//				Level := ADSLOG_MSGTYPE_WARN,
+//				FormatString := 'A timeout occured during %s command!',
+//				OnMessage := 'NOCOMMAND', 
+//				Comm := comm);]]></ST>
     </Implementation>
     <Method Name="_Initialize" Id="{b82ca6ca-e327-451f-ab83-9e7ad8e568da}">
       <Declaration><![CDATA[METHOD _Initialize : BOOL
@@ -379,6 +558,13 @@ END_IF]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="FB_MonetTelescopeControl2">
+      <LineId Id="124" Count="0" />
+      <LineId Id="134" Count="19" />
+      <LineId Id="157" Count="3" />
+      <LineId Id="178" Count="0" />
+      <LineId Id="165" Count="7" />
+      <LineId Id="123" Count="0" />
+      <LineId Id="173" Count="0" />
       <LineId Id="32" Count="0" />
       <LineId Id="17" Count="2" />
       <LineId Id="25" Count="0" />
@@ -401,6 +587,8 @@ END_IF]]></ST>
       <LineId Id="100" Count="0" />
       <LineId Id="95" Count="4" />
       <LineId Id="70" Count="0" />
+      <LineId Id="191" Count="134" />
+      <LineId Id="179" Count="0" />
     </LineIds>
     <LineIds Name="FB_MonetTelescopeControl2._Initialize">
       <LineId Id="6" Count="10" />
