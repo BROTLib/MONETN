@@ -221,7 +221,7 @@ VAR_STAT
 	iLastStage			: USINT := 101;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[_Slew := TRUE;
+        <ST><![CDATA[_Slew := FALSE;
 tonCommandTimeout(IN := iStage < 100, PT := T#600S);
 IF tonCommandTimeout.Q THEN
 	bError := TRUE;
@@ -272,7 +272,7 @@ CASE iStage OF
 		fbDerotator.MoveAxis := FALSE;
 		fRightAscension := fRightAscensionCalc;
 		fDeclination := fDeclinationCalc;
-		_Slew := FALSE;
+		_Slew := TRUE;
 END_CASE
 
 SlewEvent(Trigger := iStage > iLastStage, FormatString := 'Slew progress: %s', OnMessage := USINT_TO_STRING(iStage), comm := comm);
