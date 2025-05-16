@@ -25,7 +25,7 @@ VAR
 	DerotatorControl	: FB_DerotatorControl(comm := comm);
 	ElevationControl	: FB_ElevationControl(comm := comm);
 	AzimuthControl		: FB_AzimuthControl(comm := comm);
-	TelescopeControl	: FB_MonetTelescopeControl(comm := comm);
+	TelescopeControl	: FB_MonetTelescopeControl2(comm := comm);
 	PendantControl		: FB_MonetPendantControl(comm := comm);
 END_VAR
 VAR CONSTANT
