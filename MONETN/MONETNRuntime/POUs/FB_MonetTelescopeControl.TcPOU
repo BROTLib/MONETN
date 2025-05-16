@@ -421,8 +421,10 @@ IF MQTTTimer.Q THEN // publish new payload every second
 	comm.Publish('telescope', 'dome', 'homed',		BOOL_TO_STRING(bHomed));
 	comm.Publish('telescope', 'dome', 'parked',		BOOL_TO_STRING(isparked));
 	
-	comm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.AZ', LREAL_TO_STRING(azimuth_current));
-	comm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.ALT', LREAL_TO_STRING(elevation_current));
+	comm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.AZ.REALPOS', LREAL_TO_STRING(azimuth_current));
+	comm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.AZ.OFFSET', LREAL_TO_STRING(fAzimuthOffset));
+	comm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.ALT.REALPOS', LREAL_TO_STRING(elevation_current));
+	comm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.ALT.OFFSET', LREAL_TO_STRING(fElevationOffset));	
 	comm.Publish('telescope', 'dome', 'POSITION.CURRENT.AZ', LREAL_TO_STRING(fAzimuthPointing));
 	comm.Publish('telescope', 'dome', 'POSITION.CURRENT.ALT', LREAL_TO_STRING(fElevationPointing));
 	comm.Publish('telescope', 'dome', 'POSITION.CURRENT.RA', LREAL_TO_STRING(fRAPointing));
@@ -1137,7 +1139,10 @@ bTrack			:= TRUE;]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="FB_MonetTelescopeControl">
-      <LineId Id="1" Count="395" />
+      <LineId Id="1" Count="295" />
+      <LineId Id="521" Count="2" />
+      <LineId Id="520" Count="0" />
+      <LineId Id="299" Count="97" />
     </LineIds>
     <LineIds Name="FB_MonetTelescopeControl._GotoTelescope">
       <LineId Id="1" Count="76" />
