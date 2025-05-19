@@ -5,7 +5,7 @@
   <Children>
     <Node>
       <Title>Scope Project1</Title>
-      <Expanded>True</Expanded>
+      <Expanded>False</Expanded>
       <FileName>C:\Users\monet\Documents\MONET\Scope\Scope Project1.tcscopex</FileName>
       <Children>
         <Node>
@@ -47,12 +47,12 @@
         </Node>
         <Node>
           <Title>YT Chart</Title>
-          <Expanded>True</Expanded>
+          <Expanded>False</Expanded>
           <FileName></FileName>
           <Children>
             <Node>
               <Title>Axis Group</Title>
-              <Expanded>True</Expanded>
+              <Expanded>False</Expanded>
               <FileName></FileName>
               <Children>
                 <Node>
@@ -65,7 +65,7 @@
             </Node>
             <Node>
               <Title>Axis Group (1)</Title>
-              <Expanded>True</Expanded>
+              <Expanded>False</Expanded>
               <FileName></FileName>
               <Children>
                 <Node>
@@ -78,7 +78,7 @@
             </Node>
             <Node>
               <Title>Axis Group (3)</Title>
-              <Expanded>True</Expanded>
+              <Expanded>False</Expanded>
               <FileName></FileName>
               <Children>
                 <Node>
@@ -101,7 +101,7 @@
     </Node>
     <Node>
       <Title>ScopeWizard</Title>
-      <Expanded>True</Expanded>
+      <Expanded>False</Expanded>
       <FileName>C:\Users\monet\Documents\MONET\Scope\ScopeWizard.tcscopex</FileName>
       <Children>
         <Node>
@@ -161,12 +161,12 @@
         </Node>
         <Node>
           <Title>YT Chart</Title>
-          <Expanded>True</Expanded>
+          <Expanded>False</Expanded>
           <FileName></FileName>
           <Children>
             <Node>
               <Title>Torque/force feedback</Title>
-              <Expanded>True</Expanded>
+              <Expanded>False</Expanded>
               <FileName></FileName>
               <Children>
                 <Node>
@@ -191,7 +191,7 @@
             </Node>
             <Node>
               <Title>Follow distance</Title>
-              <Expanded>True</Expanded>
+              <Expanded>False</Expanded>
               <FileName></FileName>
               <Children>
                 <Node>
@@ -216,7 +216,7 @@
             </Node>
             <Node>
               <Title>Velocity feedback</Title>
-              <Expanded>True</Expanded>
+              <Expanded>False</Expanded>
               <FileName></FileName>
               <Children>
                 <Node>
