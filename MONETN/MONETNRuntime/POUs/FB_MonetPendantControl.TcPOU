@@ -5,8 +5,8 @@
 VAR_INPUT
 	eTelescopeMode		: E_TelescopeMode;
 	fbCovers			: REFERENCE TO FB_MonetCoverControl;
-	fbBrake				: REFERENCE TO FB_MonetHydraulicsControl;
-	fbHydraulics		: REFERENCE TO FB_MonetHydraulicsControl;
+	fbBrake				: REFERENCE TO FB_HydraulicsControl;
+	fbHydraulics		: REFERENCE TO FB_HydraulicsControl;
 	fbFocus		 		: REFERENCE TO FB_FocusControl;
 	fbElevation			: REFERENCE TO FB_ElevationControl;
 	fbAzimuth	 		: REFERENCE TO FB_AzimuthControl;
