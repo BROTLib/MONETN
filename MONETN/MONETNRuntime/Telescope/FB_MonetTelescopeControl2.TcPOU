@@ -293,8 +293,7 @@ IF fbCovers.Opened AND fbElevation.Calibrated AND fbAzimuth.Calibrated AND fbDer
 	_Initialize := TRUE;
 ELSE
 	_Initialize := FALSE;
-END_IF
-]]></ST>
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="_Park" Id="{b753730c-f439-4fd9-a185-d431d3c6a732}">
@@ -309,7 +308,11 @@ VAR_STAT
 	LastStage	: USINT := 101;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF bReset OR bError THEN
+        <ST><![CDATA[fbCovers.Close();
+_Park := fbCovers.Closed;
+
+(*
+IF bReset OR bError THEN
 	Stage := 0;
 END_IF
 _Park := FALSE;
@@ -384,7 +387,7 @@ CASE Stage OF
 END_CASE
 ParkEvent(Trigger := Stage > LastStage, FormatString := 'Parking progress: %s', OnMessage := USINT_TO_STRING(Stage), comm := comm);
 LastStage := Stage;
-]]></ST>
+*)]]></ST>
       </Implementation>
     </Method>
     <Method Name="_Slew" Id="{b97e5388-b217-43fc-a742-07bcca507bbe}">
@@ -593,12 +596,17 @@ END_IF]]></ST>
     <LineIds Name="FB_MonetTelescopeControl2._Initialize">
       <LineId Id="6" Count="10" />
       <LineId Id="60" Count="0" />
-      <LineId Id="17" Count="30" />
+      <LineId Id="17" Count="1" />
+      <LineId Id="64" Count="0" />
+      <LineId Id="20" Count="27" />
       <LineId Id="52" Count="1" />
       <LineId Id="57" Count="2" />
-      <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_MonetTelescopeControl2._Park">
+      <LineId Id="109" Count="0" />
+      <LineId Id="111" Count="0" />
+      <LineId Id="110" Count="0" />
+      <LineId Id="108" Count="0" />
       <LineId Id="13" Count="2" />
       <LineId Id="98" Count="0" />
       <LineId Id="19" Count="1" />
