@@ -99,7 +99,7 @@ HydraulicsControl(
 	nMinPanLevel	:= 3000,
 	nMaxPanLevel	:= 10200,
 	fMinPanPercent	:= 0.0,
-	fMaxPanPercent	:= 80.0, //56.0,
+	fMaxPanPercent	:= 50.0, //56.0,
 	bBrakeClearing	:= brakeClearing
 );
 ElevationControl(
