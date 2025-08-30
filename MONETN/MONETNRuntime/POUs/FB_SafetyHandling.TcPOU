@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
   <POU Name="FB_SafetyHandling" Id="{f40cbfea-880d-4f1c-9345-5f8b55063f2d}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_SafetyHandling
 VAR
@@ -54,7 +54,7 @@ VAR
 	RestartLog				: FB_EventLog;		// restart logging
 	SafetyLog				: FB_EventLog;		// safety logging
 	
-	comm					: I_Comm;
+	fbComm					: I_Comm;
 END_VAR
 VAR_OUTPUT
 	error					: BOOL;		// error condition
@@ -154,14 +154,14 @@ END_CASE
 ErrAckLog(  
 	Trigger 	:= outErrAck,
 	OnMessage 	:= 'Safety error was acknowledged.',
-	Comm		:= comm
+	Comm		:= fbComm
 );
 			
 RestartLog(	
 	Trigger 	:= outRestart,
 	Level 		:= ADSLOG_MSGTYPE_WARN,
 	OnMessage 	:= 'Safety was restarted.',
-	Comm		:= comm
+	Comm		:= fbComm
 );
 
 SafetyLog(	
@@ -170,7 +170,7 @@ SafetyLog(
 	OnMessage 	:= 'Safety Error! Emergency stop enganged!',
 	OffMessage 	:= 'Safety is OK.',
 	OffLevel 	:= ADSLOG_MSGTYPE_HINT,
-	Comm		:= comm);
+	Comm		:= fbComm);
 ]]></ST>
     </Implementation>
     <Method Name="FB_Init" Id="{78880c56-5a68-4979-b4f3-852d102d76af}">
@@ -185,7 +185,7 @@ VAR_INPUT
 	comm			: I_Comm;	      
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[THIS^.comm := comm;]]></ST>
+        <ST><![CDATA[THIS^.fbComm := comm;]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="FB_SafetyHandling">

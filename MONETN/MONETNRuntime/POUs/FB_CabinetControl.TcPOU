@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.8">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
   <POU Name="FB_CabinetControl" Id="{82301626-c59a-4d6c-ac78-2e8e2d6a8e41}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_CabinetControl
 VAR_INPUT
@@ -22,7 +22,7 @@ VAR
 	blinkErrorLamp			: FB_BLINK;
 	blinkPowerLamp			: FB_BLINK;
 	commTimer 				: TON := (PT:=T#5S);
-	comm					: I_Comm;
+	fbComm					: I_Comm;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -39,7 +39,7 @@ blinkPowerLamp(Q => outLampPower);
 commTimer(IN:=TRUE);
 IF commTimer.Q THEN
 	commTimer(IN:=FALSE);
-	comm.Publish('electronics', 'base', 'MainCabinetTemperature', LREAL_TO_FMTSTR(cabinetTemp, 2, TRUE));
+	fbComm.Publish('electronics', 'base', 'MainCabinetTemperature', LREAL_TO_FMTSTR(cabinetTemp, 2, TRUE));
 END_IF
 
 // events
@@ -48,13 +48,13 @@ tempEvent(
 	Level 			:= ADSLOG_MSGTYPE_WARN,
 	FormatString 	:= 'Main cabinet temperature warning:	%s',
 	OnMessage 		:= LREAL_TO_FMTSTR(cabinetTemp, 1, TRUE),
-	comm			:= comm);
+	comm			:= fbComm);
 tempCriticalEvent(	
 	Trigger 		:= tempCritical.Q1, 
 	Level 			:= ADSLOG_MSGTYPE_ERROR,
 	FormatString 	:= 'Main cabinet temperature is critical:	%s!',
 	OnMessage 		:= LREAL_TO_FMTSTR(cabinetTemp, 1, TRUE),
-	comm			:= comm);
+	comm			:= fbComm);
 
 
 ]]></ST>
@@ -80,7 +80,7 @@ VAR_INPUT
 	comm			: I_Comm;	   
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[THIS^.comm := comm;]]></ST>
+        <ST><![CDATA[THIS^.fbComm := comm;]]></ST>
       </Implementation>
     </Method>
     <Method Name="IsKeyOnManual" Id="{c3808b8c-a852-4e65-ad30-2984c388ad32}">

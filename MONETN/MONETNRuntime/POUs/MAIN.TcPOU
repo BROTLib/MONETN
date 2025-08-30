@@ -14,19 +14,19 @@ VAR
 	
 	eTelescopeMode 		: E_TelescopeMode;
 	
-	comm				: FB_Comm_MQTT_Influx;
-	SafetyHandling		: FB_SafetyHandling(comm := comm);
-	CabinetControl		: FB_CabinetControl(comm := comm);
-	PowerMonitoring		: FB_PowerMonitoring(comm := comm);
-	RoofControl			: FB_RoofControl(comm := comm);
-	CoverControl		: FB_MonetCoverControl(comm := comm);
-	HydraulicsControl	: FB_HydraulicsControl(comm := comm);
-	FocusControl		: FB_FocusControl(comm := comm);
-	DerotatorControl	: FB_DerotatorControl(comm := comm);
-	ElevationControl	: FB_ElevationControl(comm := comm);
-	AzimuthControl		: FB_AzimuthControl(comm := comm);
-	TelescopeControl	: FB_MonetTelescopeControl(comm := comm);
-	PendantControl		: FB_MonetPendantControl(comm := comm);
+	fbComm				: FB_Comm_MQTT_Influx;
+	SafetyHandling		: FB_SafetyHandling(comm := fbComm);
+	CabinetControl		: FB_CabinetControl(comm := fbComm);
+	PowerMonitoring		: FB_PowerMonitoring(comm := fbComm);
+	RoofControl			: FB_RoofControl(comm := fbComm);
+	CoverControl		: FB_MonetCoverControl(comm := fbComm);
+	HydraulicsControl	: FB_HydraulicsControl(comm := fbComm);
+	FocusControl		: FB_FocusControl(comm := fbComm);
+	DerotatorControl	: FB_DerotatorControl(comm := fbComm);
+	ElevationControl	: FB_ElevationControl(comm := fbComm);
+	AzimuthControl		: FB_AzimuthControl(comm := fbComm);
+	TelescopeControl	: FB_MonetTelescopeControl2(comm := fbComm);
+	PendantControl		: FB_MonetPendantControl(comm := fbComm);
 END_VAR
 VAR CONSTANT
 	telescopeConfig		: ST_TelescopeConfig := (longitude := -104.0217, latitude := 30.6714, altitude := 2000.0, 
@@ -141,8 +141,8 @@ PendantControl(
 	fbDerotator 	:= DerotatorControl	
 );
 
-// and comm
-comm(	
+// and fbComm
+fbComm(	
 	sHostName		:= '169.254.146.10',
     nHostPort  		:= 1883,
     nKeepAlive  	:= 60,
@@ -181,8 +181,8 @@ SafetyHandling();
 commTimer(IN:=TRUE);
 IF commTimer.Q THEN
 	commTimer(IN:=FALSE);
-	comm.Publish('electronics', 'base', 'MainReady', BOOL_TO_STRING(ready));
-	comm.Publish('electronics', 'base', 'MasterError', BOOL_TO_STRING(error));
+	fbComm.Publish('electronics', 'base', 'MainReady', BOOL_TO_STRING(ready));
+	fbComm.Publish('electronics', 'base', 'MasterError', BOOL_TO_STRING(error));
 END_IF
 
 ]]></ST>
