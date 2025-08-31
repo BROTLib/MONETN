@@ -14,15 +14,11 @@ VAR_INPUT
 	bBrakeClearing		: BOOL	:= TRUE;
 END_VAR
 VAR_OUTPUT
-	fDerotatorCalc		: LREAL;	// derotator calc
 	fDerotatorSign		: LREAL := 1.0;	// derotator
 	
 	fDerotatorVelocity	: LREAL;	// rotational velocity of the derotator
 	fElevationVelocity	: LREAL;	// rotational velocity of the elevation
 	fAzimuthVelocity	: LREAL;	// rotational velocity of the elevation
-	
-	fDerotatorCurrent	: LREAL;	// current position in derotator (calculated) (without pointing and offset correction)
-	fDerotatorOffset	: LREAL := 0.0;		// offset for the de-rotator
 END_VAR
 VAR
 END_VAR
@@ -1082,27 +1078,6 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
-    <Property Name="DerotatorOffset" Id="{da6437af-965e-40c2-8dea-4bf926c328a7}">
-      <Declaration><![CDATA[{warning 'add property implementation'}
-PROPERTY DerotatorOffset : LREAL
-]]></Declaration>
-      <Get Name="Get" Id="{340a3d36-9a30-422a-ad59-6bebfad8b2af}">
-        <Declaration><![CDATA[VAR
-END_VAR
-]]></Declaration>
-        <Implementation>
-          <ST><![CDATA[DerotatorOffset := THIS^.fDerotatorOffset;]]></ST>
-        </Implementation>
-      </Get>
-      <Set Name="Set" Id="{647130f3-7273-4691-ba3d-1e20d8a7157d}">
-        <Declaration><![CDATA[VAR
-END_VAR
-]]></Declaration>
-        <Implementation>
-          <ST><![CDATA[THIS^.fDerotatorOffset := DerotatorOffset;]]></ST>
-        </Implementation>
-      </Set>
-    </Property>
     <Method Name="Home" Id="{5b365a4e-cda4-42b8-9d62-ce493e72979f}">
       <Declaration><![CDATA[METHOD Home : BOOL
 ]]></Declaration>
@@ -1323,12 +1298,6 @@ bTrack			:= TRUE;]]></ST>
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="FB_MonetTelescopeControl2.Declination.Get">
-      <LineId Id="2" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_MonetTelescopeControl2.DerotatorOffset.Get">
-      <LineId Id="2" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_MonetTelescopeControl2.DerotatorOffset.Set">
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="FB_MonetTelescopeControl2.Home">

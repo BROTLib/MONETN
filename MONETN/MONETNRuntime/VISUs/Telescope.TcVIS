@@ -2871,7 +2871,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.TelescopeControl.azimuth_calc"</v>
+                          <v n="Value">"MAIN.TelescopeControl.fAzimuthCalc"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -3169,7 +3169,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.TelescopeControl.elevation_calc"</v>
+                          <v n="Value">"MAIN.TelescopeControl.fElevationCalc"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -3467,7 +3467,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.TelescopeControl.rightascension_calc"</v>
+                          <v n="Value">"MAIN.TelescopeControl.fRightAscensionCalc"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -3765,7 +3765,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.TelescopeControl.declination_calc"</v>
+                          <v n="Value">"MAIN.TelescopeControl.fDeclinationCalc"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -4247,7 +4247,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.TelescopeControl.azimuth_current"</v>
+                          <v n="Value">"MAIN.TelescopeControl.fAzimuthCurrent"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -4545,7 +4545,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.TelescopeControl.elevation_current"</v>
+                          <v n="Value">"MAIN.TelescopeControl.fElevationCurrent"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -5049,7 +5049,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.TelescopeControl.bSliding"</v>
+                          <v n="Value">"MAIN.TelescopeControl.bSlewing"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -7152,8 +7152,12 @@
                 <v>dddded30-66a4-4246-8c2a-ff0d86d813b8</v>
                 <v>HasInputAccess</v>
                 <v>1084451e-f175-4028-aecb-78618b44ec61</v>
+                <v>HasInputAccessIntern</v>
+                <v>3eceb4d6-35a3-4545-b4a7-1727e5da3f34</v>
                 <v>HasVisibilityAccess</v>
                 <v>4d96f75a-4ce5-4df2-a77c-dd3f39944822</v>
+                <v>HasVisibilityAccessIntern</v>
+                <v>dd005b74-398c-4b09-a2c6-624491342145</v>
                 <v>Initialize</v>
                 <v>d3f23778-ab24-4869-99de-b98cf717add7</v>
                 <v>IsAntialiasingInactive</v>
