@@ -272,7 +272,7 @@
         <Element option="0" SortOder="0" SubIdx="0">
           <Index>135</Index>
           <SubItem>ActualOperationMode</SubItem>
-          <Width>155</Width>
+          <Width>175</Width>
         </Element>
         <Element option="1" SortOder="0" SubIdx="0">
           <Index>33080</Index>
@@ -362,7 +362,7 @@
     <TcDMDrive>
       <SortId>0</SortId>
       <DriveModuleType>31</DriveModuleType>
-      <TcLink>
+      <TcLink ProtocalType="1">
         <TcPrjPath>..\MONETN\MONETN.tsproj</TcPrjPath>
         <IoItemPathName>TIID^Device 5 (EtherCAT)^Azimuth (AX5125-0000-0214)</IoItemPathName>
         <ItemId>1</ItemId>
@@ -371,6 +371,7 @@
       <OrderCode>AX5125-0000-02xx</OrderCode>
       <Name>Azimuth (AX5125-0000-0214)</Name>
       <FirmwareVersion>Firmware: v2.14 (Build 0006) / Bootloader: v2.02 (Build 0002)</FirmwareVersion>
+      <BootloaderVersion>2.02</BootloaderVersion>
       <CatalogNo>AX5125-0000-0214</CatalogNo>
       <HardwareVersion>c:0180  p:0103  d:0102  f:0101  o:----  s:----</HardwareVersion>
       <SerialNr>Serial#: 000530596</SerialNr>
@@ -1915,7 +1916,7 @@
               <IDN>32918</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>e000e00000000000556e6b6e23315670702d3336303030532d35560000000000000000000000000000000000000000000200200303000000000000000100030000000000a08c000000000000e8030000e8030000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</Data>
+              <Data>e000e00000000000556e6b6e23315670702d3336303030532d35560000000000000000000000000000000000000000000200200303000000000000000100030000000000a08c000000000000e8030000e8030000030000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
@@ -2290,6 +2291,17 @@
               <Elements>64</Elements>
               <Attribute>0</Attribute>
               <Data>0300</Data>
+            </InitCmd>
+            <InitCmd>
+              <Transition>PS</Transition>
+              <Comment><![CDATA[Autotuning parameter]]></Comment>
+              <Timeout>0</Timeout>
+              <OpCode>3</OpCode>
+              <DriveNo>0</DriveNo>
+              <IDN>33419</IDN>
+              <Elements>64</Elements>
+              <Attribute>0</Attribute>
+              <Data>160016000000000000000100680168013c001e00000000006400</Data>
             </InitCmd>
           </InitCmds>
         </SoE>
@@ -2952,7 +2964,6 @@
           <Name>DcSync250</Name>
           <Desc>Sync cycle time: 250µs</Desc>
           <AssignActivate>#x730</AssignActivate>
-          <ActivateAdditional>#x0</ActivateAdditional>
           <CycleTimeSync0 Factor="0">250000</CycleTimeSync0>
           <ShiftTimeSync0>0</ShiftTimeSync0>
           <CycleTimeSync1 Factor="-1">0</CycleTimeSync1>
@@ -2962,7 +2973,6 @@
           <Name>DcSync125</Name>
           <Desc>Sync cycle time: 125µs</Desc>
           <AssignActivate>#x730</AssignActivate>
-          <ActivateAdditional>#x0</ActivateAdditional>
           <CycleTimeSync0 Factor="0">125000</CycleTimeSync0>
           <ShiftTimeSync0>0</ShiftTimeSync0>
           <CycleTimeSync1 Factor="-1">0</CycleTimeSync1>
@@ -2972,7 +2982,6 @@
           <Name>DcSync62.5</Name>
           <Desc>Sync cycle time: 62.5µ</Desc>
           <AssignActivate>#x730</AssignActivate>
-          <ActivateAdditional>#x0</ActivateAdditional>
           <CycleTimeSync0 Factor="0">62500</CycleTimeSync0>
           <ShiftTimeSync0>0</ShiftTimeSync0>
           <CycleTimeSync1 Factor="-1">0</CycleTimeSync1>
@@ -3015,7 +3024,7 @@
           <ObjectId>false</ObjectId>
         </InfoData>
       </Settings>
-      <EsiFile>C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\Config\Io\EtherCAT\Beckhoff AX5xxx.xml</EsiFile>
+      <EsiFile>C:\TwinCAT\3.1\Config\Io\EtherCAT\Beckhoff AX5xxx.xml</EsiFile>
       <TwinCAT>
         <ExtensionSupportFlags>1</ExtensionSupportFlags>
       </TwinCAT>

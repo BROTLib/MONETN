@@ -157,11 +157,11 @@ hor2eq(alt := fElevationCurrentSky,
 		lat := telescopeConfig.latitude,
 		lon := telescopeConfig.longitude,
 		altitude := telescopeConfig.altitude,
-		ra => fRightAscensionCalc,
-		dec => fDeclinationCalc);
+		ra => fRightAscensionCurrent,
+		dec => fDeclinationCurrent);
 	
 // If the Telescope dips under the fHorizon (e.g. while tracking, stop and gohome)
-IF fElevationCurrent < (fHorizon+0.2) THEN
+IF fbElevation.Calibrated AND fElevationCurrent < (fHorizon+0.2) THEN
 	IF NOT bStopped AND NOT bGoHome THEN
 		bStop := TRUE;
 	ELSE
@@ -317,12 +317,10 @@ bStopped :=  (NOT fbElevation.bEnable OR fbElevation.fbAxis.StandStill) AND
 			(NOT fbAzimuth.bEnable OR fbAzimuth.fbAxis.StandStill) AND
 			(NOT fbDerotator.bEnable OR fbDerotator.fbAxis.StandStill);
 			
-bHomed := fbElevation.bCalibrated AND
-			fbAzimuth.bCalibrated AND
-			fbDerotator.bCalibrated;
-IF fbFocus <> 0 THEN
-	bHomed := bHomed AND fbFocus.Calibrated;
-END_IF
+bHomed := fbElevation.Calibrated AND
+			fbAzimuth.Calibrated AND
+			fbFocus.Calibrated AND
+			fbDerotator.Calibrated;
 			
 bReady := bHomed AND 
 	fbCovers.Opened AND 
@@ -333,10 +331,8 @@ bReady := bHomed AND
 
 bBusy := fbElevation.fbAxis.Busy OR
 		fbAzimuth.fbAxis.Busy OR
-		fbDerotator.fbAxis.Busy;
-IF fbFocus <> 0 THEN
-	bBusy := bBusy AND fbFocus.Busy;
-END_IF		
+		fbDerotator.fbAxis.Busy OR
+		fbFocus.Busy;
 
 (* STATUS STATES*)
 //fReadyState (see also _PowerOn and _ParkTelescope calls above)
@@ -783,10 +779,10 @@ ELSE
 	fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.ALT.MOTION_STATE', '0');
 END_IF
 //fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.DEC.REALPOS', LREAL_TO_STRING(fElevationCurrent-fDeclinationOffset));
-fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.DEC.CURRPOS', LREAL_TO_STRING(fElevationCurrent));
-fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.DEC.TARGETPOS', LREAL_TO_STRING(fbElevation.Position));
-fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.DEC.CURRSPEED', LREAL_TO_STRING(fbElevation.Velocity));
-fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.DEC.TARGETDISTANCE', LREAL_TO_STRING(ABS(fElevationCurrent-fbElevation.Position)));
+fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.ALT.CURRPOS', LREAL_TO_STRING(fElevationCurrent));
+fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.ALT.TARGETPOS', LREAL_TO_STRING(fbElevation.Position));
+fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.ALT.CURRSPEED', LREAL_TO_STRING(fbElevation.Velocity));
+fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.ALT.TARGETDISTANCE', LREAL_TO_STRING(ABS(fElevationCurrent-fbElevation.Position)));
 //fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.DEC.OFFSET', LREAL_TO_STRING(fDeclinationOffset));
 
 // > AZ
@@ -859,14 +855,14 @@ fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.FOCUS.CURRSPEED', LRE
 
 
 (*HORIZONTAL*)
-//fbComm.Publish('telescope', 'dome', 'POSITION.HORIZONTAL.ALT', LREAL_TO_STRING(fElevationCurrentSky));
-//fbComm.Publish('telescope', 'dome', 'POSITION.HORIZONTAL.AZ', LREAL_TO_STRING(fAzimuthCurrentSky));
+fbComm.Publish('telescope', 'dome', 'POSITION.HORIZONTAL.ALT', LREAL_TO_STRING(fElevationCurrentSky));
+fbComm.Publish('telescope', 'dome', 'POSITION.HORIZONTAL.AZ', LREAL_TO_STRING(fAzimuthCurrentSky));
 //fbComm.Publish('telescope', 'dome', 'POSITION.HORIZONTAL.DOME', LREAL_TO_STRING(fbDome.Position));
 
 (*EQUITORIAL*)
-//fbComm.Publish('telescope', 'dome', 'POSITION.EQUATORIAL.RA_J2000', LREAL_TO_STRING((fRightAscensionCurrent + fHourAngleInversionOffset + fHourAngleOffset/COS(fDeclination*d2r))/15.0));
-//fbComm.Publish('telescope', 'dome', 'POSITION.EQUATORIAL.HA_J2000', LREAL_TO_STRING(fHourAngleCurrent - fHourAngleInversionOffset - fHourAngleOffset/COS(fDeclination*d2r)));
-//fbComm.Publish('telescope', 'dome', 'POSITION.EQUATORIAL.DEC_J2000', LREAL_TO_STRING(fDeclinationCurrent - fDeclinationInversionOffset - fDeclinationOffset));
+fbComm.Publish('telescope', 'dome', 'POSITION.EQUATORIAL.RA_J2000', LREAL_TO_STRING(fRightAscensionCurrent));
+fbComm.Publish('telescope', 'dome', 'POSITION.EQUATORIAL.HA_J2000', LREAL_TO_STRING(fHourAngleCurrent));
+fbComm.Publish('telescope', 'dome', 'POSITION.EQUATORIAL.DEC_J2000', LREAL_TO_STRING(fDeclinationCurrent));
 ]]></ST>
       </Implementation>
     </Method>
@@ -1252,7 +1248,11 @@ bTrack			:= TRUE;]]></ST>
       <LineId Id="846" Count="3" />
       <LineId Id="856" Count="0" />
       <LineId Id="850" Count="5" />
-      <LineId Id="532" Count="68" />
+      <LineId Id="532" Count="50" />
+      <LineId Id="972" Count="0" />
+      <LineId Id="583" Count="0" />
+      <LineId Id="587" Count="10" />
+      <LineId Id="599" Count="0" />
       <LineId Id="933" Count="9" />
       <LineId Id="950" Count="0" />
       <LineId Id="943" Count="6" />
