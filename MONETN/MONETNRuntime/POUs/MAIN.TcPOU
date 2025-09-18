@@ -31,7 +31,9 @@ END_VAR
 VAR CONSTANT
 	telescopeConfig		: ST_TelescopeConfig := (longitude := -104.0217, latitude := 30.6714, altitude := 2000.0, 
 												 azimuthPark := 190, elevationPark := 60, derotatorPark := -116.42, focusPark := 53.8, 
-												 azimuthHome := 190, elevationHome := 40, derotatorPark := -116.42);
+												 azimuthHome := 190, elevationHome := 40, derotatorPark := -116.42,
+												 name := 'MONET/N', diameter := 1.2, cabinet := 'Beckhoff', manufacturer := 'Halfmann, Haidenhain, Beckhoff',
+												 mountOptions := 'ALT_AZ', mount := 'ALT_AZ');
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(* 
