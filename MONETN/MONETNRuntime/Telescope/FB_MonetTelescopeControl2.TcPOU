@@ -748,6 +748,15 @@ END_VAR
       <Implementation>
         <ST><![CDATA[SUPER^._PublishTelemetry();
 
+fbComm.Publish('telescope', 'dome', 'TELESCOPE.READY_STATE',	LREAL_TO_STRING(fReadyState));
+fbComm.Publish('telescope', 'dome', 'TELESCOPE.MOTION_STATE',	LREAL_TO_STRING(nMotionState));
+
+// INFO
+//fbComm.Publish('telescope', 'dome', 'TELESCOPE.INFO.NAME',	telescopeConfig.name);
+//fbComm.Publish('telescope', 'dome', 'TELESCOPE.INFO.DIAMETER',	LREAL_TO_STRING(telescopeConfig.diameter));
+//fbComm.Publish('telescope', 'dome', 'TELESCOPE.INFO.CABINET',	telescopeConfig.cabinet);
+//fbComm.Publish('telescope', 'dome', 'TELESCOPE.INFO.MANUFACTURER', telescopeConfig.manufacturer);
+
 //INSTRUMENTAL
 // > ALT
 // POWER_STATE
@@ -1279,6 +1288,7 @@ bTrack			:= TRUE;]]></ST>
     </LineIds>
     <LineIds Name="FB_MonetTelescopeControl2._SendTelemetry">
       <LineId Id="197" Count="0" />
+      <LineId Id="201" Count="8" />
       <LineId Id="81" Count="115" />
       <LineId Id="5" Count="0" />
     </LineIds>
