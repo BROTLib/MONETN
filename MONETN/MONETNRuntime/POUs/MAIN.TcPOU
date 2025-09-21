@@ -33,7 +33,7 @@ VAR CONSTANT
 												 azimuthPark := 190, elevationPark := 60, derotatorPark := -116.42, focusPark := 53.8, 
 												 azimuthHome := 190, elevationHome := 40, derotatorPark := -116.42,
 												 name := 'MONET/N', diameter := 1.2, cabinet := 'Beckhoff', manufacturer := 'Halfmann, Haidenhain, Beckhoff',
-												 mountOptions := 'ALT_AZ', mount := 'ALT_AZ');
+												 mountOptions := 'ALT-AZ', mount := 'ALT_AZ');
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(* 
@@ -152,6 +152,7 @@ fbComm(
 	sTopicPublish	:= 'MONETN/Telemetry',
 	sTopicLog		:= 'MONETN/Log',
 	Telescope		:= TelescopeControl,
+	AltAzTelescope  := TelescopeControl,
 	Focus			:= FocusControl
 );
 
@@ -229,6 +230,7 @@ END_IF
       <LineId Id="2235" Count="0" />
       <LineId Id="2140" Count="6" />
       <LineId Id="2207" Count="0" />
+      <LineId Id="2334" Count="0" />
       <LineId Id="2249" Count="0" />
       <LineId Id="2147" Count="3" />
       <LineId Id="2206" Count="0" />

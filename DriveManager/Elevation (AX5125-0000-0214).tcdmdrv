@@ -365,7 +365,7 @@
     <TcDMDrive>
       <SortId>1</SortId>
       <DriveModuleType>31</DriveModuleType>
-      <TcLink>
+      <TcLink ProtocalType="1">
         <TcPrjPath>..\MONETN\MONETN.tsproj</TcPrjPath>
         <IoItemPathName>TIID^Device 5 (EtherCAT)^Elevation (AX5125-0000-0214)</IoItemPathName>
         <ItemId>3</ItemId>
@@ -2914,7 +2914,6 @@
           <Name>DcSync250</Name>
           <Desc>Sync cycle time: 250µs</Desc>
           <AssignActivate>#x730</AssignActivate>
-          <ActivateAdditional>#x0</ActivateAdditional>
           <CycleTimeSync0 Factor="0">250000</CycleTimeSync0>
           <ShiftTimeSync0>0</ShiftTimeSync0>
           <CycleTimeSync1 Factor="-1">0</CycleTimeSync1>
@@ -2924,7 +2923,6 @@
           <Name>DcSync125</Name>
           <Desc>Sync cycle time: 125µs</Desc>
           <AssignActivate>#x730</AssignActivate>
-          <ActivateAdditional>#x0</ActivateAdditional>
           <CycleTimeSync0 Factor="0">125000</CycleTimeSync0>
           <ShiftTimeSync0>0</ShiftTimeSync0>
           <CycleTimeSync1 Factor="-1">0</CycleTimeSync1>
@@ -2934,7 +2932,6 @@
           <Name>DcSync62.5</Name>
           <Desc>Sync cycle time: 62.5µ</Desc>
           <AssignActivate>#x730</AssignActivate>
-          <ActivateAdditional>#x0</ActivateAdditional>
           <CycleTimeSync0 Factor="0">62500</CycleTimeSync0>
           <ShiftTimeSync0>0</ShiftTimeSync0>
           <CycleTimeSync1 Factor="-1">0</CycleTimeSync1>
@@ -2977,7 +2974,7 @@
           <ObjectId>false</ObjectId>
         </InfoData>
       </Settings>
-      <EsiFile>C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\Config\Io\EtherCAT\Beckhoff AX5xxx.xml</EsiFile>
+      <EsiFile>C:\TwinCAT\3.1\Config\Io\EtherCAT\Beckhoff AX5xxx.xml</EsiFile>
       <TwinCAT>
         <ExtensionSupportFlags>1</ExtensionSupportFlags>
       </TwinCAT>
