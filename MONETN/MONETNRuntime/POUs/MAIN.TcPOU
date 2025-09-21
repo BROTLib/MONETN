@@ -130,7 +130,7 @@ RoofControl(
 	acceleration 	:= 150,
 	min_position 	:= 0,
 	max_position 	:= 202,
-	max_position_diff	:= 2,
+	max_position_diff	:= 3,
 	limit_slowdown	:= 5
 );
 PendantControl(
@@ -153,7 +153,8 @@ fbComm(
 	sTopicLog		:= 'MONETN/Log',
 	Telescope		:= TelescopeControl,
 	AltAzTelescope  := TelescopeControl,
-	Focus			:= FocusControl
+	Focus			:= FocusControl,
+	Roof			:= RoofControl
 );
 
 // set control lights
@@ -232,6 +233,7 @@ END_IF
       <LineId Id="2207" Count="0" />
       <LineId Id="2334" Count="0" />
       <LineId Id="2249" Count="0" />
+      <LineId Id="2337" Count="0" />
       <LineId Id="2147" Count="3" />
       <LineId Id="2206" Count="0" />
       <LineId Id="2151" Count="28" />
