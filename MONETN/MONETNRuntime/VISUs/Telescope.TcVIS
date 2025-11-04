@@ -4827,7 +4827,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.TelescopeControl.isparked"</v>
+                          <v n="Value">"MAIN.TelescopeControl.bIsParked"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>

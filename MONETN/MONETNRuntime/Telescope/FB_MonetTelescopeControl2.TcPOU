@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
   <POU Name="FB_MonetTelescopeControl2" Id="{392c90d3-a441-4c8d-a752-42b25b49f5cd}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK FB_MonetTelescopeControl2 EXTENDS FB_AltAzTelescopeControl
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_MonetTelescopeControl2 EXTENDS FB_AltAzTelescopeControl IMPLEMENTS I_AltAzTelescope
 VAR_INPUT
 	fbFocus				: I_Focus;
 	fbCovers			: I_MirrorCovers;
@@ -85,6 +85,7 @@ IF bError THEN
 	bSlew := 	FALSE;
 	fbElevation.Enable := FALSE;
 	fbAzimuth.Enable := FALSE;
+	fbDerotator.Enable := FALSE;
 ELSE
 	nErrorID := 0;
 END_IF
@@ -92,6 +93,7 @@ END_IF
 IF fbElevation.bError THEN
 	fbElevation.Enable := FALSE;
 	fbAzimuth.Enable := FALSE;
+	fbDerotator.Enable := FALSE;
 	fbBrake.CloseBrake();
 END_IF
 
@@ -273,8 +275,10 @@ ELSE
 	TCS_command := E_TCSCommand.no_command;
 	fbElevation.bMoveAxis := FALSE;
 	fbAzimuth.bMoveAxis := FALSE;
+	fbDerotator.bMoveAxis := FALSE;
 	fbElevation.bTracking := FALSE;
 	fbAzimuth.bTracking := FALSE;
+	fbDerotator.bTracking := FALSE;
 END_IF
 
 IF TCS_command = E_TCSCommand.poweron THEN
@@ -454,17 +458,17 @@ VAR
 	commandTimeout	: TON;
 END_VAR
 VAR_STAT
-	Stage			: USINT := 0;
-	LastStage		: USINT := 101;
+	nStage			: USINT := 0;
+	nLastStage		: USINT := 101;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[_GotoTelescope := Stage;
-commandTimeout(IN := Stage < 100, PT := T#600S);
+        <ST><![CDATA[_GotoTelescope := nStage;
+commandTimeout(IN := nStage < 100, PT := T#600S);
 IF commandTimeout.Q THEN
 	bError := TRUE;
 	nErrorID := 16#10;
 	bGoto := FALSE;
-	Stage := 0;
+	nStage := 0;
 	RETURN;
 END_IF
 
@@ -472,20 +476,28 @@ IF fElevationCalc<2.0 THEN
 	bError := TRUE;
 	nErrorID := 16#15;
 	bGoto := FALSE;
-	Stage := 0;
+	nStage := 0;
 	RETURN;
 END_IF
 
 IF bReset OR bError OR bInterrupted THEN
-	Stage := 0;
+	nStage := 0;
 	RETURN;
 END_IF
 
-CASE Stage OF
+CASE nStage OF
 	0:	
 		IF bReady AND NOT bBusy THEN
-			Stage := 25;
+			nStage := 10;
 		END_IF
+	10:
+		IF fbElevation.Tracking = TRUE OR fbAzimuth.Tracking = TRUE OR fbDerotator.Tracking = TRUE THEN
+			fbElevation.Tracking := FALSE;
+			fbAzimuth.Tracking := FALSE;
+			fbDerotator.Tracking := FALSE;
+		ELSE
+			nStage := 25;
+		END_IF				
 	25:	
 		fbElevation.Position := fElevationCalc;
 		fbAzimuth.Position := fAzimuthCalc;
@@ -500,7 +512,7 @@ CASE Stage OF
 		IF fbElevation.Busy AND
 			fbAzimuth.Busy AND
 			fbDerotator.Busy THEN
-				Stage := 50;
+				nStage := 50;
 		END_IF
 	50:
 		IF NOT fbElevation.Busy AND fbElevation.MoveDone THEN
@@ -515,11 +527,11 @@ CASE Stage OF
 		IF NOT fbElevation.MoveAxis AND 
            NOT fbAzimuth.MoveAxis AND 
 		   NOT fbDerotator.MoveAxis THEN
-		   Stage := 75;
+		   nStage := 75;
 		END_IF
 	75:
 		IF NOT bSlewing AND bStopped THEN // all axis standstill
-			Stage := 100;
+			nStage := 100;
 		END_IF
 	100:
 		fbElevation.MoveAxis := FALSE;
@@ -530,10 +542,10 @@ CASE Stage OF
 		bGoto := FALSE;
 		// enable automatic tracking
 		bTrack := bAutoTrack;
-		Stage := 0;
+		nStage := 0;
 END_CASE
-GoToEvent(Trigger := Stage > LastStage, FormatString := 'GoTo progress: %s', OnMessage := USINT_TO_STRING(Stage), comm := fbComm);
-LastStage := Stage;
+GoToEvent(Trigger := nStage > nLastStage, FormatString := 'GoTo progress: %s', OnMessage := USINT_TO_STRING(nStage), comm := fbComm);
+nLastStage := nStage;
 ]]></ST>
       </Implementation>
     </Method>
@@ -591,19 +603,19 @@ VAR
 	ParkEvent	: FB_Eventlog;
 END_VAR
 VAR_STAT
-	Stage		: USINT := 0;
-	LastStage	: USINT := 101;
+	nStage		: USINT := 0;
+	nLastStage	: USINT := 101;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[_ParkTelescope := Stage;
+        <ST><![CDATA[_ParkTelescope := nStage;
 IF bReset OR bError OR bStop OR bInterrupted THEN
-	Stage := 0;
+	nStage := 0;
 	RETURN;
 END_IF
 IF bIsParked THEN
-	Stage := 100;
+	nStage := 100;
 END_IF
-CASE Stage OF
+CASE nStage OF
 	0: 
 		bGoHome := 	FALSE;
 		bTrack := 	FALSE;
@@ -618,9 +630,17 @@ CASE Stage OF
 			fbAzimuth.Enable := FALSE;
 			fbDerotator.Enable := FALSE;	
 			fbCovers.Close();	
-			Stage := 80;
+			nStage := 80;
 		END_IF
-		Stage := 20;
+		nStage := 10;
+	10:
+		IF fbElevation.Tracking = TRUE OR fbAzimuth.Tracking = TRUE OR fbDerotator.Tracking = TRUE THEN
+			fbElevation.Tracking := FALSE;
+			fbAzimuth.Tracking := FALSE;
+			fbDerotator.Tracking := FALSE;
+		ELSE
+			nStage := 20;
+		END_IF		
 	20:
 		fbElevation.Position := telescopeConfig.elevationPark;
 		fbElevation.Velocity := 10.0;
@@ -634,7 +654,7 @@ CASE Stage OF
 		IF fbElevation.Busy AND
 			fbAzimuth.Busy AND
 			fbDerotator.Busy THEN
-				Stage := 40;
+				nStage := 40;
 		END_IF
 	40:
 		IF fbElevation.MoveDone THEN
@@ -647,11 +667,11 @@ CASE Stage OF
 			fbDerotator.MoveAxis := FALSE;
 		END_IF
 		IF NOT bSlewing THEN // all axis standstill
-			Stage := 60;
+			nStage := 60;
 		END_IF
 	60:
 		IF NOT fbElevation.Enable AND NOT fbAzimuth.Enable AND NOT fbDerotator.Enable THEN
-			stage := 80;
+			nStage := 80;
 		END_IF
 
 		IF bStopped THEN
@@ -665,23 +685,23 @@ CASE Stage OF
 		fbDerotator.bMoveAxis := FALSE;
 	80:
 		IF fbElevation.Enable OR fbAzimuth.Enable OR fbDerotator.Enable THEN
-			stage := 60;
+			nStage := 60;
 		END_IF
 		IF NOT fbBrake.BrakeOpen THEN
 			fbCovers.Close();
 			fbHydraulics.Enable := FALSE;
 		END_IF
 		IF fbCovers.Closed THEN
-			Stage := 100;
+			nStage := 100;
 		END_IF
 	100:
 			bIsParked := TRUE;
 			bPark := FALSE;
 			_ParkTelescope := 100;
-			Stage := 0;	
+			nStage := 0;	
 END_CASE
-ParkEvent(Trigger := Stage > LastStage, FormatString := 'Parking progress: %s', OnMessage := USINT_TO_STRING(Stage), comm := fbComm);
-LastStage := Stage;
+ParkEvent(Trigger := nStage > nLastStage, FormatString := 'Parking progress: %s', OnMessage := USINT_TO_STRING(nStage), comm := fbComm);
+nLastStage := nStage;
 ]]></ST>
       </Implementation>
     </Method>
@@ -905,26 +925,34 @@ VAR
 	command_timeout: TON;
 END_VAR
 VAR_STAT
-	Stage:		USINT := 0;
-	LastStage:	USINT := 101;
+	nStage:		USINT := 0;
+	nLastStage:	USINT := 101;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[_SlewTelescope := Stage;
-command_timeout(IN := Stage < 100, PT := T#600S);
+        <ST><![CDATA[_SlewTelescope := nStage;
+command_timeout(IN := nStage < 100, PT := T#600S);
 IF command_timeout.Q THEN
 	bError := TRUE;
 	nErrorID := 16#40;
 	bSlew := FALSE;
-	Stage := 0;
+	nStage := 0;
 END_IF
 IF bReset OR bError OR bInterrupted THEN
-	Stage := 0;
+	nStage := 0;
 END_IF
-CASE Stage OF
+CASE nStage OF
 	0:	
 		IF bReady AND bStopped AND NOT bBusy AND NOT bTracking THEN
-			Stage := 25;
+			nStage := 10;
 		END_IF
+	10:
+		IF fbElevation.Tracking = TRUE OR fbAzimuth.Tracking = TRUE OR fbDerotator.Tracking = TRUE THEN
+			fbElevation.Tracking := FALSE;
+			fbAzimuth.Tracking := FALSE;
+			fbDerotator.Tracking := FALSE;
+		ELSE
+			nStage := 25;
+		END_IF				
 	25:
 		fbElevation.Position := fElevation + PointingModelElevation(fAzimuth, fElevation, EOFF, AN_E, AE_E, TF) + fElevationOffset;
 		fbElevation.Velocity := 10.0;
@@ -938,7 +966,7 @@ CASE Stage OF
 		IF fbElevation.Busy AND
 			fbAzimuth.Busy AND
 			fbDerotator.Busy THEN
-				Stage := 50;
+				nStage := 50;
 		END_IF
 	50:
 		IF fbElevation.MoveDone THEN
@@ -953,7 +981,7 @@ CASE Stage OF
 			fbDerotator.MoveAxis := FALSE;
 		END_IF
 		IF NOT bSlewing AND bStopped THEN // all axis standstill
-			Stage := 100;
+			nStage := 100;
 		END_IF
 	100:
 		fbElevation.MoveAxis := FALSE;
@@ -962,10 +990,10 @@ CASE Stage OF
 		fRightAscension := fRightAscensionCalc;
 		fDeclination := fDeclinationCalc;
 		bSlew := FALSE;
-		Stage := 0;
+		nStage := 0;
 END_CASE
-SlewEvent(Trigger := Stage > LastStage, FormatString := 'Slew progress: %s', OnMessage := USINT_TO_STRING(Stage), Comm := fbComm);
-LastStage := Stage;		
+SlewEvent(Trigger := nStage > nLastStage, FormatString := 'Slew progress: %s', OnMessage := USINT_TO_STRING(nStage), Comm := fbComm);
+nLastStage := nStage;		
 ]]></ST>
       </Implementation>
     </Method>
@@ -1291,8 +1319,12 @@ bTrack			:= TRUE;]]></ST>
       <LineId Id="903" Count="0" />
       <LineId Id="383" Count="4" />
       <LineId Id="390" Count="0" />
-      <LineId Id="906" Count="8" />
-      <LineId Id="398" Count="20" />
+      <LineId Id="906" Count="6" />
+      <LineId Id="1008" Count="0" />
+      <LineId Id="913" Count="1" />
+      <LineId Id="398" Count="4" />
+      <LineId Id="1009" Count="0" />
+      <LineId Id="403" Count="15" />
       <LineId Id="1002" Count="1" />
       <LineId Id="1001" Count="0" />
       <LineId Id="419" Count="1" />
@@ -1310,7 +1342,10 @@ bTrack			:= TRUE;]]></ST>
       <LineId Id="858" Count="0" />
       <LineId Id="846" Count="3" />
       <LineId Id="856" Count="0" />
-      <LineId Id="850" Count="5" />
+      <LineId Id="850" Count="3" />
+      <LineId Id="1010" Count="0" />
+      <LineId Id="854" Count="1" />
+      <LineId Id="1011" Count="0" />
       <LineId Id="532" Count="50" />
       <LineId Id="972" Count="0" />
       <LineId Id="583" Count="0" />
@@ -1329,7 +1364,10 @@ bTrack			:= TRUE;]]></ST>
       <LineId Id="179" Count="0" />
     </LineIds>
     <LineIds Name="FB_MonetTelescopeControl2._GotoTelescope">
-      <LineId Id="1" Count="76" />
+      <LineId Id="1" Count="27" />
+      <LineId Id="90" Count="6" />
+      <LineId Id="89" Count="0" />
+      <LineId Id="29" Count="48" />
     </LineIds>
     <LineIds Name="FB_MonetTelescopeControl2._HomeTelescope">
       <LineId Id="1" Count="5" />
@@ -1341,7 +1379,12 @@ bTrack			:= TRUE;]]></ST>
       <LineId Id="104" Count="2" />
       <LineId Id="103" Count="0" />
       <LineId Id="100" Count="0" />
-      <LineId Id="6" Count="81" />
+      <LineId Id="6" Count="19" />
+      <LineId Id="117" Count="3" />
+      <LineId Id="123" Count="0" />
+      <LineId Id="121" Count="1" />
+      <LineId Id="116" Count="0" />
+      <LineId Id="26" Count="61" />
     </LineIds>
     <LineIds Name="FB_MonetTelescopeControl2._PowerOn">
       <LineId Id="1" Count="54" />
@@ -1373,7 +1416,10 @@ bTrack			:= TRUE;]]></ST>
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_MonetTelescopeControl2._SlewTelescope">
-      <LineId Id="1" Count="57" />
+      <LineId Id="1" Count="15" />
+      <LineId Id="71" Count="6" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="17" Count="41" />
     </LineIds>
     <LineIds Name="FB_MonetTelescopeControl2._StopTelescope">
       <LineId Id="16" Count="2" />
