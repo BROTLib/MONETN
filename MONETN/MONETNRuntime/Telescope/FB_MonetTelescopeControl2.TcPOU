@@ -859,12 +859,12 @@ IF fbElevation.Busy THEN
 ELSE
 	fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.ALT.MOTION_STATE', '0');
 END_IF
-fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.DEC.REALPOS', LREAL_TO_STRING(fElevationCurrent-fElevationOffset));
+fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.ALT.REALPOS', LREAL_TO_STRING(fElevationCurrent-fElevationOffset));
 fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.ALT.CURRPOS', LREAL_TO_STRING(fElevationCurrent));
 fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.ALT.TARGETPOS', LREAL_TO_STRING(fbElevation.Position));
 fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.ALT.CURRSPEED', LREAL_TO_STRING(fbElevation.Velocity));
 fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.ALT.TARGETDISTANCE', LREAL_TO_STRING(ABS(fElevationCurrent-fbElevation.Position)));
-fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.DEC.OFFSET', LREAL_TO_STRING(fElevationOffset));
+fbComm.Publish('telescope', 'dome', 'POSITION.INSTRUMENTAL.ALT.OFFSET', LREAL_TO_STRING(fElevationOffset));
 
 // > AZ
 // POWER_STATE
