@@ -956,7 +956,6 @@ END_VAR
 VAR_STAT
 	nStage:		USINT := 0;
 	nLastStage:	USINT := 101;
-	test:		USINT := 0;
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[_SlewTelescope := nStage;
@@ -972,18 +971,15 @@ IF bReset OR bError OR bInterrupted THEN
 END_IF
 CASE nStage OF
 	0:	
-		test := 0;
 		IF bReady AND bStopped AND NOT bBusy AND NOT bTracking THEN
 			nStage := 10;
 		END_IF
 	10:
 		IF fbElevation.Tracking = TRUE OR fbAzimuth.Tracking = TRUE OR fbDerotator.Tracking = TRUE THEN
-			test := 1;
 			fbElevation.Tracking := FALSE;
 			fbAzimuth.Tracking := FALSE;
 			fbDerotator.Tracking := FALSE;
 		ELSE
-			test := 2;
 			nStage := 25;
 		END_IF				
 	25:
@@ -1485,14 +1481,8 @@ THIS^.bGoto				:= TRUE;]]></ST>
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_MonetTelescopeControl2._SlewTelescope">
-      <LineId Id="1" Count="12" />
-      <LineId Id="105" Count="0" />
-      <LineId Id="14" Count="2" />
-      <LineId Id="71" Count="1" />
-      <LineId Id="106" Count="0" />
-      <LineId Id="73" Count="3" />
-      <LineId Id="107" Count="0" />
-      <LineId Id="77" Count="0" />
+      <LineId Id="1" Count="15" />
+      <LineId Id="71" Count="6" />
       <LineId Id="70" Count="0" />
       <LineId Id="17" Count="0" />
       <LineId Id="89" Count="4" />
