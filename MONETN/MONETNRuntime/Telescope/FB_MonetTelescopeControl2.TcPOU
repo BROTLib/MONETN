@@ -29,8 +29,8 @@ VAR_OUTPUT
 	fAzimuthVelocity	: LREAL;	// rotational velocity of the elevation
 END_VAR
 VAR
-	fbPointing			: FB_PointingModelForward(AOFF := 0.0211389858, BNP :=1.3407876787, AN_A := -0.0092417963, AE_A := -0.0006621388, NPAE := -0.0003507207, 
-                                                  EOFF := -1.8007298985, AN_E := -0.0009168987, AE_E := -0.0003448295, TF := 0.0836084393);
+	fbPointing			: FB_PointingModelForward(AOFF := -1.6345691686682775, BNP := -0.3857694638225078, AN_A := -0.06691275113623997, AE_A := 0.0008575659476415294, NPAE := -0.2464419575927337, 
+                                                  EOFF := -1.8053213588181385, AN_E := -0.002508330896725308, AE_E := 0.00246886131980939, TF := 0.08934169417198701);
 	fbPointingInverse	: FB_PointingModelInversion(fbPointing := fbPointing);
 END_VAR
 ]]></Declaration>
@@ -118,7 +118,7 @@ eq2hor(
 	altitude := telescopeConfig.altitude,
 	JD := fJd + fTimeOffset,
 	refract_to_observed := TRUE,
-	refract := FALSE,
+	// refract := FALSE,
 	alt => fElevationCalc,
 	az => fAzimuthCalc,
 	ha => fHourAngleCalc);
@@ -185,7 +185,7 @@ hor2eq(alt := fElevationCurrent,
 		lon := telescopeConfig.longitude,
 		altitude := telescopeConfig.altitude,
 		refract_to_observed := FALSE,
-		refract := FALSE,
+		// refract := FALSE,
 		ra => fRightAscensionCurrent,
 		dec => fDeclinationCurrent);		
 hor2eq(alt := fElevationCurrentSky, 
@@ -956,6 +956,7 @@ END_VAR
 VAR_STAT
 	nStage:		USINT := 0;
 	nLastStage:	USINT := 101;
+	test:		USINT := 0;
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[_SlewTelescope := nStage;
@@ -971,15 +972,18 @@ IF bReset OR bError OR bInterrupted THEN
 END_IF
 CASE nStage OF
 	0:	
+		test := 0;
 		IF bReady AND bStopped AND NOT bBusy AND NOT bTracking THEN
 			nStage := 10;
 		END_IF
 	10:
 		IF fbElevation.Tracking = TRUE OR fbAzimuth.Tracking = TRUE OR fbDerotator.Tracking = TRUE THEN
+			test := 1;
 			fbElevation.Tracking := FALSE;
 			fbAzimuth.Tracking := FALSE;
 			fbDerotator.Tracking := FALSE;
 		ELSE
+			test := 2;
 			nStage := 25;
 		END_IF				
 	25:
@@ -1322,7 +1326,8 @@ END_VAR
       <Implementation>
         <ST><![CDATA[THIS^.fRightAscension	:= fRightAscension;
 THIS^.fDeclination		:= fDeclination;
-THIS^.bTrack			:= TRUE;]]></ST>
+//THIS^.bTrack			:= TRUE;
+THIS^.bGoto				:= TRUE;]]></ST>
       </Implementation>
     </Method>
     <Method Name="TrackRaDec" Id="{f497d99f-36a3-42c8-ae9b-738903f3158c}">
@@ -1334,7 +1339,8 @@ END_VAR
       <Implementation>
         <ST><![CDATA[fRightAscension	:= RaDec.RightAscension;
 fDeclination		:= RaDec.Declination;
-bTrack			:= TRUE;]]></ST>
+//bTrack			:= TRUE;
+THIS^.bGoto				:= TRUE;]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="FB_MonetTelescopeControl2">
@@ -1479,8 +1485,14 @@ bTrack			:= TRUE;]]></ST>
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_MonetTelescopeControl2._SlewTelescope">
-      <LineId Id="1" Count="15" />
-      <LineId Id="71" Count="6" />
+      <LineId Id="1" Count="12" />
+      <LineId Id="105" Count="0" />
+      <LineId Id="14" Count="2" />
+      <LineId Id="71" Count="1" />
+      <LineId Id="106" Count="0" />
+      <LineId Id="73" Count="3" />
+      <LineId Id="107" Count="0" />
+      <LineId Id="77" Count="0" />
       <LineId Id="70" Count="0" />
       <LineId Id="17" Count="0" />
       <LineId Id="89" Count="4" />
@@ -1553,9 +1565,11 @@ bTrack			:= TRUE;]]></ST>
     <LineIds Name="FB_MonetTelescopeControl2.Track">
       <LineId Id="9" Count="1" />
       <LineId Id="8" Count="0" />
+      <LineId Id="17" Count="0" />
     </LineIds>
     <LineIds Name="FB_MonetTelescopeControl2.TrackRaDec">
       <LineId Id="1" Count="2" />
+      <LineId Id="9" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
