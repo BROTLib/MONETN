@@ -21,34 +21,31 @@
     <GlobalVersionStructureIncluded>false</GlobalVersionStructureIncluded>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Components\FB_CabinetControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Components\FB_MonetCoverControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\FB_MonetFocusControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\FB_MonetHydraulicsControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\FB_MonetPendantControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\FB_MonetTelescopeControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Telescope\FB_MonetTelescopeControl2.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FB_CabinetControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FB_MonetHydraulicsControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FB_MonetFocusControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FB_MonetPendantControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\FB_PowerMonitoring.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FB_MonetTelescopeControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\FB_SafetyHandling.TcPOU">
@@ -109,7 +106,6 @@
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
     <Folder Include="Components" />
-    <Folder Include="Telescope" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>
