@@ -29,8 +29,8 @@ VAR_OUTPUT
 	fAzimuthVelocity	: LREAL;	// rotational velocity of the elevation
 END_VAR
 VAR
-	fbPointing			: FB_PointingModelForward(AOFF := -1.074936389236653, BNP := 0.41799581014823517, AN_A := -0.0005399238415356825, AE_A := 0.0010943700155200701, NPAE := 0.3540915955287274, 
-                                                  EOFF := -1.7976072082037948, AN_E := -0.0015387935505830619, AE_E := 0.0028384915610841777, TF := 0.07539398326327973);
+	fbPointing			: FB_PointingModelForward(AOFF := 0.0, BNP := 0.41799581014823517, AN_A := -0.0005399238415356825, AE_A := 0.0010943700155200701, NPAE := 0.3540915955287274, 
+                                                  EOFF := 0.0, AN_E := -0.0015387935505830619, AE_E := 0.0028384915610841777, TF := 0.07539398326327973);
 	fbPointingInverse	: FB_PointingModelInversion(fbPointing := fbPointing);
 END_VAR
 ]]></Declaration>
@@ -174,12 +174,12 @@ fAzimuthCurrentSky := fAzimuthCurrent - fAzimuthPointingOffset2;
 fElevationCurrentSky := fElevationCurrent - fElevationPointingOffset2;
 
 // add offsets
-fElevationCurrent := fElevationCurrentSky - fElevationOffset;
-fAzimuthCurrent := fAzimuthCurrentSky - fAzimuthOffset / COS(fElevationCalc * d2r);
+//fElevationCurrent := fElevationCurrentSky - fElevationOffset;
+//fAzimuthCurrent := fAzimuthCurrentSky - fAzimuthOffset / COS(fElevationCalc * d2r);
 
 // calculate equatorial coordinates
-hor2eq(alt := fElevationCurrent, 
-		az := fAzimuthCurrent,
+hor2eq(alt := fElevationCurrentSky - fElevationOffset, 
+		az := fAzimuthCurrentSky - fAzimuthOffset / COS(fElevationCalc * d2r),
 		jd := fJd,
 		lat := telescopeConfig.latitude,
 		lon := telescopeConfig.longitude,
@@ -410,9 +410,9 @@ END_IF
 
 // send telemetry
 IF bSlewing OR bTrack OR bTracking THEN
-	tonMQTTTimer.PT := T#1000MS; // during movement every second
+	tonMQTTTimer.PT := T#500MS; // during movement every second
 ELSE
-	tonMQTTTimer.PT := T#5000MS; // otherwise every five seconds
+	tonMQTTTimer.PT := T#1000MS; // otherwise every five seconds
 END_IF
 tonMQTTTimer(IN:=TRUE);
 IF tonMQTTTimer.Q THEN
