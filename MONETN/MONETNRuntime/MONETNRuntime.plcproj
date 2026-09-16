@@ -19,6 +19,7 @@
     <AllowChecksForLibrary>false</AllowChecksForLibrary>
     <POUsForPropertyAccessIncluded>false</POUsForPropertyAccessIncluded>
     <GlobalVersionStructureIncluded>false</GlobalVersionStructureIncluded>
+    <ProjectVersion>0.1.0</ProjectVersion>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Components\FB_CabinetControl.TcPOU">
@@ -100,6 +101,10 @@
     <Compile Include="VISUs\Roof.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>VisualizationManager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="GVLs\GVL_Version.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
     </Compile>
   </ItemGroup>
   <ItemGroup>
