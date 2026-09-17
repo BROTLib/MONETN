@@ -9,7 +9,7 @@ The application controls the telescope mount (Azimuth / Elevation / Derotator
 axes), focus, the three mirror covers, the hydraulic pump/brake system, the
 observatory roof, power monitoring, cabinet I/O and the TwinSAFE safety chain,
 and publishes MQTT/InfluxDB telemetry. It is built on the **BROTLib** core
-library, the **HalfBROT** hardware layer and the **MONET Roof** library
+library, the **HalfBROT** hardware layer and the **MONETRoof** library
 (`FB_RoofControl`); the MONET-specific control logic
 (`FB_MonetTelescopeControl`, `FB_SafetyHandling`, `FB_CabinetControl`,
 `FB_PowerMonitoring`, `FB_MonetHydraulicsControl`, `FB_MonetPendantControl`,
@@ -111,7 +111,7 @@ MAIN
 ├── SafetyHandling     : FB_SafetyHandling
 ├── CabinetControl     : FB_CabinetControl
 ├── PowerMonitoring    : FB_PowerMonitoring
-├── RoofControl        : FB_RoofControl               (MONET Roof library)
+├── RoofControl        : FB_RoofControl               (MONETRoof library)
 ├── CoverControl       : FB_MonetCoverControl         (I_MirrorCovers)
 ├── HydraulicsControl  : FB_HydraulicsControl         (HalfBROT)
 ├── FocusControl       : FB_FocusControl              (HalfBROT)
@@ -157,7 +157,7 @@ oil > cover/hydraulics) and publishes `electronics/base/MainReady` /
 
 ### Subsystems
 
-- `FB_RoofControl` (MONET Roof library) — observatory roof, two halves × two
+- `FB_RoofControl` (MONETRoof library) — observatory roof, two halves × two
   motors, same logic as the MONETRoof application (`I_Roof`, `E_RoofState`);
   configured in `MAIN` (`min_speed=10000`, `max_speed=30000`,
   `acceleration=150`, `max_position=202`, `max_position_diff=3`,
@@ -269,7 +269,7 @@ states, EL1904/EL2904 diagnostics). Text resources live in
 - **BROTLib**, **AstroBROT** (BROT) — core library, communication, telescope
   control base classes, tracking/pointing functions, shared DUTs.
 - **HalfBROT** (BROT) — axis and hardware function blocks.
-- **MONET Roof** (`MONET_Roof`) — `FB_RoofControl`/`I_Roof`.
+- **MONETRoof** (`MONETRoof`) — `FB_RoofControl`/`I_Roof`.
 - **MONETcommon** — not referenced by name; its blocks are vendored locally
   (see below).
 - Beckhoff system libraries: `Tc2_MC2`, `Tc2_MC2_Drive`, `Tc2_NC`,
