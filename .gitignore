@@ -53,3 +53,8 @@ bld/
 *.tclrq
 .idea/
 *.png
+
+# TcBuild / TwinCAT XAE build artifacts
+_CompileInfo/
+_Boot/
+*.tsproj.bak
