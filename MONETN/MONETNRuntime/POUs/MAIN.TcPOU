@@ -134,8 +134,10 @@ RoofControl(
 	min_speed		:= 10000,
 	max_speed 		:= 30000, 
 	acceleration 	:= 150,
-	min_position 	:= 0,
-	max_position 	:= 202,
+	min_position_1 	:= 0,
+	max_position_1 	:= 202,
+	min_position_2 	:= 0,
+	max_position_2 	:= 202,
 	max_position_diff	:= 3,
 	limit_slowdown	:= 5
 );
