@@ -28,9 +28,6 @@
     <Compile Include="Components\FB_MonetCoverControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Components\FB_MonetFocusControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Components\FB_MonetPendantControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
