@@ -31,9 +31,6 @@
     <Compile Include="Components\FB_MonetFocusControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Components\FB_MonetHydraulicsControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Components\FB_MonetPendantControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
