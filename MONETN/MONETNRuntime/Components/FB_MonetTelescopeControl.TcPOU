@@ -35,10 +35,17 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// get the system time
+      <ST><![CDATA[// get the system time; fJd only follows the clock while the clock is valid (synced, see FB_AstroClock)
 fbTime();
-fJd := DateTime2JD(fbTime.time_RTCEX2);
+IF fbTime.bValid THEN
+	fJd := DateTime2JD(fbTime.time_RTCEX2);
+END_IF
 fLst := CT2LST(telescopeConfig.longitude, fJd);
+
+// without a trustworthy time nothing may be pointed or tracked: refuse through the normal stop path
+IF NOT fbTime.bValid AND (bGoto OR bSlew OR bTrack) THEN
+	bStop := TRUE;
+END_IF
 
 // set reset state either by hardware (key pressed) or by software (set by e.g. tcs)
 rtrigReset(CLK := bReset);
@@ -134,15 +141,15 @@ fElevationCalc := fElevationCalc + fElevationPointingOffset + fElevationOffset;
 fAzimuthCalc := fAzimuthCalc + fAzimuthPointingOffset + fAzimuthOffset / COS(fElevationCalc * d2r);
 
 // calculate derotator position 
-fDerotatorCalc := F_DerotatorPosition2(fAzimuthCalc, fElevationCalc, fDeclination, telescopeConfig.latitude, fDerotatorSign)  + fDerotatorOffset;
+fDerotatorCalc := F_DerotatorPosition2(fAzimuthCalc, fElevationCalc, telescopeConfig.latitude, fDerotatorSign)  + fDerotatorOffset;
 
 // calculate velocities
-fDerotatorVelocity := F_Derotatorvelocity(fElevationCalc, fAzimuthCalc, telescopeConfig.latitude);
+fDerotatorVelocity := F_Derotatorvelocity(fAzimuthCalc, fElevationCalc, telescopeConfig.latitude, fDerotatorSign);
 fElevationVelocity := F_Elevationvelocity(fAzimuthCalc, telescopeConfig.latitude);
 fAzimuthVelocity := F_Azimuthvelocity(fElevationCalc, fAzimuthCalc, telescopeConfig.latitude);
 
 // calculate velocities
-fDerotatorVelocity := F_Derotatorvelocity(fElevationCalc, fAzimuthCalc, telescopeConfig.latitude);
+fDerotatorVelocity := F_Derotatorvelocity(fAzimuthCalc, fElevationCalc, telescopeConfig.latitude, fDerotatorSign);
 fElevationVelocity := F_Elevationvelocity(fAzimuthCalc, telescopeConfig.latitude);
 fAzimuthVelocity := F_Azimuthvelocity(fElevationCalc, fAzimuthCalc, telescopeConfig.latitude);
 
@@ -184,7 +191,7 @@ hor2eq(alt := fElevationCurrentSky - fElevationOffset,
 		lat := telescopeConfig.latitude,
 		lon := telescopeConfig.longitude,
 		altitude := telescopeConfig.altitude,
-		refract_to_observed := FALSE,
+		alt_is_observed := TRUE,
 		// refract := FALSE,
 		ra => fRightAscensionCurrent,
 		dec => fDeclinationCurrent);		
@@ -194,7 +201,7 @@ hor2eq(alt := fElevationCurrentSky,
 		lat := telescopeConfig.latitude,
 		lon := telescopeConfig.longitude,
 		altitude := telescopeConfig.altitude,
-		refract_to_observed := FALSE,
+		alt_is_observed := TRUE,
 		ra => fRightAscensionCurrentSky,
 		dec => fDeclinationCurrentSky);
 	
@@ -587,14 +594,21 @@ VAR
 	commandTimeout	: TON;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[commandTimeout(IN := NOT _HomeTelescope, PT := T#600S);
+        <ST><![CDATA[// reset/interrupt aborts the homing without moving anything, like the other stage methods
+IF bReset OR bError OR bInterrupted THEN
+	commandTimeout(IN := FALSE);
+	RETURN;
+END_IF
+
+commandTimeout(IN := NOT _HomeTelescope, PT := T#600S);
 IF commandTimeout.Q THEN
 	bError := TRUE;
 	nErrorID := 16#30;
 	_HomeTelescope :=TRUE;
 END_IF
 
-IF bReady AND bStopped AND NOT bBusy AND NOT bTracking THEN
+// only move while a home command is active (Stop/Park/Reset call this with bGoHome cleared to abort it)
+IF bGoHome AND bReady AND bStopped AND NOT bBusy AND NOT bTracking THEN
 	fbElevation.Velocity := 10.0;
 	fbElevation.Position := telescopeConfig.elevationHome;
 	fbElevation.MoveAxis := TRUE;
@@ -1085,10 +1099,10 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Elevation
-fDerotatorVelocity := F_Derotatorvelocity(fElevationCalc, fAzimuthCalc, telescopeConfig.latitude);
+fDerotatorVelocity := F_Derotatorvelocity(fAzimuthCalc, fElevationCalc, telescopeConfig.latitude, fDerotatorSign);
 fElevationVelocity := F_Elevationvelocity(fAzimuthCalc, telescopeConfig.latitude);
 fAzimuthVelocity := F_Azimuthvelocity(fElevationCalc, fAzimuthCalc, telescopeConfig.latitude);
-IF fElevationCurrent < 5.0 OR fElevationCurrent > 89.5 THEN 
+IF fElevationCurrent < 5.0 OR fElevationCurrent > 89.5 THEN
 	bTrack := FALSE;
 END_IF
 IF fAzimuthCurrent > 440.0 THEN

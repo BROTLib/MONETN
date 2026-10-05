@@ -19,19 +19,13 @@
     <AllowChecksForLibrary>false</AllowChecksForLibrary>
     <POUsForPropertyAccessIncluded>false</POUsForPropertyAccessIncluded>
     <GlobalVersionStructureIncluded>false</GlobalVersionStructureIncluded>
-    <ProjectVersion>0.1.0</ProjectVersion>
+    <ProjectVersion>0.1.1</ProjectVersion>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Components\FB_CabinetControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Components\FB_MonetCoverControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Components\FB_MonetFocusControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Components\FB_MonetHydraulicsControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Components\FB_MonetPendantControl.TcPOU">
@@ -127,8 +121,8 @@
       <DefaultResolution>HalfBROT, * (BROT)</DefaultResolution>
       <Namespace>HalfBROT</Namespace>
     </PlaceholderReference>
-    <PlaceholderReference Include="MONETRoof">
-      <DefaultResolution>MONETRoof, * (Georg-August-Universitaet Goettingen)</DefaultResolution>
+    <PlaceholderReference Include="MONET Roof">
+      <DefaultResolution>MONET Roof, * (Georg-August-Universitaet Goettingen)</DefaultResolution>
       <Namespace>MONETRoof</Namespace>
     </PlaceholderReference>
     <PlaceholderReference Include="System_VisuElemEventTable">
