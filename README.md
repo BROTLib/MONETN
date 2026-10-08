@@ -118,7 +118,9 @@ MAIN
 ├── ElevationControl   : FB_ElevationControl          (HalfBROT)
 ├── AzimuthControl     : FB_AzimuthControl            (HalfBROT)
 ├── TelescopeControl   : FB_MonetTelescopeControl     (MONETcommon, telescope state machine)
-└── PendantControl     : FB_MonetPendantControl       (MONETcommon)
+├── PendantControl     : FB_MonetPendantControl       (MONETcommon)
+├── MqttWatchdog       : FB_MonetMqttWatchdog         (MONETcommon)
+└── Diagnostics        : FB_MonetDiagnostics          (MONETcommon)
 ```
 
 ### MAIN
@@ -212,10 +214,13 @@ telemetry in Influx line protocol:
 
 The command layer parses incoming `command` measurements and routes them to the
 interfaces (`Telescope`/`AltAzTelescope`, `Focus`, `Roof` — e.g. `dome_open`,
-`dome_close`, `dome_stop` for the roof). Telemetry uses the TSI/TCI-style
+`dome_close`, `dome_stop` for the roof). `MqttWatchdog` (`FB_MonetMqttWatchdog`) parks the
+telescope and closes the roof after 30 s without a broker connection (armed after
+the first connect), as on MONET/S. Telemetry uses the TSI/TCI-style
 `telescope`/`dome` measurement domain (`TELESCOPE.*`, `OBJECT.*`,
 `POSITION.*`, `AUXILIARY.COVER.REALPOS`) plus `electronics/base`,
-`power/power/*`, `hydraulics/base/*` and `MONET.ROOF.*` (roof) domains;
+`power/power/*`, `hydraulics/base/*`, `diagnostics/base/*` (`Diagnostics`: interrupted,
+axis errors and enables, safety, ready/busy/stopped; on change and every 30 s) and `MONET.ROOF.*` (roof) domains;
 rate 0.5 s while moving, 1 s idle. Events/logs are published to `MONETN/Log` via
 `FB_EventLog`.
 

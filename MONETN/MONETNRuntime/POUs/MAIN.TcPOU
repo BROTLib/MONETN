@@ -27,6 +27,8 @@ VAR
 	AzimuthControl		: FB_AzimuthControl(comm := fbComm);
 	TelescopeControl	: FB_MonetTelescopeControl(comm := fbComm);
 	PendantControl		: FB_MonetPendantControl(comm := fbComm);
+	MqttWatchdog		: FB_MonetMqttWatchdog(comm := fbComm);	// park + close roof after 30 s without broker (MONETcommon)
+	Diagnostics			: FB_MonetDiagnostics(comm := fbComm);	// diagnostics/base/* telemetry, on change + 30 s heartbeat (MONETcommon)
 END_VAR
 VAR CONSTANT
 	telescopeConfig		: ST_TelescopeConfig := (longitude := -104.0217, latitude := 30.6714, altitude := 2000.0, 
@@ -159,8 +161,11 @@ PendantControl(
 	fbDerotator 	:= DerotatorControl	
 );
 
+// broker gone for 30 s: park the telescope and close the roof (armed after the first connect)
+MqttWatchdog(bConnected := fbComm.bConnected, iTelescope := TelescopeControl, iRoof := RoofControl);
+
 // and fbComm
-fbComm(	
+fbComm(
 	sHostName		:= '169.254.146.10',
     nHostPort  		:= 1883,
     nKeepAlive  	:= 60,
@@ -204,6 +209,16 @@ IF commTimer.Q THEN
 	fbComm.Publish('electronics', 'base', 'MainReady', BOOL_TO_STRING(ready));
 	fbComm.Publish('electronics', 'base', 'MasterError', BOOL_TO_STRING(error));
 END_IF
+
+// diagnostics telemetry: publish on change, plus a full-snapshot heartbeat (MONETcommon)
+Diagnostics(
+	fbTelescope	:= TelescopeControl,
+	fbElevation	:= ElevationControl,
+	fbAzimuth	:= AzimuthControl,
+	fbDerotator	:= DerotatorControl,
+	fbFocus		:= FocusControl,
+	fbSafety	:= SafetyHandling
+);
 
 ]]></ST>
     </Implementation>
