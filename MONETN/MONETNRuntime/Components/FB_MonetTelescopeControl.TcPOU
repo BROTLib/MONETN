@@ -953,9 +953,9 @@ fbComm.Publish('telescope', 'dome', 'POSITION.HORIZONTAL.AZ', LREAL_TO_STRING(fA
 //fbComm.Publish('telescope', 'dome', 'POSITION.HORIZONTAL.DOME', LREAL_TO_STRING(fbDome.Position));
 
 (*EQUITORIAL*)
-fbComm.Publish('telescope', 'dome', 'POSITION.EQUATORIAL.RA_J2000', LREAL_TO_STRING(fRightAscensionCurrent));	// degrees (BROTLib#37)
-fbComm.Publish('telescope', 'dome', 'POSITION.EQUATORIAL.HA_J2000', LREAL_TO_STRING(fHourAngleCurrent));
-fbComm.Publish('telescope', 'dome', 'POSITION.EQUATORIAL.DEC_J2000', LREAL_TO_STRING(fDeclinationCurrent));
+fbComm.Publish('telescope', 'dome', 'POSITION.EQUATORIAL.RA_ICRS', LREAL_TO_STRING(fRightAscensionCurrent));	// degrees (BROTLib#37)
+fbComm.Publish('telescope', 'dome', 'POSITION.EQUATORIAL.HA_ICRS', LREAL_TO_STRING(fHourAngleCurrent));
+fbComm.Publish('telescope', 'dome', 'POSITION.EQUATORIAL.DEC_ICRS', LREAL_TO_STRING(fDeclinationCurrent));
 ]]></ST>
       </Implementation>
     </Method>
