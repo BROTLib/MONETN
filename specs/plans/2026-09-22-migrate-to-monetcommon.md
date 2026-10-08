@@ -1,7 +1,12 @@
 # Migrate MONETN onto the MONETS/MONETcommon pattern
 
-**Status: planned, not started.** Written up as a spec instead of executed directly, so it can be
-reviewed and picked up deliberately (this is safety-relevant PLC code for a live telescope).
+**Status: partly implemented (2026-10-08), on `develop`, not deployed.** Steps 1, 2, 3 (type swaps), 6 (local
+copies deleted, also the never-compiled `E_ModeLanguage.TcDUT`) in PR #9 (`28e5806`), which also fixed
+`telescopeConfig.derotatorHome` (was unset, now −116.42° like park). Steps 4.2 (MQTT watchdog) and 4.3 (diagnostics)
+in PR "MQTT watchdog and diagnostics from MONETcommon": both moved from MONETS's `MAIN` into MONETcommon
+(`FB_MonetMqttWatchdog`, `FB_MonetDiagnostics`) and are called from both `MAIN`s instead of being copied. **Open:**
+step 4.1/5 (`TelescopeAuxiliary`, needs the M1/M2 PDOs re-linked on site), step 4.4 (focus brake/delay timing,
+site owner decides), steps 7/8 (hardware verification, listed in PR #9).
 
 ## Context
 
