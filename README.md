@@ -9,13 +9,12 @@ The application controls the telescope mount (Azimuth / Elevation / Derotator
 axes), focus, the three mirror covers, the hydraulic pump/brake system, the
 observatory roof, power monitoring, cabinet I/O and the TwinSAFE safety chain,
 and publishes MQTT/InfluxDB telemetry. It is built on the **BROTLib** core
-library, the **HalfBROT** hardware layer and the **MONETRoof** library
-(`FB_RoofControl`); the MONET-specific control logic
-(`FB_MonetTelescopeControl`, `FB_SafetyHandling`, `FB_CabinetControl`,
-`FB_PowerMonitoring`, `FB_MonetHydraulicsControl`, `FB_MonetPendantControl`,
-`FB_MonetFocusControl`, `FB_MonetCoverControl`) is carried as **local vendored
-copies** of the MONETcommon library blocks (see
-[unification note](#unification-with-monetcommon)).
+library, the **HalfBROT** hardware layer, the **MONETRoof** library
+(`FB_RoofControl`) and the **MONETcommon** library, which holds the
+MONET-specific control logic shared with MONET/S (`FB_MonetTelescopeControl`,
+`FB_MonetSafetyHandling`, `FB_MonetCabinetControl`, `FB_MonetPowerMonitoring`,
+`FB_MonetPendantControl`, `FB_MonetCoverControl`; see
+[MONETcommon](#monetcommon)).
 
 ### Name and heritage ("STELLA1")
 
@@ -55,8 +54,8 @@ MONETN/
 │   ├── MONETNRuntime/          # PLC project (current)
 │   │   ├── MONETNRuntime.plcproj
 │   │   ├── PlcTask.TcTTO       # PLC task (10 ms, priority 20, calls MAIN)
-│   │   ├── Components/         # FB_MonetTelescopeControl & co. (vendored copies)
-│   │   ├── POUs/               # MAIN, FB_PowerMonitoring, FB_SafetyHandling
+│   │   ├── POUs/               # MAIN (site configuration, pointing model)
+│   │   ├── GVLs/               # Global_Version
 │   │   ├── VISUs/              # TwinCAT visualizations (11 screens)
 │   │   └── GlobalTextList.TcGTLO
 │   ├── MONETNTwinSAFE/         # Safety project (TwinSAFE group on EL6910)
@@ -108,18 +107,18 @@ the MQTT communication function block and all subsystem controllers:
 ```
 MAIN
 ├── fbComm             : FB_Comm_MQTT_Influx          (MQTT + Influx telemetry, BROTLib)
-├── SafetyHandling     : FB_SafetyHandling
-├── CabinetControl     : FB_CabinetControl
-├── PowerMonitoring    : FB_PowerMonitoring
+├── SafetyHandling     : FB_MonetSafetyHandling       (MONETcommon)
+├── CabinetControl     : FB_MonetCabinetControl       (MONETcommon)
+├── PowerMonitoring    : FB_MonetPowerMonitoring      (MONETcommon)
 ├── RoofControl        : FB_RoofControl               (MONETRoof library)
-├── CoverControl       : FB_MonetCoverControl         (I_MirrorCovers)
+├── CoverControl       : FB_MonetCoverControl         (MONETcommon, I_MirrorCovers)
 ├── HydraulicsControl  : FB_HydraulicsControl         (HalfBROT)
 ├── FocusControl       : FB_FocusControl              (HalfBROT)
 ├── DerotatorControl   : FB_DerotatorControl          (HalfBROT)
 ├── ElevationControl   : FB_ElevationControl          (HalfBROT)
 ├── AzimuthControl     : FB_AzimuthControl            (HalfBROT)
-├── TelescopeControl   : FB_MonetTelescopeControl     (telescope state machine)
-└── PendantControl     : FB_MonetPendantControl
+├── TelescopeControl   : FB_MonetTelescopeControl     (MONETcommon, telescope state machine)
+└── PendantControl     : FB_MonetPendantControl       (MONETcommon)
 ```
 
 ### MAIN
@@ -141,12 +140,12 @@ oil > cover/hydraulics) and publishes `electronics/base/MainReady` /
 
 ### Telescope and axes
 
-- `FB_MonetTelescopeControl` (Components/) implements the full Alt-Az
+- `FB_MonetTelescopeControl` (MONETcommon) implements the full Alt-Az
   telescope lifecycle on top of BROTLib's `FB_AltAzTelescopeControl` (see
   [States and commands](#states-and-commands)); it computes JD/LST
   (`DateTime2JD`, `CT2LST`), applies the pointing model
-  (`FB_PointingModelForward` / `FB_PointingModelInversion` with fitted
-  constants), the derotator position (`F_DerotatorPosition2`) and per-axis
+  (`FB_PointingModelForward` / `FB_PointingModelInversion`; MONET/N's fitted
+  constants are set in `MAIN` and passed in as `fbPointing`/`fbPointingInverse`), the derotator position (`F_DerotatorPosition2`) and per-axis
   tracking velocities, and handles the 360° azimuth/derotator wrap, horizon
   guard and command timeouts.
 - The axes are controlled by the HalfBROT blocks `FB_AzimuthControl`,
@@ -164,16 +163,17 @@ oil > cover/hydraulics) and publishes `electronics/base/MainReady` /
   `limit_slowdown=5`).
 - `FB_MonetCoverControl` — the three mirror covers, sequenced open **1→3→2**,
   close **2→3→1**; limit switches are inverted inputs, a cover errors when
-  both open and closed are active.
+  both open and closed are active or does not reach its switch within 60 s.
 - `FB_HydraulicsControl` (HalfBROT) — oil pump + suction pump + Az/El brake,
   oil monitoring, watchdogs (pressure 30 s, suction 15 s, main pump 10 s,
   hydraulics 140 s), auto shut-off 300 s after brake closed.
-- `FB_PowerMonitoring` — 3-phase power-quality monitoring (EL3483), 19
-  `telescope/power/*` telemetry fields.
-- `FB_CabinetControl` — front-panel buttons/switches, lamps (via `FB_BLINK`),
+- `FB_MonetPowerMonitoring` — 3-phase power-quality monitoring (EL3483), 19
+  `power/power/*` telemetry fields; any guard warning or error clears
+  `MainReady`.
+- `FB_MonetCabinetControl` — front-panel buttons/switches, lamps (via `FB_BLINK`),
   cabinet temperature (warning >50 °C, critical >60 °C).
 - `FB_MonetPendantControl` — BCD-selector manual hand pendant.
-- `FB_SafetyHandling` — TwinSAFE group startup (2 s delay → ErrAck → Restart
+- `FB_MonetSafetyHandling` — TwinSAFE group startup (2 s delay → ErrAck → Restart
   → per-axis STO resets), monitors group/E-stop/EL1904/EL2904 info data.
 
 ---
@@ -187,7 +187,7 @@ oil > cover/hydraulics) and publishes `electronics/base/MainReady` /
   park/gohome/goto/slew, 12 h poweron/track) and progress events.
 - **Derived states**: `bHomed` (all axes calibrated), `bReady` (homed + covers
   open + axes enabled + brake open + no error), `bTracking` (stable after
-  5.5 s), `bIsParked`; `fReadyState` (1 ready / 0 / −1 error), `nMotionState`
+  5.5 s), `bIsParked`; `fReadyState` (1 ready, 0.7 powering on, 0.3 parking, 0 parked, −1 error, −2 other), `nMotionState`
   (0 stopped, 1 moving, 8 tracking). Auto-park (12 h) and horizon-guard stop
   with go-home protect the telescope.
 - **Axis level** (HalfBROT): enable, home/calibrate, jog, position move, stop,
@@ -215,8 +215,8 @@ interfaces (`Telescope`/`AltAzTelescope`, `Focus`, `Roof` — e.g. `dome_open`,
 `dome_close`, `dome_stop` for the roof). Telemetry uses the TSI/TCI-style
 `telescope`/`dome` measurement domain (`TELESCOPE.*`, `OBJECT.*`,
 `POSITION.*`, `AUXILIARY.COVER.REALPOS`) plus `electronics/base`,
-`telescope/power/*`, `hydraulics/base/*` and `MONET.ROOF.*` (roof) domains;
-rate 1 s while moving, 5 s idle. Events/logs are published to `MONETN/Log` via
+`power/power/*`, `hydraulics/base/*` and `MONET.ROOF.*` (roof) domains;
+rate 0.5 s while moving, 1 s idle. Events/logs are published to `MONETN/Log` via
 `FB_EventLog`.
 
 ## Safety (TwinSAFE)
@@ -235,7 +235,7 @@ EL1904/EL2904 of both buses, and the roof):
 - **Group ports**: `Run`, `Restart`, `ErrorAcknowledgement`, `ModuleFault`,
   `FbErr`, `ComErr`, `OutErr`, `OtherErr`, `ComStartup`, `FbDeactive`, `FbRun`,
   `InRun`.
-- The PLC side (`FB_SafetyHandling`) performs the startup sequence
+- The PLC side (`FB_MonetSafetyHandling`) performs the startup sequence
   (Run/ErrAck/Restart/STO resets); on E-stop `MAIN` disables all axes.
 
 ## Visualization
@@ -270,20 +270,21 @@ states, EL1904/EL2904 diagnostics). Text resources live in
   control base classes, tracking/pointing functions, shared DUTs.
 - **HalfBROT** (BROT) — axis and hardware function blocks.
 - **MONETRoof** (`MONETRoof`) — `FB_RoofControl`/`I_Roof`.
-- **MONETcommon** — not referenced by name; its blocks are vendored locally
-  (see below).
+- **MONETcommon** (IAG) — the MONET function blocks shared with MONET/S.
 - Beckhoff system libraries: `Tc2_MC2`, `Tc2_MC2_Drive`, `Tc2_NC`,
   `Tc3_IotBase`/`Tc3_IotCommunicator` (MQTT), `Tc2_Standard`, `Tc2_System`,
   `Tc2_Utilities`, `Tc3_Module`, plus the TwinCAT visualization libraries.
 
-## Unification with MONETcommon
+## MONETcommon
 
-MONETN carries local (vendored) copies of the MONETcommon function blocks in
-`MONETNRuntime/Components/` and `MONETNRuntime/POUs/` instead of referencing
-the MONETcommon library — the root cause of code drift between MONETN and
-MONETS. The unification plan
-([BROTLib/MONET_Unification.md](../BROTLib/MONET_Unification.md)) specifies
-which copies to delete and replace with the MONETcommon library reference.
+MONETN used to carry its own copies of the MONETcommon function blocks, which
+drifted from MONET/S's (`_J2000` vs `_ICRS` telemetry names, missing fixes such
+as the cover timeout, the power-guard check and the HA output of `hor2eq`).
+Since the switch to the MONETcommon library reference, MONET/N and MONET/S run
+the same blocks; only `MAIN` (site configuration, axis calibration, pointing
+model, roof parameters) is MONET/N's own. A fix to the shared blocks goes into
+MONETcommon, not here. Background: IAG's
+`specs/design/monetcommon-monetn-monets-unification-plan.md`.
 
 ## Building and deployment
 

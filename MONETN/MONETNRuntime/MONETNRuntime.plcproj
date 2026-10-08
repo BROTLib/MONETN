@@ -22,28 +22,10 @@
     <ProjectVersion>0.1.2</ProjectVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Components\FB_CabinetControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Components\FB_MonetCoverControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Components\FB_MonetPendantControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Components\FB_MonetTelescopeControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FB_PowerMonitoring.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FB_SafetyHandling.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
@@ -102,9 +84,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DUTs" />
     <Folder Include="GVLs" />
-    <Folder Include="Components" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>
@@ -124,6 +104,10 @@
     <PlaceholderReference Include="MONET Roof">
       <DefaultResolution>MONET Roof, * (Georg-August-Universitaet Goettingen)</DefaultResolution>
       <Namespace>MONETRoof</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="MONETcommon">
+      <DefaultResolution>MONETcommon, * (IAG)</DefaultResolution>
+      <Namespace>MONETcommon</Namespace>
     </PlaceholderReference>
     <PlaceholderReference Include="System_VisuElemEventTable">
       <DefaultResolution>VisuElemEventTable, 1.0.3.0 (System)</DefaultResolution>
