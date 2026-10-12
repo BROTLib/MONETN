@@ -3509,6 +3509,14 @@ External Setpoint Generation:
 							<Type>INT</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.TelescopeAuxiliary.tempSensorM1</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.TelescopeAuxiliary.tempSensorM2</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.HydraulicsControl.IbOilpanMaximum</Name>
 							<Comment><![CDATA[DIN39 4.6]]></Comment>
 							<Type>BOOL</Type>
@@ -3837,14 +3845,6 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 					</Vars>
-					<UnrestoredVarLinks ImportTime="2025-08-31T07:44:04">
-						<OwnerA Name="InputDst" Prefix="TIPC^MONETNRuntime^MONETNRuntime Instance" Type="1">
-							<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Temperature IN (EL3164)">
-								<Link VarA="MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM1" TypeA="INT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="TempM1^MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM1" RestoreInfo="ANotFound"/>
-								<Link VarA="MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM2" TypeA="INT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="TempM2^MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM2" RestoreInfo="ANotFound"/>
-							</OwnerB>
-						</OwnerA>
-					</UnrestoredVarLinks>
 					<Contexts>
 						<Context>
 							<Id>0</Id>
@@ -12597,6 +12597,8 @@ DOUT9 1.0]]></Comment>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Temperature IN (EL3164)">
 				<Link VarA="PlcTask Inputs^MAIN.HydraulicsControl.InOilLevel" VarB="OilLevel^MAIN.HydraulicsControl.InOilLevel"/>
+				<Link VarA="PlcTask Inputs^MAIN.TelescopeAuxiliary.tempSensorM1" VarB="TempM1^MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM1"/>
+				<Link VarA="PlcTask Inputs^MAIN.TelescopeAuxiliary.tempSensorM2" VarB="TempM2^MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM2"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Pendant Control IN (EL1008)">
 				<Link VarA="PlcTask Inputs^MAIN.PendantControl.IbBCD0" VarB="Channel 1^MAIN.PendantControl.BCD0"/>

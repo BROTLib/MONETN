@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="FB_MonetnTelescopeAuxiliary" Id="{7e31d5fd-3935-4700-ae64-3b5e25a9b947}" SpecialFunc="None">
+    <Declaration><![CDATA[// MONET/N auxiliary sensors: mirror temperatures M1 and M2 on the EL3164 (0-10 V, ch 2 and ch 1; ch 3 is the oil
+// level). Copied from MONETS's FB_MonetsTelescopeAuxiliary, which also has an M1 cell and a flange sensor that
+// MONET/N does not have. Replaces HalfBROT's FB_TelescopeAuxiliary (removed, HalfBROT #21).
+FUNCTION_BLOCK FB_MonetnTelescopeAuxiliary
+VAR
+	tempSensorM1   		AT%I*: INT;
+	tempSensorM2   		AT%I*: INT;
+	fbComm				: I_Comm;
+END_VAR
+VAR_OUTPUT
+	tempM1				: REAL;
+	tempM2				: REAL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[tempM1 		:= tempSensorM1 / 32767.0 * 150.0 - 50.0; 
+tempM2 		:= tempSensorM2 / 32767.0 * 150.0 - 50.0;
+]]></ST>
+    </Implementation>
+    <Method Name="FB_Init" Id="{34154e00-1554-42d6-b807-6241695bcfd7}">
+      <Declaration><![CDATA[//FB_Init is always available implicitly and it is used primarily for initialization.
+//The return value is not evaluated. For a specific influence, you can also declare the
+//methods explicitly and provide additional code there with the standard initialization
+//code. You can evaluate the return value.
+METHOD FB_Init: BOOL
+VAR_INPUT
+    bInitRetains	: BOOL; // TRUE: the retain variables are initialized (reset warm / reset cold)
+    bInCopyCode		: BOOL;  // TRUE: the instance will be copied to the copy code afterward (online change)
+	comm			: I_Comm;	   
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^.fbComm := comm;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SendTelemetry" Id="{9e49f282-bfc0-4335-a7b7-cce199e9240a}">
+      <Declaration><![CDATA[METHOD SendTelemetry : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF fbComm = 0 THEN
+	RETURN;
+END_IF
+fbComm.Publish('telescope', 'dome', 'AUXILIARY.SENSOR[1].NAME', 'TEMP_M1');
+fbComm.Publish('telescope', 'dome', 'AUXILIARY.SENSOR[1].VALUE', LREAL_TO_FMTSTR(tempM1, 2, TRUE));
+fbComm.Publish('telescope', 'dome', 'AUXILIARY.SENSOR[1].UNIT', 'C');
+fbComm.Publish('telescope', 'dome', 'AUXILIARY.SENSOR[2].NAME', 'TEMP_M2');
+fbComm.Publish('telescope', 'dome', 'AUXILIARY.SENSOR[2].VALUE', LREAL_TO_FMTSTR(tempM2, 2, TRUE));
+fbComm.Publish('telescope', 'dome', 'AUXILIARY.SENSOR[2].UNIT', 'C');]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>
