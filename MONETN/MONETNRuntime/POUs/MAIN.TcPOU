@@ -27,6 +27,7 @@ VAR
 	AzimuthControl		: FB_AzimuthControl(comm := fbComm);
 	TelescopeControl	: FB_MonetTelescopeControl(comm := fbComm);
 	PendantControl		: FB_MonetPendantControl(comm := fbComm);
+	TelescopeAuxiliary	: FB_MonetnTelescopeAuxiliary(comm := fbComm);	// mirror temperatures M1/M2
 	MqttWatchdog		: FB_MonetMqttWatchdog(comm := fbComm);	// park + close roof after 30 s without broker (MONETcommon)
 	Diagnostics			: FB_MonetDiagnostics(comm := fbComm);	// diagnostics/base/* telemetry, on change + 30 s heartbeat (MONETcommon)
 END_VAR
@@ -109,7 +110,11 @@ IF eTelescopeMode = E_TelescopeMode.automatic THEN
 		bEstopTriggered := SafetyHandling.estop,	// M5: was never wired, see MONETcommon#11
 		bMainReady		:= ready					// M5: was computed and published but never wired, see MONETcommon#11
 	);
+ELSE
+    // Invalidate startup readiness and publish its heartbeat without running automatic motion in manual mode.
+    TelescopeControl.SuspendAutomatic();
 END_IF
+TelescopeAuxiliary();
 
 // run all control FBs
 CoverControl();
@@ -208,6 +213,7 @@ IF commTimer.Q THEN
 	commTimer(IN:=FALSE);
 	fbComm.Publish('electronics', 'base', 'MainReady', BOOL_TO_STRING(ready));
 	fbComm.Publish('electronics', 'base', 'MasterError', BOOL_TO_STRING(error));
+	TelescopeAuxiliary.SendTelemetry();
 END_IF
 
 // diagnostics telemetry: publish on change, plus a full-snapshot heartbeat (MONETcommon)
