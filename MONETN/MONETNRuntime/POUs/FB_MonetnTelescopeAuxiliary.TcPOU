@@ -9,14 +9,23 @@ VAR
 	tempSensorM1   		AT%I*: INT;
 	tempSensorM2   		AT%I*: INT;
 	fbComm				: I_Comm;
+	sensorM1			: MONETcommon.FB_MonetTempSensor;
+	sensorM2			: MONETcommon.FB_MonetTempSensor;
 END_VAR
 VAR_OUTPUT
+	// only valid while the matching valid flag is TRUE: a broken wire reads -50 C (MONETN#17)
 	tempM1				: REAL;
 	tempM2				: REAL;
+	validM1				: BOOL;
+	validM2				: BOOL;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[tempM1 		:= tempSensorM1 / 32767.0 * 150.0 - 50.0; 
-tempM2 		:= tempSensorM2 / 32767.0 * 150.0 - 50.0;
+      <ST><![CDATA[sensorM1(iRaw := tempSensorM1, sName := 'TEMP_M1', comm := fbComm);
+sensorM2(iRaw := tempSensorM2, sName := 'TEMP_M2', comm := fbComm);
+tempM1 			:= sensorM1.fTemperature;
+tempM2 			:= sensorM2.fTemperature;
+validM1 		:= sensorM1.bValid;
+validM2 		:= sensorM2.bValid;
 ]]></ST>
     </Implementation>
     <Method Name="FB_Init" Id="{34154e00-1554-42d6-b807-6241695bcfd7}">
@@ -44,10 +53,14 @@ END_VAR
 	RETURN;
 END_IF
 fbComm.Publish('telescope', 'dome', 'AUXILIARY.SENSOR[1].NAME', 'TEMP_M1');
-fbComm.Publish('telescope', 'dome', 'AUXILIARY.SENSOR[1].VALUE', LREAL_TO_FMTSTR(tempM1, 2, TRUE));
+IF validM1 THEN
+	fbComm.Publish('telescope', 'dome', 'AUXILIARY.SENSOR[1].VALUE', LREAL_TO_FMTSTR(tempM1, 2, TRUE));
+END_IF
 fbComm.Publish('telescope', 'dome', 'AUXILIARY.SENSOR[1].UNIT', 'C');
 fbComm.Publish('telescope', 'dome', 'AUXILIARY.SENSOR[2].NAME', 'TEMP_M2');
-fbComm.Publish('telescope', 'dome', 'AUXILIARY.SENSOR[2].VALUE', LREAL_TO_FMTSTR(tempM2, 2, TRUE));
+IF validM2 THEN
+	fbComm.Publish('telescope', 'dome', 'AUXILIARY.SENSOR[2].VALUE', LREAL_TO_FMTSTR(tempM2, 2, TRUE));
+END_IF
 fbComm.Publish('telescope', 'dome', 'AUXILIARY.SENSOR[2].UNIT', 'C');]]></ST>
       </Implementation>
     </Method>
