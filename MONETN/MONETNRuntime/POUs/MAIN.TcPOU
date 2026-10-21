@@ -32,6 +32,9 @@ VAR
 	Diagnostics			: FB_MonetDiagnostics(comm := fbComm);	// diagnostics/base/* telemetry, on change + 30 s heartbeat (MONETcommon)
 END_VAR
 VAR CONSTANT
+	// MONETS#32: raw counts of the oil level sensor (same Reventec LS as MONET/S): below the limit is a cut wire, lost supply or the sensor error output (about 330); above the 5 V maximum (16383) is over-range. The MONET/N pan has not been measured yet
+	nOilLevelMinValid	: INT := 600;
+	nOilLevelMaxValid	: INT := 16000;
 	telescopeConfig		: ST_TelescopeConfig := (longitude := -104.0217, latitude := 30.6714, altitude := 2000.0, 
 												 azimuthPark := 190, elevationPark := 60, derotatorPark := -116.42, focusPark := 53.8, 
 												 azimuthHome := 190, elevationHome := 40, derotatorHome := -116.42,
@@ -123,6 +126,8 @@ HydraulicsControl(
 	nMaxPanLevel	:= 10200,
 	fMinPanPercent	:= 0.0,
 	fMaxPanPercent	:= 50.0, //56.0,
+	nMinValidPanLevel	:= nOilLevelMinValid,	// outside this raw range the level is not published and does not start/stop the suction (HalfBROT 0.5.6)
+	nMaxValidPanLevel	:= nOilLevelMaxValid,
 	bBrakeClearing	:= brakeClearing
 );
 ElevationControl(
@@ -143,6 +148,9 @@ DerotatorControl(
 FocusControl(
 	eTelescopeMode 	:= eTelescopeMode,
 	fHomingPosition	:= 92.02, // 104.02 - 12.00
+	// limit switches at 0 and fHomingPosition; targets stay 0.5 mm inside (MONETcommon#122)
+	fMinPosition	:= 0.5,
+	fMaxPosition	:= 91.5,
 	fVelocity		:= 0.2
 );
 RoofControl(
@@ -193,7 +201,7 @@ IF SafetyHandling.error THEN
 	CabinetControl.SetBlinkError(E_Blink.short);
 ELSIF ElevationControl.bError OR AzimuthControl.bError OR DerotatorControl.bError THEN
 	CabinetControl.SetBlinkError(E_Blink.long);
-ELSIF HydraulicsControl.bOilWarning OR HydraulicsControl.bOilHot OR HydraulicsControl.bPressureFailure THEN
+ELSIF HydraulicsControl.bOilWarning OR HydraulicsControl.bOilHot OR HydraulicsControl.bPressureFailure OR HydraulicsControl.bOilLevelInvalid THEN
 	CabinetControl.SetBlinkError(E_Blink.slow);
 ELSIF error THEN
 	CabinetControl.SetBlinkError(E_Blink.on);
