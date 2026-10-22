@@ -105,7 +105,7 @@
       <Namespace>HalfBROT</Namespace>
     </PlaceholderReference>
     <PlaceholderReference Include="MONET Roof">
-      <DefaultResolution>MONET Roof, 1.1.5 (Georg-August-Universitaet Goettingen)</DefaultResolution>
+      <DefaultResolution>MONET Roof, 1.1.6 (Georg-August-Universitaet Goettingen)</DefaultResolution>
       <Namespace>MONETRoof</Namespace>
     </PlaceholderReference>
     <PlaceholderReference Include="MONETcommon">
