@@ -300,7 +300,7 @@ project is `MONETNRuntime` (ADS port 851, symbolic mapping), task `PlcTask`
 license. No boot project data is checked in (`_Boot/` carries only the target
 marker); the controller boots from TwinCAT's own boot project on the CX.
 
-**CI.** `.github/workflows/tcbuild.yml` builds `MONETN.sln` with TcBuild on every push (self-hosted runner, never on pull requests). A green run means the project compiles; TcBuild exit code 1 (built with warnings) counts as success. It only compiles; no tests run in CI.
+**CI.** `.github/workflows/tcbuild.yml` builds `MONETN.sln` with [`tctool`](https://github.com/BROTLib/TcTool) on every push (self-hosted runner, never on pull requests). A green run means the project compiles; `tctool` exit code 1 (built with warnings) counts as success. It only compiles; no tests run in CI.
 
 ## Startup readiness (READY_STATE)
 
