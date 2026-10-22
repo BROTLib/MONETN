@@ -11,12 +11,12 @@ VAR_GLOBAL CONSTANT
 	// to be read externally via ADS, never referenced internally, so it's suppressed here.
 	{attribute 'analysis' := '-33'}
 	stLibVersion_MONETNRuntime : ST_LibVersion := (
-		iMajor := 0,
+		iMajor := 1,
 		iMinor := 4,
-		iBuild := 3,
+		iBuild := 4,
 		iRevision := 0,
 		nFlags := 1,
-		sVersion := '0.4.3'
+		sVersion := '1.4.4'
 	);
 END_VAR]]></Declaration>
   </GVL>
