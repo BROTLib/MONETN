@@ -32,9 +32,9 @@ VAR
 	Diagnostics			: FB_MonetDiagnostics(comm := fbComm);	// diagnostics/base/* telemetry, on change + 30 s heartbeat (MONETcommon)
 END_VAR
 VAR CONSTANT
-	// MONETS#32: raw counts of the oil level sensor (same Reventec LS as MONET/S): below the limit is a cut wire, lost supply or the sensor error output (about 330); above the 5 V maximum (16383) is over-range. The MONET/N pan has not been measured yet
-	nOilLevelMinValid	: INT := 600;
-	nOilLevelMaxValid	: INT := 16000;
+	// MONETS#32: raw counts of the oil level sensor (same Reventec LS as MONET/S): below the limit is a cut wire, lost supply or the sensor error output (about 330); above is over-range. Measured on MONET/N 2026-10-27: the oversized pan is never drained completely (bottom 1100..1300, 821 at a pump start), the pan-full float switch trips at raw ~9520..9550; the limits lie between those and the sensor extremes, as on MONET/S (MONETS#58)
+	nOilLevelMinValid	: INT := 450;
+	nOilLevelMaxValid	: INT := 12000;
 	telescopeConfig		: ST_TelescopeConfig := (longitude := -104.0217, latitude := 30.6714, altitude := 2000.0, 
 												 azimuthPark := 190, elevationPark := 60, derotatorPark := -116.42, focusPark := 53.8, 
 												 azimuthHome := 190, elevationHome := 40, derotatorHome := -116.42,
@@ -123,10 +123,10 @@ TelescopeAuxiliary();
 // run all control FBs
 CoverControl();
 HydraulicsControl(
-	nMinPanLevel	:= 3000,
-	nMaxPanLevel	:= 10200,
-	fMinPanPercent	:= 0.0,
-	fMaxPanPercent	:= 50.0, //56.0,
+	nMinPanLevel	:= 900,		// empty pan reads raw ~1100..1300 with suction (measured 2026-10-27)
+	nMaxPanLevel	:= 9400,	// the pan-full float switch trips at raw ~9520..9550 (100 %)
+	fMinPanPercent	:= 15.0,	// suction stops at raw ~2175 (was raw 3000, 0.0 % with 3000..10200)
+	fMaxPanPercent	:= 70.0,	// suction starts at raw ~6850 (was 50.0 with 3000..10200, raw ~6600)
 	nMinValidPanLevel	:= nOilLevelMinValid,	// outside this raw range the level is not published and does not start/stop the suction (HalfBROT 0.5.6)
 	nMaxValidPanLevel	:= nOilLevelMaxValid,
 	bBrakeClearing	:= brakeClearing
@@ -284,6 +284,8 @@ Diagnostics(
       <LineId Id="2206" Count="0" />
       <LineId Id="2151" Count="28" />
       <LineId Id="2" Count="0" />
+      <LineId Id="157" Count="34" />
+      <LineId Id="2338" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
