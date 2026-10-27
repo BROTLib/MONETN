@@ -3,7 +3,8 @@
   <POU Name="MAIN" Id="{0fe844df-7078-44d3-bc48-268e6c994874}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	ready				: BOOL;		// telescope drives are ready to enable
+	ready				: BOOL;		// power monitoring phaseOK (published as electronics/base/MainReady)
+	mainReady			: BOOL;		// what gates the power-on (bMainReady): phaseOK without the L3 voltage guard WARNING, see below
 	error				: BOOL;		// error stat on drive, power or hydraulics
 	brakeClearing		: BOOL := FALSE;	//	open brake
 	
@@ -97,6 +98,18 @@ END_IF
 // telescope is ready when power available
 PowerMonitoring(phaseOK => ready);
 
+// The L3 voltage guard WARNING (EL3483) has been TRUE on MONET/N all along (seen 2026-10-27 before the update, nothing
+// used it). Wiring bMainReady (MONETcommon#11) made it block every power-on, so the power-on ignores that one warning
+// for now. The L3 voltage guard ERROR and every other power guard still block. TODO: find out why L3 warns (real
+// undervoltage or a threshold in the EL3483 settings), then use `ready` again. `ready` itself, and so the MainReady
+// telemetry, is unchanged and still shows the warning.
+mainReady := NOT PowerMonitoring.FrequencyGuardWarning AND NOT PowerMonitoring.FrequencyGuardError AND
+	NOT PowerMonitoring.QualityGuardWarning AND NOT PowerMonitoring.QualityGuardError AND
+	NOT PowerMonitoring.UnbalanceGuardWarning AND NOT PowerMonitoring.UnbalanceGuardError AND
+	NOT PowerMonitoring.L1VoltageGuardWarning AND NOT PowerMonitoring.L1VoltageGuardError AND
+	NOT PowerMonitoring.L2VoltageGuardWarning AND NOT PowerMonitoring.L2VoltageGuardError AND
+	NOT PowerMonitoring.L3VoltageGuardError;
+
 // only run TelescopeControl in automatic mode
 IF eTelescopeMode = E_TelescopeMode.automatic THEN
 	TelescopeControl(
@@ -112,7 +125,7 @@ IF eTelescopeMode = E_TelescopeMode.automatic THEN
 		fbPointingInverse := fbPointingInverse,
 		bEstopTriggered := SafetyHandling.estop,	// M5: was never wired, see MONETcommon#11
 		bSafetyError	:= SafetyHandling.error,		// MONETcommon#155: closes the brake opened in the Wake&Shake window; FALSE = not enforced
-		bMainReady		:= ready					// M5: was computed and published but never wired, see MONETcommon#11
+		bMainReady		:= mainReady				// M5: was computed and published but never wired, see MONETcommon#11 (without the L3 warning, see above)
 	);
 ELSE
     // Invalidate startup readiness and publish its heartbeat without running automatic motion in manual mode.
