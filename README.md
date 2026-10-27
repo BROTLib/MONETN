@@ -13,7 +13,7 @@ library, the **HalfBROT** hardware layer, the **MONETRoof** library
 (`FB_RoofControl`) and the **MONETcommon** library, which holds the
 MONET-specific control logic shared with MONET/S (`FB_MonetTelescopeControl`,
 `FB_MonetSafetyHandling`, `FB_MonetCabinetControl`, `FB_MonetPowerMonitoring`,
-`FB_MonetPendantControl`, `FB_MonetCoverControl`; see
+`FB_MonetPendantControl`; see
 [MONETcommon](#monetcommon)).
 
 ### Name and heritage ("STELLA1")
@@ -111,7 +111,7 @@ MAIN
 ├── CabinetControl     : FB_MonetCabinetControl       (MONETcommon)
 ├── PowerMonitoring    : FB_MonetPowerMonitoring      (MONETcommon)
 ├── RoofControl        : FB_RoofControl               (MONETRoof library)
-├── CoverControl       : FB_MonetCoverControl         (MONETcommon, I_MirrorCovers)
+├── CoverControl       : HalfBROT.FB_CoverControl     (HalfBROT, I_MirrorCovers)
 ├── HydraulicsControl  : FB_HydraulicsControl         (HalfBROT)
 ├── FocusControl       : FB_FocusControl              (HalfBROT)
 ├── DerotatorControl   : FB_DerotatorControl          (HalfBROT)
@@ -163,9 +163,9 @@ oil > cover/hydraulics) and publishes `electronics/base/MainReady` /
   configured in `MAIN` (`min_speed=10000`, `max_speed=30000`,
   `acceleration=150`, `max_position=202`, `max_position_diff=3`,
   `limit_slowdown=5`).
-- `FB_MonetCoverControl` — the three mirror covers, sequenced open **1→3→2**,
+- `FB_CoverControl` (HalfBROT) — the three mirror covers, sequenced open **1→3→2**,
   close **2→3→1**; limit switches are inverted inputs, a cover errors when
-  both open and closed are active or does not reach its switch within 60 s.
+  both open and closed are active or does not reach its switch within `tMoveTimeout` (60 s default, not tuned yet); an error stops all covers.
 - `FB_HydraulicsControl` (HalfBROT) — oil pump + suction pump + Az/El brake,
   oil monitoring, watchdogs (pressure 30 s, suction 15 s, main pump 10 s,
   hydraulics 140 s), auto shut-off 300 s after brake closed.
