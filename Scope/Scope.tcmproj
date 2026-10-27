@@ -9,6 +9,30 @@
     <Name>Scope</Name>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Drives.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Drives.tcscopex">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Drives_1.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Drives_2.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Drives_3.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Drives_4.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Drives_5.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Focus.tcscopex">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Scope Project1.tcscopex">
       <SubType>Content</SubType>
     </Content>
