@@ -111,6 +111,7 @@ IF eTelescopeMode = E_TelescopeMode.automatic THEN
 		fbPointing      := fbPointing,
 		fbPointingInverse := fbPointingInverse,
 		bEstopTriggered := SafetyHandling.estop,	// M5: was never wired, see MONETcommon#11
+		bSafetyError	:= SafetyHandling.error,		// MONETcommon#155: closes the brake opened in the Wake&Shake window; FALSE = not enforced
 		bMainReady		:= ready					// M5: was computed and published but never wired, see MONETcommon#11
 	);
 ELSE
