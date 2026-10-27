@@ -3217,7 +3217,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETNRuntime\MONETNRuntime.tmc" TmcHash="{998FFA2C-073C-C47E-3201-4C312D862380}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETNRuntime\MONETNRuntime.tmc" TmcHash="{9C7C2807-2383-BA11-3705-F38CF3EF7F44}">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -3275,6 +3275,8 @@ External Setpoint Generation:
 						</Var>
 						<Var>
 							<Name>MAIN.PowerMonitoring.FrequencyGuardWarning</Name>
+							<Comment><![CDATA[ AT%I*/AT%Q* below are mapped directly on this FB: only one instance per PLC is
+ supported, a second instance would collide on the same physical hardware.]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3356,7 +3358,7 @@ External Setpoint Generation:
 						</Var>
 						<Var>
 							<Name>MAIN.RoofControl.ups_fail</Name>
-							<Comment><![CDATA[ UPS failure]]></Comment>
+							<Comment><![CDATA[ UPS failure: linked to the UPS input in the consumer projects (tsproj), not evaluated yet]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3384,7 +3386,7 @@ External Setpoint Generation:
 						</Var>
 						<Var>
 							<Name>MAIN.RoofControl.roofs[1].motors[1].counter</Name>
-							<Comment><![CDATA[ hall sensor for counting rotation]]></Comment>
+							<Comment><![CDATA[ inductive sensor for counting rotation]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3403,7 +3405,7 @@ External Setpoint Generation:
 						</Var>
 						<Var>
 							<Name>MAIN.RoofControl.roofs[1].motors[2].counter</Name>
-							<Comment><![CDATA[ hall sensor for counting rotation]]></Comment>
+							<Comment><![CDATA[ inductive sensor for counting rotation]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3431,7 +3433,7 @@ External Setpoint Generation:
 						</Var>
 						<Var>
 							<Name>MAIN.RoofControl.roofs[2].motors[1].counter</Name>
-							<Comment><![CDATA[ hall sensor for counting rotation]]></Comment>
+							<Comment><![CDATA[ inductive sensor for counting rotation]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3450,7 +3452,7 @@ External Setpoint Generation:
 						</Var>
 						<Var>
 							<Name>MAIN.RoofControl.roofs[2].motors[2].counter</Name>
-							<Comment><![CDATA[ hall sensor for counting rotation]]></Comment>
+							<Comment><![CDATA[ inductive sensor for counting rotation]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3509,14 +3511,6 @@ External Setpoint Generation:
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.TelescopeAuxiliary.tempSensorM1</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.TelescopeAuxiliary.tempSensorM2</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.HydraulicsControl.IbOilpanMaximum</Name>
 							<Comment><![CDATA[DIN39 4.6]]></Comment>
 							<Type>BOOL</Type>
@@ -3525,6 +3519,10 @@ External Setpoint Generation:
 							<Name>MAIN.HydraulicsControl.IbOilReserve</Name>
 							<Comment><![CDATA[DIN40 4.7]]></Comment>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.FocusControl.axisRef.NcToPlc</Name>
+							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.FocusControl.IbLimitNear</Name>
@@ -3541,6 +3539,10 @@ External Setpoint Generation:
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.DerotatorControl.axisRef.NcToPlc</Name>
+							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.DerotatorControl.InDigitalInputs</Name>
 							<Comment><![CDATA[ digitale inputs der Endlagen]]></Comment>
 							<Type>WORD</Type>
@@ -3552,16 +3554,16 @@ External Setpoint Generation:
 						</Var>
 						<Var>
 							<Name>MAIN.DerotatorControl.InTorque</Name>
-							<Comment><![CDATA[ derotator torque feedback]]></Comment>
+							<Comment><![CDATA[ torque feedback of the drive in 0.1 % (fTorque = InTorque / 10)]]></Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.DerotatorControl.IbSTO</Name>
-							<Comment><![CDATA[ STO]]></Comment>
+							<Comment><![CDATA[ STO state of the drive: linked and shown in the Safety visualisation of MONETS/MONETN, not used by the axis logic]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.DerotatorControl.axisRef.NcToPlc</Name>
+							<Name>MAIN.ElevationControl.axisRef.NcToPlc</Name>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
@@ -3576,16 +3578,16 @@ External Setpoint Generation:
 						</Var>
 						<Var>
 							<Name>MAIN.ElevationControl.InTorque</Name>
-							<Comment><![CDATA[ derotator torque feedback]]></Comment>
+							<Comment><![CDATA[ torque feedback of the drive in 0.1 % (fTorque = InTorque / 10)]]></Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.ElevationControl.IbSTO</Name>
-							<Comment><![CDATA[ STO]]></Comment>
+							<Comment><![CDATA[ STO state of the drive: linked and shown in the Safety visualisation of MONETS/MONETN, not used by the axis logic]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.ElevationControl.axisRef.NcToPlc</Name>
+							<Name>MAIN.AzimuthControl.axisRef.NcToPlc</Name>
 							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 						</Var>
 						<Var>
@@ -3600,21 +3602,19 @@ External Setpoint Generation:
 						</Var>
 						<Var>
 							<Name>MAIN.AzimuthControl.InTorque</Name>
-							<Comment><![CDATA[ derotator torque feedback]]></Comment>
+							<Comment><![CDATA[ torque feedback of the drive in 0.1 % (fTorque = InTorque / 10)]]></Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.AzimuthControl.IbSTO</Name>
-							<Comment><![CDATA[ STO]]></Comment>
+							<Comment><![CDATA[ STO state of the drive: linked and shown in the Safety visualisation of MONETS/MONETN, not used by the axis logic]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.AzimuthControl.axisRef.NcToPlc</Name>
-							<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.PendantControl.IbBCD0</Name>
-							<Comment><![CDATA[DIN17 2.0]]></Comment>
+							<Comment><![CDATA[DIN17 2.0
+ AT%I*/AT%Q* below are mapped directly on this FB: only one instance per PLC is
+ supported, a second instance would collide on the same physical hardware.]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3656,6 +3656,14 @@ External Setpoint Generation:
 						<Var>
 							<Name>MAIN.PendantControl.IbDirectionRight</Name>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.TelescopeAuxiliary.tempSensorM1</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.TelescopeAuxiliary.tempSensorM2</Name>
+							<Type>INT</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -3707,8 +3715,13 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.RoofControl.roofs[1].motors[1].speed</Name>
+							<Comment><![CDATA[ move speed]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.RoofControl.roofs[1].motors[1].direction_open</Name>
-							<Comment><![CDATA[ moving]]></Comment>
+							<Comment><![CDATA[ move direction]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3716,16 +3729,17 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.RoofControl.roofs[1].motors[1].speed</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.RoofControl.roofs[1].motors[2].reset_drive</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.RoofControl.roofs[1].motors[2].speed</Name>
+							<Comment><![CDATA[ move speed]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.RoofControl.roofs[1].motors[2].direction_open</Name>
-							<Comment><![CDATA[ moving]]></Comment>
+							<Comment><![CDATA[ move direction]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3733,16 +3747,17 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.RoofControl.roofs[1].motors[2].speed</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.RoofControl.roofs[2].motors[1].reset_drive</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.RoofControl.roofs[2].motors[1].speed</Name>
+							<Comment><![CDATA[ move speed]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.RoofControl.roofs[2].motors[1].direction_open</Name>
-							<Comment><![CDATA[ moving]]></Comment>
+							<Comment><![CDATA[ move direction]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -3750,25 +3765,22 @@ External Setpoint Generation:
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>MAIN.RoofControl.roofs[2].motors[1].speed</Name>
-							<Type>INT</Type>
-						</Var>
-						<Var>
 							<Name>MAIN.RoofControl.roofs[2].motors[2].reset_drive</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
+							<Name>MAIN.RoofControl.roofs[2].motors[2].speed</Name>
+							<Comment><![CDATA[ move speed]]></Comment>
+							<Type>INT</Type>
+						</Var>
+						<Var>
 							<Name>MAIN.RoofControl.roofs[2].motors[2].direction_open</Name>
-							<Comment><![CDATA[ moving]]></Comment>
+							<Comment><![CDATA[ move direction]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.RoofControl.roofs[2].motors[2].direction_close</Name>
 							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>MAIN.RoofControl.roofs[2].motors[2].speed</Name>
-							<Type>INT</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.CoverControl.OabOpenCover</Name>
@@ -3802,6 +3814,10 @@ External Setpoint Generation:
 						<Var>
 							<Name>MAIN.HydraulicsControl.ObResetSuctionPump</Name>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.FocusControl.axisRef.PlcToNc</Name>
+							<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 						</Var>
 						<Var>
 							<Name>MAIN.FocusControl.ObFocusUnlock</Name>

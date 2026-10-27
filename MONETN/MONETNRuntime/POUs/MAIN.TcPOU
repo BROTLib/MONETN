@@ -3,7 +3,8 @@
   <POU Name="MAIN" Id="{0fe844df-7078-44d3-bc48-268e6c994874}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	ready				: BOOL;		// telescope drives are ready to enable
+	ready				: BOOL;		// power monitoring phaseOK (published as electronics/base/MainReady)
+	mainReady			: BOOL;		// what gates the power-on (bMainReady): phaseOK without the L3 voltage guard WARNING, see below
 	error				: BOOL;		// error stat on drive, power or hydraulics
 	brakeClearing		: BOOL := FALSE;	//	open brake
 	
@@ -32,9 +33,9 @@ VAR
 	Diagnostics			: FB_MonetDiagnostics(comm := fbComm);	// diagnostics/base/* telemetry, on change + 30 s heartbeat (MONETcommon)
 END_VAR
 VAR CONSTANT
-	// MONETS#32: raw counts of the oil level sensor (same Reventec LS as MONET/S): below the limit is a cut wire, lost supply or the sensor error output (about 330); above the 5 V maximum (16383) is over-range. The MONET/N pan has not been measured yet
-	nOilLevelMinValid	: INT := 600;
-	nOilLevelMaxValid	: INT := 16000;
+	// MONETS#32: raw counts of the oil level sensor (same Reventec LS as MONET/S): below the limit is a cut wire, lost supply or the sensor error output (about 330); above is over-range. Measured on MONET/N 2026-10-27: the oversized pan is never drained completely (bottom 1100..1300, 821 at a pump start), the pan-full float switch trips at raw ~9520..9550; the limits lie between those and the sensor extremes, as on MONET/S (MONETS#58)
+	nOilLevelMinValid	: INT := 450;
+	nOilLevelMaxValid	: INT := 12000;
 	telescopeConfig		: ST_TelescopeConfig := (longitude := -104.0217, latitude := 30.6714, altitude := 2000.0, 
 												 azimuthPark := 190, elevationPark := 60, derotatorPark := -116.42, focusPark := 53.8, 
 												 azimuthHome := 190, elevationHome := 40, derotatorHome := -116.42,
@@ -97,6 +98,18 @@ END_IF
 // telescope is ready when power available
 PowerMonitoring(phaseOK => ready);
 
+// The L3 voltage guard WARNING (EL3483) has been TRUE on MONET/N all along (seen 2026-10-27 before the update, nothing
+// used it). Wiring bMainReady (MONETcommon#11) made it block every power-on, so the power-on ignores that one warning
+// for now. The L3 voltage guard ERROR and every other power guard still block. TODO: find out why L3 warns (real
+// undervoltage or a threshold in the EL3483 settings), then use `ready` again. `ready` itself, and so the MainReady
+// telemetry, is unchanged and still shows the warning.
+mainReady := NOT PowerMonitoring.FrequencyGuardWarning AND NOT PowerMonitoring.FrequencyGuardError AND
+	NOT PowerMonitoring.QualityGuardWarning AND NOT PowerMonitoring.QualityGuardError AND
+	NOT PowerMonitoring.UnbalanceGuardWarning AND NOT PowerMonitoring.UnbalanceGuardError AND
+	NOT PowerMonitoring.L1VoltageGuardWarning AND NOT PowerMonitoring.L1VoltageGuardError AND
+	NOT PowerMonitoring.L2VoltageGuardWarning AND NOT PowerMonitoring.L2VoltageGuardError AND
+	NOT PowerMonitoring.L3VoltageGuardError;
+
 // only run TelescopeControl in automatic mode
 IF eTelescopeMode = E_TelescopeMode.automatic THEN
 	TelescopeControl(
@@ -112,7 +125,7 @@ IF eTelescopeMode = E_TelescopeMode.automatic THEN
 		fbPointingInverse := fbPointingInverse,
 		bEstopTriggered := SafetyHandling.estop,	// M5: was never wired, see MONETcommon#11
 		bSafetyError	:= SafetyHandling.error,		// MONETcommon#155: closes the brake opened in the Wake&Shake window; FALSE = not enforced
-		bMainReady		:= ready					// M5: was computed and published but never wired, see MONETcommon#11
+		bMainReady		:= mainReady				// M5: was computed and published but never wired, see MONETcommon#11 (without the L3 warning, see above)
 	);
 ELSE
     // Invalidate startup readiness and publish its heartbeat without running automatic motion in manual mode.
@@ -123,10 +136,10 @@ TelescopeAuxiliary();
 // run all control FBs
 CoverControl();
 HydraulicsControl(
-	nMinPanLevel	:= 3000,
-	nMaxPanLevel	:= 10200,
-	fMinPanPercent	:= 0.0,
-	fMaxPanPercent	:= 50.0, //56.0,
+	nMinPanLevel	:= 900,		// empty pan reads raw ~1100..1300 with suction (measured 2026-10-27)
+	nMaxPanLevel	:= 9400,	// the pan-full float switch trips at raw ~9520..9550 (100 %)
+	fMinPanPercent	:= 15.0,	// suction stops at raw ~2175 (was raw 3000, 0.0 % with 3000..10200)
+	fMaxPanPercent	:= 70.0,	// suction starts at raw ~6850 (was 50.0 with 3000..10200, raw ~6600)
 	nMinValidPanLevel	:= nOilLevelMinValid,	// outside this raw range the level is not published and does not start/stop the suction (HalfBROT 0.5.6)
 	nMaxValidPanLevel	:= nOilLevelMaxValid,
 	bBrakeClearing	:= brakeClearing
@@ -284,6 +297,8 @@ Diagnostics(
       <LineId Id="2206" Count="0" />
       <LineId Id="2151" Count="28" />
       <LineId Id="2" Count="0" />
+      <LineId Id="157" Count="34" />
+      <LineId Id="2338" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
