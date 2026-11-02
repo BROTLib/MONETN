@@ -38,6 +38,13 @@ VAR
 	bVisuTelescopePark	: BOOL;	// Park()
 	bVisuTelescopeSlew	: BOOL;	// Slew() to the fAzimuth/fElevation the Visu wrote
 	bVisuTelescopeGoto	: BOOL;	// Track() to the fRightAscension/fDeclination the Visu wrote (sets bGoto, like bGoto did)
+
+	// MONETS#72: Start buttons of the axis Visus. The Visu sets the bit, the body starts the homing through the HomeAxis property
+	// and clears the bit. The Visu must not write bHomeAxis: that sets the level only and no homing starts.
+	bVisuHomeElevation	: BOOL;
+	bVisuHomeAzimuth	: BOOL;
+	bVisuHomeDerotator	: BOOL;
+	bVisuHomeFocus		: BOOL;
 END_VAR
 VAR CONSTANT
 	// MONETS#32: raw counts of the oil level sensor (same Reventec LS as MONET/S): below the limit is a cut wire, lost supply or the sensor error output (about 330); above is over-range. Measured on MONET/N 2026-10-27: the oversized pan is never drained completely (bottom 1100..1300, 821 at a pump start), the pan-full float switch trips at raw ~9520..9550; the limits lie between those and the sensor extremes, as on MONET/S (MONETS#58)
@@ -119,6 +126,24 @@ END_IF
 IF bVisuTelescopeGoto THEN
 	bVisuTelescopeGoto := FALSE;
 	TelescopeControl.Track(fRightAscension := TelescopeControl.fRightAscension, fDeclination := TelescopeControl.fDeclination);
+END_IF
+
+// Visu Start buttons (MONETS#72): HomeAxis starts the homing on its rising edge, a direct write of bHomeAxis would not
+IF bVisuHomeElevation THEN
+	bVisuHomeElevation := FALSE;
+	ElevationControl.HomeAxis := TRUE;
+END_IF
+IF bVisuHomeAzimuth THEN
+	bVisuHomeAzimuth := FALSE;
+	AzimuthControl.HomeAxis := TRUE;
+END_IF
+IF bVisuHomeDerotator THEN
+	bVisuHomeDerotator := FALSE;
+	DerotatorControl.HomeAxis := TRUE;
+END_IF
+IF bVisuHomeFocus THEN
+	bVisuHomeFocus := FALSE;
+	FocusControl.HomeAxis := TRUE;
 END_IF
 
 // telescope is ready when power available
