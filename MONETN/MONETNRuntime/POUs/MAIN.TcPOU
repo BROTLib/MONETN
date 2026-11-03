@@ -234,10 +234,8 @@ RoofControl(
 	limit_slowdown	:= 5
 );
 PendantControl(
-	fbCovers 		:= CoverControl, 
-	fbBrake 		:= HydraulicsControl, 
-	fbHydraulics 	:= HydraulicsControl, 
-	fbFocus 		:= FocusControl, 
+	fbCovers 		:= CoverControl,
+	fbFocus 		:= FocusControl,
 	fbElevation 	:= ElevationControl, 
 	fbAzimuth 		:= AzimuthControl, 
 	fbDerotator 	:= DerotatorControl	
