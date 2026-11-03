@@ -224,6 +224,18 @@ axis errors and enables, safety, ready/busy/stopped; on change and every 30 s) a
 rate 0.5 s while moving, 1 s idle. Events/logs are published to `MONETN/Log` via
 `FB_EventLog`.
 
+**Roof close on serious errors** (MONETcommon#24 step 7, D9), as on MONET/S: right
+after the watchdog, `MAIN` calls `RoofControl.Close()` every scan while
+`TelescopeControl.bCloseRoofRequest` is set (MONETcommon >= 0.13.0: axis error,
+hydraulics error, E-stop, safety error, power failure = `NOT mainReady`; latched,
+cleared by a telescope reset once no cause is active), but only in automatic mode
+(cabinet selector) and only while `MAIN.bRoofCloseOnErrorEnable` is TRUE. Set that
+variable FALSE via ADS for test runs; it is not persistent and is TRUE again after
+every PLC start (the safe default). The E-stop also cuts the roof drives: the
+request stays latched and the roof closes after the release and restart of the
+drives (a roof error latched meanwhile needs a roof reset first). The watchdog
+close is unchanged.
+
 ## Safety (TwinSAFE)
 
 A TwinSAFE application (`MONETNTwinSAFE`, group `TwinSafeGroup1`) runs on the
