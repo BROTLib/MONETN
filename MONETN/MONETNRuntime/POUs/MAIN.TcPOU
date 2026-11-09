@@ -132,7 +132,7 @@ IF eTelescopeMode = E_TelescopeMode.manual OR eTelescopeMode = E_TelescopeMode.o
 		HydraulicsControl.Enable := FALSE;
 	END_IF
 	brakeClearing := CabinetControl.AreBreakesCleared();
-	HydraulicsControl.bOpenBrake := brakeClearing;
+	HydraulicsControl.ManualBrake(brakeClearing);	// HalfBROT#31: one open request per rising edge of the switch, no re-open after the brake dropped
 END_IF
 
 // clear errors: SafetyHandling.resetRequest (see call below) toggles Restart/ErrAck,
@@ -180,7 +180,7 @@ IF bVisuHomeDerotator THEN
 END_IF
 IF bVisuHomeFocus THEN
 	bVisuHomeFocus := FALSE;
-	FocusControl.bManualHome := TRUE;	// HalfBROT#138: cam homing, calibrated or not; HomeAxis is a no-op on a calibrated focus.
+	FocusControl.ManualHome();	// HalfBROT#138: cam homing, calibrated or not; HomeAxis is a no-op on a calibrated focus.
 	// The result (refusal reason, e.g. manual mode) is FocusControl.eManualHome.
 END_IF
 
@@ -227,8 +227,13 @@ END_IF
 TelescopeAuxiliary();
 
 // run all control FBs
-CoverControl();
+CoverControl(
+	stIn	:= GVL_IO.stCoverIn,
+	stOut	:= GVL_IO.stCoverOut
+);
 HydraulicsControl(
+	stIn			:= GVL_IO.stHydraulicsIn,
+	stOut			:= GVL_IO.stHydraulicsOut,
 	nMinPanLevel	:= 900,		// empty pan reads raw ~1100..1300 with suction (measured 2026-10-27)
 	nMaxPanLevel	:= 9400,	// the pan-full float switch trips at raw ~9520..9550 (100 %)
 	fMinPanPercent	:= 15.0,	// suction stops at raw ~2175 (was raw 3000, 0.0 % with 3000..10200)
@@ -238,21 +243,26 @@ HydraulicsControl(
 	bBrakeClearing	:= brakeClearing
 );
 ElevationControl(
+	stIn			:= GVL_IO.stElevationIn,
 	fCalibPosition 	:= 25.8657627917962052,
 	fbCovers 		:= CoverControl, 
 	fbBrake 		:= HydraulicsControl
 );
 AzimuthControl(
+	stIn			:= GVL_IO.stAzimuthIn,
 	fCalibPosition	:=  211.355503610763347,
 	fMinPosition	:= -72.0,
 	fMaxPosition	:= 495.0,
 	bBrakeOpen		:= HydraulicsControl.brakeOpen,
 );
 DerotatorControl(
+	stIn			:= GVL_IO.stDerotatorIn,
 	fMinPosition		:= -170.0,
 	fMaxPosition		:= 300.0
 );	//
 FocusControl(
+	stIn			:= GVL_IO.stFocusIn,
+	stOut			:= GVL_IO.stFocusOut,
 	eTelescopeMode 	:= eTelescopeMode,
 	fHomingPosition	:= 92.02, // 104.02 - 12.00
 	// limit switches at 0 and fHomingPosition; targets stay 0.5 mm inside (MONETcommon#122)
