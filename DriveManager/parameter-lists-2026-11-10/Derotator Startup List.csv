@@ -1,0 +1,59 @@
+Transition,Protocol,Index,Data,Comment
+<PS>,SoE,S-0-0015 (A),0x0007 (7),Telegram type
+<PS>,SoE,S-0-0016 (A),14 00 14 00 33 00 BD 00 D2 87 D1 87 CB 81 CC 81 54 00 86 01 21 83 28 00,AT list
+<PS>,SoE,S-0-0015 (B),0x0007 (7),Telegram type
+<PS>,SoE,S-0-0016 (B),04 00 04 00 33 00 BD 00,AT list
+<PS>,SoE,S-0-0024 (A),02 00 02 00 2F 00,MDT list
+<PS>,SoE,S-0-0024 (B),02 00 02 00 2F 00,MDT list
+IP,SoE,P-0-0010 (A),FF FF F9 03 00 00 00 00,Feature flags
+IP,SoE,P-0-0010 (B),FE 7F F9 03 00 00 00 00,Feature flags
+PS,SoE,S-0-0001 (A),0x07D0 (2000),Tncyc - NC cycle time
+PS,SoE,S-0-0002 (A),0x07D0 (2000),Tscyc - Comm cycle time
+PS,SoE,S-0-0032 (A),0x000B (11),Operation mode
+PS,SoE,S-0-0032 (B),0x000B (11),Operation mode
+PS,SoE,P-0-0201 (A),0x0FA0 (4000),Nominal mains voltage
+PS,SoE,P-0-0202 (A),0x0064 (100),Mains voltage positive tolerance range
+PS,SoE,P-0-0203 (A),0x0064 (100),Mains voltage negative tolerance range
+PS,SoE,P-0-0204 (A),0x0809 (2057),Power management control word
+PS,SoE,P-0-0216 (A),0x22C4 (8900),Max DC link voltage
+IP,SoE,P-0-0304 (A),0x0001 (1),Report diagnostics information
+IP,SoE,P-0-0304 (B),0x0001 (1),Report diagnostics information
+PS,SoE,P-0-2000 (A),0x0002 (2),Configured safety option
+PS,SoE,P-0-0651 (A),16 00 16 00 00 00 00 00 00 00 01 00 68 01 68 01 3C 00 1E 00 00 00 00 00 64 00,Autotuning parameter
+PS,SoE,P-0-0053 (A),0C 00 22 00 41 4D 38 35 33 32 2D 78 44 78 30 00,Configured motor type
+PS,SoE,P-0-0050 (A),0x0000 (0),Motor construction type
+PS,SoE,P-0-0062 (A),10 00 10 00 18 06 50 00 64 00 01 00 3F 00 19 00 00 00 00 00,Thermal motor model
+PS,SoE,P-0-0051 (A),0x0004 (4),Number of pole pairs
+PS,SoE,S-0-0111 (A),0x000006A4 (1700),Motor continuous stall current
+PS,SoE,S-0-0196 (A),0x00000640 (1600),Motor rated current
+PS,SoE,S-0-0109 (A),0x00002580 (9600),Motor peak current
+PS,SoE,P-0-0077 (A),0x0FA0 (4000),Motor rated voltage
+PS,SoE,P-0-0067 (A),0x22C4 (8900),Motor winding: Dielectric strength
+PS,SoE,P-0-0089 (A),24 00 24 00 26 83 00 00 00 00 00 00 40 1F 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00,Motor data constraints
+PS,SoE,P-0-0073 (A),0x00000492 (1170),Motor peak torque
+PS,SoE,P-0-0074 (A),50 00 50 00 C0 03 00 00 80 07 00 00 40 0B 00 00 00 0F 00 00 C0 12 00 00 80 16 00 00 40 1A 00 00 00 1E 00 00 C0 21 00 00 80 25 00 00 A1 00 00 00 38 01 00 00 C5 01 00 00 48 02 00 00 C1 02 00 00 31 03 00 00 97 03 00 00 F3 03 00 00 45 04 00 00 92 04 00 00,Motor torque/force characteristic
+PS,SoE,P-0-0055 (A),0x03E8 (1000),Motor EMF
+PS,SoE,P-0-0066 (A),08 00 08 00 34 08 00 00 16 1C 00 00,Electric motor model
+PS,SoE,P-0-0075 (A),50 00 50 00 C0 03 00 00 80 07 00 00 40 0B 00 00 00 0F 00 00 C0 12 00 00 80 16 00 00 40 1A 00 00 00 1E 00 00 C0 21 00 00 80 25 00 00 60 13 00 00 62 11 00 00 64 0F 00 00 B6 0D 00 00 94 0C 00 00 68 0B 00 00 92 09 00 00 BC 07 00 00 04 06 00 00 7E 04 00 00,Motor inductance characteristic
+PS,SoE,S-0-0113 (A),0x00002328 (9000),Maximum motor speed
+PS,SoE,S-0-0091 (A),0x0A222222 (170009122),Bipolar velocity limit value
+PS,SoE,P-0-0071 (A),08 00 08 00 CF 00 00 00 00 00 00 00,Mechanical motor data
+PS,SoE,S-0-0201 (A),0x04B0 (1200),Motor warning temperature
+PS,SoE,S-0-0204 (A),0x0578 (1400),Motor shut down temperature
+PS,SoE,P-0-0076 (A),28 00 28 00 70 FE 65 FF 5A 00 4F 01 44 02 39 03 2E 04 23 05 18 06 12 07 67 01 B8 01 16 02 82 02 FA 02 80 03 13 04 B4 04 61 05 18 06,Motor temperature sensor characteristic
+PS,SoE,P-0-0451 (A),0x0000 (0),Current controller settings 2
+PS,SoE,P-0-0057 (A),0x6978 (27000),Electrical commutation offset
+PS,SoE,P-0-0061 (A),0x0007 (7),Motor temperature sensor type
+PS,SoE,P-0-0002 (A),0x003E (62),Current ctrl cycle time
+PS,SoE,P-0-0054 (A),10 00 22 00 41 58 35 32 30 36 2D 30 30 30 30 2D 23 23 23 23,Configured drive type
+PS,SoE,P-0-0093 (A),0x000006A4 (1700),Configured channel current
+PS,SoE,P-0-0092 (A),0x00000D48 (3400),Configured channel peak current
+PS,SoE,P-0-0070 (A),0x000000EE (238),Motor continuous stall torque
+PS,SoE,S-0-0106 (A),0x086D (2157),Current loop proportional gain 1
+PS,SoE,S-0-0107 (A),0x0008 (8),Current control loop integral action time 1
+PS,SoE,P-0-0511 (A),0x0096 (150),Velocity filter 1: Low pass time constant
+PS,SoE,S-0-0100 (A),0x00000061 (97),Velocity loop proportional gain
+PS,SoE,S-0-0101 (A),0x0050 (80),Velocity loop integral action time
+PS,SoE,P-0-0150 (A),E0 00 E0 00 03 00 00 00 45 4B 4D 33 36 2D 30 4B 46 30 41 30 53 31 36 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 0E 00 00 00 00 00 00 00 05 00 0E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 07 00 0E 00 00 00 00 00 12 00 0C 00 00 00 00 00 02 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 96 00 96 00 7D 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00,Feedback 1 type
+PS,SoE,P-0-0514 (A),0C 00 0C 00 01 00 00 00 F4 01 E8 03 BC 02 00 00,Velocity observer
+PS,SoE,P-0-0093 (B),0x00000000 (0),Configured channel current
