@@ -1926,13 +1926,244 @@ External Setpoint Generation:
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{FCC357D1-7124-E2AD-B3F6-8EAA3F7F80C9}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..3] OF BOOL</Name>
-			<BitSize>24</BitSize>
-			<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-			<ArrayInfo>
-				<LBound>1</LBound>
-				<Elements>3</Elements>
-			</ArrayInfo>
+			<Name GUID="{4C89A5CB-7B39-8818-3119-59F1AD62924E}" Namespace="HalfBROT" AutoDeleteType="true">ST_FocusIn</Name>
+			<Comment><![CDATA[ Process inputs of FB_FocusControl, linked in the application (GVL_IO) (#30, #31).]]></Comment>
+			<BitSize>16</BitSize>
+			<SubItem>
+				<Name>bLimitNear</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ DIN29 3.4]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bLimitFar</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ DIN30 3.5]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{FF93FB78-3880-0524-0C18-49D1D806F22F}" Namespace="HalfBROT" AutoDeleteType="true">ST_HydraulicsIn</Name>
+			<Comment><![CDATA[ Process inputs of FB_HydraulicsControl, linked in the application (GVL_IO). Passed as VAR_INPUT: the block gets a copy (#30, #31).]]></Comment>
+			<BitSize>96</BitSize>
+			<SubItem>
+				<Name>bOilLow</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ 2.1]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bOilHigh</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ ?]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bOilPressureOK</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ 2.3]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bOilHot</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ 2.4]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>24</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bOilCold</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ 2.5]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bOilFilterDirty</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ 2.6]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>40</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bPumpRunning</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ 2.7]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>48</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bSuctionRunning</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ 2.8]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>56</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nOilLevel</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<Comment><![CDATA[ BT2]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bOilPanMaximum</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ DIN39 4.6]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>80</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bOilReserve</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ DIN40 4.7]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>88</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{5D7EFE34-C2E1-52E1-E6C0-9C1E6E966235}" Namespace="HalfBROT" AutoDeleteType="true">ST_AxisIn</Name>
+			<Comment><![CDATA[ Process inputs of an axis block (FB_AzimuthControl, FB_ElevationControl, FB_DerotatorControl), linked in the application (GVL_IO) (#30, #31).]]></Comment>
+			<BitSize>96</BitSize>
+			<SubItem>
+				<Name>nDigitalInputs</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
+				<Comment><![CDATA[ digital inputs of the end positions]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nDiagnostic</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ diagnostic number]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nTorque</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<Comment><![CDATA[ torque feedback of the drive in 0.1 %]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bSTO</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ STO state of the drive (shown in the Safety Visu, not used by the axis logic)]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>80</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{639D03A5-3531-5E94-7903-D8D7871C890A}" Namespace="HalfBROT" AutoDeleteType="true">ST_CoverIn</Name>
+			<Comment><![CDATA[ Process inputs of FB_CoverControl, linked in the application (GVL_IO) (#30, #31).]]></Comment>
+			<BitSize>48</BitSize>
+			<SubItem>
+				<Name>abOpen</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>3</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ limit switch open, cover 1-3]]></Comment>
+				<BitSize>24</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>abClosed</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>3</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ limit switch closed, cover 1-3]]></Comment>
+				<BitSize>24</BitSize>
+				<BitOffs>24</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{E84D78DE-BAF0-DC51-FE4C-4BCFFFE8E0B1}" Namespace="HalfBROT" AutoDeleteType="true">ST_FocusOut</Name>
+			<Comment><![CDATA[ Process outputs of FB_FocusControl, linked in the application (GVL_IO) (#30, #31).]]></Comment>
+			<BitSize>8</BitSize>
+			<SubItem>
+				<Name>bUnlock</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ whether the focus is unlocked]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{5CB2F57B-9A60-6B79-FB05-3212E3224D3A}" Namespace="HalfBROT" AutoDeleteType="true">ST_HydraulicsOut</Name>
+			<Comment><![CDATA[ Process outputs of FB_HydraulicsControl, linked in the application (GVL_IO). Passed as VAR_IN_OUT: the block writes it (#30, #31).]]></Comment>
+			<BitSize>40</BitSize>
+			<SubItem>
+				<Name>bOilPumpEnable</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ DOUT4 0.3]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bOilSuctionEnable</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ DOUT5 0.4]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bBrakeAzEl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ brake set]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bResetOilPump</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ reset of the pump starter]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>24</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bResetSuctionPump</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ reset of the suction pump starter]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{6076569C-624F-2FD6-459B-6CE73E06E024}" Namespace="HalfBROT" AutoDeleteType="true">ST_CoverOut</Name>
+			<Comment><![CDATA[ Process outputs of FB_CoverControl, linked in the application (GVL_IO) (#30, #31).]]></Comment>
+			<BitSize>48</BitSize>
+			<SubItem>
+				<Name>abOpen</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>3</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ open cover 1-3]]></Comment>
+				<BitSize>24</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>abClose</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<ArrayInfo>
+					<LBound>1</LBound>
+					<Elements>3</Elements>
+				</ArrayInfo>
+				<Comment><![CDATA[ close cover 1-3]]></Comment>
+				<BitSize>24</BitSize>
+				<BitOffs>24</BitOffs>
+			</SubItem>
 		</DataType>
 		<DataType>
 			<Name GUID="{18071995-0000-0000-0000-002000000007}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..6] OF BIT</Name>
@@ -3217,7 +3448,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{6DADE760-7FAC-4830-92BA-478C8595D673}" Name="MONETNRuntime" PrjFilePath="MONETNRuntime\MONETNRuntime.plcproj" TmcFilePath="MONETNRuntime\MONETNRuntime.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETNRuntime\MONETNRuntime.tmc" TmcHash="{9C7C2807-2383-BA11-3705-F38CF3EF7F44}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MONETNRuntime\MONETNRuntime.tmc" TmcHash="{2FED295B-0186-77A9-C381-B0E825BE805D}">
 					<Name>MONETNRuntime Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -3530,6 +3761,30 @@ External Setpoint Generation:
 							<Name>MAIN.TelescopeAuxiliary.tempSensorM2</Name>
 							<Type>INT</Type>
 						</Var>
+						<Var>
+							<Name>GVL_IO.stFocusIn</Name>
+							<Type GUID="{4C89A5CB-7B39-8818-3119-59F1AD62924E}" Namespace="HalfBROT">ST_FocusIn</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.stHydraulicsIn</Name>
+							<Type GUID="{FF93FB78-3880-0524-0C18-49D1D806F22F}" Namespace="HalfBROT">ST_HydraulicsIn</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.stAzimuthIn</Name>
+							<Type GUID="{5D7EFE34-C2E1-52E1-E6C0-9C1E6E966235}" Namespace="HalfBROT">ST_AxisIn</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.stElevationIn</Name>
+							<Type GUID="{5D7EFE34-C2E1-52E1-E6C0-9C1E6E966235}" Namespace="HalfBROT">ST_AxisIn</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.stDerotatorIn</Name>
+							<Type GUID="{5D7EFE34-C2E1-52E1-E6C0-9C1E6E966235}" Namespace="HalfBROT">ST_AxisIn</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.stCoverIn</Name>
+							<Type GUID="{639D03A5-3531-5E94-7903-D8D7871C890A}" Namespace="HalfBROT">ST_CoverIn</Type>
+						</Var>
 					</Vars>
 					<Vars VarGrpType="2" AreaNo="1">
 						<Name>PlcTask Outputs</Name>
@@ -3686,6 +3941,18 @@ External Setpoint Generation:
 						<Var>
 							<Name>MAIN.PendantControl.ObLampError</Name>
 							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.stFocusOut</Name>
+							<Type GUID="{E84D78DE-BAF0-DC51-FE4C-4BCFFFE8E0B1}" Namespace="HalfBROT">ST_FocusOut</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.stHydraulicsOut</Name>
+							<Type GUID="{5CB2F57B-9A60-6B79-FB05-3212E3224D3A}" Namespace="HalfBROT">ST_HydraulicsOut</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.stCoverOut</Name>
+							<Type GUID="{6076569C-624F-2FD6-459B-6CE73E06E024}" Namespace="HalfBROT">ST_CoverOut</Type>
 						</Var>
 					</Vars>
 					<Contexts>
@@ -3887,7 +4154,7 @@ External Setpoint Generation:
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.ObBrakeAzEl" Index="#x7010" Sub="#x01">
+								<Entry Name="GVL_IO.stHydraulicsOut.bBrakeAzEl" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ brake set]]></Comment>
 								</Entry>
@@ -4231,24 +4498,24 @@ External Setpoint Generation:
 							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
 							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.ObOilPumpEnable" Index="#x7000" Sub="#x01">
+								<Entry Name="GVL_IO.stHydraulicsOut.bOilPumpEnable" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[DOUT4 0.3]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.ObResetOilPump" Index="#x7010" Sub="#x01">
+								<Entry Name="GVL_IO.stHydraulicsOut.bResetOilPump" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.ObOilSuctionEnable" Index="#x7020" Sub="#x01">
+								<Entry Name="GVL_IO.stHydraulicsOut.bOilSuctionEnable" Index="#x7020" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[DOUT5 0.4	]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1603" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.ObResetSuctionPump" Index="#x7030" Sub="#x01">
+								<Entry Name="GVL_IO.stHydraulicsOut.bResetSuctionPump" Index="#x7030" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
@@ -4263,7 +4530,7 @@ External Setpoint Generation:
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 7" Index="#x1606" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.FocusControl.ObFocusUnlock" Index="#x7060" Sub="#x01">
+								<Entry Name="GVL_IO.stFocusOut.bUnlock" Index="#x7060" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ whether focus is unlocked]]></Comment>
 								</Entry>
@@ -4282,13 +4549,13 @@ External Setpoint Generation:
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.IbPumpRunning" Index="#x6000" Sub="#x01">
+								<Entry Name="GVL_IO.stHydraulicsIn.bPumpRunning" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.7]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.IbSuctionRunning" Index="#x6010" Sub="#x01">
+								<Entry Name="GVL_IO.stHydraulicsIn.bSuctionRunning" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.8]]></Comment>
 								</Entry>
@@ -4300,13 +4567,13 @@ External Setpoint Generation:
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.FocusControl.IbLimitNear" Index="#x6030" Sub="#x01">
+								<Entry Name="GVL_IO.stFocusIn.bLimitNear" Index="#x6030" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ DIN29 3.4]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.FocusControl.IbLimitFar" Index="#x6040" Sub="#x01">
+								<Entry Name="GVL_IO.stFocusIn.bLimitFar" Index="#x6040" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ DIN30 3.5]]></Comment>
 								</Entry>
@@ -4336,49 +4603,49 @@ External Setpoint Generation:
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.IbOilLow" Index="#x6000" Sub="#x01">
+								<Entry Name="GVL_IO.stHydraulicsIn.bOilLow" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.1]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.IbOilHigh" Index="#x6010" Sub="#x01">
+								<Entry Name="GVL_IO.stHydraulicsIn.bOilHigh" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ ?]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.IbOilPressureOK" Index="#x6020" Sub="#x01">
+								<Entry Name="GVL_IO.stHydraulicsIn.bOilPressureOK" Index="#x6020" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.3]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.IbOilHot" Index="#x6030" Sub="#x01">
+								<Entry Name="GVL_IO.stHydraulicsIn.bOilHot" Index="#x6030" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.4]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.IbOilCold" Index="#x6040" Sub="#x01">
+								<Entry Name="GVL_IO.stHydraulicsIn.bOilCold" Index="#x6040" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.5]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.IbOilFilterDirty" Index="#x6050" Sub="#x01">
+								<Entry Name="GVL_IO.stHydraulicsIn.bOilFilterDirty" Index="#x6050" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[ 2.6]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 7" Index="#x1a06" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.IbOilpanMaximum" Index="#x6060" Sub="#x01">
+								<Entry Name="GVL_IO.stHydraulicsIn.bOilPanMaximum" Index="#x6060" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[DIN39 4.6]]></Comment>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 8" Index="#x1a07" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.HydraulicsControl.IbOilReserve" Index="#x6070" Sub="#x01">
+								<Entry Name="GVL_IO.stHydraulicsIn.bOilReserve" Index="#x6070" Sub="#x01">
 									<Type>BIT</Type>
 									<Comment><![CDATA[DIN40 4.7]]></Comment>
 								</Entry>
@@ -5511,7 +5778,7 @@ Bit1: Value smaller than Limit2]]></Comment>
 								<Entry Name="Status__TxPDO Toggle" BitLen="1" Index="#x6020" Sub="#x10" Flags="#x00060000">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="MAIN.HydraulicsControl.InOilLevel" BitLen="16" Index="#x6020" Sub="#x11" Flags="#x00060000">
+								<Entry Name="GVL_IO.stHydraulicsIn.nOilLevel" BitLen="16" Index="#x6020" Sub="#x11" Flags="#x00060000">
 									<Type>INT</Type>
 									<Comment><![CDATA[BT2]]></Comment>
 								</Entry>
@@ -5777,22 +6044,22 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
 							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.OabOpenCover[1]" Index="#x7000" Sub="#x01">
+								<Entry Name="GVL_IO.stCoverOut.abOpen[1]" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.OabCloseCover[1]" Index="#x7010" Sub="#x01">
+								<Entry Name="GVL_IO.stCoverOut.abClose[1]" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.OabOpenCover[2]" Index="#x7020" Sub="#x01">
+								<Entry Name="GVL_IO.stCoverOut.abOpen[2]" Index="#x7020" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1603" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.OabCloseCover[2]" Index="#x7030" Sub="#x01">
+								<Entry Name="GVL_IO.stCoverOut.abClose[2]" Index="#x7030" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
@@ -5805,12 +6072,12 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
 							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.OabOpenCover[3]" Index="#x7000" Sub="#x01">
+								<Entry Name="GVL_IO.stCoverOut.abOpen[3]" Index="#x7000" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.OabCloseCover[3]" Index="#x7010" Sub="#x01">
+								<Entry Name="GVL_IO.stCoverOut.abClose[3]" Index="#x7010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
@@ -5833,32 +6100,32 @@ Bit1: Value smaller than Limit2]]></Comment>
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.IabCoverOpen[1]" Index="#x6000" Sub="#x01">
+								<Entry Name="GVL_IO.stCoverIn.abOpen[1]" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.IabCoverClosed[1]" Index="#x6010" Sub="#x01">
+								<Entry Name="GVL_IO.stCoverIn.abClosed[1]" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.IabCoverOpen[2]" Index="#x6020" Sub="#x01">
+								<Entry Name="GVL_IO.stCoverIn.abOpen[2]" Index="#x6020" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.IabCoverClosed[2]" Index="#x6030" Sub="#x01">
+								<Entry Name="GVL_IO.stCoverIn.abClosed[2]" Index="#x6030" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.IabCoverOpen[3]" Index="#x6040" Sub="#x01">
+								<Entry Name="GVL_IO.stCoverIn.abOpen[3]" Index="#x6040" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
-								<Entry Name="MAIN.CoverControl.IabCoverClosed[3]" Index="#x6050" Sub="#x01">
+								<Entry Name="GVL_IO.stCoverIn.abClosed[3]" Index="#x6050" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
@@ -6176,354 +6443,6 @@ DOUT9 1.0]]></Comment>
 					<Name>Azimuth (AX5125-0000-0214)</Name>
 					<ImageId>1009</ImageId>
 					<Xml>
-						<AX5XXXDriveTool>
-							<AxisSettings>
-								<AxisSetting Channel="0">
-									<Property>
-										<Name>Feedback1Connector0</Name>
-										<Value>3</Value>
-									</Property>
-									<Property>
-										<Name>Feedback1Connector1</Name>
-										<Value>3</Value>
-									</Property>
-									<Property>
-										<Name>Feedback1Connector2</Name>
-										<Value>3</Value>
-									</Property>
-									<Property>
-										<Name>NcFeedConstant</Name>
-										<Value>360.000000</Value>
-									</Property>
-									<Property>
-										<Name>AppendStartuplistDirect</Name>
-										<Value>2</Value>
-									</Property>
-									<Property>
-										<Name>Feedback1Type</Name>
-										<Value>Unkn#1Vpp-36000S-5V</Value>
-									</Property>
-									<Property>
-										<Name>Feedback1DataVersion</Name>
-										<Value>2.0.93</Value>
-									</Property>
-									<Property>
-										<Name>Feedback1Application</Name>
-										<Value>Default</Value>
-									</Property>
-									<Property>
-										<Name>MotorType</Name>
-										<Value>TMA0360-070-3VC</Value>
-									</Property>
-									<Property>
-										<Name>ConfiguedMotorType</Name>
-										<Value>TMA0360-070-3VC</Value>
-									</Property>
-									<Property>
-										<Name>MotorDataVersion</Name>
-										<Value>1.0.0</Value>
-									</Property>
-									<Property>
-										<Name>MotorApplication</Name>
-										<Value>Default</Value>
-									</Property>
-									<Property>
-										<Name>MotorDataLocation</Name>
-										<Value>C:\TwinCAT\3.1\Components\Base\Addins\TcDriveManager\MotorPool\EtelTMA0360-070-3VC.xeds</Value>
-									</Property>
-									<Property>
-										<Name>MotorDataSchema</Name>
-										<Value>MotorDataSheet</Value>
-									</Property>
-									<Parametersets>
-										<Parameter>
-											<Comment>Motor vendor</Comment>
-											<Name>Vendor</Name>
-											<Data type="visibleString">ETEL</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Electric motor type</Comment>
-											<Name>ElecType</Name>
-											<Data type="visibleString">TMA0360-070-3VC</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Motor construction</Comment>
-											<Name>ConstrType</Name>
-											<Data type="real64">0.000000</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Pole Pairs</Comment>
-											<Name>PolePairs</Name>
-											<Data type="real64">33</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Standstill Current</Comment>
-											<Name>I0rms</Name>
-											<Data type="real64" unitSiNumerator="ampere">12.00</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Rated Current</Comment>
-											<Name>Inrms</Name>
-											<Data type="real64" unitSiNumerator="ampere">16.96</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Peak Current</Comment>
-											<Name>Iprms</Name>
-											<Data type="real64" unitSiNumerator="ampere">50.81</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Nominal Voltage</Comment>
-											<Name>Unrms</Name>
-											<Data type="real64" unitSiNumerator="volt">400</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Max DC-Link Voltage</Comment>
-											<Name>Umaxrms</Name>
-											<Data type="real64" unitSiNumerator="volt">890</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Max Torque</Comment>
-											<Name>Mpeak</Name>
-											<Data type="real64" unitSiNumerator="newton metre">686.00</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Torque Constant</Comment>
-											<Name>kT</Name>
-											<Data type="real64" unitSiNumerator="newton metre" unitSiDenominator="ampere">13.50</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>EMK</Comment>
-											<Name>kErms</Name>
-											<Data type="real64" unitSiNumerator="volt" unitSiDenominator="revolutions/minute (rpm)">1.1519</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Winding resistance Ph-Ph 20°C</Comment>
-											<Name>R</Name>
-											<Data type="real64" unitSiNumerator="ohm">0.9</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Lq Ph-Ph</Comment>
-											<Name>Lq</Name>
-											<Data type="real64" unitSiNumerator="henry">0.0048</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Max speed</Comment>
-											<Name>Nmax</Name>
-											<Data type="real64" unitSiNumerator="revolutions/minute (rpm)">180</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>J motor with brake and encoder</Comment>
-											<Name>J</Name>
-											<Data type="real64" unitSiNumerator="moment of inertia">0.157000</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>T motor warn limit</Comment>
-											<Name>TMotorWarn</Name>
-											<Data type="real64" unitSiNumerator="degree Celsius">80.0</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>T motor shut down</Comment>
-											<Name>TMotorLimit</Name>
-											<Data type="real64" unitSiNumerator="degree Celsius">140.0</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Time constant i2t</Comment>
-											<Name>Ti2t</Name>
-											<Data type="real64" unitSiNumerator="second">20.00</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Motor thermal constant</Comment>
-											<Name>Mtc</Name>
-											<Data type="real64" unitSiNumerator="minute (time)">10.00</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Motor temperature sensor type</Comment>
-											<Name>TempSensorType</Name>
-											<Data type="real64">4.000000</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Motor temperature sensor connection</Comment>
-											<Name>TempSensorCon</Name>
-											<Data type="real64">2.000000</Data>
-										</Parameter>
-										<Parameter>
-											<Comment>Motor feedback connection</Comment>
-											<Name>FbCon</Name>
-											<Data type="real64">1.000000</Data>
-										</Parameter>
-									</Parametersets>
-								</AxisSetting>
-							</AxisSettings>
-							<DialogSettings>
-								<DialogSetting Name="Power management" Channel="0">
-									<Property>
-										<Name>PowerSupplyType</Name>
-										<Value>0</Value>
-									</Property>
-								</DialogSetting>
-							</DialogSettings>
-							<InitCmds>
-								<InitCmd DriveNo="0" IDN="30" MotorDataLevel="0" DisableMode="0">
-									<RetainData>3e003e004669726d776172653a2076322e313420284275696c64203030303629202f20426f6f746c6f616465723a2076322e303220284275696c6420303030322900</RetainData>
-								</InitCmd>
-								<InitCmd DriveNo="0" IDN="91" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="100" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="101" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="106" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="107" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="109" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="111" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="113" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="196" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="201" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="204" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="432" MotorDataLevel="0" DisableMode="0">
-									<RetainData>1200120053657269616c233a20303030353330353936</RetainData>
-								</InitCmd>
-								<InitCmd DriveNo="0" IDN="32770" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32818" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32819" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32821" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32822" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32823" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32825" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32829" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32830" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32834" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32835" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32838" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32839" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32841" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32845" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32860" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32861" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32918" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="32922" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="33088" MotorDataLevel="0" DisableMode="0">
-									<RetainData>24002400d6000600ca0002002c9d5b002c9d5b000000000000000000000000002260000000000000</RetainData>
-								</InitCmd>
-								<InitCmd DriveNo="0" IDN="33093" MotorDataLevel="0" DisableMode="0">
-									<RetainData>160016004a756e2020322032303232202c2031363a32303a3538</RetainData>
-								</InitCmd>
-								<InitCmd DriveNo="0" IDN="33219" MotorDataLevel="1" DisableMode="0"/>
-								<InitCmd DriveNo="0" IDN="33279" MotorDataLevel="1" DisableMode="0"/>
-							</InitCmds>
-							<StatusBar>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>135</Index>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>390</Index>
-									<Width>85</Width>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>95</Index>
-									<Width>330</Width>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>32821</Index>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>32973</Index>
-									<SubItem>Bit0</SubItem>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>32973</Index>
-									<SubItem>Bit3</SubItem>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>384</Index>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>135</Index>
-									<SubItem>ActualOperationMode</SubItem>
-									<Width>175</Width>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33080</Index>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>32865</Index>
-									<SubItem>MotorBrakeUnlocked</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>380</Index>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>381</Index>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>32831</Index>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33221</Index>
-									<SubItem>Active</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33221</Index>
-									<SubItem>ReadyToEnable</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33221</Index>
-									<SubItem>IGreaterThanInom</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33221</Index>
-									<SubItem>IPeakLimitReached</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33221</Index>
-									<SubItem>IreductionActive</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33221</Index>
-									<SubItem>UmaxReached</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33221</Index>
-									<SubItem>FieldWeakeningActive</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>Active</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>ReadyToEnable</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>PosDirectionEnabled</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>NegDirectionEnabled</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>AccDecLimitationActive</SubItem>
-								</Element>
-								<Element option="1" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>vLimitationActive</SubItem>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>vZeroReached</SubItem>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>CmdMovPositive</SubItem>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>33271</Index>
-									<SubItem>CmdMovNegative</SubItem>
-								</Element>
-								<Element option="0" SortOder="0" SubIdx="0">
-									<Index>32983</Index>
-								</Element>
-							</StatusBar>
-						</AX5XXXDriveTool>
 						<TcDMDrive>
 							<SortId>0</SortId>
 							<DriveModuleType>31</DriveModuleType>
@@ -7513,6 +7432,354 @@ DOUT9 1.0]]></Comment>
 								</Channel>
 							</Inverter>
 						</TcDMDrive>
+						<AX5XXXDriveTool>
+							<AxisSettings>
+								<AxisSetting Channel="0">
+									<Property>
+										<Name>Feedback1Connector0</Name>
+										<Value>3</Value>
+									</Property>
+									<Property>
+										<Name>Feedback1Connector1</Name>
+										<Value>3</Value>
+									</Property>
+									<Property>
+										<Name>Feedback1Connector2</Name>
+										<Value>3</Value>
+									</Property>
+									<Property>
+										<Name>NcFeedConstant</Name>
+										<Value>360.000000</Value>
+									</Property>
+									<Property>
+										<Name>AppendStartuplistDirect</Name>
+										<Value>2</Value>
+									</Property>
+									<Property>
+										<Name>Feedback1Type</Name>
+										<Value>Unkn#1Vpp-36000S-5V</Value>
+									</Property>
+									<Property>
+										<Name>Feedback1DataVersion</Name>
+										<Value>2.0.93</Value>
+									</Property>
+									<Property>
+										<Name>Feedback1Application</Name>
+										<Value>Default</Value>
+									</Property>
+									<Property>
+										<Name>MotorType</Name>
+										<Value>TMA0360-070-3VC</Value>
+									</Property>
+									<Property>
+										<Name>ConfiguedMotorType</Name>
+										<Value>TMA0360-070-3VC</Value>
+									</Property>
+									<Property>
+										<Name>MotorDataVersion</Name>
+										<Value>1.0.0</Value>
+									</Property>
+									<Property>
+										<Name>MotorApplication</Name>
+										<Value>Default</Value>
+									</Property>
+									<Property>
+										<Name>MotorDataLocation</Name>
+										<Value>C:\TwinCAT\3.1\Components\Base\Addins\TcDriveManager\MotorPool\EtelTMA0360-070-3VC.xeds</Value>
+									</Property>
+									<Property>
+										<Name>MotorDataSchema</Name>
+										<Value>MotorDataSheet</Value>
+									</Property>
+									<Parametersets>
+										<Parameter>
+											<Comment>Motor vendor</Comment>
+											<Name>Vendor</Name>
+											<Data type="visibleString">ETEL</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Electric motor type</Comment>
+											<Name>ElecType</Name>
+											<Data type="visibleString">TMA0360-070-3VC</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Motor construction</Comment>
+											<Name>ConstrType</Name>
+											<Data type="real64">0.000000</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Pole Pairs</Comment>
+											<Name>PolePairs</Name>
+											<Data type="real64">33</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Standstill Current</Comment>
+											<Name>I0rms</Name>
+											<Data type="real64" unitSiNumerator="ampere">12.00</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Rated Current</Comment>
+											<Name>Inrms</Name>
+											<Data type="real64" unitSiNumerator="ampere">16.96</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Peak Current</Comment>
+											<Name>Iprms</Name>
+											<Data type="real64" unitSiNumerator="ampere">50.81</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Nominal Voltage</Comment>
+											<Name>Unrms</Name>
+											<Data type="real64" unitSiNumerator="volt">400</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Max DC-Link Voltage</Comment>
+											<Name>Umaxrms</Name>
+											<Data type="real64" unitSiNumerator="volt">890</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Max Torque</Comment>
+											<Name>Mpeak</Name>
+											<Data type="real64" unitSiNumerator="newton metre">686.00</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Torque Constant</Comment>
+											<Name>kT</Name>
+											<Data type="real64" unitSiNumerator="newton metre" unitSiDenominator="ampere">13.50</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>EMK</Comment>
+											<Name>kErms</Name>
+											<Data type="real64" unitSiNumerator="volt" unitSiDenominator="revolutions/minute (rpm)">1.1519</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Winding resistance Ph-Ph 20°C</Comment>
+											<Name>R</Name>
+											<Data type="real64" unitSiNumerator="ohm">0.9</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Lq Ph-Ph</Comment>
+											<Name>Lq</Name>
+											<Data type="real64" unitSiNumerator="henry">0.0048</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Max speed</Comment>
+											<Name>Nmax</Name>
+											<Data type="real64" unitSiNumerator="revolutions/minute (rpm)">180</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>J motor with brake and encoder</Comment>
+											<Name>J</Name>
+											<Data type="real64" unitSiNumerator="moment of inertia">0.157000</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>T motor warn limit</Comment>
+											<Name>TMotorWarn</Name>
+											<Data type="real64" unitSiNumerator="degree Celsius">80.0</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>T motor shut down</Comment>
+											<Name>TMotorLimit</Name>
+											<Data type="real64" unitSiNumerator="degree Celsius">140.0</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Time constant i2t</Comment>
+											<Name>Ti2t</Name>
+											<Data type="real64" unitSiNumerator="second">20.00</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Motor thermal constant</Comment>
+											<Name>Mtc</Name>
+											<Data type="real64" unitSiNumerator="minute (time)">10.00</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Motor temperature sensor type</Comment>
+											<Name>TempSensorType</Name>
+											<Data type="real64">4.000000</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Motor temperature sensor connection</Comment>
+											<Name>TempSensorCon</Name>
+											<Data type="real64">2.000000</Data>
+										</Parameter>
+										<Parameter>
+											<Comment>Motor feedback connection</Comment>
+											<Name>FbCon</Name>
+											<Data type="real64">1.000000</Data>
+										</Parameter>
+									</Parametersets>
+								</AxisSetting>
+							</AxisSettings>
+							<DialogSettings>
+								<DialogSetting Name="Power management" Channel="0">
+									<Property>
+										<Name>PowerSupplyType</Name>
+										<Value>0</Value>
+									</Property>
+								</DialogSetting>
+							</DialogSettings>
+							<InitCmds>
+								<InitCmd DriveNo="0" IDN="30" MotorDataLevel="0" DisableMode="0">
+									<RetainData>3e003e004669726d776172653a2076322e313420284275696c64203030303629202f20426f6f746c6f616465723a2076322e303220284275696c6420303030322900</RetainData>
+								</InitCmd>
+								<InitCmd DriveNo="0" IDN="91" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="100" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="101" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="106" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="107" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="109" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="111" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="113" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="196" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="201" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="204" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="432" MotorDataLevel="0" DisableMode="0">
+									<RetainData>1200120053657269616c233a20303030353330353936</RetainData>
+								</InitCmd>
+								<InitCmd DriveNo="0" IDN="32770" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32818" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32819" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32821" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32822" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32823" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32825" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32829" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32830" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32834" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32835" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32838" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32839" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32841" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32845" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32860" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32861" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32918" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="32922" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="33088" MotorDataLevel="0" DisableMode="0">
+									<RetainData>24002400d6000600ca0002002c9d5b002c9d5b000000000000000000000000002260000000000000</RetainData>
+								</InitCmd>
+								<InitCmd DriveNo="0" IDN="33093" MotorDataLevel="0" DisableMode="0">
+									<RetainData>160016004a756e2020322032303232202c2031363a32303a3538</RetainData>
+								</InitCmd>
+								<InitCmd DriveNo="0" IDN="33219" MotorDataLevel="1" DisableMode="0"/>
+								<InitCmd DriveNo="0" IDN="33279" MotorDataLevel="1" DisableMode="0"/>
+							</InitCmds>
+							<StatusBar>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>135</Index>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>390</Index>
+									<Width>85</Width>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>95</Index>
+									<Width>330</Width>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>32821</Index>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>32973</Index>
+									<SubItem>Bit0</SubItem>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>32973</Index>
+									<SubItem>Bit3</SubItem>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>384</Index>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>135</Index>
+									<SubItem>ActualOperationMode</SubItem>
+									<Width>175</Width>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33080</Index>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>32865</Index>
+									<SubItem>MotorBrakeUnlocked</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>380</Index>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>381</Index>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>32831</Index>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33221</Index>
+									<SubItem>Active</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33221</Index>
+									<SubItem>ReadyToEnable</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33221</Index>
+									<SubItem>IGreaterThanInom</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33221</Index>
+									<SubItem>IPeakLimitReached</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33221</Index>
+									<SubItem>IreductionActive</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33221</Index>
+									<SubItem>UmaxReached</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33221</Index>
+									<SubItem>FieldWeakeningActive</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>Active</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>ReadyToEnable</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>PosDirectionEnabled</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>NegDirectionEnabled</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>AccDecLimitationActive</SubItem>
+								</Element>
+								<Element option="1" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>vLimitationActive</SubItem>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>vZeroReached</SubItem>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>CmdMovPositive</SubItem>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>33271</Index>
+									<SubItem>CmdMovNegative</SubItem>
+								</Element>
+								<Element option="0" SortOder="0" SubIdx="0">
+									<Index>32983</Index>
+								</Element>
+							</StatusBar>
+						</AX5XXXDriveTool>
 					</Xml>
 					<EtherCAT SlaveType="2" PdiType="#x0c08" MboxDataLinkLayer="true" StateMBoxPolling="true" CfgModeSafeOp="true" DownloadPdoCfg="true" CycleMBoxPollingTime="0" FoeType="1" SoeChannels="1" VendorId="#x00000002" ProductCode="#x14056012" RevisionNo="#x00d60000" InfoDataAddr="true" InfoDataSoeDS401="true" InfoDataDcTimes="true" TimeoutStateChange2="15000" TimeoutStateChange3="10000" TimeoutStateChange4="500" AutoRestoreAfterWcOk="true" CheckRevisionNoType="4" PortPhys="12305" IdentificationAdo="308" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="AX5125-0000-0214 EtherCAT Drive (SoE, 1 Ch.)" Desc="AX5125-0000-0214" PortABoxInfo="#x00ffffff">
 						<SyncMan>001880002600010001000000800080008000001826010000</SyncMan>
@@ -12383,7 +12650,7 @@ DOUT9 1.0]]></Comment>
 		</OwnerA>
 		<OwnerA Name="TIPC^MONETNRuntime^MONETNRuntime Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Brake AzEl (EL2004)">
-				<Link VarA="PlcTask Outputs^GVL_IO.stHydraulicsOut.bBrakeAzEl" VarB="Channel 2^MAIN.HydraulicsControl.ObBrakeAzEl"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.stHydraulicsOut^bBrakeAzEl" VarB="Channel 2^GVL_IO.stHydraulicsOut.bBrakeAzEl"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Front Panel IN (EL1008)">
 				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inButtonReset" VarB="Channel 3^MAIN.CabinetControl.inSwitchReset"/>
@@ -12398,48 +12665,48 @@ DOUT9 1.0]]></Comment>
 				<Link VarA="PlcTask Outputs^MAIN.CabinetControl.outLampPower" VarB="Channel 1^MAIN.CabinetControl.outLampPower"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Hydraulics Focus IN (EL1008)">
-				<Link VarA="PlcTask Inputs^GVL_IO.stFocusIn.bLimitFar" VarB="Channel 5^MAIN.FocusControl.IbLimitFar"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stFocusIn.bLimitNear" VarB="Channel 4^MAIN.FocusControl.IbLimitNear"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn.bPumpRunning" VarB="Channel 1^MAIN.HydraulicsControl.IbPumpRunning"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn.bSuctionRunning" VarB="Channel 2^MAIN.HydraulicsControl.IbSuctionRunning"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stFocusIn^bLimitFar" VarB="Channel 5^GVL_IO.stFocusIn.bLimitFar"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stFocusIn^bLimitNear" VarB="Channel 4^GVL_IO.stFocusIn.bLimitNear"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn^bPumpRunning" VarB="Channel 1^GVL_IO.stHydraulicsIn.bPumpRunning"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn^bSuctionRunning" VarB="Channel 2^GVL_IO.stHydraulicsIn.bSuctionRunning"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Hydraulics IN2 (EL1008)">
-				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn.bOilCold" VarB="Channel 5^MAIN.HydraulicsControl.IbOilCold"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn.bOilFilterDirty" VarB="Channel 6^MAIN.HydraulicsControl.IbOilFilterDirty"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn.bOilHigh" VarB="Channel 2^MAIN.HydraulicsControl.IbOilHigh"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn.bOilHot" VarB="Channel 4^MAIN.HydraulicsControl.IbOilHot"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn.bOilLow" VarB="Channel 1^MAIN.HydraulicsControl.IbOilLow"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn.bOilPressureOK" VarB="Channel 3^MAIN.HydraulicsControl.IbOilPressureOK"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn.bOilReserve" VarB="Channel 8^MAIN.HydraulicsControl.IbOilReserve"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn.bOilPanMaximum" VarB="Channel 7^MAIN.HydraulicsControl.IbOilpanMaximum"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn^bOilCold" VarB="Channel 5^GVL_IO.stHydraulicsIn.bOilCold"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn^bOilFilterDirty" VarB="Channel 6^GVL_IO.stHydraulicsIn.bOilFilterDirty"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn^bOilHigh" VarB="Channel 2^GVL_IO.stHydraulicsIn.bOilHigh"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn^bOilHot" VarB="Channel 4^GVL_IO.stHydraulicsIn.bOilHot"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn^bOilLow" VarB="Channel 1^GVL_IO.stHydraulicsIn.bOilLow"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn^bOilPanMaximum" VarB="Channel 7^GVL_IO.stHydraulicsIn.bOilPanMaximum"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn^bOilPressureOK" VarB="Channel 3^GVL_IO.stHydraulicsIn.bOilPressureOK"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn^bOilReserve" VarB="Channel 8^GVL_IO.stHydraulicsIn.bOilReserve"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Hydraulics OUT (EL2008)">
-				<Link VarA="PlcTask Outputs^GVL_IO.stFocusOut.bUnlock" VarB="Channel 7^MAIN.FocusControl.ObFocusUnlock"/>
-				<Link VarA="PlcTask Outputs^GVL_IO.stHydraulicsOut.bOilPumpEnable" VarB="Channel 1^MAIN.HydraulicsControl.ObOilPumpEnable"/>
-				<Link VarA="PlcTask Outputs^GVL_IO.stHydraulicsOut.bOilSuctionEnable" VarB="Channel 3^MAIN.HydraulicsControl.ObOilSuctionEnable"/>
-				<Link VarA="PlcTask Outputs^GVL_IO.stHydraulicsOut.bResetOilPump" VarB="Channel 2^MAIN.HydraulicsControl.ObResetOilPump"/>
-				<Link VarA="PlcTask Outputs^GVL_IO.stHydraulicsOut.bResetSuctionPump" VarB="Channel 4^MAIN.HydraulicsControl.ObResetSuctionPump"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.stFocusOut^bUnlock" VarB="Channel 7^GVL_IO.stFocusOut.bUnlock"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.stHydraulicsOut^bOilPumpEnable" VarB="Channel 1^GVL_IO.stHydraulicsOut.bOilPumpEnable"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.stHydraulicsOut^bOilSuctionEnable" VarB="Channel 3^GVL_IO.stHydraulicsOut.bOilSuctionEnable"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.stHydraulicsOut^bResetOilPump" VarB="Channel 2^GVL_IO.stHydraulicsOut.bResetOilPump"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.stHydraulicsOut^bResetSuctionPump" VarB="Channel 4^GVL_IO.stHydraulicsOut.bResetSuctionPump"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Cover IN (EL1008)">
-				<Link VarA="PlcTask Inputs^GVL_IO.stCoverIn.abClosed[1]" VarB="Channel 2^MAIN.CoverControl.IabCoverClosed[1]"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stCoverIn.abClosed[2]" VarB="Channel 4^MAIN.CoverControl.IabCoverClosed[2]"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stCoverIn.abClosed[3]" VarB="Channel 6^MAIN.CoverControl.IabCoverClosed[3]"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stCoverIn.abOpen[1]" VarB="Channel 1^MAIN.CoverControl.IabCoverOpen[1]"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stCoverIn.abOpen[2]" VarB="Channel 3^MAIN.CoverControl.IabCoverOpen[2]"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stCoverIn.abOpen[3]" VarB="Channel 5^MAIN.CoverControl.IabCoverOpen[3]"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stCoverIn^abClosed[1]" VarB="Channel 2^GVL_IO.stCoverIn.abClosed[1]"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stCoverIn^abClosed[2]" VarB="Channel 4^GVL_IO.stCoverIn.abClosed[2]"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stCoverIn^abClosed[3]" VarB="Channel 6^GVL_IO.stCoverIn.abClosed[3]"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stCoverIn^abOpen[1]" VarB="Channel 1^GVL_IO.stCoverIn.abOpen[1]"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stCoverIn^abOpen[2]" VarB="Channel 3^GVL_IO.stCoverIn.abOpen[2]"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stCoverIn^abOpen[3]" VarB="Channel 5^GVL_IO.stCoverIn.abOpen[3]"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Cover OUT1 (EL2004)">
-				<Link VarA="PlcTask Outputs^GVL_IO.stCoverOut.abClose[1]" VarB="Channel 2^MAIN.CoverControl.OabCloseCover[1]"/>
-				<Link VarA="PlcTask Outputs^GVL_IO.stCoverOut.abClose[2]" VarB="Channel 4^MAIN.CoverControl.OabCloseCover[2]"/>
-				<Link VarA="PlcTask Outputs^GVL_IO.stCoverOut.abOpen[1]" VarB="Channel 1^MAIN.CoverControl.OabOpenCover[1]"/>
-				<Link VarA="PlcTask Outputs^GVL_IO.stCoverOut.abOpen[2]" VarB="Channel 3^MAIN.CoverControl.OabOpenCover[2]"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.stCoverOut^abClose[1]" VarB="Channel 2^GVL_IO.stCoverOut.abClose[1]"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.stCoverOut^abClose[2]" VarB="Channel 4^GVL_IO.stCoverOut.abClose[2]"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.stCoverOut^abOpen[1]" VarB="Channel 1^GVL_IO.stCoverOut.abOpen[1]"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.stCoverOut^abOpen[2]" VarB="Channel 3^GVL_IO.stCoverOut.abOpen[2]"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Cover OUT2 (EL2004)">
-				<Link VarA="PlcTask Outputs^GVL_IO.stCoverOut.abClose[3]" VarB="Channel 2^MAIN.CoverControl.OabCloseCover[3]"/>
-				<Link VarA="PlcTask Outputs^GVL_IO.stCoverOut.abOpen[3]" VarB="Channel 1^MAIN.CoverControl.OabOpenCover[3]"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.stCoverOut^abClose[3]" VarB="Channel 2^GVL_IO.stCoverOut.abClose[3]"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.stCoverOut^abOpen[3]" VarB="Channel 1^GVL_IO.stCoverOut.abOpen[3]"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Mirror Temperature IN (EL3164)">
-				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn.nOilLevel" VarB="OilLevel^MAIN.HydraulicsControl.InOilLevel"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stHydraulicsIn^nOilLevel" VarB="OilLevel^GVL_IO.stHydraulicsIn.nOilLevel"/>
 				<Link VarA="PlcTask Inputs^MAIN.TelescopeAuxiliary.tempSensorM1" VarB="TempM1^MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM1"/>
 				<Link VarA="PlcTask Inputs^MAIN.TelescopeAuxiliary.tempSensorM2" VarB="TempM2^MAIN.TelescopeControl.TelescopeAuxiliary.tempSensorM2"/>
 			</OwnerB>
@@ -12485,9 +12752,9 @@ DOUT9 1.0]]></Comment>
 				<Link VarA="PlcTask Inputs^MAIN.PowerMonitoring.QualityGuardWarning" VarB="Total Status^Power Quality Guard Warning"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 21 (EK1200)^Safety Logic (EL6910)">
-				<Link VarA="PlcTask Inputs^GVL_IO.stAzimuthIn.bSTO" VarB="StandardInputs^Standard Out Var 18"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stDerotatorIn.bSTO" VarB="StandardInputs^Standard Out Var 20"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stElevationIn.bSTO" VarB="StandardInputs^Standard Out Var 19"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stAzimuthIn^bSTO" VarB="StandardInputs^Standard Out Var 18"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stDerotatorIn^bSTO" VarB="StandardInputs^Standard Out Var 20"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stElevationIn^bSTO" VarB="StandardInputs^Standard Out Var 19"/>
 				<Link VarA="PlcTask Inputs^MAIN.SafetyHandling.stInfoEStop1" VarB="Function Block Info Data^TwinSafeGroup1.Network1.FBEstop1 Info Data"/>
 				<Link VarA="PlcTask Inputs^MAIN.SafetyHandling.stInfoGroup1" VarB="TwinSAFE Group Info Data^TwinSafeGroup1 Info Data"/>
 				<Link VarA="PlcTask Inputs^MAIN.SafetyHandling.stInfoSafetyIn" VarB="Connection Info Data^Message_7 Info Data"/>
@@ -12503,19 +12770,19 @@ DOUT9 1.0]]></Comment>
 				<Link VarA="PlcTask Inputs^MAIN.CabinetControl.inCabinetTemp" VarB="RTD Inputs Channel 1^MAIN.CabinetControl.inCabinetTemp"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Azimuth (AX5125-0000-0214)">
-				<Link VarA="PlcTask Inputs^GVL_IO.stAzimuthIn.nDiagnostic" VarB="AT^Diagnostic number"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stAzimuthIn.nDigitalInputs" VarB="AT^Digital inputs, state"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stAzimuthIn.nTorque" VarB="AT^Torque/force feedback value"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stAzimuthIn^nDiagnostic" VarB="AT^Diagnostic number"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stAzimuthIn^nDigitalInputs" VarB="AT^Digital inputs, state"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stAzimuthIn^nTorque" VarB="AT^Torque/force feedback value"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Derotator (AX5206-0000-0214)">
-				<Link VarA="PlcTask Inputs^GVL_IO.stDerotatorIn.nDiagnostic" VarB="AT 1^Diagnostic number"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stDerotatorIn.nDigitalInputs" VarB="AT 1^Digital inputs, state"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stDerotatorIn.nTorque" VarB="AT 1^Actual torque/force generating current"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stDerotatorIn^nDiagnostic" VarB="AT 1^Diagnostic number"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stDerotatorIn^nDigitalInputs" VarB="AT 1^Digital inputs, state"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stDerotatorIn^nTorque" VarB="AT 1^Actual torque/force generating current"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Elevation (AX5125-0000-0214)">
-				<Link VarA="PlcTask Inputs^GVL_IO.stElevationIn.nDiagnostic" VarB="AT^Diagnostic number"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stElevationIn.nDigitalInputs" VarB="AT^Digital inputs, state"/>
-				<Link VarA="PlcTask Inputs^GVL_IO.stElevationIn.nTorque" VarB="AT^Torque/force feedback value"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stElevationIn^nDiagnostic" VarB="AT^Diagnostic number"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stElevationIn^nDigitalInputs" VarB="AT^Digital inputs, state"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.stElevationIn^nTorque" VarB="AT^Torque/force feedback value"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 5 (EtherCAT)^Term 11 (EK1100)^Term 12 (EL2008)">
 				<Link VarA="PlcTask Outputs^MAIN.RoofControl.roofs[1].motors[1].reset_drive" VarB="Channel 1^MAIN.RoofControl.roofs[1].motors[1].reset_drive"/>

@@ -33,7 +33,7 @@ param(
     # Exactly the custom libraries MONETNRuntime.plcproj references via
     # PlaceholderReference (excludes Beckhoff Tc2_*/Tc3_* and System_Visu*/VisuDialogs,
     # which ship with XAE itself and aren't managed this way).
-    [string[]]$Libraries = @("AstroBROT", "BROTLib", "HalfBROT", "MONETRoof"),
+    [string[]]$Libraries = @("AstroBROT", "BROTLib", "HalfBROT", "MONETcommon", "MONETRoof"),
     [string]$TcProfile,
     # Ignore the versions pinned in the project and install the newest release of each library.
     [switch]$Latest
