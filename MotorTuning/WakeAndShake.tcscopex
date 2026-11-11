@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ScopeProject AssemblyName="TwinCAT.Measurement.Scope.API.Model">
   <AutoDeleteCapacity>0</AutoDeleteCapacity>
   <AutoDeleteMode>Disabled</AutoDeleteMode>
@@ -41,7 +41,7 @@
 &lt;/Layout&gt;</Layout>
   <MainServer>127.0.0.1.1.1</MainServer>
   <Name>Wake and Shake</Name>
-  <RecordTime>1800000000</RecordTime>
+  <RecordTime>18000000000</RecordTime>
   <ServerVersions>
     <Version>4.48.63.0</Version>
   </ServerVersions>
@@ -61,7 +61,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.HydraulicsControl.bBrakeOpen</Comment>
+          <Comment> status of the brake: is the brake open?</Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -79,11 +79,11 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>1</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>8e586fb2-8bc1-4aa6-bd79-0dee3e97d514</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>571984</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>Hydraulics brake open</Name>
           <Oversample>0</Oversample>
@@ -93,33 +93,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -156,7 +156,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.ElevationControl.bBrakeOpen</Comment>
+          <Comment> fbBrake.BrakeOpen, FALSE while fbBrake is not assigned</Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -174,11 +174,11 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>1</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>f0625dc0-2eb5-452e-8f32-542eac0fcf96</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>751000</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>El brake open</Name>
           <Oversample>0</Oversample>
@@ -188,33 +188,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -251,7 +251,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.ElevationControl.bEnable</Comment>
+          <Comment> enable the axis and its position control loop</Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -269,11 +269,11 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>1</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>8ba6e330-5ea0-4bb9-8809-783abafb29d3</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>692520</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>El bEnable</Name>
           <Oversample>0</Oversample>
@@ -283,33 +283,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -346,7 +346,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.ElevationControl.bReady</Comment>
+          <Comment> drive is ready</Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -364,11 +364,11 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>1</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>1c55eae8-6c49-4431-b91b-d9bd82479bad</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>692568</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>El bReady</Name>
           <Oversample>0</Oversample>
@@ -378,33 +378,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -441,7 +441,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.ElevationControl.bError</Comment>
+          <Comment> true if error</Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -459,11 +459,11 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>1</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>73824666-94ff-4e92-872b-764d7996815c</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>692561</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>El bError</Name>
           <Oversample>0</Oversample>
@@ -473,33 +473,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -536,7 +536,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.AzimuthControl.bBrakeOpen</Comment>
+          <Comment> azimuth break is open</Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -554,11 +554,11 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>1</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>896acd34-bc02-44f7-a52d-0200e201bcc7</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>800928</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>Az brake open</Name>
           <Oversample>0</Oversample>
@@ -568,33 +568,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -631,7 +631,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.AzimuthControl.bEnable</Comment>
+          <Comment> enable the axis and its position control loop</Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -649,11 +649,11 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>1</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>765c18f2-af4e-4644-bd19-410fc49564f2</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>753816</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>Az bEnable</Name>
           <Oversample>0</Oversample>
@@ -663,33 +663,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -726,7 +726,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.AzimuthControl.bReady</Comment>
+          <Comment> drive is ready</Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -744,11 +744,11 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>1</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>c0fa345a-9a45-4f60-90fd-33a12a42fe55</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>753864</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>Az bReady</Name>
           <Oversample>0</Oversample>
@@ -758,33 +758,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -821,7 +821,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.AzimuthControl.bAtRest</Comment>
+          <Comment></Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -839,11 +839,11 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>1</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>d75b0a3d-a52d-42fe-be69-6a20678a8c8c</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>801032</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>Az bAtRest</Name>
           <Oversample>0</Oversample>
@@ -853,33 +853,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -916,7 +916,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.AzimuthControl.bError</Comment>
+          <Comment> true if error</Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -934,11 +934,11 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>1</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>c568a717-827c-45d4-9921-81e4b477385e</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>753857</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>Az bError</Name>
           <Oversample>0</Oversample>
@@ -948,33 +948,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -1011,7 +1011,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.TelescopeControl.bInterrupted</Comment>
+          <Comment> If a command is interruped by one with more presedence, the interrupted needs to reset its stage</Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -1029,11 +1029,11 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>1</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>c83df379-754c-4ece-a285-2d618edc6443</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>802296</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>bInterrupted</Name>
           <Oversample>0</Oversample>
@@ -1043,33 +1043,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -1106,7 +1106,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.HydraulicsControl.bPumpRunning</Comment>
+          <Comment> main pump is running</Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -1124,11 +1124,11 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>1</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>8c3b0d8c-3d4c-415b-9fd4-29af80f63a0e</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>571998</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>Hyd pump running</Name>
           <Oversample>0</Oversample>
@@ -1138,33 +1138,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -1201,7 +1201,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.HydraulicsControl.bOilPressureOK</Comment>
+          <Comment> oil pressure is 25 bars</Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -1219,11 +1219,11 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>1</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>90307f4c-8dbf-4978-9540-d75616d8e601</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>571992</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>Hyd oil pressure OK</Name>
           <Oversample>0</Oversample>
@@ -1233,33 +1233,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -1296,7 +1296,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.HydraulicsControl.bOpenBrake</Comment>
+          <Comment> request to open the brake, cleared when the brake closes</Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -1314,11 +1314,11 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>1</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>ff343580-e5e1-4ac0-ad33-15f9cc2e0065</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>572005</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>Hyd bOpenBrake</Name>
           <Oversample>0</Oversample>
@@ -1328,33 +1328,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -1391,7 +1391,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.TelescopeControl.fReadyState</Comment>
+          <Comment> -1 error, 0 parked, 0.3 parking, 0.7 initializing, 0.8 calibrating/positioning, 1 startup complete</Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -1409,11 +1409,11 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>28</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>bc176f70-bec0-4c8f-8d41-461733a4a429</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>833440</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>fReadyState</Name>
           <Oversample>0</Oversample>
@@ -1423,33 +1423,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -1486,7 +1486,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.ElevationControl.axisRef.NcToPlc.ErrorCode</Comment>
+          <Comment></Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -1504,11 +1504,11 @@
           <DataType>UINT32</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>26</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>bf36d43a-ffb3-41f7-a136-729b72fec850</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>708300</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>El ErrorCode</Name>
           <Oversample>0</Oversample>
@@ -1518,33 +1518,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -1581,7 +1581,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.AzimuthControl.axisRef.NcToPlc.ErrorCode</Comment>
+          <Comment></Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -1599,11 +1599,11 @@
           <DataType>UINT32</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>26</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>55b4ccba-f913-4fb5-a5c4-836bb8e50c19</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>769596</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>Az ErrorCode</Name>
           <Oversample>0</Oversample>
@@ -1613,33 +1613,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -1676,7 +1676,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.ElevationControl.axisRef.NcToPlc.ActPos</Comment>
+          <Comment></Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -1694,11 +1694,11 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>28</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>62aba728-60f7-400b-8b6b-0fff11686c21</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>708336</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>El ActPos</Name>
           <Oversample>0</Oversample>
@@ -1708,33 +1708,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -1771,7 +1771,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.ElevationControl.axisRef.NcToPlc.SetPos</Comment>
+          <Comment></Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -1789,11 +1789,11 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>28</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>222ee55c-2e56-43c9-bd76-bcd9cdaa67c7</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>708376</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>El SetPos</Name>
           <Oversample>0</Oversample>
@@ -1803,33 +1803,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -1866,7 +1866,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.ElevationControl.axisRef.NcToPlc.PosDiff</Comment>
+          <Comment></Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -1884,11 +1884,11 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>28</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>35ebf2b8-8c6b-4840-81f0-774655816974</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>708368</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>El PosDiff</Name>
           <Oversample>0</Oversample>
@@ -1898,33 +1898,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -1961,7 +1961,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.ElevationControl.axisRef.NcToPlc.ActVelo</Comment>
+          <Comment></Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -1979,11 +1979,11 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>28</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>ef7cc3f1-79a0-4a8f-933e-bfd1f4cc452c</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>708360</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>El ActVelo</Name>
           <Oversample>0</Oversample>
@@ -1993,33 +1993,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -2056,7 +2056,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.ElevationControl.axisRef.NcToPlc.SetVelo</Comment>
+          <Comment></Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -2074,11 +2074,11 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>28</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>9d492bc6-56f5-4eed-9cc0-467927508070</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>708384</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>El SetVelo</Name>
           <Oversample>0</Oversample>
@@ -2088,33 +2088,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -2151,7 +2151,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.ElevationControl.axisRef.NcToPlc.ActTorque</Comment>
+          <Comment></Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -2169,11 +2169,11 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>28</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>c3b19de8-3971-43c8-9035-9391f094306f</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>708440</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>El ActTorque</Name>
           <Oversample>0</Oversample>
@@ -2183,33 +2183,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -2246,7 +2246,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.AzimuthControl.axisRef.NcToPlc.ActPos</Comment>
+          <Comment></Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -2264,11 +2264,11 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>28</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>23637644-a858-4941-82b1-9f560d7cf8e4</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>769632</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>Az ActPos</Name>
           <Oversample>0</Oversample>
@@ -2278,33 +2278,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -2341,7 +2341,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.AzimuthControl.axisRef.NcToPlc.SetPos</Comment>
+          <Comment></Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -2359,11 +2359,11 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>28</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>01a3d5ea-6c8a-4835-b8c6-fab0e672d427</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>769672</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>Az SetPos</Name>
           <Oversample>0</Oversample>
@@ -2373,33 +2373,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -2436,7 +2436,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.AzimuthControl.axisRef.NcToPlc.PosDiff</Comment>
+          <Comment></Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -2454,11 +2454,11 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>28</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>bc471d32-6232-4483-b5b3-9a825fed2ab4</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>769664</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>Az PosDiff</Name>
           <Oversample>0</Oversample>
@@ -2468,33 +2468,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -2531,7 +2531,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.AzimuthControl.axisRef.NcToPlc.ActVelo</Comment>
+          <Comment></Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -2549,11 +2549,11 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>28</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>48465471-d40a-449b-b31a-13ddf7cb8211</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>769656</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>Az ActVelo</Name>
           <Oversample>0</Oversample>
@@ -2563,33 +2563,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -2626,7 +2626,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.AzimuthControl.axisRef.NcToPlc.SetVelo</Comment>
+          <Comment></Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -2644,11 +2644,11 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>28</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>e8a5c46f-4683-4a8f-bb27-5d362fd23e4d</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>769680</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>Az SetVelo</Name>
           <Oversample>0</Oversample>
@@ -2658,33 +2658,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -2721,7 +2721,7 @@
           <ArrayLength>0</ArrayLength>
           <BaseSampleTime>100000</BaseSampleTime>
           <ChannelStyleInformation />
-          <Comment>MAIN.AzimuthControl.axisRef.NcToPlc.ActTorque</Comment>
+          <Comment></Comment>
           <CompressionMode>Uncompressed</CompressionMode>
           <ContextMask>0</ContextMask>
           <DataAccess>
@@ -2739,11 +2739,11 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>28</FileHandle>
+          <FileHandle>0</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>c8333824-e2e0-4bff-8f96-17b1f78d14f3</Guid>
-          <IndexGroup>0</IndexGroup>
-          <IndexOffset>0</IndexOffset>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>769736</IndexOffset>
           <IsHistorical>false</IsHistorical>
           <Name>Az ActTorque</Name>
           <Oversample>0</Oversample>
@@ -2753,33 +2753,33 @@
               <Name>None</Name>
               <ScaleFactor>1</ScaleFactor>
               <SourceUnitPrefix>none</SourceUnitPrefix>
-              <SourceUnitString />
+              <SourceUnitString></SourceUnitString>
               <Symbol>1</Symbol>
-              <TargetUnitString />
+              <TargetUnitString></TargetUnitString>
               <TargetUnitValue>0</TargetUnitValue>
             </Transformation>
             <Unit>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ReturnText> (None) </ReturnText>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
             </Unit>
             <UnitOffsetResult>0</UnitOffsetResult>
             <UnitScaleResult>1</UnitScaleResult>
             <UserUnit>
               <BaseName>UnitOfOne</BaseName>
-              <BaseUnitString />
+              <BaseUnitString></BaseUnitString>
               <BaseUnitValue>0</BaseUnitValue>
               <Name>None</Name>
-              <NameExtension />
+              <NameExtension></NameExtension>
               <Offset>0</Offset>
               <Prefix>none</Prefix>
               <ScaleFactor>1</ScaleFactor>
-              <Symbol />
+              <Symbol></Symbol>
               <UserPrefix>none</UserPrefix>
             </UserUnit>
           </RawUnit>
@@ -2810,7 +2810,7 @@
           <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>8</VariableSize>
         </AdsAcquisition>
-        </SubMember>
+      </SubMember>
       <Title>DataPool_123</Title>
     </DataPool>
     <YTChart AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -2932,7 +2932,7 @@
               </SubMember>
               <Title>TimeAxis_2074</Title>
             </TimeAxis>
-          <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+            <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
               <DisplayColor>-2742488</DisplayColor>
               <Enabled>true</Enabled>
@@ -2954,33 +2954,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -3087,33 +3087,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -3220,33 +3220,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -3353,33 +3353,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -3486,33 +3486,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -3619,33 +3619,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -3752,33 +3752,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -3885,33 +3885,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -4018,33 +4018,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -4151,33 +4151,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -4284,33 +4284,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -4417,33 +4417,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -4550,33 +4550,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -4683,33 +4683,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -4794,7 +4794,7 @@
               </SubMember>
               <Title>Channel_2257</Title>
             </Channel>
-            </SubMember>
+          </SubMember>
           <Title>AxisGroup_2075</Title>
         </AxisGroup>
         <AxisGroup AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -4855,7 +4855,7 @@
               <Title>MarkerContainer_2260</Title>
             </MarkerContainer>
             <RefGuid-TimeAxis>1a8c3e50-e9ca-4522-b554-b410e06cc922</RefGuid-TimeAxis>
-          <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+            <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
               <DisplayColor>-33010</DisplayColor>
               <Enabled>true</Enabled>
@@ -4877,33 +4877,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -4988,7 +4988,7 @@
               </SubMember>
               <Title>Channel_2294</Title>
             </Channel>
-            </SubMember>
+          </SubMember>
           <Title>AxisGroup_2281</Title>
         </AxisGroup>
         <AxisGroup AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -5049,7 +5049,7 @@
               <Title>MarkerContainer_2297</Title>
             </MarkerContainer>
             <RefGuid-TimeAxis>1a8c3e50-e9ca-4522-b554-b410e06cc922</RefGuid-TimeAxis>
-          <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+            <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
               <DisplayColor>-2742488</DisplayColor>
               <Enabled>true</Enabled>
@@ -5071,33 +5071,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -5204,33 +5204,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -5315,7 +5315,7 @@
               </SubMember>
               <Title>Channel_2344</Title>
             </Channel>
-            </SubMember>
+          </SubMember>
           <Title>AxisGroup_2318</Title>
         </AxisGroup>
         <AxisGroup AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -5376,7 +5376,7 @@
               <Title>MarkerContainer_2347</Title>
             </MarkerContainer>
             <RefGuid-TimeAxis>1a8c3e50-e9ca-4522-b554-b410e06cc922</RefGuid-TimeAxis>
-          <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+            <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
               <DisplayColor>-2742488</DisplayColor>
               <Enabled>true</Enabled>
@@ -5398,33 +5398,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -5531,33 +5531,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -5642,7 +5642,7 @@
               </SubMember>
               <Title>Channel_2394</Title>
             </Channel>
-            </SubMember>
+          </SubMember>
           <Title>AxisGroup_2368</Title>
         </AxisGroup>
         <AxisGroup AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -5703,7 +5703,7 @@
               <Title>MarkerContainer_2397</Title>
             </MarkerContainer>
             <RefGuid-TimeAxis>1a8c3e50-e9ca-4522-b554-b410e06cc922</RefGuid-TimeAxis>
-          <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+            <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
               <DisplayColor>-2742488</DisplayColor>
               <Enabled>true</Enabled>
@@ -5725,33 +5725,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -5836,7 +5836,7 @@
               </SubMember>
               <Title>Channel_2431</Title>
             </Channel>
-            </SubMember>
+          </SubMember>
           <Title>AxisGroup_2418</Title>
         </AxisGroup>
         <AxisGroup AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -5897,7 +5897,7 @@
               <Title>MarkerContainer_2434</Title>
             </MarkerContainer>
             <RefGuid-TimeAxis>1a8c3e50-e9ca-4522-b554-b410e06cc922</RefGuid-TimeAxis>
-          <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+            <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
               <DisplayColor>-2742488</DisplayColor>
               <Enabled>true</Enabled>
@@ -5919,33 +5919,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -6052,33 +6052,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -6163,7 +6163,7 @@
               </SubMember>
               <Title>Channel_2481</Title>
             </Channel>
-            </SubMember>
+          </SubMember>
           <Title>AxisGroup_2455</Title>
         </AxisGroup>
         <AxisGroup AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -6224,7 +6224,7 @@
               <Title>MarkerContainer_2484</Title>
             </MarkerContainer>
             <RefGuid-TimeAxis>1a8c3e50-e9ca-4522-b554-b410e06cc922</RefGuid-TimeAxis>
-          <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+            <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
               <DisplayColor>-2742488</DisplayColor>
               <Enabled>true</Enabled>
@@ -6246,33 +6246,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -6357,7 +6357,7 @@
               </SubMember>
               <Title>Channel_2518</Title>
             </Channel>
-            </SubMember>
+          </SubMember>
           <Title>AxisGroup_2505</Title>
         </AxisGroup>
         <AxisGroup AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -6418,7 +6418,7 @@
               <Title>MarkerContainer_2521</Title>
             </MarkerContainer>
             <RefGuid-TimeAxis>1a8c3e50-e9ca-4522-b554-b410e06cc922</RefGuid-TimeAxis>
-          <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+            <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
               <DisplayColor>-2742488</DisplayColor>
               <Enabled>true</Enabled>
@@ -6440,33 +6440,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -6573,33 +6573,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -6684,7 +6684,7 @@
               </SubMember>
               <Title>Channel_2568</Title>
             </Channel>
-            </SubMember>
+          </SubMember>
           <Title>AxisGroup_2542</Title>
         </AxisGroup>
         <AxisGroup AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -6745,7 +6745,7 @@
               <Title>MarkerContainer_2571</Title>
             </MarkerContainer>
             <RefGuid-TimeAxis>1a8c3e50-e9ca-4522-b554-b410e06cc922</RefGuid-TimeAxis>
-          <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+            <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
               <DisplayColor>-2742488</DisplayColor>
               <Enabled>true</Enabled>
@@ -6767,33 +6767,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -6878,7 +6878,7 @@
               </SubMember>
               <Title>Channel_2605</Title>
             </Channel>
-            </SubMember>
+          </SubMember>
           <Title>AxisGroup_2592</Title>
         </AxisGroup>
         <AxisGroup AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -6939,7 +6939,7 @@
               <Title>MarkerContainer_2608</Title>
             </MarkerContainer>
             <RefGuid-TimeAxis>1a8c3e50-e9ca-4522-b554-b410e06cc922</RefGuid-TimeAxis>
-          <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+            <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
               <DisplayColor>-2742488</DisplayColor>
               <Enabled>true</Enabled>
@@ -6961,33 +6961,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -7094,33 +7094,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -7205,7 +7205,7 @@
               </SubMember>
               <Title>Channel_2655</Title>
             </Channel>
-            </SubMember>
+          </SubMember>
           <Title>AxisGroup_2629</Title>
         </AxisGroup>
         <AxisGroup AssemblyName="TwinCAT.Measurement.Scope.API.Model">
@@ -7266,7 +7266,7 @@
               <Title>MarkerContainer_2658</Title>
             </MarkerContainer>
             <RefGuid-TimeAxis>1a8c3e50-e9ca-4522-b554-b410e06cc922</RefGuid-TimeAxis>
-          <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+            <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
               <Comment />
               <DisplayColor>-2742488</DisplayColor>
               <Enabled>true</Enabled>
@@ -7288,33 +7288,33 @@
                       <Name>None</Name>
                       <ScaleFactor>1</ScaleFactor>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
-                      <SourceUnitString />
+                      <SourceUnitString></SourceUnitString>
                       <Symbol>1</Symbol>
-                      <TargetUnitString />
+                      <TargetUnitString></TargetUnitString>
                       <TargetUnitValue>0</TargetUnitValue>
                     </Transformation>
                     <Unit>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ReturnText> (None) </ReturnText>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                     </Unit>
                     <UnitOffsetResult>0</UnitOffsetResult>
                     <UnitScaleResult>1</UnitScaleResult>
                     <UserUnit>
                       <BaseName>UnitOfOne</BaseName>
-                      <BaseUnitString />
+                      <BaseUnitString></BaseUnitString>
                       <BaseUnitValue>0</BaseUnitValue>
                       <Name>None</Name>
-                      <NameExtension />
+                      <NameExtension></NameExtension>
                       <Offset>0</Offset>
                       <Prefix>none</Prefix>
                       <ScaleFactor>1</ScaleFactor>
-                      <Symbol />
+                      <Symbol></Symbol>
                       <UserPrefix>none</UserPrefix>
                     </UserUnit>
                   </ResultingUnit>
@@ -7399,7 +7399,7 @@
               </SubMember>
               <Title>Channel_2692</Title>
             </Channel>
-            </SubMember>
+          </SubMember>
           <Title>AxisGroup_2679</Title>
         </AxisGroup>
         <OverviewChart AssemblyName="TwinCAT.Measurement.Scope.API.Model">
