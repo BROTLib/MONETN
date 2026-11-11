@@ -71,3 +71,6 @@ VSSettings/
 
 # IntelliJ/PyCharm module files
 *.iml
+
+# Scope recordings
+*.svdx
