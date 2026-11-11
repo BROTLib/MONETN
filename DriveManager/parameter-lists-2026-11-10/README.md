@@ -120,7 +120,7 @@ MONETcommon 0.20.0 (BROTLib/MONETcommon#250) ramps the el/az pointing offsets (`
 The azimuth sky offset 0.01 deg is 0.0177 deg on the axis at this elevation. The drive following distance equals the NC
 PosDiff in every window, so the lag is in the drive loop.
 
-Remaining overshoot, cause found: the NC set velocity (`SetVelo`) does not follow the ramp. It stays at the tracking
+Remaining overshoot: **not** the NC set velocity, see the correction below. Original hypothesis: the NC set velocity (`SetVelo`) does not follow the ramp. It stays at the tracking
 rate (+-0.0017 deg/s el, +-0.0068 deg/s az) and flips its sign whenever the lag changes sign. Az step at 72.3 s: during
 the ramp the lag grows with the ramp velocity (to 0.0045 deg, no feedforward for it); at 72.76 s `SetVelo` flips
 +0.0068 -> -0.0068 deg/s and the lag swings to -0.0058 deg (the overshoot). This is BROTLib#167: `FB_Axis` feeds
@@ -129,6 +129,14 @@ The AX5125 in mode 11 does use that velocity as feedforward (BROTLib#167 called 
 flip is a velocity kick at every lag zero crossing. Likely also the cause of the old 50-70 % overshoot that P and Kv
 hardly changed, and of the tracking noise. Fix: feed the derivative of the fed position (and its acceleration),
 BROTLib#167; test again with the same run.
+
+**Correction (2026-11-11, 13:15-13:18, recording `MotorTuning/WakeAndShake_13`, MONETcommon 0.22.0 / BROTLib 0.21.1):** the
+hypothesis is wrong. With `MAIN.TelescopeControl.bFeedFromPosition := TRUE` the NC `SetVelo` equals the derivative of the fed
+position (az up to 0.086 deg/s, no sign flip), but the response is the same as with FALSE in the same recording: overshoot el
+15-16 % -> 13-18 %, az 36-37 % -> 36-37 %, peak lag az 0.0065-0.0066 deg both, torque swing unchanged. The AX5125 in mode 11
+does not use the NC set velocity as feedforward in a way that matters here; the sign flip is harmless. The remaining az
+overshoot of about 36 % has another cause (not found; likely the drive's own position loop in lag-less mode).
+`bFeedFromPosition` stays FALSE. Details: IAG checklist step 4b.8.
 
 ## tsproj startup list (edited locally, NOT committed, NOT activated)
 
