@@ -144,7 +144,7 @@
           </SubMember>
           <SymbolBased>true</SymbolBased>
           <SymbolName>Azimuth (AX5125-0000-0214).AT.Following distance</SymbolName>
-          <TargetPort>27909</TargetPort>
+          <TargetPort>27910</TargetPort>
           <TimeOffset>0</TimeOffset>
           <Title>AdsAcquisition_492</Title>
           <UseLocalServer>true</UseLocalServer>
@@ -239,7 +239,7 @@
           </SubMember>
           <SymbolBased>true</SymbolBased>
           <SymbolName>Azimuth (AX5125-0000-0214).AT.Torque/force feedback value</SymbolName>
-          <TargetPort>27909</TargetPort>
+          <TargetPort>27910</TargetPort>
           <TimeOffset>0</TimeOffset>
           <Title>AdsAcquisition_492</Title>
           <UseLocalServer>true</UseLocalServer>
@@ -334,7 +334,7 @@
           </SubMember>
           <SymbolBased>true</SymbolBased>
           <SymbolName>Azimuth (AX5125-0000-0214).AT.Velocity feedback 1 value</SymbolName>
-          <TargetPort>27909</TargetPort>
+          <TargetPort>27910</TargetPort>
           <TimeOffset>0</TimeOffset>
           <Title>AdsAcquisition_492</Title>
           <UseLocalServer>true</UseLocalServer>
@@ -429,7 +429,7 @@
           </SubMember>
           <SymbolBased>true</SymbolBased>
           <SymbolName>Elevation (AX5125-0000-0214).AT.Following distance</SymbolName>
-          <TargetPort>27909</TargetPort>
+          <TargetPort>27910</TargetPort>
           <TimeOffset>0</TimeOffset>
           <Title>AdsAcquisition_492</Title>
           <UseLocalServer>true</UseLocalServer>
@@ -524,7 +524,7 @@
           </SubMember>
           <SymbolBased>true</SymbolBased>
           <SymbolName>Elevation (AX5125-0000-0214).AT.Torque/force feedback value</SymbolName>
-          <TargetPort>27909</TargetPort>
+          <TargetPort>27910</TargetPort>
           <TimeOffset>0</TimeOffset>
           <Title>AdsAcquisition_492</Title>
           <UseLocalServer>true</UseLocalServer>
@@ -619,7 +619,7 @@
           </SubMember>
           <SymbolBased>true</SymbolBased>
           <SymbolName>Elevation (AX5125-0000-0214).AT.Velocity feedback 1 value</SymbolName>
-          <TargetPort>27909</TargetPort>
+          <TargetPort>27910</TargetPort>
           <TimeOffset>0</TimeOffset>
           <Title>AdsAcquisition_85</Title>
           <UseLocalServer>true</UseLocalServer>

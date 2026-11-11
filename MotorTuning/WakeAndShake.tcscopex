@@ -79,7 +79,7 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>1</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>8e586fb2-8bc1-4aa6-bd79-0dee3e97d514</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -174,7 +174,7 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>2</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>f0625dc0-2eb5-452e-8f32-542eac0fcf96</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -269,7 +269,7 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>3</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>8ba6e330-5ea0-4bb9-8809-783abafb29d3</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -364,7 +364,7 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>4</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>1c55eae8-6c49-4431-b91b-d9bd82479bad</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -459,7 +459,7 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>5</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>73824666-94ff-4e92-872b-764d7996815c</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -554,7 +554,7 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>6</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>896acd34-bc02-44f7-a52d-0200e201bcc7</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -649,7 +649,7 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>7</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>765c18f2-af4e-4644-bd19-410fc49564f2</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -744,7 +744,7 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>8</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>c0fa345a-9a45-4f60-90fd-33a12a42fe55</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -839,7 +839,7 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>9</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>d75b0a3d-a52d-42fe-be69-6a20678a8c8c</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -934,7 +934,7 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>10</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>c568a717-827c-45d4-9921-81e4b477385e</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -1029,7 +1029,7 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>11</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>c83df379-754c-4ece-a285-2d618edc6443</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -1124,7 +1124,7 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>12</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>8c3b0d8c-3d4c-415b-9fd4-29af80f63a0e</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -1219,7 +1219,7 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>13</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>90307f4c-8dbf-4978-9540-d75616d8e601</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -1314,7 +1314,7 @@
           <DataType>BIT</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>14</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>ff343580-e5e1-4ac0-ad33-15f9cc2e0065</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -1409,7 +1409,7 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>15</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>bc176f70-bec0-4c8f-8d41-461733a4a429</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -1504,7 +1504,7 @@
           <DataType>UINT32</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>16</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>bf36d43a-ffb3-41f7-a136-729b72fec850</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -1599,7 +1599,7 @@
           <DataType>UINT32</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>17</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>55b4ccba-f913-4fb5-a5c4-836bb8e50c19</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -1694,7 +1694,7 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>18</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>62aba728-60f7-400b-8b6b-0fff11686c21</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -1789,7 +1789,7 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>19</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>222ee55c-2e56-43c9-bd76-bcd9cdaa67c7</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -1884,7 +1884,7 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>20</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>35ebf2b8-8c6b-4840-81f0-774655816974</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -1979,7 +1979,7 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>21</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>ef7cc3f1-79a0-4a8f-933e-bfd1f4cc452c</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -2074,7 +2074,7 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>22</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>9d492bc6-56f5-4eed-9cc0-467927508070</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -2169,7 +2169,7 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>23</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>c3b19de8-3971-43c8-9035-9391f094306f</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -2264,7 +2264,7 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>24</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>23637644-a858-4941-82b1-9f560d7cf8e4</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -2359,7 +2359,7 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>25</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>01a3d5ea-6c8a-4835-b8c6-fab0e672d427</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -2454,7 +2454,7 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>26</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>bc471d32-6232-4483-b5b3-9a825fed2ab4</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -2549,7 +2549,7 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>27</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>48465471-d40a-449b-b31a-13ddf7cb8211</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -2644,7 +2644,7 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>28</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>e8a5c46f-4683-4a8f-bb27-5d362fd23e4d</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -2739,7 +2739,7 @@
           <DataType>REAL64</DataType>
           <DisplayColor>Black</DisplayColor>
           <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
+          <FileHandle>29</FileHandle>
           <ForceOversampling>false</ForceOversampling>
           <Guid>c8333824-e2e0-4bff-8f96-17b1f78d14f3</Guid>
           <IndexGroup>16448</IndexGroup>
@@ -2809,6 +2809,386 @@
           <UseTaskSampleTime>true</UseTaskSampleTime>
           <UTF8Encoding>false</UTF8Encoding>
           <VariableSize>8</VariableSize>
+        </AdsAcquisition>
+        <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+          <AmsNetId>5.131.251.159.1.1</AmsNetId>
+          <Area>Output</Area>
+          <ArrayLength>0</ArrayLength>
+          <BaseSampleTime>20000</BaseSampleTime>
+          <ChannelStyleInformation />
+          <Comment></Comment>
+          <CompressionMode>Uncompressed</CompressionMode>
+          <ContextMask>0</ContextMask>
+          <DataAccess>
+            <DataAccessMode>
+              <Source>TwinCAT</Source>
+              <Protocoll>ADS</Protocoll>
+              <Format>TcBinary</Format>
+              <TimeContext>Present</TimeContext>
+              <TimeTangeInfo>
+                <StartTimeStamp>0</StartTimeStamp>
+                <EndTimeStamp>0</EndTimeStamp>
+              </TimeTangeInfo>
+            </DataAccessMode>
+          </DataAccess>
+          <DataType>INT16</DataType>
+          <DisplayColor>Black</DisplayColor>
+          <Enabled>true</Enabled>
+          <FileHandle>30</FileHandle>
+          <ForceOversampling>false</ForceOversampling>
+          <Guid>233d5208-9fd1-4e30-9691-cd20c77340d5</Guid>
+          <IndexGroup>61488</IndexGroup>
+          <IndexOffset>126</IndexOffset>
+          <IsHistorical>false</IsHistorical>
+          <Name>El drive torque</Name>
+          <Oversample>0</Oversample>
+          <RawUnit>
+            <Transformation>
+              <BaseUnitValue>0</BaseUnitValue>
+              <Name>None</Name>
+              <ScaleFactor>1</ScaleFactor>
+              <SourceUnitPrefix>none</SourceUnitPrefix>
+              <SourceUnitString></SourceUnitString>
+              <Symbol>1</Symbol>
+              <TargetUnitString></TargetUnitString>
+              <TargetUnitValue>0</TargetUnitValue>
+            </Transformation>
+            <Unit>
+              <BaseUnitString></BaseUnitString>
+              <BaseUnitValue>0</BaseUnitValue>
+              <NameExtension></NameExtension>
+              <Offset>0</Offset>
+              <Prefix>none</Prefix>
+              <ReturnText> (None) </ReturnText>
+              <ScaleFactor>1</ScaleFactor>
+              <Symbol></Symbol>
+            </Unit>
+            <UnitOffsetResult>0</UnitOffsetResult>
+            <UnitScaleResult>1</UnitScaleResult>
+            <UserUnit>
+              <BaseName>UnitOfOne</BaseName>
+              <BaseUnitString></BaseUnitString>
+              <BaseUnitValue>0</BaseUnitValue>
+              <Name>None</Name>
+              <NameExtension></NameExtension>
+              <Offset>0</Offset>
+              <Prefix>none</Prefix>
+              <ScaleFactor>1</ScaleFactor>
+              <Symbol></Symbol>
+              <UserPrefix>none</UserPrefix>
+            </UserUnit>
+          </RawUnit>
+          <SaveOption>IncludeDataInSVDX</SaveOption>
+          <ServerHandle>0</ServerHandle>
+          <SortPriority>10</SortPriority>
+          <SubMember>
+            <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+              <Comment />
+              <DetailLevel>
+                <Int32>0</Int32>
+              </DetailLevel>
+              <DisplayColor>Black</DisplayColor>
+              <Guid>2f862c46-29d7-4380-9541-08c152a961e3</Guid>
+              <Name>NameRelationInfo_501</Name>
+              <SortPriority>100</SortPriority>
+              <Title>NameRelationInfo_501</Title>
+              <UsedNameType>Custom</UsedNameType>
+            </NameRelationInfo>
+          </SubMember>
+          <SymbolBased>true</SymbolBased>
+          <SymbolName>Elevation (AX5125-0000-0214).AT.Torque/force feedback value</SymbolName>
+          <TargetPort>27910</TargetPort>
+          <TimeOffset>0</TimeOffset>
+          <Title>AdsAcquisition_492</Title>
+          <UseLocalServer>true</UseLocalServer>
+          <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
+          <VariableSize>2</VariableSize>
+        </AdsAcquisition>
+        <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+          <AmsNetId>5.131.251.159.1.1</AmsNetId>
+          <Area>Output</Area>
+          <ArrayLength>0</ArrayLength>
+          <BaseSampleTime>20000</BaseSampleTime>
+          <ChannelStyleInformation />
+          <Comment></Comment>
+          <CompressionMode>Uncompressed</CompressionMode>
+          <ContextMask>0</ContextMask>
+          <DataAccess>
+            <DataAccessMode>
+              <Source>TwinCAT</Source>
+              <Protocoll>ADS</Protocoll>
+              <Format>TcBinary</Format>
+              <TimeContext>Present</TimeContext>
+              <TimeTangeInfo>
+                <StartTimeStamp>0</StartTimeStamp>
+                <EndTimeStamp>0</EndTimeStamp>
+              </TimeTangeInfo>
+            </DataAccessMode>
+          </DataAccess>
+          <DataType>INT16</DataType>
+          <DisplayColor>Black</DisplayColor>
+          <Enabled>true</Enabled>
+          <FileHandle>31</FileHandle>
+          <ForceOversampling>false</ForceOversampling>
+          <Guid>0e98c08e-b843-47a6-9637-0dd08111c1da</Guid>
+          <IndexGroup>61488</IndexGroup>
+          <IndexOffset>94</IndexOffset>
+          <IsHistorical>false</IsHistorical>
+          <Name>Az drive torque</Name>
+          <Oversample>0</Oversample>
+          <RawUnit>
+            <Transformation>
+              <BaseUnitValue>0</BaseUnitValue>
+              <Name>None</Name>
+              <ScaleFactor>1</ScaleFactor>
+              <SourceUnitPrefix>none</SourceUnitPrefix>
+              <SourceUnitString></SourceUnitString>
+              <Symbol>1</Symbol>
+              <TargetUnitString></TargetUnitString>
+              <TargetUnitValue>0</TargetUnitValue>
+            </Transformation>
+            <Unit>
+              <BaseUnitString></BaseUnitString>
+              <BaseUnitValue>0</BaseUnitValue>
+              <NameExtension></NameExtension>
+              <Offset>0</Offset>
+              <Prefix>none</Prefix>
+              <ReturnText> (None) </ReturnText>
+              <ScaleFactor>1</ScaleFactor>
+              <Symbol></Symbol>
+            </Unit>
+            <UnitOffsetResult>0</UnitOffsetResult>
+            <UnitScaleResult>1</UnitScaleResult>
+            <UserUnit>
+              <BaseName>UnitOfOne</BaseName>
+              <BaseUnitString></BaseUnitString>
+              <BaseUnitValue>0</BaseUnitValue>
+              <Name>None</Name>
+              <NameExtension></NameExtension>
+              <Offset>0</Offset>
+              <Prefix>none</Prefix>
+              <ScaleFactor>1</ScaleFactor>
+              <Symbol></Symbol>
+              <UserPrefix>none</UserPrefix>
+            </UserUnit>
+          </RawUnit>
+          <SaveOption>IncludeDataInSVDX</SaveOption>
+          <ServerHandle>0</ServerHandle>
+          <SortPriority>10</SortPriority>
+          <SubMember>
+            <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+              <Comment />
+              <DetailLevel>
+                <Int32>0</Int32>
+              </DetailLevel>
+              <DisplayColor>Black</DisplayColor>
+              <Guid>1da8f57d-af6f-4489-91ed-3eeba1f23e63</Guid>
+              <Name>NameRelationInfo_495</Name>
+              <SortPriority>100</SortPriority>
+              <Title>NameRelationInfo_495</Title>
+              <UsedNameType>Custom</UsedNameType>
+            </NameRelationInfo>
+          </SubMember>
+          <SymbolBased>true</SymbolBased>
+          <SymbolName>Azimuth (AX5125-0000-0214).AT.Torque/force feedback value</SymbolName>
+          <TargetPort>27910</TargetPort>
+          <TimeOffset>0</TimeOffset>
+          <Title>AdsAcquisition_492</Title>
+          <UseLocalServer>true</UseLocalServer>
+          <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
+          <VariableSize>2</VariableSize>
+        </AdsAcquisition>
+        <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+          <AmsNetId>5.131.251.159.1.1</AmsNetId>
+          <Area>Output</Area>
+          <ArrayLength>0</ArrayLength>
+          <BaseSampleTime>20000</BaseSampleTime>
+          <ChannelStyleInformation />
+          <Comment></Comment>
+          <CompressionMode>Uncompressed</CompressionMode>
+          <ContextMask>0</ContextMask>
+          <DataAccess>
+            <DataAccessMode>
+              <Source>TwinCAT</Source>
+              <Protocoll>ADS</Protocoll>
+              <Format>TcBinary</Format>
+              <TimeContext>Present</TimeContext>
+              <TimeTangeInfo>
+                <StartTimeStamp>0</StartTimeStamp>
+                <EndTimeStamp>0</EndTimeStamp>
+              </TimeTangeInfo>
+            </DataAccessMode>
+          </DataAccess>
+          <DataType>INT32</DataType>
+          <DisplayColor>Black</DisplayColor>
+          <Enabled>true</Enabled>
+          <FileHandle>32</FileHandle>
+          <ForceOversampling>false</ForceOversampling>
+          <Guid>da3ca9a7-f9cf-4cdc-b3d1-f1df368a63bc</Guid>
+          <IndexGroup>61488</IndexGroup>
+          <IndexOffset>122</IndexOffset>
+          <IsHistorical>false</IsHistorical>
+          <Name>El drive following distance</Name>
+          <Oversample>0</Oversample>
+          <RawUnit>
+            <Transformation>
+              <BaseUnitValue>0</BaseUnitValue>
+              <Name>None</Name>
+              <ScaleFactor>1</ScaleFactor>
+              <SourceUnitPrefix>none</SourceUnitPrefix>
+              <SourceUnitString></SourceUnitString>
+              <Symbol>1</Symbol>
+              <TargetUnitString></TargetUnitString>
+              <TargetUnitValue>0</TargetUnitValue>
+            </Transformation>
+            <Unit>
+              <BaseUnitString></BaseUnitString>
+              <BaseUnitValue>0</BaseUnitValue>
+              <NameExtension></NameExtension>
+              <Offset>0</Offset>
+              <Prefix>none</Prefix>
+              <ReturnText> (None) </ReturnText>
+              <ScaleFactor>1</ScaleFactor>
+              <Symbol></Symbol>
+            </Unit>
+            <UnitOffsetResult>0</UnitOffsetResult>
+            <UnitScaleResult>1</UnitScaleResult>
+            <UserUnit>
+              <BaseName>UnitOfOne</BaseName>
+              <BaseUnitString></BaseUnitString>
+              <BaseUnitValue>0</BaseUnitValue>
+              <Name>None</Name>
+              <NameExtension></NameExtension>
+              <Offset>0</Offset>
+              <Prefix>none</Prefix>
+              <ScaleFactor>1</ScaleFactor>
+              <Symbol></Symbol>
+              <UserPrefix>none</UserPrefix>
+            </UserUnit>
+          </RawUnit>
+          <SaveOption>IncludeDataInSVDX</SaveOption>
+          <ServerHandle>0</ServerHandle>
+          <SortPriority>10</SortPriority>
+          <SubMember>
+            <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+              <Comment />
+              <DetailLevel>
+                <Int32>0</Int32>
+              </DetailLevel>
+              <DisplayColor>Black</DisplayColor>
+              <Guid>2a52ab71-297e-43d5-82bc-91cd7ac2e8e0</Guid>
+              <Name>NameRelationInfo_500</Name>
+              <SortPriority>100</SortPriority>
+              <Title>NameRelationInfo_500</Title>
+              <UsedNameType>Custom</UsedNameType>
+            </NameRelationInfo>
+          </SubMember>
+          <SymbolBased>true</SymbolBased>
+          <SymbolName>Elevation (AX5125-0000-0214).AT.Following distance</SymbolName>
+          <TargetPort>27910</TargetPort>
+          <TimeOffset>0</TimeOffset>
+          <Title>AdsAcquisition_492</Title>
+          <UseLocalServer>true</UseLocalServer>
+          <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
+          <VariableSize>4</VariableSize>
+        </AdsAcquisition>
+        <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+          <AmsNetId>5.131.251.159.1.1</AmsNetId>
+          <Area>Output</Area>
+          <ArrayLength>0</ArrayLength>
+          <BaseSampleTime>20000</BaseSampleTime>
+          <ChannelStyleInformation />
+          <Comment></Comment>
+          <CompressionMode>Uncompressed</CompressionMode>
+          <ContextMask>0</ContextMask>
+          <DataAccess>
+            <DataAccessMode>
+              <Source>TwinCAT</Source>
+              <Protocoll>ADS</Protocoll>
+              <Format>TcBinary</Format>
+              <TimeContext>Present</TimeContext>
+              <TimeTangeInfo>
+                <StartTimeStamp>0</StartTimeStamp>
+                <EndTimeStamp>0</EndTimeStamp>
+              </TimeTangeInfo>
+            </DataAccessMode>
+          </DataAccess>
+          <DataType>INT32</DataType>
+          <DisplayColor>Black</DisplayColor>
+          <Enabled>true</Enabled>
+          <FileHandle>33</FileHandle>
+          <ForceOversampling>false</ForceOversampling>
+          <Guid>efc59840-2c1b-4805-8730-f805eca2fc87</Guid>
+          <IndexGroup>61488</IndexGroup>
+          <IndexOffset>78</IndexOffset>
+          <IsHistorical>false</IsHistorical>
+          <Name>Az drive following distance</Name>
+          <Oversample>0</Oversample>
+          <RawUnit>
+            <Transformation>
+              <BaseUnitValue>0</BaseUnitValue>
+              <Name>None</Name>
+              <ScaleFactor>1</ScaleFactor>
+              <SourceUnitPrefix>none</SourceUnitPrefix>
+              <SourceUnitString></SourceUnitString>
+              <Symbol>1</Symbol>
+              <TargetUnitString></TargetUnitString>
+              <TargetUnitValue>0</TargetUnitValue>
+            </Transformation>
+            <Unit>
+              <BaseUnitString></BaseUnitString>
+              <BaseUnitValue>0</BaseUnitValue>
+              <NameExtension></NameExtension>
+              <Offset>0</Offset>
+              <Prefix>none</Prefix>
+              <ReturnText> (None) </ReturnText>
+              <ScaleFactor>1</ScaleFactor>
+              <Symbol></Symbol>
+            </Unit>
+            <UnitOffsetResult>0</UnitOffsetResult>
+            <UnitScaleResult>1</UnitScaleResult>
+            <UserUnit>
+              <BaseName>UnitOfOne</BaseName>
+              <BaseUnitString></BaseUnitString>
+              <BaseUnitValue>0</BaseUnitValue>
+              <Name>None</Name>
+              <NameExtension></NameExtension>
+              <Offset>0</Offset>
+              <Prefix>none</Prefix>
+              <ScaleFactor>1</ScaleFactor>
+              <Symbol></Symbol>
+              <UserPrefix>none</UserPrefix>
+            </UserUnit>
+          </RawUnit>
+          <SaveOption>IncludeDataInSVDX</SaveOption>
+          <ServerHandle>0</ServerHandle>
+          <SortPriority>10</SortPriority>
+          <SubMember>
+            <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+              <Comment />
+              <DetailLevel>
+                <Int32>0</Int32>
+              </DetailLevel>
+              <DisplayColor>Black</DisplayColor>
+              <Guid>8e9373b9-d932-4b18-9b66-9c412d09d62c</Guid>
+              <Name>NameRelationInfo_493</Name>
+              <SortPriority>100</SortPriority>
+              <Title>NameRelationInfo_493</Title>
+              <UsedNameType>Custom</UsedNameType>
+            </NameRelationInfo>
+          </SubMember>
+          <SymbolBased>true</SymbolBased>
+          <SymbolName>Azimuth (AX5125-0000-0214).AT.Following distance</SymbolName>
+          <TargetPort>27910</TargetPort>
+          <TimeOffset>0</TimeOffset>
+          <Title>AdsAcquisition_492</Title>
+          <UseLocalServer>true</UseLocalServer>
+          <UseTaskSampleTime>true</UseTaskSampleTime>
+          <UTF8Encoding>false</UTF8Encoding>
+          <VariableSize>4</VariableSize>
         </AdsAcquisition>
       </SubMember>
       <Title>DataPool_123</Title>
@@ -5836,6 +6216,139 @@
               </SubMember>
               <Title>Channel_2431</Title>
             </Channel>
+            <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+              <Comment />
+              <DisplayColor>-16744448</DisplayColor>
+              <Enabled>true</Enabled>
+              <Guid>091ddf68-c6aa-47c5-b7d6-215f8a68994f</Guid>
+              <Name>El drive following distance</Name>
+              <SortPriority>10</SortPriority>
+              <SubMember>
+                <AcquisitionInterpreter AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                  <AcquisitionGUID>da3ca9a7-f9cf-4cdc-b3d1-f1df368a63bc</AcquisitionGUID>
+                  <BitMask>18446744073709551615</BitMask>
+                  <Comment />
+                  <DisplayColor>Black</DisplayColor>
+                  <Guid>d3685117-eb2f-4d12-a24c-e69510adb530</Guid>
+                  <Name>Y: El drive following distance</Name>
+                  <Offset>0</Offset>
+                  <ResultingUnit>
+                    <Transformation>
+                      <BaseUnitValue>0</BaseUnitValue>
+                      <Name>None</Name>
+                      <ScaleFactor>1</ScaleFactor>
+                      <SourceUnitPrefix>none</SourceUnitPrefix>
+                      <SourceUnitString></SourceUnitString>
+                      <Symbol>1</Symbol>
+                      <TargetUnitString></TargetUnitString>
+                      <TargetUnitValue>0</TargetUnitValue>
+                    </Transformation>
+                    <Unit>
+                      <BaseUnitString></BaseUnitString>
+                      <BaseUnitValue>0</BaseUnitValue>
+                      <NameExtension></NameExtension>
+                      <Offset>0</Offset>
+                      <Prefix>none</Prefix>
+                      <ReturnText> (None) </ReturnText>
+                      <ScaleFactor>1</ScaleFactor>
+                      <Symbol></Symbol>
+                    </Unit>
+                    <UnitOffsetResult>0</UnitOffsetResult>
+                    <UnitScaleResult>1</UnitScaleResult>
+                    <UserUnit>
+                      <BaseName>UnitOfOne</BaseName>
+                      <BaseUnitString></BaseUnitString>
+                      <BaseUnitValue>0</BaseUnitValue>
+                      <Name>None</Name>
+                      <NameExtension></NameExtension>
+                      <Offset>0</Offset>
+                      <Prefix>none</Prefix>
+                      <ScaleFactor>1</ScaleFactor>
+                      <Symbol></Symbol>
+                      <UserPrefix>none</UserPrefix>
+                    </UserUnit>
+                  </ResultingUnit>
+                  <ScaleFactor>1</ScaleFactor>
+                  <ShortInfo />
+                  <SortPriority>2</SortPriority>
+                  <SubMember>
+                    <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                      <Comment />
+                      <DetailLevel>
+                        <Int32>0</Int32>
+                      </DetailLevel>
+                      <DisplayColor>Black</DisplayColor>
+                      <Guid>449bd6f1-0f99-431c-8993-cb80e568c83f</Guid>
+                      <Name>NameRelationInfo_2509</Name>
+                      <SortPriority>100</SortPriority>
+                      <Title>NameRelationInfo_2510</Title>
+                      <UsedNameType>Acquisition</UsedNameType>
+                    </NameRelationInfo>
+                  </SubMember>
+                  <Title>AcquisitionInterpreter_2511</Title>
+                  <Usage>Y</Usage>
+                </AcquisitionInterpreter>
+                <ChannelStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                  <Comment />
+                  <DisplayColor>Black</DisplayColor>
+                  <Guid>9ff789d1-d500-4e6f-948d-f91b71124bb7</Guid>
+                  <Name>Channel Style</Name>
+                  <SortPriority>100</SortPriority>
+                  <SubMember>
+                    <SeriesStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                      <Antialias>true</Antialias>
+                      <Comment />
+                      <DisplayColor>-16744448</DisplayColor>
+                      <FillColor>838893568</FillColor>
+                      <FillMode>FromHorizontalZero</FillMode>
+                      <Guid>fe87c472-5422-4d28-887b-e9ce4759b709</Guid>
+                      <LineWidth>2</LineWidth>
+                      <MarkColor>-16744448</MarkColor>
+                      <MarkSize>2</MarkSize>
+                      <MarkState>Auto</MarkState>
+                      <Name>Series Style</Name>
+                      <SeriesType>Line</SeriesType>
+                      <SortPriority>100</SortPriority>
+                      <Title>SeriesStyle_2512</Title>
+                    </SeriesStyle>
+                    <MinMaxStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                      <Comment />
+                      <DisplayColor>Black</DisplayColor>
+                      <Guid>573e9819-3242-4643-9e12-9536918e7509</Guid>
+                      <Name>Min/Max Style</Name>
+                      <ShowMax>false</ShowMax>
+                      <ShowMin>false</ShowMin>
+                      <SortPriority>100</SortPriority>
+                      <Title>MinMaxStyle_2513</Title>
+                    </MinMaxStyle>
+                    <TimeShiftStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                      <Comment />
+                      <DisplayColor>Black</DisplayColor>
+                      <Guid>92f0422f-5c9b-4389-bd89-574910cfc684</Guid>
+                      <Name>TimeShiftStyle_169</Name>
+                      <SortPriority>100</SortPriority>
+                      <TimeShift>0</TimeShift>
+                      <Title>TimeShiftStyle_2514</Title>
+                    </TimeShiftStyle>
+                  </SubMember>
+                  <Title>ChannelStyle_2515</Title>
+                  <Visible>true</Visible>
+                </ChannelStyle>
+                <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                  <Comment />
+                  <DetailLevel>
+                    <Int32>0</Int32>
+                  </DetailLevel>
+                  <DisplayColor>Black</DisplayColor>
+                  <Guid>f168be8c-9006-4bb6-aa3a-7fe647aa04b4</Guid>
+                  <Name>NameRelationInfo_2516</Name>
+                  <SortPriority>100</SortPriority>
+                  <Title>NameRelationInfo_2517</Title>
+                  <UsedNameType>Acquisition</UsedNameType>
+                </NameRelationInfo>
+              </SubMember>
+              <Title>Channel_2518</Title>
+            </Channel>
           </SubMember>
           <Title>AxisGroup_2418</Title>
         </AxisGroup>
@@ -6349,6 +6862,139 @@
                   </DetailLevel>
                   <DisplayColor>Black</DisplayColor>
                   <Guid>2f7d2355-d601-4438-8747-a9d9c9f1e153</Guid>
+                  <Name>NameRelationInfo_2516</Name>
+                  <SortPriority>100</SortPriority>
+                  <Title>NameRelationInfo_2517</Title>
+                  <UsedNameType>Acquisition</UsedNameType>
+                </NameRelationInfo>
+              </SubMember>
+              <Title>Channel_2518</Title>
+            </Channel>
+            <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+              <Comment />
+              <DisplayColor>-16744448</DisplayColor>
+              <Enabled>true</Enabled>
+              <Guid>c7ce8ed5-ccc7-4f0f-a5bb-3112c32c29ef</Guid>
+              <Name>El drive torque</Name>
+              <SortPriority>10</SortPriority>
+              <SubMember>
+                <AcquisitionInterpreter AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                  <AcquisitionGUID>233d5208-9fd1-4e30-9691-cd20c77340d5</AcquisitionGUID>
+                  <BitMask>18446744073709551615</BitMask>
+                  <Comment />
+                  <DisplayColor>Black</DisplayColor>
+                  <Guid>dab60d76-63ed-44ce-a6ca-1a51e6a81baf</Guid>
+                  <Name>Y: El drive torque</Name>
+                  <Offset>0</Offset>
+                  <ResultingUnit>
+                    <Transformation>
+                      <BaseUnitValue>0</BaseUnitValue>
+                      <Name>None</Name>
+                      <ScaleFactor>1</ScaleFactor>
+                      <SourceUnitPrefix>none</SourceUnitPrefix>
+                      <SourceUnitString></SourceUnitString>
+                      <Symbol>1</Symbol>
+                      <TargetUnitString></TargetUnitString>
+                      <TargetUnitValue>0</TargetUnitValue>
+                    </Transformation>
+                    <Unit>
+                      <BaseUnitString></BaseUnitString>
+                      <BaseUnitValue>0</BaseUnitValue>
+                      <NameExtension></NameExtension>
+                      <Offset>0</Offset>
+                      <Prefix>none</Prefix>
+                      <ReturnText> (None) </ReturnText>
+                      <ScaleFactor>1</ScaleFactor>
+                      <Symbol></Symbol>
+                    </Unit>
+                    <UnitOffsetResult>0</UnitOffsetResult>
+                    <UnitScaleResult>1</UnitScaleResult>
+                    <UserUnit>
+                      <BaseName>UnitOfOne</BaseName>
+                      <BaseUnitString></BaseUnitString>
+                      <BaseUnitValue>0</BaseUnitValue>
+                      <Name>None</Name>
+                      <NameExtension></NameExtension>
+                      <Offset>0</Offset>
+                      <Prefix>none</Prefix>
+                      <ScaleFactor>1</ScaleFactor>
+                      <Symbol></Symbol>
+                      <UserPrefix>none</UserPrefix>
+                    </UserUnit>
+                  </ResultingUnit>
+                  <ScaleFactor>1</ScaleFactor>
+                  <ShortInfo />
+                  <SortPriority>2</SortPriority>
+                  <SubMember>
+                    <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                      <Comment />
+                      <DetailLevel>
+                        <Int32>0</Int32>
+                      </DetailLevel>
+                      <DisplayColor>Black</DisplayColor>
+                      <Guid>1b042519-d6e1-40ff-b849-7e6a8f774779</Guid>
+                      <Name>NameRelationInfo_2509</Name>
+                      <SortPriority>100</SortPriority>
+                      <Title>NameRelationInfo_2510</Title>
+                      <UsedNameType>Acquisition</UsedNameType>
+                    </NameRelationInfo>
+                  </SubMember>
+                  <Title>AcquisitionInterpreter_2511</Title>
+                  <Usage>Y</Usage>
+                </AcquisitionInterpreter>
+                <ChannelStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                  <Comment />
+                  <DisplayColor>Black</DisplayColor>
+                  <Guid>07e07eac-4271-46a6-84fa-24d0d0095c36</Guid>
+                  <Name>Channel Style</Name>
+                  <SortPriority>100</SortPriority>
+                  <SubMember>
+                    <SeriesStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                      <Antialias>true</Antialias>
+                      <Comment />
+                      <DisplayColor>-16744448</DisplayColor>
+                      <FillColor>838893568</FillColor>
+                      <FillMode>FromHorizontalZero</FillMode>
+                      <Guid>db0a3c23-84ef-401c-b902-17dc959acff7</Guid>
+                      <LineWidth>2</LineWidth>
+                      <MarkColor>-16744448</MarkColor>
+                      <MarkSize>2</MarkSize>
+                      <MarkState>Auto</MarkState>
+                      <Name>Series Style</Name>
+                      <SeriesType>Line</SeriesType>
+                      <SortPriority>100</SortPriority>
+                      <Title>SeriesStyle_2512</Title>
+                    </SeriesStyle>
+                    <MinMaxStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                      <Comment />
+                      <DisplayColor>Black</DisplayColor>
+                      <Guid>1643cffa-c68d-4b83-8fec-a0ec58cb4113</Guid>
+                      <Name>Min/Max Style</Name>
+                      <ShowMax>false</ShowMax>
+                      <ShowMin>false</ShowMin>
+                      <SortPriority>100</SortPriority>
+                      <Title>MinMaxStyle_2513</Title>
+                    </MinMaxStyle>
+                    <TimeShiftStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                      <Comment />
+                      <DisplayColor>Black</DisplayColor>
+                      <Guid>66a0aaee-171d-4f1d-8513-735beb41aa08</Guid>
+                      <Name>TimeShiftStyle_169</Name>
+                      <SortPriority>100</SortPriority>
+                      <TimeShift>0</TimeShift>
+                      <Title>TimeShiftStyle_2514</Title>
+                    </TimeShiftStyle>
+                  </SubMember>
+                  <Title>ChannelStyle_2515</Title>
+                  <Visible>true</Visible>
+                </ChannelStyle>
+                <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                  <Comment />
+                  <DetailLevel>
+                    <Int32>0</Int32>
+                  </DetailLevel>
+                  <DisplayColor>Black</DisplayColor>
+                  <Guid>c27afb18-0afb-42e2-aaa4-26cf7f401155</Guid>
                   <Name>NameRelationInfo_2516</Name>
                   <SortPriority>100</SortPriority>
                   <Title>NameRelationInfo_2517</Title>
@@ -6878,6 +7524,139 @@
               </SubMember>
               <Title>Channel_2605</Title>
             </Channel>
+            <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+              <Comment />
+              <DisplayColor>-16744448</DisplayColor>
+              <Enabled>true</Enabled>
+              <Guid>3e3f0291-6b1d-4a56-8fd8-ab183a4d5e19</Guid>
+              <Name>Az drive following distance</Name>
+              <SortPriority>10</SortPriority>
+              <SubMember>
+                <AcquisitionInterpreter AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                  <AcquisitionGUID>efc59840-2c1b-4805-8730-f805eca2fc87</AcquisitionGUID>
+                  <BitMask>18446744073709551615</BitMask>
+                  <Comment />
+                  <DisplayColor>Black</DisplayColor>
+                  <Guid>5eee7596-4299-4dcb-b9d9-c69f36e5b12c</Guid>
+                  <Name>Y: Az drive following distance</Name>
+                  <Offset>0</Offset>
+                  <ResultingUnit>
+                    <Transformation>
+                      <BaseUnitValue>0</BaseUnitValue>
+                      <Name>None</Name>
+                      <ScaleFactor>1</ScaleFactor>
+                      <SourceUnitPrefix>none</SourceUnitPrefix>
+                      <SourceUnitString></SourceUnitString>
+                      <Symbol>1</Symbol>
+                      <TargetUnitString></TargetUnitString>
+                      <TargetUnitValue>0</TargetUnitValue>
+                    </Transformation>
+                    <Unit>
+                      <BaseUnitString></BaseUnitString>
+                      <BaseUnitValue>0</BaseUnitValue>
+                      <NameExtension></NameExtension>
+                      <Offset>0</Offset>
+                      <Prefix>none</Prefix>
+                      <ReturnText> (None) </ReturnText>
+                      <ScaleFactor>1</ScaleFactor>
+                      <Symbol></Symbol>
+                    </Unit>
+                    <UnitOffsetResult>0</UnitOffsetResult>
+                    <UnitScaleResult>1</UnitScaleResult>
+                    <UserUnit>
+                      <BaseName>UnitOfOne</BaseName>
+                      <BaseUnitString></BaseUnitString>
+                      <BaseUnitValue>0</BaseUnitValue>
+                      <Name>None</Name>
+                      <NameExtension></NameExtension>
+                      <Offset>0</Offset>
+                      <Prefix>none</Prefix>
+                      <ScaleFactor>1</ScaleFactor>
+                      <Symbol></Symbol>
+                      <UserPrefix>none</UserPrefix>
+                    </UserUnit>
+                  </ResultingUnit>
+                  <ScaleFactor>1</ScaleFactor>
+                  <ShortInfo />
+                  <SortPriority>2</SortPriority>
+                  <SubMember>
+                    <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                      <Comment />
+                      <DetailLevel>
+                        <Int32>0</Int32>
+                      </DetailLevel>
+                      <DisplayColor>Black</DisplayColor>
+                      <Guid>9d8abb01-2c63-4e42-9654-6b44ce9bdb99</Guid>
+                      <Name>NameRelationInfo_2509</Name>
+                      <SortPriority>100</SortPriority>
+                      <Title>NameRelationInfo_2510</Title>
+                      <UsedNameType>Acquisition</UsedNameType>
+                    </NameRelationInfo>
+                  </SubMember>
+                  <Title>AcquisitionInterpreter_2511</Title>
+                  <Usage>Y</Usage>
+                </AcquisitionInterpreter>
+                <ChannelStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                  <Comment />
+                  <DisplayColor>Black</DisplayColor>
+                  <Guid>ef2ab327-d6e1-424a-85e3-2af5bc19d41f</Guid>
+                  <Name>Channel Style</Name>
+                  <SortPriority>100</SortPriority>
+                  <SubMember>
+                    <SeriesStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                      <Antialias>true</Antialias>
+                      <Comment />
+                      <DisplayColor>-16744448</DisplayColor>
+                      <FillColor>838893568</FillColor>
+                      <FillMode>FromHorizontalZero</FillMode>
+                      <Guid>2b4d374f-552e-4328-8156-8e5075b154d7</Guid>
+                      <LineWidth>2</LineWidth>
+                      <MarkColor>-16744448</MarkColor>
+                      <MarkSize>2</MarkSize>
+                      <MarkState>Auto</MarkState>
+                      <Name>Series Style</Name>
+                      <SeriesType>Line</SeriesType>
+                      <SortPriority>100</SortPriority>
+                      <Title>SeriesStyle_2512</Title>
+                    </SeriesStyle>
+                    <MinMaxStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                      <Comment />
+                      <DisplayColor>Black</DisplayColor>
+                      <Guid>16bd1282-8ccc-4c66-a848-37ff0b3a4645</Guid>
+                      <Name>Min/Max Style</Name>
+                      <ShowMax>false</ShowMax>
+                      <ShowMin>false</ShowMin>
+                      <SortPriority>100</SortPriority>
+                      <Title>MinMaxStyle_2513</Title>
+                    </MinMaxStyle>
+                    <TimeShiftStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                      <Comment />
+                      <DisplayColor>Black</DisplayColor>
+                      <Guid>3b8b9bcd-20b7-4686-99d3-1e3da71010b5</Guid>
+                      <Name>TimeShiftStyle_169</Name>
+                      <SortPriority>100</SortPriority>
+                      <TimeShift>0</TimeShift>
+                      <Title>TimeShiftStyle_2514</Title>
+                    </TimeShiftStyle>
+                  </SubMember>
+                  <Title>ChannelStyle_2515</Title>
+                  <Visible>true</Visible>
+                </ChannelStyle>
+                <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                  <Comment />
+                  <DetailLevel>
+                    <Int32>0</Int32>
+                  </DetailLevel>
+                  <DisplayColor>Black</DisplayColor>
+                  <Guid>a5017cd4-876d-447e-b59f-18f7a62e28e1</Guid>
+                  <Name>NameRelationInfo_2516</Name>
+                  <SortPriority>100</SortPriority>
+                  <Title>NameRelationInfo_2517</Title>
+                  <UsedNameType>Acquisition</UsedNameType>
+                </NameRelationInfo>
+              </SubMember>
+              <Title>Channel_2518</Title>
+            </Channel>
           </SubMember>
           <Title>AxisGroup_2592</Title>
         </AxisGroup>
@@ -7398,6 +8177,139 @@
                 </NameRelationInfo>
               </SubMember>
               <Title>Channel_2692</Title>
+            </Channel>
+            <Channel AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+              <Comment />
+              <DisplayColor>-16744448</DisplayColor>
+              <Enabled>true</Enabled>
+              <Guid>16a6fd6e-6d45-4b49-8af0-e8bd12a561ee</Guid>
+              <Name>Az drive torque</Name>
+              <SortPriority>10</SortPriority>
+              <SubMember>
+                <AcquisitionInterpreter AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                  <AcquisitionGUID>0e98c08e-b843-47a6-9637-0dd08111c1da</AcquisitionGUID>
+                  <BitMask>18446744073709551615</BitMask>
+                  <Comment />
+                  <DisplayColor>Black</DisplayColor>
+                  <Guid>b67f43c7-fa33-45eb-8687-0707e35d234a</Guid>
+                  <Name>Y: Az drive torque</Name>
+                  <Offset>0</Offset>
+                  <ResultingUnit>
+                    <Transformation>
+                      <BaseUnitValue>0</BaseUnitValue>
+                      <Name>None</Name>
+                      <ScaleFactor>1</ScaleFactor>
+                      <SourceUnitPrefix>none</SourceUnitPrefix>
+                      <SourceUnitString></SourceUnitString>
+                      <Symbol>1</Symbol>
+                      <TargetUnitString></TargetUnitString>
+                      <TargetUnitValue>0</TargetUnitValue>
+                    </Transformation>
+                    <Unit>
+                      <BaseUnitString></BaseUnitString>
+                      <BaseUnitValue>0</BaseUnitValue>
+                      <NameExtension></NameExtension>
+                      <Offset>0</Offset>
+                      <Prefix>none</Prefix>
+                      <ReturnText> (None) </ReturnText>
+                      <ScaleFactor>1</ScaleFactor>
+                      <Symbol></Symbol>
+                    </Unit>
+                    <UnitOffsetResult>0</UnitOffsetResult>
+                    <UnitScaleResult>1</UnitScaleResult>
+                    <UserUnit>
+                      <BaseName>UnitOfOne</BaseName>
+                      <BaseUnitString></BaseUnitString>
+                      <BaseUnitValue>0</BaseUnitValue>
+                      <Name>None</Name>
+                      <NameExtension></NameExtension>
+                      <Offset>0</Offset>
+                      <Prefix>none</Prefix>
+                      <ScaleFactor>1</ScaleFactor>
+                      <Symbol></Symbol>
+                      <UserPrefix>none</UserPrefix>
+                    </UserUnit>
+                  </ResultingUnit>
+                  <ScaleFactor>1</ScaleFactor>
+                  <ShortInfo />
+                  <SortPriority>2</SortPriority>
+                  <SubMember>
+                    <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                      <Comment />
+                      <DetailLevel>
+                        <Int32>0</Int32>
+                      </DetailLevel>
+                      <DisplayColor>Black</DisplayColor>
+                      <Guid>4728038f-99b2-416f-abd6-4a900c45370d</Guid>
+                      <Name>NameRelationInfo_2509</Name>
+                      <SortPriority>100</SortPriority>
+                      <Title>NameRelationInfo_2510</Title>
+                      <UsedNameType>Acquisition</UsedNameType>
+                    </NameRelationInfo>
+                  </SubMember>
+                  <Title>AcquisitionInterpreter_2511</Title>
+                  <Usage>Y</Usage>
+                </AcquisitionInterpreter>
+                <ChannelStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                  <Comment />
+                  <DisplayColor>Black</DisplayColor>
+                  <Guid>98f7a95d-180e-436f-927b-60a14849df55</Guid>
+                  <Name>Channel Style</Name>
+                  <SortPriority>100</SortPriority>
+                  <SubMember>
+                    <SeriesStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                      <Antialias>true</Antialias>
+                      <Comment />
+                      <DisplayColor>-16744448</DisplayColor>
+                      <FillColor>838893568</FillColor>
+                      <FillMode>FromHorizontalZero</FillMode>
+                      <Guid>1ccef351-513c-47ea-ad86-f8d0b7b6bd0d</Guid>
+                      <LineWidth>2</LineWidth>
+                      <MarkColor>-16744448</MarkColor>
+                      <MarkSize>2</MarkSize>
+                      <MarkState>Auto</MarkState>
+                      <Name>Series Style</Name>
+                      <SeriesType>Line</SeriesType>
+                      <SortPriority>100</SortPriority>
+                      <Title>SeriesStyle_2512</Title>
+                    </SeriesStyle>
+                    <MinMaxStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                      <Comment />
+                      <DisplayColor>Black</DisplayColor>
+                      <Guid>7ac70eaf-ea62-48a3-85d6-6334b76735d8</Guid>
+                      <Name>Min/Max Style</Name>
+                      <ShowMax>false</ShowMax>
+                      <ShowMin>false</ShowMin>
+                      <SortPriority>100</SortPriority>
+                      <Title>MinMaxStyle_2513</Title>
+                    </MinMaxStyle>
+                    <TimeShiftStyle AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                      <Comment />
+                      <DisplayColor>Black</DisplayColor>
+                      <Guid>eae3b77c-a199-4afe-983b-0b9ff5bb2ec5</Guid>
+                      <Name>TimeShiftStyle_169</Name>
+                      <SortPriority>100</SortPriority>
+                      <TimeShift>0</TimeShift>
+                      <Title>TimeShiftStyle_2514</Title>
+                    </TimeShiftStyle>
+                  </SubMember>
+                  <Title>ChannelStyle_2515</Title>
+                  <Visible>true</Visible>
+                </ChannelStyle>
+                <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+                  <Comment />
+                  <DetailLevel>
+                    <Int32>0</Int32>
+                  </DetailLevel>
+                  <DisplayColor>Black</DisplayColor>
+                  <Guid>b8ce1b44-592b-4f95-b19d-65dfebc8f722</Guid>
+                  <Name>NameRelationInfo_2516</Name>
+                  <SortPriority>100</SortPriority>
+                  <Title>NameRelationInfo_2517</Title>
+                  <UsedNameType>Acquisition</UsedNameType>
+                </NameRelationInfo>
+              </SubMember>
+              <Title>Channel_2518</Title>
             </Channel>
           </SubMember>
           <Title>AxisGroup_2679</Title>
