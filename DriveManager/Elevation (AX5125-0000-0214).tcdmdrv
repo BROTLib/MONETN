@@ -374,8 +374,9 @@
       <OrderCode>AX5125-0000-02xx</OrderCode>
       <Name>Elevation (AX5125-0000-0214)</Name>
       <FirmwareVersion>Firmware: v2.14 (Build 0006) / Bootloader: v2.02 (Build 0002)</FirmwareVersion>
+      <BootloaderVersion>2.02</BootloaderVersion>
       <CatalogNo>AX5125-0000-0214</CatalogNo>
-      <HardwareVersion>c:0180  p:0103  d:0102  f:0101  o:0101  s:----</HardwareVersion>
+      <HardwareVersion>c:0180  p:0103  d:0102  f:0101  o:----  s:----</HardwareVersion>
       <SerialNr>Serial#: 000530591</SerialNr>
       <ProductRevision>AX5125-0000-0214</ProductRevision>
       <HasDualUseInfo>true</HasDualUseInfo>
@@ -1873,7 +1874,7 @@
               <IDN>32933</IDN>
               <Elements>64</Elements>
               <Attribute>0</Attribute>
-              <Data>3c003c000100000064000000f401b80b0000000000000000f401f401f401f40164000500e1009600b80b84030000000000000000000000000000000000000000</Data>
+              <Data>3c003c000100000064000000f401b80b00000000000000005802f4015802f40100000500e100f401b80b84030000000000000000000000000000000000000000</Data>
             </InitCmd>
             <InitCmd>
               <Transition>PS</Transition>
