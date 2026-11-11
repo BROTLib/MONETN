@@ -102,6 +102,34 @@ one-cycle jump of the set position, and the lag-less mode turns it into a veloci
 and does not ring. Proposed fix: ramp the offsets in MONETcommon (also the set-position jump at track start, about 0.008 deg
 on azimuth). Cost of the new gains: elevation torque ripple at full speed +50 % (still far below limits).
 
+### Offset ramp, MONETcommon 0.20.0 (2026-11-11, 13:57 UTC)
+
+MONETcommon 0.20.0 (BROTLib/MONETcommon#250) ramps the el/az pointing offsets (`fOffsetAcceleration` 0.2 deg/s^2,
+`fOffsetVelocity` 0.5 deg/s, read back over ADS after the activation) and blends the track-start gap. Same test as
+`WakeAndShake_7` (new gains, tracking at hour angle -1 h, 0.01 deg offsets and back), recording `MotorTuning/WakeAndShake_11`:
+
+| | El 0.19.2 (`_7`) -> 0.20.0 (`_11`) | Az 0.19.2 (`_7`) -> 0.20.0 (`_11`) |
+|---|---|---|
+| Set position change | one cycle -> 0.43 s ramp (0.044 deg/s, 0.22 deg/s^2) | one cycle -> 0.44 s ramp (0.078 deg/s, 0.39 deg/s^2 on the axis) |
+| Peak lag | 0.0094-0.0098 -> **0.0016-0.0022 deg** | 0.0176-0.0178 -> **0.0065 deg** |
+| Overshoot | 64-70 % -> **16-18 %** | 52-57 % -> **36-37 %** |
+| Within 10 % after | 0.95-0.98 s -> 0.49-0.58 s | 0.96-1.02 s -> 0.91-1.10 s |
+| Within 0.0005 deg after | 1.14-1.33 s -> 0.85-0.97 s | 1.53-2.16 s -> 1.51-1.78 s |
+| Torque swing | 40-42 % -> 19-21 % | 31-32 % -> 19-20 % |
+
+The azimuth sky offset 0.01 deg is 0.0177 deg on the axis at this elevation. The drive following distance equals the NC
+PosDiff in every window, so the lag is in the drive loop.
+
+Remaining overshoot, cause found: the NC set velocity (`SetVelo`) does not follow the ramp. It stays at the tracking
+rate (+-0.0017 deg/s el, +-0.0068 deg/s az) and flips its sign whenever the lag changes sign. Az step at 72.3 s: during
+the ramp the lag grows with the ramp velocity (to 0.0045 deg, no feedforward for it); at 72.76 s `SetVelo` flips
++0.0068 -> -0.0068 deg/s and the lag swings to -0.0058 deg (the overshoot). This is BROTLib#167: `FB_Axis` feeds
+`MC_ExtSetPointGenFeed` a velocity from the sign of `Position - ActualPosition`, not the derivative of the fed position.
+The AX5125 in mode 11 does use that velocity as feedforward (BROTLib#167 called it probably harmless), so the sign
+flip is a velocity kick at every lag zero crossing. Likely also the cause of the old 50-70 % overshoot that P and Kv
+hardly changed, and of the tracking noise. Fix: feed the derivative of the fed position (and its acceleration),
+BROTLib#167; test again with the same run.
+
 ## tsproj startup list (edited locally, NOT committed, NOT activated)
 
 Superseded: P-0-0165 is on enable for both axes since MONETN `8814191` (azimuth first-phase wait 500 ms).
