@@ -203,6 +203,7 @@ mainReady := NOT PowerMonitoring.FrequencyGuardWarning AND NOT PowerMonitoring.F
 IF eTelescopeMode = E_TelescopeMode.automatic THEN
 	TelescopeControl(
 		telescopeConfig := telescopeConfig,
+		sTelescopeName	:= 'MONET/N',				// log: "MONET/N startup finished"
 		fbCovers 		:= CoverControl,
 		fbBrake 		:= HydraulicsControl,
 		fbHydraulics 	:= HydraulicsControl,

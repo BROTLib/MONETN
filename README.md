@@ -24,7 +24,9 @@ software are shared) and was later renamed/refactored to MONETN. STELLA1
 remnants in the repository: the stale `Mappings.xml` still uses the old PLC
 instance name `TIPC^STELLA1Runtime^STELLA1Runtime Instance`, the older
 `MONET.tsproj` revision references `..\STELLA1\MONET.tsproj` for the drive
-modules, and `FB_MonetTelescopeControl` logs `'STELLA1 startup finished'`.
+modules. `FB_MonetTelescopeControl` logged `'STELLA1 startup finished'` up to
+MONETcommon 0.23.0; since then it logs `'MONET/N startup finished'` (its
+`sTelescopeName` input, set in MAIN).
 
 The legacy README stub (`# STELLA1 / Configuration`: PLC `CX-7A03E9`, AMS
 Net-ID `5.122.3.233.1.1`, IP `161.72.132.76`) is **out of date / only partially
