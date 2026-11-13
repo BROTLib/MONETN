@@ -73,6 +73,14 @@ VAR CONSTANT
 	fbPointing			: FB_PointingModelForward(AOFF := 0.0, BNP := 0.41799581014823517, AN_A := -0.0005399238415356825, AE_A := 0.0010943700155200701, NPAE := 0.3540915955287274,
                                                   EOFF := 0.0, AN_E := -0.0015387935505830619, AE_E := 0.0028384915610841777, TF := 0.07539398326327973);
 	fbPointingInverse	: FB_PointingModelInversion(fbPointing := fbPointing);
+	// MONETcommon#272 (0.24.0): an axis error under motion stops the healthy axes with their drives (MC_Stop) at these dynamics,
+	// while the shared brake clamps for a faulty Az/El. 0.0 = the NC parameters of the axis (Az 3 deg/s^2, jerk 1; El 3, jerk 2;
+	// Der 3.7, jerk 1.65), too soft against the brake. Within the NC maximum deceleration (Az/El 10, Der 20). To be confirmed with
+	// the scope in checklist 4.5. Every other field keeps the default of ST_MotionConfig.
+	stMotion			: BROTLib.ST_MotionConfig := (
+		fAzimuthFastStopDeceleration	:= 6.0,	fAzimuthFastStopJerk	:= 20.0,
+		fElevationFastStopDeceleration	:= 6.0,	fElevationFastStopJerk	:= 20.0,
+		fDerotatorFastStopDeceleration	:= 0.0,	fDerotatorFastStopJerk	:= 0.0);	// derotator: not on the brake, NC parameters for now
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(* 
@@ -215,7 +223,8 @@ IF eTelescopeMode = E_TelescopeMode.automatic THEN
 		fbPointingInverse := fbPointingInverse,
 		bEstopTriggered := SafetyHandling.estop,	// M5: was never wired, see MONETcommon#11
 		bSafetyError	:= SafetyHandling.error,		// MONETcommon#155: closes the brake opened in the Wake&Shake window; FALSE = not enforced
-		bMainReady		:= mainReady				// M5: was computed and published but never wired, see MONETcommon#11 (without the L3 warning, see above)
+		bMainReady		:= mainReady,				// M5: was computed and published but never wired, see MONETcommon#11 (without the L3 warning, see above)
+		stMotion		:= stMotion					// MONETcommon#272: the fast-stop dynamics, see the declaration
 	);
 ELSE
     // Invalidate startup readiness and publish its heartbeat without running automatic motion in manual mode.
