@@ -76,11 +76,17 @@ VAR CONSTANT
 	// MONETcommon#272 (0.24.0): an axis error under motion stops the healthy axes with their drives (MC_Stop) at these dynamics,
 	// while the shared brake clamps for a faulty Az/El. 0.0 = the NC parameters of the axis (Az 3 deg/s^2, jerk 1; El 3, jerk 2;
 	// Der 3.7, jerk 1.65), too soft against the brake. Within the NC maximum deceleration (Az/El 10, Der 20). To be confirmed with
-	// the scope in checklist 4.5. Every other field keeps the default of ST_MotionConfig.
+	// the scope in checklist 4.5.
+	// MONETcommon#286 (0.27.0): every other stop (stop, the abort stop of an interrupted move, park/gohome over a move) at the
+	// stop dynamics: the NC deceleration with a jerk of 20 instead of the NC jerk (1-2), with which a stop at speed kept
+	// accelerating and ran on 12-16 deg (2026-11-13). Every other field keeps the default of ST_MotionConfig.
 	stMotion			: BROTLib.ST_MotionConfig := (
 		fAzimuthFastStopDeceleration	:= 6.0,	fAzimuthFastStopJerk	:= 20.0,
 		fElevationFastStopDeceleration	:= 6.0,	fElevationFastStopJerk	:= 20.0,
-		fDerotatorFastStopDeceleration	:= 0.0,	fDerotatorFastStopJerk	:= 0.0);	// derotator: not on the brake, NC parameters for now
+		fDerotatorFastStopDeceleration	:= 3.7,	fDerotatorFastStopJerk	:= 20.0,	// derotator: not on the brake; as its stop (#286), never softer
+		fAzimuthStopDeceleration		:= 3.0,	fAzimuthStopJerk		:= 20.0,
+		fElevationStopDeceleration		:= 3.0,	fElevationStopJerk		:= 20.0,
+		fDerotatorStopDeceleration		:= 3.7,	fDerotatorStopJerk		:= 20.0);	// derotator: the NC deceleration, jerk 20 (NC 1.65: ran on 26-31 deg)
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(* 
