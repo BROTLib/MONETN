@@ -87,6 +87,7 @@ VAR CONSTANT
 		fAzimuthStopDeceleration		:= 3.0,	fAzimuthStopJerk		:= 20.0,
 		fElevationStopDeceleration		:= 3.0,	fElevationStopJerk		:= 20.0,
 		fDerotatorStopDeceleration		:= 3.7,	fDerotatorStopJerk		:= 20.0);	// derotator: the NC deceleration, jerk 20 (NC 1.65: ran on 26-31 deg)
+
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(* 
@@ -127,7 +128,14 @@ IF bVisuMoveDerotator <> DerotatorControl.MoveAxis THEN
 END_IF
 
 // run cabinet
-CabinetControl(iTelescope := TelescopeControl);	// parks the telescope while the cabinet is too hot (MONETcommon#32)
+CabinetControl(
+	iTelescope			:= TelescopeControl,	// parks the telescope while the cabinet is too hot (MONETcommon#32)
+	// X1 I_Cabinet view for the HMI gateway and the comm layer; the values are those of the previous scan (SafetyHandling and PendantControl run later)
+	bEstop				:= SafetyHandling.estop,
+	bSafetyError		:= SafetyHandling.error,
+	bSafetyAckPending	:= SafetyHandling.RestartPending,
+	bPendantActive		:= PendantControl.bEnable	// the enable key of the pendant (conservative: key on = pendant holds authority)
+);
 
 // telescope mode
 IF CabinetControl.KeyLocal THEN
@@ -339,6 +347,7 @@ fbComm(
 	sTopicLog		:= 'MONETN/Log',
 	Telescope		:= TelescopeControl,
 	AltAzTelescope  := TelescopeControl,
+	Cabinet			:= CabinetControl,	// X9: with the switch on Local the MQTT motion and reset verbs are refused (BROTLib F_MqttVerbIsMotion)
 	Focus			:= FocusControl,
 	Roof			:= RoofControl
 );
