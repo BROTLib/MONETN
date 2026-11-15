@@ -122,7 +122,8 @@ MAIN
 ├── TelescopeControl   : FB_MonetTelescopeControl     (MONETcommon, telescope state machine)
 ├── PendantControl     : FB_MonetPendantControl       (MONETcommon)
 ├── MqttWatchdog       : FB_MonetMqttWatchdog         (MONETcommon)
-└── Diagnostics        : FB_MonetDiagnostics          (MONETcommon)
+├── Diagnostics        : FB_MonetDiagnostics          (MONETcommon)
+└── Hmi                : BROTLib.FB_HmiGateway        (BROTLib, HMI gateway)
 ```
 
 ### MAIN
@@ -141,6 +142,16 @@ switch:
 It also blinks the error lamp according to error priority (safety > axis >
 oil > cover/hydraulics) and publishes `electronics/base/MainReady` /
 `MasterError` every 5 s.
+
+### HMI gateway
+
+`MAIN.Hmi` (`BROTLib.FB_HmiGateway`, contract `specs/design/ui-tiers-and-hmi-gateway.md` in BROTLib) is called once per
+scan, unconditionally, after the telescope call and before the axis blocks. It gets the telescope (alt-az, also as
+`I_TelescopeStatus`), `CabinetControl` (`I_Cabinet`), `SafetyHandling` (`I_SafetyDiagnostics`), the axes azimuth, elevation,
+derotator (descriptors `stHmi*Info` in `MAIN`), the focus, covers, hydraulics and brake (one block, two kinds) and the roof.
+Not wired: dome, filter, Nasmyth (MONET/N has none) and the RA/Dec telescope input. The Local/Remote switch is the cabinet key
+`inKeyLocal` (TRUE = Local); `CabinetControl` also passes it to `fbComm`, which then refuses MQTT motion verbs on Local.
+`PendantActive` is the pendant enable key; the pendant itself does not read the switch yet (MONETcommon M2).
 
 ### Telescope and axes
 

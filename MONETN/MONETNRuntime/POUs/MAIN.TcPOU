@@ -34,6 +34,7 @@ VAR
 	// TRUE = enabled; set FALSE via ADS for test runs. Not persistent: back to TRUE at every PLC start (the safe default).
 	bRoofCloseOnErrorEnable	: BOOL := TRUE;
 	Diagnostics			: FB_MonetDiagnostics(comm := fbComm);	// diagnostics/base/* telemetry, on change + 30 s heartbeat (MONETcommon)
+	Hmi					: BROTLib.FB_HmiGateway;	// X10: HMI gateway (contract specs/design/ui-tiers-and-hmi-gateway.md in BROTLib), fixed path MAIN.Hmi, see the call below
 
 	// MONETcommon#24 step 5: Power/Park/Slew/Goto switches of the Telescope Visu (pattern of MONETS#72). The Visu sets the bit, the
 	// body calls the method and clears the bit. The Visu must not write bPower/bPark/bSlew/bGoto: they become edge-triggered inputs.
@@ -88,6 +89,20 @@ VAR CONSTANT
 		fElevationStopDeceleration		:= 3.0,	fElevationStopJerk		:= 20.0,
 		fDerotatorStopDeceleration		:= 3.7,	fDerotatorStopJerk		:= 20.0);	// derotator: the NC deceleration, jerk 20 (NC 1.65: ran on 26-31 deg)
 
+	// X10 axis descriptors of the HMI gateway (contract section 5.2/6). fMin/fMax are the ONLY limit of HMI jog and MoveAxisTo (no horizon or
+	// pole check in the gateway). PROPOSED values, to be reviewed by the project owner in the PR and verified on site before the HMI is
+	// released for maintenance: a target just outside each limit is rejected, a jog stops at each limit. They lie inside the PLC target limits
+	// of the axis blocks (azimuth -72..495, elevation 0..90, derotator -170..300, see the calls below). fMaintVelocity = slow velocity of an
+	// HMI MoveAxisTo (deg/s), proposed; 0 would use the axis's current velocity. bCanEnable stays FALSE (contract O10: axis enable in manual
+	// mode depends on the brake key, undecided). The focus has no descriptor limits: they come from FocusControl.MinPosition/MaxPosition.
+	stHmiAzimuthInfo	: BROTLib.ST_HmiAxisInfo := (sName := 'axis.azimuth', eRole := BROTLib.E_HmiAxisRole.azimuth, sUnit := 'deg',
+													fMin := -70.0, fMax := 493.0, bCanJog := TRUE, bCanHome := TRUE, bCanEnable := FALSE, bCanMoveTo := TRUE, fMaintVelocity := 1.0);
+	stHmiElevationInfo	: BROTLib.ST_HmiAxisInfo := (sName := 'axis.altitude', eRole := BROTLib.E_HmiAxisRole.altitude, sUnit := 'deg',
+													fMin := 2.0, fMax := 88.0, bCanJog := TRUE, bCanHome := TRUE, bCanEnable := FALSE, bCanMoveTo := TRUE, fMaintVelocity := 0.5);
+	stHmiDerotatorInfo	: BROTLib.ST_HmiAxisInfo := (sName := 'axis.derotator', eRole := BROTLib.E_HmiAxisRole.derotator, sUnit := 'deg',
+													fMin := -168.0, fMax := 298.0, bCanJog := TRUE, bCanHome := TRUE, bCanEnable := FALSE, bCanMoveTo := TRUE, fMaintVelocity := 1.0);
+	stHmiFocusInfo		: BROTLib.ST_HmiAxisInfo := (sName := 'axis.focus', eRole := BROTLib.E_HmiAxisRole.focus, sUnit := 'mm',
+													bCanJog := TRUE, bCanHome := FALSE, bCanEnable := FALSE, bCanMoveTo := TRUE);	// focus homing is bManualHome, not in I_Focus (O10)
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[(* 
@@ -249,6 +264,27 @@ ELSE
         bMainReadyIn	:= mainReady);
 END_IF
 TelescopeAuxiliary();
+
+// X10 HMI gateway. ONCE PER SCAN, UNCONDITIONALLY (no IF, RETURN or mode branch around it), after the telescope call and BEFORE the axis
+// blocks below: the dead-man of the HMI jog lives in the gateway and a jog level it writes is read by the axis in the same scan
+// (contract section 7.5; review checklist in the PR).
+Hmi.aipAxes[1] := AzimuthControl;	Hmi.astAxisInfo[1] := stHmiAzimuthInfo;
+Hmi.aipAxes[2] := ElevationControl;	Hmi.astAxisInfo[2] := stHmiElevationInfo;
+Hmi.aipAxes[3] := DerotatorControl;	Hmi.astAxisInfo[3] := stHmiDerotatorInfo;
+Hmi(
+	ipAltAz			:= TelescopeControl,		// alt-az mount (derived), the telescope status below is the same object
+	ipCabinet		:= CabinetControl,
+	ipFocus			:= FocusControl,
+	stFocusInfo		:= stHmiFocusInfo,
+	ipCovers		:= CoverControl,
+	ipHydraulics	:= HydraulicsControl,	// one block, two kinds (I_Hydraulics and I_Brake)
+	ipBrake			:= HydraulicsControl,
+	ipRoof			:= RoofControl,
+	ipTelescopeStatus	:= TelescopeControl,	// Suspended replaces bTelescopeRunsInLocal where wired
+	ipSafety		:= SafetyHandling,
+	bTelescopeRunsInLocal	:= FALSE		// Local suspends the telescope control (MONETcommon FB_MonetTelescopeControl.SuspendAutomatic)
+	// not wired: ipRaDec (alt-az), ipDome, ipFilter, ipNasmyth (MONET/N has none)
+);
 
 // run all control FBs
 CoverControl(
