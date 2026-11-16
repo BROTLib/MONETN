@@ -282,6 +282,7 @@ Hmi(
 	ipRoof			:= RoofControl,
 	ipTelescopeStatus	:= TelescopeControl,	// Suspended replaces bTelescopeRunsInLocal where wired
 	ipSafety		:= SafetyHandling,
+	sTelescopeName		:= 'MONET/N',	// shown in the BROTweb header (ST_HmiStatus.sTelescopeName)
 	bTelescopeRunsInLocal	:= FALSE		// Local suspends the telescope control (MONETcommon FB_MonetTelescopeControl.SuspendAutomatic)
 	// not wired: ipRaDec (alt-az), ipDome, ipFilter, ipNasmyth (MONET/N has none)
 );
